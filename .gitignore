@@ -1,0 +1,24 @@
+# Ignore everything 
+*
+
+# ... Except ...
+!.vimrc
+!.bashrc
+!.zshrc
+!.gitignore
+
+!.config/
+
+
+# .config/ files
+!/.config/konsolerc
+
+#/.config/ folders
+!/.config/nvim/
+!/.config/nvim/*
+!/.config/i3/
+!/.config/i3/*
+!/.config/rofi/
+!/.config/rofi/*
+!/.config/picom/
+!/.config/picom/*
