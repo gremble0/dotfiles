@@ -36,7 +36,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Run picom on startup (fixes screen tearing and other graphic related things
-exec --no-startup-id picom -b --no-fading-openclose --config ~/.config/picom/picom.conf
+exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 --config ~/.config/picom/picom.conf
+
+# Run nitrogen on startup
+
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -225,9 +228,8 @@ bindsym Shift+Print exec --no-startup-id maim --format=png | xclip -selection cl
 # exec "setxkbmap -option 'grp:alt_shift_toggle' -layout us,no -option nodeadkeys"
 #### CHANGE TO WIN+SPACE ??
 
-client.focused          #000000 #1C1C1C #ffffff #1C1C1C #1C1C1C
+client.focused          #000000 #262626 #ffffff #1C1C1C #1C1C1C
 client.focused_inactive #000000 #1C1C1C #ffffff #1C1C1C #1C1C1C
 client.unfocused        #000000 #1C1C1C #888888 #1C1C1C #1C1C1C
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #1C1C1C
