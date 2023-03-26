@@ -22,3 +22,14 @@ vim.keymap.set("n", "E", "dd")
 -- Vertical movement
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Yanking and pasting
+vim.keymap.set("n", "Y", '"+Y')
+vim.keymap.set("v", "Y", '"+Y')
+vim.keymap.set("v", "y", '"+y')
+vim.keymap.set("n", "y", '"+y')
+
+vim.keymap.set("n", "P", '"+P')
+vim.keymap.set("v", "P", '"+P')
+vim.keymap.set("n", "p", '"+p')
+vim.keymap.set("v", "p", '"+p')

@@ -13,8 +13,8 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
-# font consolas:monospace:10
+# font pango:monospace 8
+font pango:consolas:10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -129,6 +129,18 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Assign each workspace to specific screen
+workspace 1 output HDMI-1
+workspace 2 output DP-3
+workspace 3 output HDMI-1
+workspace 4 output DP-3
+workspace 5 output HDMI-1
+workspace 6 output DP-3
+workspace 7 output HDMI-1
+workspace 8 output DP-3
+workspace 9 output HDMI-1
+workspace 10 output DP-3
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -191,6 +203,14 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status --config ~/.config/i3/i3status.conf
+
+        colors {
+            background #1C1C1C
+            
+            focused_workspace #000000 #444444 #FFFFFF
+            active_workspace #000000 #1C1C1C #FFFFFF
+            inactive_workspace #000000 #1C1C1C #FFFFFF
+        }
 }
 
 # Stop focus from following mouse
@@ -204,3 +224,10 @@ bindsym Shift+Print exec --no-startup-id maim --format=png | xclip -selection cl
 # Change keyboard layout when hitting $mod+Shift
 # exec "setxkbmap -option 'grp:alt_shift_toggle' -layout us,no -option nodeadkeys"
 #### CHANGE TO WIN+SPACE ??
+
+client.focused          #000000 #1C1C1C #ffffff #1C1C1C #1C1C1C
+client.focused_inactive #000000 #1C1C1C #ffffff #1C1C1C #1C1C1C
+client.unfocused        #000000 #1C1C1C #888888 #1C1C1C #1C1C1C
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #1C1C1C

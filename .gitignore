@@ -16,9 +16,20 @@
 #/.config/ folders
 !/.config/nvim/
 !/.config/nvim/*
+!/.config/nvim/lua/
+!/.config/nvim/lua/*
+!/.config/nvim/lua/gremble/
+!/.config/nvim/lua/gremble/*
+!/.config/nvim/after/
+!/.config/nvim/after/*
+!/.config/nvim/after/plugin/
+!/.config/nvim/after/plugin/*
+
 !/.config/i3/
 !/.config/i3/*
+
 !/.config/rofi/
 !/.config/rofi/*
+
 !/.config/picom/
 !/.config/picom/*

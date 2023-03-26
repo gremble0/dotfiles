@@ -115,12 +115,12 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Autocompletion (doesnt work)
-autoload -Uz compinit
-compinit
-
-zstyle ':completion::complete:*' gain-privileges 1
-
-zstyle ':completion:*' menu select
+# autoload -Uz compinit
+# compinit
+# 
+# zstyle ':completion::complete:*' gain-privileges 1
+# 
+# zstyle ':completion:*' menu select
 
 #disable auto correct
     unsetopt correct_all

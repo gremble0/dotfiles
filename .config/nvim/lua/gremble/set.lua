@@ -35,3 +35,6 @@ vim.opt.wrap = false
 
 -- Disable mouse
 vim.opt.mouse = ""
+
+-- Clipboard for yank and paste through xclip
+vim.api.nvim_set_option("clipboard", "unnamed")
