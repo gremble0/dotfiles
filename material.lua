@@ -1,0 +1,4 @@
+--require('material').setup({
+--    lualine_style = 'default' -- the default style
+--})
+--vim.g.material_style = "darker"
