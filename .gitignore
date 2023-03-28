@@ -33,3 +33,9 @@
 
 !/.config/picom/
 !/.config/picom/*
+
+!/.config/terminator/
+!/.config/terminator/*
+
+!/.config/BetterDiscord/
+!/.config/BetterDiscord/*

@@ -1,0 +1,30 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+  cycle_next = None
+  cycle_prev = None
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
+[profiles]
+  [[default]]
+    allow_bold = False
+    icon_bell = False
+    background_color = "#1c1c1c"
+    cursor_fg_color = "#ffffff"
+    cursor_bg_color = "#1c1c1c"
+    font = Consolas 18
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 2000
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]

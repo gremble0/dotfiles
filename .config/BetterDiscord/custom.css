@@ -1,0 +1,69 @@
+button {
+	--accentcolor: var(--accent-alt);
+}
+
+:root {
+	--background-solid: #1c1c1c;
+	--background-solid-dark: #1a1a1a;
+	--background-solid-darker: #171717;
+	--background-solid-darkest: #111111;
+	--black: 18, 18, 18;
+	--white: 255, 255, 255;
+	--vaccentcolor-hover: rgb(var(--accent));
+	--vaccentcolor-active: rgb(var(--accent));
+}
+
+/* --bd-blue-active: var(--background-solid-darker); */
+
+.theme-dark,
+.theme-light {
+	--background-primary: var(--background-solid);
+	--background-mobile-primary: var(--background-primary);
+	--background-secondary: var(--background-solid-dark);
+	--background-mobile-secondary: var(--background-secondary);
+	--background-secondary-alt: var(--background-solid-darker);
+	--background-tertiary: var(--background-solid-darkest);
+	--background-floating: var(--background-solid-dark);
+	--background-secondary: var(--background-solid-dark);
+	--background-accent: var(--background-solid-dark);
+	--background-message-hover: rgba(var(--black), 0.4);
+	--channeltextarea-background: var(--background-solid-darker);
+	--activity-card-background: rgba(var(--white), 0.05);
+	--deprecated-store-bg: transparent;
+	--background-modifier-hover: rgba(35, 35, 35, 1);
+	--background-modifier-active: rgba(38, 38, 38, 1);
+	--background-modifier-selected: rgba(40, 40, 40, 1);
+	--channels-default: rgba(var(--white), 0.6);
+	--deprecated-quickswitcher-input-background: var(--background-solid);
+	--header-secondary: rgba(var(--white), 0.6);
+	--text-normal: rgba(var(--white), 0.8);
+	--deprecated-card-bg: rgba(var(--white), 0.05);
+}
+
+/* popup menu when @ing */
+#app-mount .autocomplete-3NRXG8,
+#app-mount .perk-19D_HN {
+    background-color: var(--background-secondary);
+}
+
+/*top left menu showing server name*/
+.header-3OsQeK {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background: var(--background-solid-darker) !important;
+}
+
+/*title bar top middle-right*/
+.container-ZMc96U {
+    background: var(--background-solid-darker) !important;
+}
+
+/* #app-mount .background-fkKrXt {
+    background-color: var(--background-primary);
+} */
+
+/*container for forum menu*/
+#app-mount .container-3wLKDe {
+    background-color: var(--background-solid-darker);
+}
