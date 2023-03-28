@@ -7,6 +7,8 @@
 
 configuration {
     show-icons: true;
+    font: "Cantarell 15";
+    icon-theme: "Adwaita";
 }
 
 * {
@@ -28,10 +30,10 @@ configuration {
     alternate-normal-foreground: @foreground;
     normal-background:           #1C1C1C;
     lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  #171717;
+    selected-normal-background:  #1a8ab2;
     border-color:                #000;
-    spacing:                     2;
-    separatorcolor:              rgba ( 195, 198, 200, 100 % );
+    spacing:                     1;
+    separatorcolor:              @background;//rgba ( 195, 198, 200, 100 % );
     urgent-background:           rgba ( 69, 90, 100, 100 % );
     selected-urgent-background:  rgba ( 255, 82, 82, 100 % );
     alternate-urgent-foreground: @urgent-foreground;
@@ -44,6 +46,8 @@ window {
     background-color: @background;
     border:           1;
     padding:          5;
+    //height:           400px;
+    width:            700px;
 }
 mainbox {
     border:  0;
@@ -62,12 +66,12 @@ listview {
     border:       2px dash 0px 0px ;
     border-color: @separatorcolor;
     spacing:      2px ;
-    scrollbar:    true;
+    scrollbar:    false;
     padding:      2px 0px 0px ;
 }
 element {
     border:  0;
-    padding: 1px ;
+    padding: 1px;
 }
 element-text {
     background-color: inherit;

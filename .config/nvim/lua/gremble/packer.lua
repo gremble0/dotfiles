@@ -7,18 +7,11 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    --use({
-    --    'marko-cerovac/material.nvim',
-    --    config = function()
-    --        vim.cmd('colorscheme material')
-    --        vim.g.material_style = "darker"
-    --    end,
-    --})
     use({
         'ramojus/mellifluous.nvim',
         requires = { 'rktjmp/lush.nvim' },
         config = function()
-            require'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
+            require'mellifluous'
             vim.cmd('colorscheme mellifluous')
         end,
     })

@@ -14,7 +14,7 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 8
-font pango:consolas:10
+font pango:Cantarell 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -205,15 +205,16 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status --config ~/.config/i3/i3status.conf
+    font pango:Cantarell 11
+    status_command i3status --config ~/.config/i3/i3status.conf
 
-        colors {
-            background #1C1C1C
-            
-            focused_workspace #000000 #444444 #FFFFFF
-            active_workspace #000000 #1C1C1C #FFFFFF
-            inactive_workspace #000000 #1C1C1C #FFFFFF
-        }
+    colors {
+        background #1C1C1C
+        
+        focused_workspace #000000 #282828 #FFFFFF
+        active_workspace #000000 #1C1C1C #FFFFFF
+        inactive_workspace #000000 #1C1C1C #FFFFFF
+    }
 }
 
 # Stop focus from following mouse
@@ -228,7 +229,7 @@ bindsym Shift+Print exec --no-startup-id maim --format=png | xclip -selection cl
 # exec "setxkbmap -option 'grp:alt_shift_toggle' -layout us,no -option nodeadkeys"
 #### CHANGE TO WIN+SPACE ??
 
-client.focused          #000000 #262626 #ffffff #1C1C1C #1C1C1C
+client.focused          #000000 #282828 #ffffff #1C1C1C #1C1C1C
 client.focused_inactive #000000 #1C1C1C #ffffff #1C1C1C #1C1C1C
 client.unfocused        #000000 #1C1C1C #888888 #1C1C1C #1C1C1C
 
