@@ -39,3 +39,12 @@
 
 !/.config/BetterDiscord/
 !/.config/BetterDiscord/*
+
+!/.themes/
+!/.themes/*
+!/.themes/Arc-Darkest-Blue-Agave/
+!/.themes/Arc-Darkest-Blue-Agave/*
+!/.themes/Arc-Darkest-Blue-Agave/gtk-2.0/
+!/.themes/Arc-Darkest-Blue-Agave/gtk-2.0/*
+!/.themes/Arc-Darkest-Blue-Agave/gtk-3.0/
+!/.themes/Arc-Darkest-Blue-Agave/gtk-3.0*

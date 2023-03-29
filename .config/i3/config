@@ -39,7 +39,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 --config ~/.config/picom/picom.conf
 
 # Run nitrogen on startup
-
+exec --no-startup-id nitrogen --restore
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status

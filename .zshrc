@@ -89,11 +89,6 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
 export VISUAL=$EDITOR
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -102,23 +97,9 @@ export VISUAL=$EDITOR
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias c="clear"
 alias n="nvim"
 alias ex="ranger"
 
-alias ls='ls -alhgoF --color --group-directories-first'                        
-alias ll='ls -alF'                                                             
-alias la='ls -A'                                                               
-alias l='ls -CF'
-
-# Autocompletion (doesnt work)
-# autoload -Uz compinit
-# compinit
-# 
-# zstyle ':completion::complete:*' gain-privileges 1
-# 
-# zstyle ':completion:*' menu select
+alias ls='ls -CF --color'
+alias ll='ls -AhgGoF --group-directories-first --color'

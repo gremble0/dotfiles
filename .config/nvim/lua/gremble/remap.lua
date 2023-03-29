@@ -1,8 +1,8 @@
 -- Set leader to space
 vim.g.mapleader = " "
 
--- Open netrw
-vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
+-- Open ranger
+vim.keymap.set("n", "<leader>ex", vim.cmd.Ranger)
 
 -- Navigate faster while holding shift
 vim.keymap.set("n", "<S-h>", "5h")

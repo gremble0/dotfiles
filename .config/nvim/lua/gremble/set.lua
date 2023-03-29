@@ -38,3 +38,12 @@ vim.opt.mouse = ""
 
 -- Clipboard for yank and paste through xclip
 vim.api.nvim_set_option("clipboard", "unnamed")
+
+
+
+-- Scuffed vimscript implementation
+-- Replace netrw with ranger
+vim.cmd("let g:ranger_replace_netrw=1")
+
+-- Colorscheme
+vim.cmd("colorscheme mellifluous")
