@@ -108,6 +108,7 @@ export VISUAL=$EDITOR
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias c="clear"
 alias n="nvim"
+alias ex="ranger"
 
 alias ls='ls -alhgoF --color --group-directories-first'                        
 alias ll='ls -alF'                                                             
@@ -121,6 +122,3 @@ alias l='ls -CF'
 # zstyle ':completion::complete:*' gain-privileges 1
 # 
 # zstyle ':completion:*' menu select
-
-#disable auto correct
-    unsetopt correct_all
