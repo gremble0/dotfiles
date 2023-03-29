@@ -99,7 +99,16 @@ export VISUAL=$EDITOR
 # For a full list of active aliases, run `alias`.
 alias c="clear"
 alias n="nvim"
-alias ex="ranger"
+alias ex="ranger_cd"
 
 alias ls='ls -CF --color'
 alias ll='ls -AhgGoF --group-directories-first --color'
+
+ranger_cd() {
+    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
+    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
+    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
+        cd -- "$chosen_dir"
+    fi
+    rm -f -- "$temp_file"
+}
