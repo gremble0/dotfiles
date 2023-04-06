@@ -40,6 +40,9 @@
 !/.config/BetterDiscord/
 !/.config/BetterDiscord/*
 
+!/.config/polybar/
+!/.config/polybar/*
+
 !/.themes/
 !/.themes/*
 !/.themes/Arc-Darkest-Blue-Agave/
@@ -48,3 +51,9 @@
 !/.themes/Arc-Darkest-Blue-Agave/gtk-2.0/*
 !/.themes/Arc-Darkest-Blue-Agave/gtk-3.0/
 !/.themes/Arc-Darkest-Blue-Agave/gtk-3.0*
+!/.themes/Orchis-Dark/
+!/.themes/Orchis-Dark/*
+!/.themes/Orchis-Dark/gtk-2.0/
+!/.themes/Orchis-Dark/gtk-2.0/*
+!/.themes/Orchis-Dark/gtk-3.0/
+!/.themes/Orchis-Dark/gtk-3.0/*

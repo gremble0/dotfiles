@@ -8,5 +8,5 @@ Encoding=UTF-8
 GtkTheme==Orchis-Dark
 MetacityTheme==Orchis-Dark
 IconTheme=Tela-circle-Dark
-CursorTheme=BreezeX-Black
+CursorTheme=Vimix-Dark
 ButtonLayout=close,minimize,maximize:menu
