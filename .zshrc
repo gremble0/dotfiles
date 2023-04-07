@@ -4,7 +4,9 @@ export VISUAL=$EDITOR
 
 export BROWSER="/bin/firefox"
 
-export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST
+#export ZSH_COMPDUMP=$HOME/.cache/zsh/zcompdump
+# Move zcompdump to .cache folder
+autoload -Uz compinit && compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
 # Aliases
 alias c="clear"
@@ -27,13 +29,11 @@ ranger_cd() {
 
 # Setting prompt
 function parse_git_branch() {
-    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/(\1)/p'
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/(\1) /p'
 }
 
 setopt PROMPT_SUBST
-export PROMPT='%F{green}%n@%m%f%F{blue}%~%f %F{yellow}$(parse_git_branch)%f $ '
+export PROMPT='%F{green}%n@%m%f%F{blue}%~%f %F{yellow}$(parse_git_branch)%f$ '
 
-# Case insensitive completion 
-
-autoload -Uz compinit && compinit
+# Case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
