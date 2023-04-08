@@ -4,7 +4,7 @@ export VISUAL=$EDITOR
 
 export BROWSER="/bin/firefox"
 
-#export ZSH_COMPDUMP=$HOME/.cache/zsh/zcompdump
+export GTK2_RC_FILES="~/.config/gtk-2.0/gtkrc"
 # Move zcompdump to .cache folder
 autoload -Uz compinit && compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
