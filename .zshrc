@@ -33,7 +33,7 @@ function parse_git_branch() {
 }
 
 setopt PROMPT_SUBST
-export PROMPT='%F{green}%n@%m%f%F{blue}%~%f %F{yellow}$(parse_git_branch)%f$ '
+export PROMPT='%F{yellow}%n@%m%f%F{blue}%~%f %F{green}$(parse_git_branch)%f$ '
 
 # Case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
