@@ -13,3 +13,6 @@ export VISUAL=$EDITOR
 export TERMINAL="terminator"
 export BROWSER="firefox"
 export FILE="ranger"
+
+# Fix sorting in ls command (take . into consideration when sorting)
+export LC_COLLATE="C"
