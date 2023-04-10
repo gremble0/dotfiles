@@ -2,53 +2,53 @@
 *
 
 # ... Except ...
-!.vimrc
-!.bashrc
 !.zshrc
 !.gitignore
+!.profile
 
 !.config/
 
-# .config/ files
-!/.config/konsolerc
-
 #/.config/ folders
-!/.config/nvim/
-!/.config/nvim/*
-!/.config/nvim/lua/
-!/.config/nvim/lua/*
-!/.config/nvim/lua/core/
-!/.config/nvim/lua/core/*
-!/.config/nvim/lua/custom/
-!/.config/nvim/lua/custom/*
-!/.config/nvim/lua/plugins/
-!/.config/nvim/lua/plugins/*
-!/.config/nvim/lua/plugins/configs/
-!/.config/nvim/lua/plugins/configs/*
+!.config/nvim/
+!.config/nvim/*
+!.config/nvim/lua/
+!.config/nvim/lua/*
+!.config/nvim/lua/core/
+!.config/nvim/lua/core/*
+!.config/nvim/lua/custom/
+!.config/nvim/lua/custom/*
+!.config/nvim/lua/plugins/
+!.config/nvim/lua/plugins/*
+!.config/nvim/lua/plugins/configs/
+!.config/nvim/lua/plugins/configs/*
 
-!/.config/i3/
-!/.config/i3/*
+!.config/i3/
+!.config/i3/*
 
-!/.config/rofi/
-!/.config/rofi/*
+!.config/rofi/
+!.config/rofi/*
 
-!/.config/picom/
-!/.config/picom/*
+!.config/picom/
+!.config/picom/*
 
-!/.config/terminator/
-!/.config/terminator/*
+!.config/terminator/
+!.config/terminator/*
 
-!/.config/BetterDiscord/
-!/.config/BetterDiscord/*
+!.config/BetterDiscord/
+!.config/BetterDiscord/*
 
-!/.config/polybar/
-!/.config/polybar/*
+!.config/polybar/
+!.config/polybar/*
 
-!/.themes/
-!/.themes/*
-!/.themes/Material-Black-Mango/
-!/.themes/Material-Black-Mango/*
-!/.themes/Material-Black-Mango/gtk-2.0/
-!/.themes/Material-Black-Mango/gtk-2.0/*
-!/.themes/Material-Black-Mango/gtk-3.0/
-!/.themes/Material-Black-Mango/gtk-3.0/*
+!.config/zsh/
+!.config/zsh/*
+
+
+!.themes/
+!.themes/*
+!.themes/Material-Black-Mango/
+!.themes/Material-Black-Mango/*
+!.themes/Material-Black-Mango/gtk-2.0/
+!.themes/Material-Black-Mango/gtk-2.0/*
+!.themes/Material-Black-Mango/gtk-3.0/
+!.themes/Material-Black-Mango/gtk-3.0/*
