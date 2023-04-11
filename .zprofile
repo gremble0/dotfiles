@@ -18,6 +18,7 @@ export FILE="ranger"
 # Fix sorting in ls command (take . into consideration when sorting)
 export LC_COLLATE="C"
 
+# Run startx if i3 session is not already active
 if [[ "$(tty)" = "/dev/tty1" ]]; then
     pgrep i3 || startx "$XDG_CONFIG_HOME/X11/xinitrc"
 fi 
