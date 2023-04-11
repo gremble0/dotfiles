@@ -47,11 +47,13 @@
 
 
 # themes
-!.themes/
-!.themes/*
-!.themes/Material-Black-Mango/
-!.themes/Material-Black-Mango/*
-!.themes/Material-Black-Mango/gtk-2.0/
-!.themes/Material-Black-Mango/gtk-2.0/*
-!.themes/Material-Black-Mango/gtk-3.0/
-!.themes/Material-Black-Mango/gtk-3.0/*
+!.local/
+!.local/share/
+!.local/share/themes/
+#!.local/share/themes/*
+!.local/share/themes/Material-Black-Mango/
+!.local/share/themes/Material-Black-Mango/*
+!.local/share/themes/Material-Black-Mango/gtk-2.0/
+!.local/share/themes/Material-Black-Mango/gtk-2.0/*
+!.local/share/themes/Material-Black-Mango/gtk-3.0/
+!.local/share/themes/Material-Black-Mango/gtk-3.0/*

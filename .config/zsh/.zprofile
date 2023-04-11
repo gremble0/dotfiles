@@ -1,12 +1,19 @@
+# XDG defaults
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
 # idk
 export PATH="$PATH:$HOME/.local/bin/"
 
 # Cleaning up home directory
-export ZDOTDIR="$HOME/.config/zsh"
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 export GRADLE_USER_HOME="$HOME/Android/gradle"
-export M2_HOME="$HOME/Android/m2"
-export XDG_CONFIG_HOME="$HOME/.config"
+export M2_HOME="$HOME/Android/m2" # not working
 
 # System defaults
 export EDITOR="nvim"
