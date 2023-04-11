@@ -2,9 +2,8 @@
 *
 
 # ... Except ...
-!.zshrc
 !.gitignore
-!.profile
+!.zprofile
 
 !.config/
 
@@ -43,7 +42,11 @@
 !.config/zsh/
 !.config/zsh/*
 
+!.config/X11/
+!.config/X11/*
 
+
+# themes
 !.themes/
 !.themes/*
 !.themes/Material-Black-Mango/
