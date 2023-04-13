@@ -2,49 +2,58 @@
 *
 
 # ... Except ...
-!.vimrc
-!.bashrc
-!.zshrc
 !.gitignore
+!.zprofile
 
 !.config/
 
-
-# .config/ files
-!/.config/konsolerc
-
 #/.config/ folders
-!/.config/nvim/
-!/.config/nvim/*
-!/.config/nvim/lua/
-!/.config/nvim/lua/*
-!/.config/nvim/lua/gremble/
-!/.config/nvim/lua/gremble/*
-!/.config/nvim/after/
-!/.config/nvim/after/*
-!/.config/nvim/after/plugin/
-!/.config/nvim/after/plugin/*
+!.config/nvim/
+!.config/nvim/*
+!.config/nvim/lua/
+!.config/nvim/lua/*
+!.config/nvim/lua/core/
+!.config/nvim/lua/core/*
+!.config/nvim/lua/custom/
+!.config/nvim/lua/custom/*
+!.config/nvim/lua/plugins/
+!.config/nvim/lua/plugins/*
+!.config/nvim/lua/plugins/configs/
+!.config/nvim/lua/plugins/configs/*
 
-!/.config/i3/
-!/.config/i3/*
+!.config/i3/
+!.config/i3/*
 
-!/.config/rofi/
-!/.config/rofi/*
+!.config/rofi/
+!.config/rofi/*
 
-!/.config/picom/
-!/.config/picom/*
+!.config/picom/
+!.config/picom/*
 
-!/.config/terminator/
-!/.config/terminator/*
+!.config/terminator/
+!.config/terminator/*
 
-!/.config/BetterDiscord/
-!/.config/BetterDiscord/*
+!.config/BetterDiscord/
+!.config/BetterDiscord/*
 
-!/.themes/
-!/.themes/*
-!/.themes/Arc-Darkest-Blue-Agave/
-!/.themes/Arc-Darkest-Blue-Agave/*
-!/.themes/Arc-Darkest-Blue-Agave/gtk-2.0/
-!/.themes/Arc-Darkest-Blue-Agave/gtk-2.0/*
-!/.themes/Arc-Darkest-Blue-Agave/gtk-3.0/
-!/.themes/Arc-Darkest-Blue-Agave/gtk-3.0*
+!.config/polybar/
+!.config/polybar/*
+
+!.config/zsh/
+!.config/zsh/*
+
+!.config/X11/
+!.config/X11/*
+
+
+# themes
+!.local/
+!.local/share/
+!.local/share/themes/
+#!.local/share/themes/*
+!.local/share/themes/Material-Black-Mango/
+!.local/share/themes/Material-Black-Mango/*
+!.local/share/themes/Material-Black-Mango/gtk-2.0/
+!.local/share/themes/Material-Black-Mango/gtk-2.0/*
+!.local/share/themes/Material-Black-Mango/gtk-3.0/
+!.local/share/themes/Material-Black-Mango/gtk-3.0/*
