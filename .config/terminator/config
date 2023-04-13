@@ -1,4 +1,5 @@
 [global_config]
+  borderless = True
   inactive_color_offset = 1.0
   suppress_multiple_term_dialog = True
 [keybindings]
@@ -10,15 +11,15 @@
   [[default]]
     allow_bold = False
     icon_bell = False
-    background_color = "#1c1c1c"
+    background_color = "#151515"
     cursor_fg_color = "#1c1c1c"
     cursor_bg_color = "#ffffff"
-    font = Consolas 18
+    font = JetBrainsMono Nerd Font 18
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_lines = 2000
-    palette = "#2e3436:#cc0000:#cdab89:#c4a000:#9e96b6:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#efcdab:#fce94f:#bfb8d8:#ad7fa8:#34e2e2:#eeeeec"
+    palette = "#2e3436:#cc0000:#99ad6a:#e1b655:#8197bf:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#bbcf8c:#f3d877:#a3b9df:#ad7fa8:#34e2e2:#eeeeec"
     use_system_font = False
 [layouts]
   [[default]]
