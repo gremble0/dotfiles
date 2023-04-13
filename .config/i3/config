@@ -30,24 +30,16 @@ exec --no-startup-id nitrogen --restore
 
 # Disable titlebars and start polybar (polybar shows window title)
 default_border pixel 1
-<<<<<<< HEAD
 exec --no-startup-id $XDG_CONFIG_HOME/polybar/multi_screen.sh
-=======
-exec --no-startup-id polybar
->>>>>>> a8676bd9e42cb7a14748f673dde637b819a7b445
+
+# Change keyboard layout when hitting alt + space
+exec "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
 
 # Take screenshot with printscreen using maim, pipe it to xclip to copy to clipboard
 bindsym Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 # Fullscreen screenshot
 bindsym Shift+Print exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png
 
-# Change keyboard layout when hitting alt + space
-exec "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
-
-<<<<<<< HEAD
-=======
-
->>>>>>> a8676bd9e42cb7a14748f673dde637b819a7b445
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -68,11 +60,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+w kill
 
-# start dmenu (a program launcher)
+# start rofi (a program launcher)
 bindsym $mod+d exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -178,23 +167,22 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
+    bindsym h resize shrink width 4 px or 4 ppt
+    bindsym j resize grow height 4 px or 4 ppt
+    bindsym k resize shrink height 4 px or 4 ppt
+    bindsym l resize grow width 4 px or 4 ppt
 
-        bindsym h resize shrink width 4 px or 4 ppt
-        bindsym j resize grow height 4 px or 4 ppt
-        bindsym k resize shrink height 4 px or 4 ppt
-        bindsym l resize grow width 4 px or 4 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 4 px or 4 ppt
+    bindsym Down resize grow height 4 px or 4 ppt
+    bindsym Up resize shrink height 4 px or 4 ppt
+    bindsym Right resize grow width 4 px or 4 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 4 px or 4 ppt
-        bindsym Down resize grow height 4 px or 4 ppt
-        bindsym Up resize shrink height 4 px or 4 ppt
-        bindsym Right resize grow width 4 px or 4 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
