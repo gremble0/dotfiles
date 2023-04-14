@@ -1,14 +1,14 @@
 # History in .cache directory
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=$HOME/.cache/zsh/history
+HISTFILE=$XDG_CACHE_HOME/zsh/history
 
 # Completion
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 # Move zcompdump to .cache folder
-compinit -d $HOME/.cache/zsh/zcompdump-$ZSH_VERSION
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # Include hidden files.
 _comp_options+=(globdots)
 
@@ -74,4 +74,4 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
-source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $XDG_CONFIG_HOME/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

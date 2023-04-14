@@ -22,21 +22,22 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Run stalonetray, but hide it later (some processes start in separate windows if theres no system tray)
+exec --no-startup-id stalonetray
+
 # Run picom on startup (fixes screen tearing and other graphic related things
 exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 --config ~/.config/picom/picom.conf
 
 # Run nitrogen on startup
 exec --no-startup-id nitrogen --restore
 
-# Disable titlebars and start polybar (polybar shows window title)
-default_border pixel 1
-default_floating_border pixel 1
+# Run polybar on startup
 exec --no-startup-id $XDG_CONFIG_HOME/polybar/multi_screen.sh
 
 # Change keyboard layout when hitting alt + space
 exec "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
 
-# Take screenshot with printscreen using maim, pipe it to xclip to copy to clipboard
+# Take screenshot with printscreen ueing maim, pipe it to xclip to copy to clipboard
 bindsym Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 # Fullscreen screenshot
 bindsym Shift+Print exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png
@@ -191,7 +192,13 @@ bindsym $mod+r mode "resize"
 client.focused          #e1b655 #151515 #ffffff #e1b655 #e1b655
 client.focused_inactive #000000 #151515 #ffffff #151515 #151515
 client.unfocused        #000000 #151515 #888888 #151515 #151515
-client.background       #101010
+client.background       #151515
+
+default_border pixel 1
+default_floating_border pixel 1
 
 # Stop focus from following mouse
 focus_follows_mouse no
+
+# Hide stalonetray that hopefully has started properly at this point, if not sleep 1 sec
+exec pidof stalonetray && xdo hide -n stalonetray || sleep 1 && xdo hide -n stalonetray
