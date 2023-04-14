@@ -1,7 +1,6 @@
 configuration {
     show-icons: true;
     font: "pango:Cantarell 16";
-    icon-theme: "Adwaita";
 }
 
 * {
@@ -24,7 +23,7 @@ configuration {
     normal-background:           #151515;
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  #E1B655;
-    border-color:                #000;
+    border-color:                #E1b655;
     separatorcolor:              @background;
     urgent-background:           rgba ( 69, 90, 100, 100 % );
     selected-urgent-background:  rgba ( 255, 82, 82, 100 % );

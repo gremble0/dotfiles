@@ -30,6 +30,7 @@ exec --no-startup-id nitrogen --restore
 
 # Disable titlebars and start polybar (polybar shows window title)
 default_border pixel 1
+default_floating_border pixel 1
 exec --no-startup-id $XDG_CONFIG_HOME/polybar/multi_screen.sh
 
 # Change keyboard layout when hitting alt + space
@@ -187,7 +188,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused          #000000 #E1B655 #ffffff #e1b655 #e1b655
+client.focused          #e1b655 #151515 #ffffff #e1b655 #e1b655
 client.focused_inactive #000000 #151515 #ffffff #151515 #151515
 client.unfocused        #000000 #151515 #888888 #151515 #151515
 client.background       #101010
