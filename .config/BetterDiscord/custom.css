@@ -35,8 +35,6 @@ button {
 	--background-modifier-selected: rgba(40, 40, 40, 1);
 	--channels-default: rgba(var(--white), 0.6);
 	--deprecated-quickswitcher-input-background: var(--background-solid);
-	--header-secondary: rgba(var(--white), 0.6);
-	--text-normal: rgba(var(--white), 0.8);
 	--deprecated-card-bg: rgba(var(--white), 0.05);
 }
 

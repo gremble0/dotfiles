@@ -49,8 +49,11 @@ alias n="nvim"
 alias vim="nvim"
 alias ex="ranger_cd"
 
-alias ls='ls -CF --color'
-alias ll='ls -AhgGoF --group-directories-first --color'
+alias ls="ls -CF --color=always"
+alias ll="ls -AhgGoF --group-directories-first --color=always"
+
+# Setting prompt
+PS1='%F{yellow}%n@%m%f%F{blue}%~%f %F{green}$%f '
 
 # Make ranger cd to dir after usage
 ranger_cd() {
@@ -61,9 +64,6 @@ ranger_cd() {
     fi
     rm -f -- "$temp_file"
 }
-
-# Setting prompt
-PS1='%F{yellow}%n@%m%f%F{blue}%~%f %F{green}$%f '
 
 # Case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
