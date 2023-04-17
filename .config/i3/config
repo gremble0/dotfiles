@@ -190,8 +190,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 client.focused          #e1b655 #151515 #ffffff #e1b655 #e1b655
-client.focused_inactive #000000 #151515 #ffffff #151515 #151515
-client.unfocused        #000000 #151515 #888888 #151515 #151515
+client.focused_inactive #000000 #151515 #ffffff #151515 #000000
+client.unfocused        #000000 #151515 #888888 #151515 #000000
 client.background       #151515
 
 default_border pixel 1
@@ -202,3 +202,7 @@ focus_follows_mouse no
 
 # Hide stalonetray that hopefully has started properly at this point, if not sleep 1 sec
 # exec pidof stalonetray && xdo hide -n stalonetray || sleep 1 && xdo hide -n stalonetray
+
+gaps inner 5
+gaps outer 0
+smart_gaps off
