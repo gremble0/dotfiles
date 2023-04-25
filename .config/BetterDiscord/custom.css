@@ -11,9 +11,18 @@ button {
 	--white: 255, 255, 255;
 	--vaccentcolor-hover: rgb(var(--accent));
 	--vaccentcolor-active: rgb(var(--accent));
+	--main-font: Cantarell;
+	--font-display: var(--main-font);
+	--code-font: JetBrainsMono Nerd Font, Consolas, Liberation Mono, Menlo, monospace; */
 }
 
-/* --bd-blue-active: var(--background-solid-darker); */
+::placeholder, body, button, input, select, textarea {
+	font-family: var(--main-font);
+}
+
+code {
+	font-family: var(--code-font);
+}
 
 .theme-dark,
 .theme-light {
@@ -46,9 +55,6 @@ button {
 
 /*top left menu showing server name*/
 .header-3OsQeK {
-    height: 70px;
-    display: flex;
-    align-items: center;
     background: var(--background-solid-darker) !important;
 }
 
@@ -56,10 +62,6 @@ button {
 .container-ZMc96U {
     background: var(--background-solid-darker) !important;
 }
-
-/* #app-mount .background-fkKrXt {
-    background-color: var(--background-primary);
-} */
 
 /*container for forum menu*/
 #app-mount .container-3wLKDe {
