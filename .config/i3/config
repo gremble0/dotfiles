@@ -23,7 +23,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Run stalonetray, but hide it later (some processes start in separate windows if theres no system tray)
-# exec --no-startup-id stalonetray
+exec --no-startup-id stalonetray
 
 # Run picom on startup (fixes screen tearing and other graphic related things
 # exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 --config ~/.config/picom/picom.conf
@@ -171,25 +171,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-    # These bindings trigger as soon as you enter the resize mode
-    bindsym h resize shrink width 4 px or 4 ppt
-    bindsym j resize grow height 4 px or 4 ppt
-    bindsym k resize shrink height 4 px or 4 ppt
-    bindsym l resize grow width 4 px or 4 ppt
-
-    # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 4 px or 4 ppt
-    bindsym Down resize grow height 4 px or 4 ppt
-    bindsym Up resize shrink height 4 px or 4 ppt
-    bindsym Right resize grow width 4 px or 4 ppt
-
-    # back to normal: Enter or Escape or $mod+r
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
-}
+# resize window with keys above vim keys
+bindsym $mod+y resize shrink width 2 px or 2 ppt
+bindsym $mod+u resize grow width 2 px or 2 ppt
+bindsym $mod+i resize shrink height 2 px or 2 ppt
+bindsym $mod+o resize grow height 2 px or 2 ppt
 
 bindsym $mod+r mode "resize"
 
@@ -201,12 +187,11 @@ client.background       #151515
 default_border pixel 1
 default_floating_border pixel 1
 
-# Stop focus from following mouse
-focus_follows_mouse no
-
-# Hide stalonetray that hopefully has started properly at this point, if not sleep 1 sec
-# exec pidof stalonetray && xdo hide -n stalonetray || sleep 1 && xdo hide -n stalonetray
-
 gaps inner 5
 gaps outer 0
 smart_gaps off
+
+focus_follows_mouse no
+
+# Hide stalonetray that hopefully has started properly at this point, if not sleep 1 sec
+exec pidof stalonetray && xdo hide -n stalonetray || sleep 1 && xdo hide -n stalonetray
