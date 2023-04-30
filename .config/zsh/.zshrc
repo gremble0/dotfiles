@@ -52,6 +52,8 @@ alias ex="ranger_cd"
 alias ls="ls -CF --color=always"
 alias ll="ls -AhgGoF --group-directories-first --color=always"
 
+alias shutdown="shutdown now"
+
 # Setting prompt
 PS1='%F{yellow}%n@%m%f%F{blue}%~%f %F{green}$%f '
 
