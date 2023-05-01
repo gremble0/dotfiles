@@ -27,16 +27,10 @@ M.general = {
     ["<C-d>"] = { "<C-d>zz", "scroll down and center"},
     ["<C-u>"] = { "<C-u>zz", "scroll up and center"},
 
-    -- save
-    ["<C-s>"] = { "<cmd> w <CR>", "save file" },
-
-    -- Copy all
-    ["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
-
-    -- single keystroke copy line
-    ["Y"] = { "yy", "copy line" },
-    -- single keystroke delete line
-    ["E"] = { "dd", "delete line" },
+    -- no double press keybind to copy line
+    ["<leader>y"] = { "yy", "copy line" },
+    -- no double press keybind to delete line
+    ["<leader>d"] = { "dd", "delete line" },
 
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "toggle line number" },
@@ -71,35 +65,6 @@ M.general = {
     -- Don't copy the replaced text after pasting in visual mode
     -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "dont copy replaced text", opts = { silent = true } },
-  },
-}
-
-M.tabufline = {
-  plugin = true,
-
-  n = {
-    -- cycle through buffers
-    ["<tab>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflineNext()
-      end,
-      "goto next buffer",
-    },
-
-    ["<S-tab>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflinePrev()
-      end,
-      "goto prev buffer",
-    },
-
-    -- close buffer + hide terminal buffer
-    ["<leader>x"] = {
-      function()
-        require("nvchad_ui.tabufline").close_buffer()
-      end,
-      "close buffer",
-    },
   },
 }
 
