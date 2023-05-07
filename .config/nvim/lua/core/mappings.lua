@@ -27,14 +27,14 @@ M.general = {
     ["<C-d>"] = { "<C-d>zz", "scroll down and center"},
     ["<C-u>"] = { "<C-u>zz", "scroll up and center"},
 
-    -- no double press keybind to copy line
+    -- use leader key instead of hitting same key twice for some commands
     ["<leader>y"] = { "yy", "copy line" },
-    -- no double press keybind to delete line
     ["<leader>d"] = { "dd", "delete line" },
+    ["<leader>z"] = { "zz", "center camera"},
 
-    -- line numbers
-    ["<leader>n"] = { "<cmd> set nu! <CR>", "toggle line number" },
-    ["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number" },
+    -- move current line up or down 
+    ["<leader>j"] = { ":m .+1<CR>==", "move line down" },
+    ["<leader>k"] = { ":m .-2<CR>==", "move line up" },
 
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -57,6 +57,10 @@ M.general = {
   v = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move down", opts = { expr = true } },
+
+    -- move selected lines up or down
+    ["<leader>j"] = { ":m '>+1<CR>gv=gv", "move line down" },
+    ["<leader>k"] = { ":m .<-2<CR>gv=gv", "move line up" },
   },
 
   x = {
