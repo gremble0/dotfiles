@@ -58,7 +58,7 @@ radio:active, row.activatable:active {
  * Base States
  */
 .background {
-  background-color: #101010;
+  background-color: #151515;
   color: #ffffff;
 }
 
@@ -4603,7 +4603,7 @@ tooltip.background.chromium {
  * Firefox
  */
 #MozillaGtkWidget > widget text {
-  background-color: #191919;
+  background-color: #151515;
 }
 #MozillaGtkWidget > widget text:selected {
   background-color: #E1B655;

@@ -23,7 +23,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Run stalonetray, but hide it later (some processes start in separate windows if theres no system tray)
-exec --no-startup-id stalonetray
+# exec --no-startup-id stalonetray
 
 # Run picom on startup (fixes screen tearing and other graphic related things
 # exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0 --config ~/.config/picom/picom.conf
@@ -37,14 +37,14 @@ exec --no-startup-id $XDG_CONFIG_HOME/polybar/multi_screen.sh
 # Change keyboard layout when hitting alt + space
 exec "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
 
-# Take screenshot with printscreen ueing maim, pipe it to xclip to copy to clipboard
+# Take screenshot with printscreen using maim, pipe it to xclip to copy to clipboard
 bindsym Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 # Selection screenshot and download
 bindsym Control+Print exec --no-startup-id maim --format=png --select $HOME/Pictures/Screenshots/screenshot.png | xclip -selection clipboard -t image/png
 # Fullscreen screenshot
 bindsym Shift+Print exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png
 # Fullscreen screenshot and download
-bindsym Control+Shift+Print exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png
+bindsym Control+Shift+Print exec --no-startup-id maim --format=png $HOME/Pictures/Screenshots/screenshot.png | xclip -selection clipboard -t image/png
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -164,6 +164,12 @@ bindsym $mod+Shift+8 move container to workspace number $ws8 workspace number $w
 bindsym $mod+Shift+9 move container to workspace number $ws9 workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10 workspace number $ws10
 
+# assign program to specific workspace
+assign [class="jetbrains-studio"] 1
+assign [class="firefox"] 2
+assign [class="terminator"] 3
+assign [class="discord"] 4
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -194,4 +200,4 @@ smart_gaps off
 focus_follows_mouse no
 
 # Hide stalonetray that hopefully has started properly at this point, if not sleep 1 sec
-exec pidof stalonetray && xdo hide -n stalonetray || sleep 1 && xdo hide -n stalonetray
+# exec pidof stalonetray && xdo hide -n stalonetray || sleep 1 && xdo hide -n stalonetray
