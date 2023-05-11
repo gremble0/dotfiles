@@ -5,7 +5,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 # Adds binaries in home directory to path
-export PATH="$PATH:$HOME/.local/bin/"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/local/share/JetBrains/Toolbox/scripts"
 
 # Cleaning up home directory
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0"
