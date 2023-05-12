@@ -32,10 +32,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
 
 # Run polybar on startup
-exec --no-startup-id $XDG_CONFIG_HOME/polybar/multi_screen.sh
-
-# Run polybar with laptop setup
-# exec --no-startup-id $XDG_CONFIG_HOME/polybar/laptop.sh
+exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/polybar_start.sh
 
 # Change keyboard layout when hitting alt + space
 exec "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
