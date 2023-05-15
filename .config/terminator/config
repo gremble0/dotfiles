@@ -10,6 +10,7 @@
   [[default]]
     icon_bell = False
     background_color = "#151515"
+    cursor_shape = ibeam
     cursor_fg_color = "#1c1c1c"
     cursor_bg_color = "#ffffff"
     font = JetBrainsMono Nerd Font 18
