@@ -36,9 +36,9 @@ configuration {
 window {
     background-color: @background;
     border:           1;
-    padding:          5;
-    height:           456px; //pixel perfect
-    width:            700px;
+    padding:          0;
+    height:           400px;
+    width:            50ch;
 }
 mainbox {
     border:  0;
@@ -62,11 +62,15 @@ listview {
 }
 element {
     border:  0;
-    padding: 1px;
+    padding: 5px;
 }
 element-text {
     background-color: inherit;
     text-color:       inherit;
+    vertical-align: 0.5;
+}
+element-icon {
+    size: 3.75ch;
 }
 
 element normal.normal {
@@ -105,12 +109,6 @@ element.alternate.active {
     background-color: @alternate-active-background;
     text-color:       @alternate-active-foreground;
 }
-scrollbar {
-    width:        4px ;
-    border:       0;
-    handle-width: 8px ;
-    padding:      0;
-}
 mode-switcher {
     border:       2px dash 0px 0px ;
     border-color: @separatorcolor;
@@ -119,11 +117,6 @@ button.selected {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
 }
-inputbar {
-    spacing:    0;
-    text-color: @normal-foreground;
-    padding:    1px ;
-}
 case-indicator {
     spacing:    0;
     text-color: @normal-foreground;
@@ -131,13 +124,14 @@ case-indicator {
 entry {
     spacing:    0;
     text-color: @normal-foreground;
+    padding: 10;
 }
 prompt {
     spacing:    0;
     text-color: @normal-foreground;
 }
 inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    children:   [ entry, case-indicator ];
 }
 textbox-prompt-colon {
     expand:     false;
