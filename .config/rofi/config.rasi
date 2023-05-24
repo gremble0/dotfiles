@@ -7,7 +7,7 @@ configuration {
     selected-normal-foreground:  #FFF;
     foreground:                  #FFF;
     normal-foreground:           @foreground;
-    alternate-normal-background: #151515;
+    alternate-normal-background: #101010;
     red:                         rgba ( 220, 50, 47, 100 % );
     selected-urgent-foreground:  @foreground;
     blue:                        rgba ( 38, 139, 210, 100 % );
@@ -16,14 +16,14 @@ configuration {
     active-foreground:           rgba ( 0, 188, 212, 100 % );
     lightbg:                     rgba ( 238, 232, 213, 100 % );
     selected-active-foreground:  rgba ( 253, 246, 227, 100 % );
-    alternate-active-background: #151515;
-    background:                  #151515;
+    alternate-active-background: #101010;
+    background:                  #101010;
     bordercolor:                 #000;
     alternate-normal-foreground: @foreground;
-    normal-background:           #151515;
+    normal-background:           #101010;
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  #E1B655;
-    border-color:                #E1b655;
+    border-color:                #E1B655;
     separatorcolor:              @background;
     urgent-background:           rgba ( 69, 90, 100, 100 % );
     selected-urgent-background:  rgba ( 255, 82, 82, 100 % );
@@ -31,38 +31,36 @@ configuration {
     background-color:            rgba ( 0, 0, 0, 0 % );
     alternate-active-foreground: @active-foreground;
     active-background:           rgba ( 69, 90, 100, 100 % );
-    selected-active-background:  #000;
+    selected-active-background:  #101010;
 }
 window {
     background-color: @background;
     border:           1;
     padding:          0;
-    height:           400px;
+    height:           436px;
     width:            50ch;
 }
 mainbox {
+    children: [ inputbar, listview ];
     border:  0;
     padding: 0;
 }
 message {
-    border:       1px dash 0px 0px ;
+    border:       1px solid 0px 0px;
     border-color: @separatorcolor;
-    padding:      1px ;
+    padding:      1px;
 }
 textbox {
     text-color: @foreground;
 }
 listview {
+    background-color: #101010;
     fixed-height: 0;
-    border:       2px dash 0px 0px ;
-    border-color: @separatorcolor;
-    spacing:      2px ;
     scrollbar:    false;
-    padding:      2px 0px 0px ;
 }
 element {
     border:  0;
-    padding: 5px;
+    padding: 6px;
 }
 element-text {
     background-color: inherit;
@@ -70,7 +68,7 @@ element-text {
     vertical-align: 0.5;
 }
 element-icon {
-    size: 3.75ch;
+    size: 3.4ch;
 }
 
 element normal.normal {
@@ -118,6 +116,7 @@ button.selected {
     text-color:       @selected-normal-foreground;
 }
 case-indicator {
+    expand: true;
     spacing:    0;
     text-color: @normal-foreground;
 }
@@ -125,6 +124,7 @@ entry {
     spacing:    0;
     text-color: @normal-foreground;
     padding: 10;
+    placeholder: "";
 }
 prompt {
     spacing:    0;
@@ -132,10 +132,5 @@ prompt {
 }
 inputbar {
     children:   [ entry, case-indicator ];
-}
-textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @normal-foreground;
+    background-color: #1c1c1c;
 }
