@@ -45,6 +45,9 @@
 !.config/X11/
 !.config/X11/*
 
+!.config/alacritty/
+!.config/alacritty/*
+
 
 # themes
 !.local/
