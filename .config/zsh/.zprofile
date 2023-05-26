@@ -24,7 +24,7 @@ alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings
 # System defaults
 export EDITOR="nvim"
 export VISUAL=$EDITOR
-export TERMINAL="terminator"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export FILE="ranger"
 

@@ -33,6 +33,12 @@
 !.config/terminator/
 !.config/terminator/*
 
+!.config/alacritty/
+!.config/alacritty/*
+
+!.config/tmux/
+!.config/tmux/*
+
 !.config/BetterDiscord/
 !.config/BetterDiscord/*
 
@@ -44,10 +50,6 @@
 
 !.config/X11/
 !.config/X11/*
-
-!.config/alacritty/
-!.config/alacritty/*
-
 
 # themes
 !.local/
