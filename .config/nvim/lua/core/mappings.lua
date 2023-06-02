@@ -1,13 +1,7 @@
--- n, v, i, t = mode names
-
 local M = {}
 
 M.general = {
   i = {
-    -- go to  beginning and end
-    ["<C-b>"] = { "<ESC>^i", "beginning of line" },
-    ["<C-e>"] = { "<End>", "end of line" },
-
     -- navigate within insert mode
     ["<C-h>"] = { "<Left>", "move left" },
     ["<C-l>"] = { "<Right>", "move right" },
@@ -17,22 +11,25 @@ M.general = {
 
   n = {
     ["<Esc>"] = { ":noh <CR>", "clear highlights" },
-    -- switch between windows
+    -- Switch between windows
     ["<C-h>"] = { "<C-w>h", "window left" },
     ["<C-l>"] = { "<C-w>l", "window right" },
     ["<C-j>"] = { "<C-w>j", "window down" },
     ["<C-k>"] = { "<C-w>k", "window up" },
 
-    -- center camera when scrolling with C-d, C-u
+    -- Center camera when scrolling with C-d, C-u
     ["<C-d>"] = { "<C-d>zz", "scroll down and center"},
     ["<C-u>"] = { "<C-u>zz", "scroll up and center"},
 
-    -- use leader key instead of hitting same key twice for some commands
+    -- Switch to previous buffer
+    ["<C-p>"] = { ":b#<CR>:echo \"Switched to previous buffer\"<CR>", "switch to previous buffer" },
+
+    -- Use leader key instead of hitting same key twice for some commands
     ["<leader>y"] = { "yy", "copy line" },
     ["<leader>d"] = { "dd", "delete line" },
     ["<leader>z"] = { "zz", "center camera"},
 
-    -- move current line up or down 
+    -- Move current line up or down 
     ["<leader>j"] = { ":m .+1<CR>==", "move line down" },
     ["<leader>k"] = { ":m .-2<CR>==", "move line up" },
 
@@ -44,10 +41,6 @@ M.general = {
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move down", opts = { expr = true } },
-
-    -- new buffer
-    ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
-    ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
   },
 
   t = {
@@ -226,9 +219,6 @@ M.nvimtree = {
   n = {
     -- toggle
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
-
-    -- focus
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
   },
 }
 
@@ -259,54 +249,7 @@ M.telescope = {
 M.nvterm = {
   plugin = true,
 
-  t = {
-    -- toggle in terminal mode
-    ["<A-i>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "toggle floating term",
-    },
-
-    ["<A-h>"] = {
-      function()
-        require("nvterm.terminal").toggle "horizontal"
-      end,
-      "toggle horizontal term",
-    },
-
-    ["<A-v>"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "toggle vertical term",
-    },
-  },
-
   n = {
-    -- toggle in normal mode
-    ["<A-i>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "toggle floating term",
-    },
-
-    ["<A-h>"] = {
-      function()
-        require("nvterm.terminal").toggle "horizontal"
-      end,
-      "toggle horizontal term",
-    },
-
-    ["<A-v>"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "toggle vertical term",
-    },
-
-    -- new
     ["<leader>h"] = {
       function()
         require("nvterm.terminal").new "horizontal"
@@ -345,24 +288,6 @@ M.whichkey = {
 
 M.blankline = {
   plugin = true,
-
-  n = {
-    ["<leader>cc"] = {
-      function()
-        local ok, start = require("indent_blankline.utils").get_current_context(
-          vim.g.indent_blankline_context_patterns,
-          vim.g.indent_blankline_use_treesitter_scope
-        )
-
-        if ok then
-          vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-          vim.cmd [[normal! _]]
-        end
-      end,
-
-      "Jump to current_context",
-    },
-  },
 }
 
 M.gitsigns = {
