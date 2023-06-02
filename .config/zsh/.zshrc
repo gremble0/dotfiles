@@ -21,11 +21,11 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # Aliases
 alias c="clear"
 alias n="nvim"
-alias vim="nvim"
 alias ex="ranger_cd"
 
-alias ls="ls -CF --color=always"
-alias ll="ls -AhgGoF --group-directories-first --color=always"
+alias ls="ls -CF --group-directories-first --color=auto"
+alias ll="ls -AhgGoF --group-directories-first --color=auto"
+alias grep="grep --color=auto"
 
 alias shutdown="shutdown now"
 
