@@ -35,7 +35,7 @@ exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/polybar_start.sh
 
 # Change keyboard layout when hitting alt + space
-exec "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
+exec_always "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
 
 # Take screenshot with printscreen using maim, pipe it to xclip to copy to clipboard
 bindsym Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
