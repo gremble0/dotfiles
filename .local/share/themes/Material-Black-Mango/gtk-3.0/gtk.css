@@ -73,7 +73,7 @@ radio:active, row.activatable:active {
 }
 
 .gtkstyle-fallback {
-  background-color: #101010;
+  background-color: #151515;
   color: #ffffff;
 }
 .gtkstyle-fallback:hover {
@@ -107,7 +107,7 @@ radio:active, row.activatable:active {
 }
 
 textview text {
-  background-color: #101010;
+  background-color: #151515;
   caret-color: #E1B655;
 }
 frame:not(.flat) textview text, .frame textview text {
@@ -1286,7 +1286,7 @@ searchbar > revealer > box {
   transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), color 75ms cubic-bezier(0, 0, 0.2, 1);
   border-radius: 2px 2px 0 0;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17), inset 0 1px rgba(255, 255, 255, 0.05);
-  background-color: #101010;
+  background-color: #151515;
   color: #80868b;
 }
 .titlebar:disabled {
@@ -1727,7 +1727,7 @@ menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
-  background-color: #101010;
+  background-color: #151515;
   color: #80868b;
 }
 menubar:backdrop,
@@ -2472,7 +2472,7 @@ scale highlight {
   background-image: image(#E1B655);
 }
 scale highlight:disabled {
-  background-color: #101010;
+  background-color: #151515;
   background-image: image(rgba(158, 158, 158, 0.3));
 }
 scale fill {
@@ -3405,7 +3405,7 @@ messagedialog.csd decoration {
   border-radius: 0;
   box-shadow: none;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
-  background-color: #101010;
+  background-color: #151515;
 }
 .solid-csd decoration:backdrop {
   background-color: #000000;
@@ -3752,7 +3752,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal > box.horizontal:
 }
 
 .nautilus-window paned > separator {
-  background-color: #101010;
+  background-color: #151515;
 }
 
 /**
@@ -3857,7 +3857,7 @@ frame.gedit-map-frame > border:dir(rtl) {
  * Tweaks
  */
 .tweak-categories {
-  background-image: image(#101010);
+  background-image: image(#151515);
 }
 .tweak {
   padding: 3px;
@@ -3939,7 +3939,7 @@ hdyleaflet.titlebar > .titlebar.tweak-titlebar-right + separator {
  */
 layouttabbar {
   border-bottom: 1px solid rgba(158, 158, 158, 0.2);
-  background-color: #101010;
+  background-color: #151515;
 }
 layouttabbar > box > button {
   margin: 4px 0;
@@ -4060,13 +4060,13 @@ dockpaned {
 eggsearchbar box.search-bar {
   padding: 0 8px;
   border-bottom: 1px solid rgba(158, 158, 158, 0.2);
-  background-color: #101010;
+  background-color: #151515;
 }
 
 docktabstrip {
   padding: 0 8px;
   border-bottom: 1px solid rgba(158, 158, 158, 0.2);
-  background-color: #101010;
+  background-color: #151515;
 }
 
 docktab {
@@ -4098,7 +4098,7 @@ docktab:checked {
 }
 
 dockoverlayedge {
-  background-color: #101010;
+  background-color: #151515;
 }
 dockoverlayedge docktabstrip {
   padding: 0;
@@ -4112,7 +4112,7 @@ dockoverlayedge.right-edge docktab:checked {
 }
 
 pillbox {
-  background-color: #101010;
+  background-color: #151515;
   border-radius: 2px;
 }
 
@@ -4171,7 +4171,7 @@ idelayoutstackheader button:checked {
 
 ideeditorutilities > dzldockpaned > box > stackswitcher {
   padding: 8px 0;
-  background-color: #101010;
+  background-color: #151515;
 }
 ideeditorutilities > dzldockpaned > box > stackswitcher:dir(ltr) {
   border-right: 1px solid rgba(158, 158, 158, 0.2);
@@ -4223,7 +4223,7 @@ dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > li
 #titlebar_container .suggestionbutton button {
   padding: 0;
   border-radius: 0;
-  box-shadow: inset 0 0 0 9999px #101010;
+  box-shadow: inset 0 0 0 9999px #151515;
 }
 #titlebar_container .suggestionbutton button:backdrop {
   box-shadow: inset 0 0 0 9999px #000000;
@@ -4317,7 +4317,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame:dir(rtl) {
 }
 
 .side-panel .view {
-  background-image: image(#101010);
+  background-image: image(#151515);
 }
 .side-panel .view:hover {
   background-image: image(#1a1b1c);
@@ -4432,7 +4432,7 @@ box.dialog-vbox scrolledwindow.related {
 }
 
 list.categories {
-  background-image: image(#101010);
+  background-image: image(#151515);
 }
 
 /**
@@ -4515,7 +4515,7 @@ button.flat.tilix-small-button {
  * Terminator
  */
 .terminator-terminal-window paned > separator {
-  background-color: #101010;
+  background-color: #151515;
 }
 .terminator-terminal-window notebook.frame {
   border-style: none;
@@ -4563,40 +4563,44 @@ window.background > box.vertical > widget > widget > widget > widget > widget > 
 /**
  * Chromium
  */
+
 window.background.chromium {
-  background-color: #191919;
+  background-color: #151515;
 }
 window.background.chromium entry,
 window.background.chromium > button {
-  border: 1px solid rgba(158, 158, 158, 0.3);
+  border: none;
 }
 window.background.chromium > button {
+  background-color: #2c2c2c;
   color: #E1B655;
 }
 window.background.chromium > button:disabled {
   color: rgba(158, 158, 158, 0.3);
 }
-window.background.chromium menubar,
+window.background.chromium menubar {
+  background-color: #191919;
+}
 window.background.chromium headerbar {
-  color: rgba(128, 134, 139, 0.7);
+  background-color: #0d0;
 }
 window.background.chromium headerbar button:active {
-  background-color: rgba(128, 134, 139, 0.12);
+  background-color: #0d0;
 }
 window.background.chromium textview.view {
-  background-color: transparent;
+  background-color: #2c2c2c;
 }
 window.background.chromium treeview.view.cell:selected:focus {
   background-color: #E1B655;
-  color: #000;
+  /* color: #000; */
 }
 window.background.chromium treeview.view button {
   border: 1px solid rgba(158, 158, 158, 0.3);
-  background-color: #151515;
+  background-color: #0d0;
 }
 
 tooltip.background.chromium {
-  background-color: #101010;
+  background-color: #05f;
 }
 
 /**
@@ -4771,7 +4775,7 @@ UnityDecoration .top {
   border-style: none;
   border-radius: 2px 2px 0 0;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
-  background-color: #101010;
+  background-color: #151515;
   color: #80868b;
 }
 UnityDecoration .top:backdrop {
@@ -6179,7 +6183,7 @@ text color for entries, views and content in general */
 @define-color theme_text_color #ffffff;
 /*
 widget base background color */
-@define-color theme_bg_color #101010;
+@define-color theme_bg_color #151515;
 /*
 text widgets and the like base background color */
 @define-color theme_base_color #151515;
@@ -6191,7 +6195,7 @@ text/foreground color of selections */
 @define-color theme_selected_fg_color #000;
 /*
 base background color of insensitive widgets */
-@define-color insensitive_bg_color #101010;
+@define-color insensitive_bg_color #151515;
 /*
 text foreground color of insensitive widgets */
 @define-color insensitive_fg_color rgba(158, 158, 158, 0.5);
@@ -6206,7 +6210,7 @@ text color for entries, views and content in general on backdrop windows */
 @define-color theme_unfocused_text_color #ffffff;
 /*
 widget base background color on backdrop windows */
-@define-color theme_unfocused_bg_color #101010;
+@define-color theme_unfocused_bg_color #151515;
 /*
 text widgets and the like base background color on backdrop windows */
 @define-color theme_unfocused_base_color #151515;
@@ -6236,13 +6240,13 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_title #80868b;
 @define-color wm_unfocused_title rgba(128, 134, 139, 0.7);
 @define-color wm_highlight rgba(255, 255, 255, 0.05);
-@define-color wm_bg #101010;
+@define-color wm_bg #151515;
 @define-color wm_unfocused_bg #000000;
 @define-color xfwm4_title #80868b;
 @define-color xfwm4_unfocused_title #5a5e61;
 /* content view background such as thumbnails view in Photos or Boxes */
-@define-color content_view_bg #101010;
+@define-color content_view_bg #151515;
 /* Very contrasty background for text views (@theme_text_color foreground) */
-@define-color text_view_bg #101010;
+@define-color text_view_bg #151515;
 /* placeholder for entries */
 @define-color placeholder_text_color #767778;
