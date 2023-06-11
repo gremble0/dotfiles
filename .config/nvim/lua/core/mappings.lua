@@ -18,8 +18,8 @@ M.general = {
     ["<C-k>"] = { "<C-w>k", "window up" },
 
     -- Center camera when scrolling with C-d, C-u
-    ["<C-d>"] = { "<C-d>zz", "scroll down and center"},
-    ["<C-u>"] = { "<C-u>zz", "scroll up and center"},
+    -- ["<C-d>"] = { "<C-d>zz", "scroll down and center"},
+    -- ["<C-u>"] = { "<C-u>zz", "scroll up and center"},
 
     -- Switch to previous buffer
     ["<C-p>"] = { ":b#<CR>:echo \"Switched to previous buffer\"<CR>", "switch to previous buffer" },
@@ -30,8 +30,8 @@ M.general = {
     ["<leader>z"] = { "zz", "center camera"},
 
     -- Move current line up or down 
-    ["<leader>j"] = { ":m .+1<CR>==", "move line down" },
-    ["<leader>k"] = { ":m .-2<CR>==", "move line up" },
+    ["<leader>j"] = { ":m .+1<CR>", "move line down" },
+    ["<leader>k"] = { ":m .-2<CR>", "move line up" },
 
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -51,9 +51,9 @@ M.general = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move down", opts = { expr = true } },
 
-    -- move selected lines up or down
-    ["<leader>j"] = { ":m '>+1<CR>gv=gv", "move line down" },
-    ["<leader>k"] = { ":m .<-2<CR>gv=gv", "move line up" },
+    -- Move selected lines up or down
+    ["<leader>j"] = { ":m .+1<CR>", "move line down" },
+    ["<leader>k"] = { ":m .-2<CR>", "move line up" },
   },
 
   x = {
