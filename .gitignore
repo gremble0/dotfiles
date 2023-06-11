@@ -50,15 +50,3 @@
 
 !.config/X11/
 !.config/X11/*
-
-# themes
-!.local/
-!.local/share/
-!.local/share/themes/
-#!.local/share/themes/*
-!.local/share/themes/Material-Black-Mango/
-!.local/share/themes/Material-Black-Mango/*
-!.local/share/themes/Material-Black-Mango/gtk-2.0/
-!.local/share/themes/Material-Black-Mango/gtk-2.0/*
-!.local/share/themes/Material-Black-Mango/gtk-3.0/
-!.local/share/themes/Material-Black-Mango/gtk-3.0/*
