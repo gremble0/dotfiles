@@ -18,8 +18,11 @@ export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export GRIPHOME="$XDG_CACHE_HOME/grip"
+export OPAMROOT="$XDG_DATA_HOME/opam"
 
 alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings"
+alias minecraft-launcher=minecraft-launcher --workDir="$XDG_DATA_HOME/minecraft"
 
 # System defaults
 export EDITOR="nvim"
