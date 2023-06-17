@@ -1,5 +1,3 @@
--- Chadrc overrides this file
-
 local M = {}
 
 M.options = {
@@ -11,7 +9,6 @@ M.options = {
 
 M.ui = {
   ------------------------------- base46 -------------------------------------
-  -- hl = highlights
   hl_add = {},
   hl_override = {},
   changed_themes = {},
@@ -19,16 +16,17 @@ M.ui = {
   transparency = false,
 
   -- cmp themeing
+  -- cmp = {
+  --   border_color = "darker_black", -- only applicable for "default" style, use color names from base30 variables
+  -- },
+
   cmp = {
-    icons = true,
-    lspkind_text = true,
     style = "default", -- default/flat_light/flat_dark/atom/atom_colored
-    border_color = "black_fg", -- only applicable for "default" style, use color names from base30 variables
-    selected_item_bg = "colored", -- colored / simple
+    border_color = "darker_black", -- only applicable for "default" style, use color names from base30 variables
   },
 
   telescope = {
-    style = "bordered", -- borderless / bordered
+    style = "borderless", -- borderless / bordered
   },
 
   ------------------------------- nvchad_ui modules -----------------------------

@@ -2,44 +2,15 @@ local cmp = require "cmp"
 
 dofile(vim.g.base46_cache .. "cmp")
 
-local cmp_ui = require("core.utils").load_config().ui.cmp
-local cmp_style = cmp_ui.style
-
-local field_arrangement = {
-  atom = { "kind", "abbr", "menu" },
-  atom_colored = { "kind", "abbr", "menu" },
-}
-
-local formatting_style = {
-  -- default fields order i.e completion word + item.kind + item.kind icons
-  fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
-
-  format = function(_, item)
-    local icons = require("nvchad_ui.icons").lspkind
-    local icon = (cmp_ui.icons and icons[item.kind]) or ""
-
-    if cmp_style == "atom" or cmp_style == "atom_colored" then
-      icon = " " .. icon .. " "
-      item.menu = cmp_ui.lspkind_text and "   (" .. item.kind .. ")" or ""
-      item.kind = icon
-    else
-      icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
-      item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
-    end
-
-    return item
-  end,
-}
-
 local function border(hl_name)
   return {
-    { "╭", hl_name },
+    { "┌", hl_name },
     { "─", hl_name },
-    { "╮", hl_name },
+    { "┐", hl_name },
     { "│", hl_name },
-    { "╯", hl_name },
+    { "┘", hl_name },
     { "─", hl_name },
-    { "╰", hl_name },
+    { "└", hl_name },
     { "│", hl_name },
   }
 end
@@ -51,13 +22,14 @@ local options = {
 
   window = {
     completion = {
-      side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
+      border = border "CmpBorder",
+      side_padding = 1,
       winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
       scrollbar = false,
     },
     documentation = {
-      border = border "CmpDocBorder",
-      winhighlight = "Normal:CmpDoc",
+      border = border "CmpBorder",
+      winhighlight = "Normal:CmpPmenu",
     },
   },
   snippet = {
@@ -66,7 +38,19 @@ local options = {
     end,
   },
 
-  formatting = formatting_style,
+  formatting = {
+    fields = { "abbr", "kind", "menu" },
+
+    format = function(_, item)
+      local icons = require("nvchad_ui.icons").lspkind
+      local icon = icons[item.kind]
+
+      icon = " " .. icon .. " "
+      item.kind = string.format("%s %s", icon, item.kind)
+
+      return item
+    end
+  },
 
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -112,9 +96,5 @@ local options = {
     { name = "path" },
   },
 }
-
-if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
-  options.window.completion.border = border "CmpBorder"
-end
 
 return options
