@@ -168,7 +168,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10 workspace number $
 assign [class="Steam"] 1
 assign [class="jetbrains-studio"] 1
 assign [class="league of legends.exe"] 1
-assign [class="firefox"] 2
 assign [class="discord"] 4
 
 # reload the configuration file
