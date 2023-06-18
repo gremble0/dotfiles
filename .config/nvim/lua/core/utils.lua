@@ -3,12 +3,12 @@ local merge_tb = vim.tbl_deep_extend
 
 M.load_config = function()
   local config = require "core.default_config"
-  local chadrc_path = vim.api.nvim_get_runtime_file("lua/custom/chadrc.lua", false)[1]
+  local config_path = vim.api.nvim_get_runtime_file("lua/core/default_config.lua", false)[1]
 
-  if chadrc_path then
-    local chadrc = dofile(chadrc_path)
+  if config_path then
+    local chadrc = dofile(config_path)
 
-    config.mappings = M.remove_disabled_keys(chadrc.mappings, require "core.mappings")
+    config.mappings = M.remove_disabled_keys(config_path.mappings, require "core.mappings")
     config = merge_tb("force", config, chadrc)
   end
 

@@ -45,23 +45,4 @@ M.lazy = function(install_path)
   end)
 end
 
-M.gen_chadrc_template = function()
-  if not vim.api.nvim_get_runtime_file("lua/custom/chadrc.lua", false)[1] then
-    local path = vim.fn.stdpath "config" .. "/lua/custom/"
-    local input = vim.fn.input "Do you want to install example custom config? (y/N) : "
-
-    if input == "y" then
-      M.echo "cloning example custom config repo ..."
-      vim.fn.system { "git", "clone", "--depth", "1", "https://github.com/NvChad/example_config", path }
-      vim.fn.delete(path .. ".git", "rf")
-    else
-      vim.fn.mkdir(path, "p")
-
-      local file = io.open(path .. "chadrc.lua", "w")
-      file:write "local M = {}\n M.ui = {theme = 'onedark'}\n return M"
-      file:close()
-    end
-  end
-end
-
 return M
