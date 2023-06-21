@@ -249,6 +249,8 @@ local default_plugins = {
       end
     end,
   },
+
+  "mfussenegger/nvim-jdtls",
 }
 
 local config = require("core.utils").load_config()

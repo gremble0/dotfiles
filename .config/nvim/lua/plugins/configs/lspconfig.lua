@@ -64,5 +64,6 @@ require("lspconfig").pyright.setup{}
 require("lspconfig").tsserver.setup{}
 require("lspconfig").clangd.setup{}
 require("lspconfig").ocamllsp.setup{}
+require("lspconfig").jdtls.setup{}
 
 return M
