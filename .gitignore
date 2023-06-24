@@ -50,3 +50,6 @@
 
 !.config/X11/
 !.config/X11/*
+
+!.config/ranger/
+!.config/ranger/*
