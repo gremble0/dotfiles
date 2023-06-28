@@ -178,10 +178,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window with keys above vim keys
-bindsym $mod+y resize shrink width 2 px or 2 ppt
-bindsym $mod+u resize grow width 2 px or 2 ppt
-bindsym $mod+i resize shrink height 2 px or 2 ppt
-bindsym $mod+o resize grow height 2 px or 2 ppt
+bindsym $mod+y resize shrink width 15 px or 15 ppt
+bindsym $mod+u resize grow width 15 px or 15 ppt
+bindsym $mod+i resize shrink height 15 px or 15 ppt
+bindsym $mod+o resize grow height 15 px or 15 ppt
 
 bindsym $mod+r mode "resize"
 
