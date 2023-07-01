@@ -5,9 +5,24 @@
 !.gitignore
 !.zprofile
 
+
+!.local/
+
+!.local/share/
+!.local/share/themes/
+!.local/share/themes/Material-Black-Mango/
+!.local/share/themes/Material-Black-Mango/*
+!.local/share/themes/Material-Black-Mango/gtk-2.0/
+!.local/share/themes/Material-Black-Mango/gtk-2.0/*
+!.local/share/themes/Material-Black-Mango/gtk-3.0/
+!.local/share/themes/Material-Black-Mango/gtk-3.0/*
+
+!.local/bin/
+!.local/bin/*
+
+#.config/ folders
 !.config/
 
-#/.config/ folders
 !.config/nvim/
 !.config/nvim/*
 !.config/nvim/lua/

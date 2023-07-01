@@ -1,0 +1,9 @@
+#!/bin/sh
+
+LEVEL=$1
+[ $LEVEL -gt 100 -o $LEVEL -lt 0 ] && echo "Error: input a brightness value in the range 0, 100" && exit 1
+
+brightness_level="$(( $LEVEL / 100)).$(( $LEVEL % 100 ))"
+screenname=$(xrandr | grep " connected" | cut -f1 -d" ")
+xrandr --output $screenname --brightness $brightness_level
+echo -e "Screen $screenname's brightness level set to" $LEVEL"%"
