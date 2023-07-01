@@ -72,10 +72,11 @@ require("lazy").setup({
   },
 
   {
-    "/nanotech/jellybeans.vim",
+    "metalelf0/jellybeans-nvim",
+    dependencies = { 'rktjmp/lush.nvim' },
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "jellybeans"
+      vim.cmd.colorscheme "jellybeans-nvim"
     end,
   },
 
@@ -84,11 +85,18 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     opts = {
       options = {
-        icons_enabled = true,
-        theme = "jellybeans",
+        -- theme = "jellybeans-nvim",
         component_separators = "",
         section_separators = "",
       },
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "filename" },
+        lualine_c = { "branch", "diff" },
+        lualine_x = { "diagnostics" },
+        lualine_y = { "location" },
+        lualine_z = {},
+      }
     },
   },
 
@@ -170,7 +178,6 @@ vim.opt.mouse = "a"
 -- Numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
---vim.opt.numberwidth = 2
 vim.opt.ruler = false
 
 -- disable nvim intro
@@ -196,17 +203,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -459,9 +455,9 @@ vim.keymap.set("n", "<leader>z", "zz", { desc = "center camera" })
 
 -- Switch between windows
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "move to window to the left" })
-vim.keymap.set("n", "<C-j>", "<C-w>h", { desc = "move to window below" })
-vim.keymap.set("n", "<C-k>", "<C-w>h", { desc = "move to window above" })
-vim.keymap.set("n", "<C-l>", "<C-w>h", { desc = "move to window to the right" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "move to window below" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "move to window above" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "move to window to the right" })
 
 -- Switch to previous buffer
 vim.keymap.set("n", "<C-p>", ":b#<CR>:echo \"Switched to previous buffer\"<CR>", { desc = "move to window to the right" })
