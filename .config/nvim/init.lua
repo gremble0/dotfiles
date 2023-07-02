@@ -107,25 +107,31 @@ require("lazy").setup({
       char = '│',
       show_trailing_blankline_indent = false,
     },
+    config = function()
+      vim.cmd.highlight "IndentBlanklineChar guifg=#333333 gui=nocombine"
+    end
   },
 
-  -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {
-    on_attach = function()
-        vim.keymap.set("n", "<leader>/", require("Comment.api").toggle.linewise.current(), { desc =  "Toggle current line comment" })
-    end
-  } },
+  -- "<leader>/" to comment visual regions/lines
+  { "numToStr/Comment.nvim",
+    opts = {
+      toggler = {
+        line = "<leader>/",
+      },
+      opleader = {
+        line = "<leader>/",
+      }
+    }
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
 
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-  -- Only load if `make` is available. Make sure you have the system
-  -- requirements installed.
   {
     'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
     build = 'make',
     cond = function()
       return vim.fn.executable 'make' == 1
