@@ -52,6 +52,10 @@ require("lazy").setup({
   },
 
   {
+    "onsails/lspkind.nvim"
+  },
+
+  {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
     opts = {
@@ -361,18 +365,10 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-
+  clangd = {},
+  pyright = {},
+  tsserver = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -382,7 +378,7 @@ local servers = {
 }
 
 -- Setup neovim lua configuration
-require('neodev').setup()
+require("neodev").setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -406,13 +402,29 @@ mason_lspconfig.setup_handlers {
 }
 
 -- [[ Configure nvim-cmp ]]
--- See `:help cmp`
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
+local cmp = require("cmp")
+local lspkind = require("lspkind")
+local luasnip = require("luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup {}
 
+local function border(hl_name)
+  return {
+    { "┌", hl_name },
+    { "─", hl_name },
+    { "┐", hl_name },
+    { "│", hl_name },
+    { "┘", hl_name },
+    { "─", hl_name },
+    { "└", hl_name },
+    { "│", hl_name },
+  }
+end
+
 cmp.setup {
+  formatting = {
+    format = lspkind.cmp_format()
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -450,6 +462,18 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+  },
+  window = {
+    completion = {
+      border = border "CmpBorder",
+      side_padding = 1,
+      winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+      scrollbar = false,
+    },
+    documentation = {
+      border = border "CmpBorder",
+      winhighlight = "Normal:CmpPmenu",
+    },
   },
 }
 
