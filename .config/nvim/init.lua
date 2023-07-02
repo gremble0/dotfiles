@@ -48,11 +48,10 @@ require("lazy").setup({
 
       -- Adds a number of user-friendly snippets
       "rafamadriz/friendly-snippets",
-    },
-  },
 
-  {
-    "onsails/lspkind.nvim"
+      -- Adds icons to cmp window
+      "onsails/lspkind.nvim"
+    },
   },
 
   {
