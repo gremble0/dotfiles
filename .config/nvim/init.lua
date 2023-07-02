@@ -408,22 +408,20 @@ local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup {}
 
-local function border(hl_name)
-  return {
-    { "┌", hl_name },
-    { "─", hl_name },
-    { "┐", hl_name },
-    { "│", hl_name },
-    { "┘", hl_name },
-    { "─", hl_name },
-    { "└", hl_name },
-    { "│", hl_name },
-  }
-end
+local cmpborder = {
+  { "┌", "CmpBorder" },
+  { "─", "CmpBorder" },
+  { "┐", "CmpBorder" },
+  { "│", "CmpBorder" },
+  { "┘", "CmpBorder" },
+  { "─", "CmpBorder" },
+  { "└", "CmpBorder" },
+  { "│", "CmpBorder" },
+}
 
 cmp.setup {
   formatting = {
-    format = lspkind.cmp_format()
+    format = lspkind.cmp_format(),
   },
   snippet = {
     expand = function(args)
@@ -435,6 +433,7 @@ cmp.setup {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ["<C-e>"] = cmp.mapping.close(),
     ['<C-Space>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
@@ -461,17 +460,16 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
   },
   window = {
     completion = {
-      border = border "CmpBorder",
+      border = cmpborder,
       side_padding = 1,
-      winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:PmenuSel",
       scrollbar = false,
     },
     documentation = {
-      border = border "CmpBorder",
+      border = cmpborder,
       winhighlight = "Normal:CmpPmenu",
     },
   },
