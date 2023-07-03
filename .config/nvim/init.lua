@@ -1,45 +1,5 @@
--- TODO: make separate file for vim settings (this option needs to be here for now)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
-vim.opt.laststatus = 3 -- global statusline
-vim.opt.showmode = false
-vim.opt.termguicolors = true
-
-vim.opt.clipboard = "unnamedplus"
-vim.opt.cursorline = true
-vim.opt.colorcolumn = "79"
-
--- Indenting
-vim.opt.smartindent = true
-vim.opt.smarttab = true
-vim.opt.tabstop = 4
-vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-
-vim.opt.fillchars = { eob = " " }
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.mouse = "a"
-
--- Numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.ruler = false
-
--- disable nvim intro
-vim.opt.shortmess:append "sI"
-
-vim.opt.signcolumn = "yes"
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.timeoutlen = 400
-vim.opt.ttimeoutlen = 5
-vim.opt.undofile = true
-
--- interval for writing swap file to disk, also used by gitsigns
-vim.opt.updatetime = 50
+require("core.options")
+require("core.mappings")
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -124,7 +84,7 @@ require("lazy").setup({
     end,
   },
 
-  { 
+  {
     -- Fuzzy Finder (files, lsp, etc)
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -142,9 +102,7 @@ require("lazy").setup({
   {
     -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
   },
 }, {})
@@ -180,12 +138,14 @@ require("lualine").setup {
     }
 }
 
+-- [[ Configure Indent Blankline ]]
 require("indent_blankline").setup {
   char = "│",
   show_trailing_blankline_indent = false,
   vim.cmd.highlight "IndentBlanklineChar guifg=#333333 gui=nocombine"
 }
 
+-- [[ Configure Comment ]]
 require("Comment").setup {
   toggler = {
     line = "<leader>/",
@@ -229,6 +189,7 @@ require("telescope").setup {
   },
 }
 
+-- [[ Configure Nvim Tree ]]
 require("nvim-tree").setup {
   vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree" }),
 
@@ -236,7 +197,6 @@ require("nvim-tree").setup {
   hijack_netrw = true,
   git = {
     enable = true,
-    -- ignore = true,
   },
   filesystem_watchers = {
     enable = true,
@@ -505,32 +465,3 @@ cmp.setup {
 vim.defer_fn(function()
   require("colorizer").attach_to_buffer(0)
 end, 0)
-
--- [[ Basic Keymaps ]]
--- TODO: Find better place for this
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-
--- Use leader key instead of hitting same key twice for some commands
-vim.keymap.set("n", "<leader>d", "dd", { desc = "delete line" })
-vim.keymap.set("n", "<leader>y", "yy", { desc = "yank line" })
-vim.keymap.set("n", "<leader>z", "zz", { desc = "center camera" })
-
--- Switch between windows
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "move to window to the left" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "move to window below" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "move to window above" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "move to window to the right" })
-
--- Switch to previous buffer
-vim.keymap.set("n", "<C-p>", ":b#<CR>:echo \"Switched to previous buffer\"<CR>", { desc = "move to window to the right" })
-
--- Move current line up or down 
-vim.keymap.set("n", "<leader>j", ":m .+1<CR>", { desc = "move current line down" })
-vim.keymap.set("n", "<leader>k", ":m .-2<CR>", { desc = "move current line up" })
-
--- Clear highlights with escape
-vim.keymap.set("n", "<Esc>", ":noh <CR>", { desc = "clear highlights" })
-
--- Remap for dealing with word wrap
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
