@@ -55,11 +55,29 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- Git functionality inside nvim
   "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
+
+  -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
 
+  -- Add display colors such as #fff inside the terminal
   "norcalli/nvim-colorizer.lua",
+
+  -- File manager
+  "nvim-tree/nvim-tree.lua",
+
+  -- Adds git releated signs to the gutter, as well as utilities for managing changes
+  "lewis6991/gitsigns.nvim",
+
+  -- Set lualine as statusline
+  "nvim-lualine/lualine.nvim",
+
+  -- Add indentation guides even on blank lines
+  "lukas-reineke/indent-blankline.nvim",
+
+  -- "<leader>/" to comment visual regions/lines
+  "numToStr/Comment.nvim",
 
   {
     -- LSP Configuration & Plugins
@@ -97,26 +115,6 @@ require("lazy").setup({
   },
 
   {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      signs = {
-        add = { text = "+" },
-        change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-      },
-      -- TODO: move to separate section (same for all plugin specific keybinds)
-      on_attach = function(bufnr)
-        vim.keymap.set("n", "<leader>gp", require("gitsigns").prev_hunk, { buffer = bufnr, desc = "[G]o to [P]revious Hunk" })
-        vim.keymap.set("n", "<leader>gn", require("gitsigns").next_hunk, { buffer = bufnr, desc = "[G]o to [N]ext Hunk" })
-        vim.keymap.set("n", "<leader>ph", require("gitsigns").preview_hunk, { buffer = bufnr, desc = "[P]review [H]unk" })
-      end,
-    },
-  },
-
-  {
     -- Colorscheme
     "metalelf0/jellybeans-nvim",
     dependencies = { "rktjmp/lush.nvim" },
@@ -126,54 +124,11 @@ require("lazy").setup({
     end,
   },
 
-  {
-    -- Set lualine as statusline
-    "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        -- theme = "jellybeans",
-        component_separators = "",
-        section_separators = "",
-      },
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "filename" },
-        lualine_c = { "branch", "diff" },
-        lualine_x = { "diagnostics" },
-        lualine_y = { "location" },
-        lualine_z = {},
-      }
-    },
-  },
-
-  {
-    -- Add indentation guides even on blank lines
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      char = "│",
-      show_trailing_blankline_indent = false,
-    },
-    config = function()
-      vim.cmd.highlight "IndentBlanklineChar guifg=#333333 gui=nocombine"
-    end
-  },
-
-  -- "<leader>/" to comment visual regions/lines
-  { "numToStr/Comment.nvim",
-    opts = {
-      toggler = {
-        line = "<leader>/",
-      },
-      opleader = {
-        line = "<leader>/",
-      }
-    }
-  },
-
-  -- Fuzzy Finder (files, lsp, etc)
-  { "nvim-telescope/telescope.nvim",
+  { 
+    -- Fuzzy Finder (files, lsp, etc)
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
     branch = "0.1.x",
-    dependencies = { "nvim-lua/plenary.nvim" }
   },
 
   {
@@ -192,14 +147,53 @@ require("lazy").setup({
     },
     build = ":TSUpdate",
   },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    config = function()
-      vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree" })
-    end
-  },
 }, {})
+
+-- [[ Configure gitsigns ]]
+require("gitsigns").setup {
+  signs = {
+    add = { text = "+" },
+    change = { text = "~" },
+    delete = { text = "_" },
+    topdelete = { text = "‾" },
+    changedelete = { text = "~" },
+  },
+
+  vim.keymap.set("n", "<leader>gp", require("gitsigns").prev_hunk, { desc = "[G]o to [P]revious Hunk" }),
+  vim.keymap.set("n", "<leader>gn", require("gitsigns").next_hunk, {  desc = "[G]o to [N]ext Hunk" }),
+  vim.keymap.set("n", "<leader>ph", require("gitsigns").preview_hunk, {  desc = "[P]review [H]unk" }),
+}
+
+-- [[ Configure Lualine ]]
+require("lualine").setup {
+    options = {
+      component_separators = "",
+      section_separators = "",
+    },
+    sections = {
+      lualine_a = { "mode" },
+      lualine_b = { "filename" },
+      lualine_c = { "branch", "diff" },
+      lualine_x = { "diagnostics" },
+      lualine_y = { "location" },
+      lualine_z = {},
+    }
+}
+
+require("indent_blankline").setup {
+  char = "│",
+  show_trailing_blankline_indent = false,
+  vim.cmd.highlight "IndentBlanklineChar guifg=#333333 gui=nocombine"
+}
+
+require("Comment").setup {
+  toggler = {
+    line = "<leader>/",
+  },
+  opleader = {
+    line = "<leader>/",
+  }
+}
 
 -- [[ Configure Telescope ]]
 require("telescope").setup {
@@ -236,6 +230,8 @@ require("telescope").setup {
 }
 
 require("nvim-tree").setup {
+  vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree" }),
+
   disable_netrw = true,
   hijack_netrw = true,
   git = {
