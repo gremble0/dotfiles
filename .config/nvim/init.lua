@@ -1,5 +1,45 @@
+-- TODO: make separate file for vim settings (this option needs to be here for now)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+vim.opt.laststatus = 3 -- global statusline
+vim.opt.showmode = false
+vim.opt.termguicolors = true
+
+vim.opt.clipboard = "unnamedplus"
+vim.opt.cursorline = true
+vim.opt.colorcolumn = "79"
+
+-- Indenting
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+
+vim.opt.fillchars = { eob = " " }
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.mouse = "a"
+
+-- Numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.ruler = false
+
+-- disable nvim intro
+vim.opt.shortmess:append "sI"
+
+vim.opt.signcolumn = "yes"
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.timeoutlen = 400
+vim.opt.ttimeoutlen = 5
+vim.opt.undofile = true
+
+-- interval for writing swap file to disk, also used by gitsigns
+vim.opt.updatetime = 50
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,6 +58,8 @@ require("lazy").setup({
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "tpope/vim-sleuth",
+
+  "norcalli/nvim-colorizer.lua",
 
   {
     -- LSP Configuration & Plugins
@@ -88,7 +130,7 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
-        -- theme = "jellybeans-nvim",
+        -- theme = "jellybeans",
         component_separators = "",
         section_separators = "",
       },
@@ -164,44 +206,6 @@ require("lazy").setup({
   -- { import = 'custom.plugins' },
 }, {})
 
-vim.opt.laststatus = 3 -- global statusline
-vim.opt.showmode = false
-
-vim.opt.clipboard = "unnamedplus"
-vim.opt.cursorline = true
-vim.opt.colorcolumn = "79"
-
--- Indenting
-vim.opt.smartindent = true
-vim.opt.smarttab = true
-vim.opt.tabstop = 4
-vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-
-vim.opt.fillchars = { eob = " " }
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.mouse = "a"
-
--- Numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.ruler = false
-
--- disable nvim intro
-vim.opt.shortmess:append "sI"
-
-vim.opt.signcolumn = "yes"
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.termguicolors = true
-vim.opt.timeoutlen = 400
-vim.opt.ttimeoutlen = 5
-vim.opt.undofile = true
-
--- interval for writing swap file to disk, also used by gitsigns
-vim.opt.updatetime = 50
 
 -- [[ Basic Keymaps ]]
 
@@ -472,6 +476,11 @@ cmp.setup {
     },
   },
 }
+
+-- Attatch nvim-colorizer to buffer
+vim.defer_fn(function()
+  require("colorizer").attach_to_buffer(0)
+end, 0)
 
 -- TODO: Find better place for this
 -- Use leader key instead of hitting same key twice for some commands
