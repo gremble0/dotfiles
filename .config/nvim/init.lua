@@ -117,6 +117,7 @@ require("lazy").setup({
   },
 
   {
+    -- Colorscheme
     "metalelf0/jellybeans-nvim",
     dependencies = { "rktjmp/lush.nvim" },
     priority = 1000,
@@ -192,30 +193,13 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
-
-  -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  {
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+      vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree" })
+    end
+  },
 }, {})
-
-
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ "n", "v" }, "<Space>", '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Configure Telescope ]]
 require("telescope").setup {
@@ -247,6 +231,50 @@ require("telescope").setup {
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     mappings = {
       n = { ["q"] = require("telescope.actions").close },
+    },
+  },
+}
+
+require("nvim-tree").setup {
+  disable_netrw = true,
+  hijack_netrw = true,
+  git = {
+    enable = true,
+    -- ignore = true,
+  },
+  filesystem_watchers = {
+    enable = true,
+  },
+  actions = {
+    open_file = {
+      resize_window = true,
+    },
+  },
+  renderer = {
+    highlight_git = true,
+    -- highlight_opened_files = "none",
+    root_folder_label = false,
+
+    icons = {
+      show = {
+        folder_arrow = true,
+        git = false,
+      },
+
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          default = "",
+          empty = "",
+          empty_open = "",
+          open = "",
+          symlink = "",
+          symlink_open = "",
+          arrow_open = "",
+          arrow_closed = "",
+        },
+      },
     },
   },
 }
@@ -482,7 +510,10 @@ vim.defer_fn(function()
   require("colorizer").attach_to_buffer(0)
 end, 0)
 
+-- [[ Basic Keymaps ]]
 -- TODO: Find better place for this
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
 -- Use leader key instead of hitting same key twice for some commands
 vim.keymap.set("n", "<leader>d", "dd", { desc = "delete line" })
 vim.keymap.set("n", "<leader>y", "yy", { desc = "yank line" })
@@ -503,3 +534,7 @@ vim.keymap.set("n", "<leader>k", ":m .-2<CR>", { desc = "move current line up" }
 
 -- Clear highlights with escape
 vim.keymap.set("n", "<Esc>", ":noh <CR>", { desc = "clear highlights" })
+
+-- Remap for dealing with word wrap
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
