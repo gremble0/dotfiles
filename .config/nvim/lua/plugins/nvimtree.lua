@@ -5,7 +5,7 @@ require("nvim-tree").setup {
   disable_netrw = true,
   hijack_netrw = true,
   git = {
-    enable = true,
+    enable = false,
   },
   filesystem_watchers = {
     enable = true,
@@ -16,8 +16,6 @@ require("nvim-tree").setup {
     },
   },
   renderer = {
-    highlight_git = true,
-    -- highlight_opened_files = "none",
     root_folder_label = false,
 
     icons = {
