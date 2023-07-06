@@ -21,7 +21,8 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # Aliases
 alias c="clear"
 alias n="nvim"
-alias ra="ranger_cd"
+alias ra="rangercd"
+alias lf="lfcd"
 
 alias ls="ls -CF --group-directories-first --color=auto"
 alias ll="ls -AhgGoF --group-directories-first --color=auto"
@@ -31,16 +32,6 @@ alias shutdown="shutdown now"
 
 # Setting prompt
 PS1='%F{yellow}%n@%m%f%F{blue}%~%f %F{green}$%f '
-
-# Make ranger cd to dir after usage
-ranger_cd() {
-    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
-    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
-    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
-        cd -- "$chosen_dir"
-    fi
-    rm -f -- "$temp_file"
-}
 
 # Case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
