@@ -68,3 +68,6 @@
 
 !.config/ranger/
 !.config/ranger/*
+
+!.config/lf/
+!.config/lf/*
