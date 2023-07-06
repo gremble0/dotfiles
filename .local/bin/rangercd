@@ -1,10 +1,8 @@
 #/bin/sh
 # Make ranger cd to dir after usage
-rangercd() {
-    temp_file="$(mktemp -t "rangercd.XXXXXXXXXX")"
-    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
-    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
-        cd -- "$chosen_dir"
-    fi
-    rm -f -- "$temp_file"
-}
+temp_file="$(mktemp -t "rangercd.XXXXXXXXXX")"
+ranger --choosedir="$temp_file" -- "${@:-$PWD}"
+if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
+    cd -- "$chosen_dir"
+fi
+rm -f -- "$temp_file"
