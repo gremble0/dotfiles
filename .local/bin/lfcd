@@ -1,7 +1,8 @@
-#/bin/sh
+#!/bin/sh
 # Make lf cd to dir after usage
+
 tmp="$(mktemp)"
-lfub -last-dir-path="$tmp"
+lfub -last-dir-path="$tmp" "$@"
 if [ -f "$tmp" ]; then
     dir="$(cat "$tmp")"
     rm -f "$tmp"

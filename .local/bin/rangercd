@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 # Make ranger cd to dir after usage
 temp_file="$(mktemp -t "rangercd.XXXXXXXXXX")"
 ranger --choosedir="$temp_file" -- "${@:-$PWD}"
