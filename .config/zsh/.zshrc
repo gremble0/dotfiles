@@ -22,7 +22,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 alias c="clear"
 alias n="nvim"
 alias ra="rangercd"
-alias lf="lfcd"
+alias lf="lfub"
 
 alias ls="ls -CF --group-directories-first --color=auto"
 alias ll="ls -AhgGoF --group-directories-first --color=auto"
