@@ -1,10 +1,13 @@
-# interpreter for shell commands
+# Interpreter for shell commands
 set shell sh
 
-# show hidden files
+# Show hidden files
 set hidden true
 
-# set '-eu' options for shell commands
+# Show icons
+set icons
+
+# Set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
 # exit on error and option '-u' is used to give error for unset variables.
 # Option '-f' disables pathname expansion which can be useful when $f, $fs, and
@@ -13,43 +16,40 @@ set hidden true
 # times.
 set shellopts '-eu'
 
-# set internal field separator (IFS) to "\n" for shell commands
+# Set internal field separator (IFS) to "\n" for shell commands
 # This is useful to automatically split file names in $fs and $fx properly
 # since default file separator used in these variables (i.e. 'filesep' option)
 # is newline. You need to consider the values of these options and create your
 # commands accordingly.
 set ifs "\n"
 
-# leave some space at the top and the bottom of the screen
+# Leave some space at the top and the bottom of the screen
 set scrolloff 5
 
 # Disable formatting for preview
 set cursorpreviewfmt ""
 
-# Use ranger previewer script to preview files
+# Use custom preview script to preview files
 set previewer "~/.config/lf/previewer"
 set cleaner "~/.config/lf/cleaner"
 
-# use enter for shell commands
+# Use enter for shell commands
 map <enter> shell
 
-# show the result of execution of previous commands
+# Show the result of execution of previous commands
 map ` !true
 
-# execute current file (must be executable)
+# Execute current file (must be executable)
 map x $$f
 map X !$f
 
-# dedicated keys for file opener actions
+# Dedicated keys for file opener actions
 map o &mimeopen $f
 map O $mimeopen --ask $f
 
 map D trash
 
-# define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
+# Define a custom 'open' command
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
@@ -73,35 +73,16 @@ cmd open ${{
     esac
 }}
 
-# mkdir command. See wiki if you want it to select created dir
+# Mkdir command. See wiki if you want it to select created dir
 map a :push %mkdir<space>
 
-# define a custom 'rename' command without prompt for overwrite
-# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-# map r push :rename<space>
+# Make sure trash folder exists
+%mkdir -p ~/.trash
 
-# make sure trash folder exists
-# %mkdir -p ~/.trash
-
-# move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
+# Move current file or selected files to trash folder
 cmd trash %set -f; mv $fx ~/.local/share/lf/trash
 
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ "$ans" = "y" ] && rm -rf $fx
-# }}
-
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
-
-# extract the current file with the right command
-# (xkcd link: https://xkcd.com/1168/)
+# Extract the current file with the right command
 cmd extract ${{
     set -f
     case $f in
@@ -114,7 +95,7 @@ cmd extract ${{
     esac
 }}
 
-# compress current file or selected files with tar and gunzip
+# Compress current file or selected files with tar and gunzip
 cmd tar ${{
     set -f
     mkdir $1
@@ -123,7 +104,7 @@ cmd tar ${{
     rm -rf $1
 }}
 
-# compress current file or selected files with zip
+# Compress current file or selected files with zip
 cmd zip ${{
     set -f
     mkdir $1
