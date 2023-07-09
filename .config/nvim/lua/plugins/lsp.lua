@@ -45,6 +45,36 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  jdtls = {
+    cmd = {
+      "java",
+      "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+      "-Dosgi.bundles.defaultStartLevel=4",
+      "-Declipse.product=org.eclipse.jdt.ls.core.product",
+      "-Dlog.protocol=true",
+      "-Dlog.level=ALL",
+      "-Xms1g",
+      "--add-modules=ALL-SYSTEM",
+      "--add-opens",
+      "java.base/java.util=ALL-UNNAMED",
+      "--add-opens",
+      "java.base/java.lang=ALL-UNNAMED",
+      "-jar",
+      "~/.local/share/jdtls/org.eclipse.equinox.launcher.jar",
+      "-configuration", "~/.config/java/jdtls/config.ini",
+      "-data", "/home/herman/.local/share/nvim/java"
+    },
+    settings = {
+        java = {
+          signatureHelp = { enabled = true },
+          import = { enabled = true },
+          rename = { enabled = true }
+        }
+    },
+    init_options = {
+        bundles = {}
+    }
+  },
 }
 
 -- Setup neovim lua configuration
