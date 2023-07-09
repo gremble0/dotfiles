@@ -7,6 +7,18 @@ set hidden true
 # Show icons
 set icons
 
+# Go to element matching search while typing (like vim option)
+set incsearch
+
+# Show numbers for easier navigation with vim keys
+set number
+set relativenumber
+set numberfmt "\033[34m"
+
+# Change prompt
+set promptfmt "\033[33;1m%u@%h\033[0m\033[34;1m%d\033[0m\033[1m%f\033[0m"
+
+set timefmt ""
 # Set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
 # exit on error and option '-u' is used to give error for unset variables.
@@ -77,7 +89,7 @@ cmd open ${{
 map a :push %mkdir<space>
 
 # Make sure trash folder exists
-%mkdir -p ~/.trash
+%mkdir -p ~/.local/share/lf/trash
 
 # Move current file or selected files to trash folder
 cmd trash %set -f; mv $fx ~/.local/share/lf/trash
