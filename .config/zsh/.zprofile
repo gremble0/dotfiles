@@ -8,29 +8,37 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin/:$HOME/local/share/JetBrains/Toolbox/scripts"
 
 # Cleaning up home directory
+# Config files
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
-export GRADLE_USER_HOME="$HOME/Android/gradle"
-export M2_HOME="$HOME/Android/m2"
-export WINEPREFIX="$XDG_DATA_HOME/wine"
-export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
-export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export GRIPHOME="$XDG_CACHE_HOME/grip"
-export OPAMROOT="$XDG_DATA_HOME/opam"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 
 alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings"
-alias minecraft-launcher=minecraft-launcher --workDir="$XDG_DATA_HOME/minecraft"
 alias yarn=yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc
+
+# Data files
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export M2_HOME="$XDG_DATA_HOME/m2"
+export WINEPREFIX="$XDG_DATA_HOME/wine"
+export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
+export OPAMROOT="$XDG_DATA_HOME/opam"
+
+alias minecraft-launcher=minecraft-launcher --workDir="$XDG_DATA_HOME/minecraft"
+
+# Cache files
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export GRIPHOME="$XDG_CACHE_HOME/grip"
+
+# Runtime files
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # System defaults
 export EDITOR="nvim"
 export VISUAL=$EDITOR
 export TERMINAL="alacritty"
 export BROWSER="firefox"
-export FILE="ranger"
+export FILE="lf"
 
 # Fix sorting in ls command (take . into consideration when sorting)
 export LC_COLLATE="C"
