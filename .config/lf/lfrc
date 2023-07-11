@@ -60,6 +60,7 @@ map o &mimeopen $f
 map O $mimeopen --ask $f
 
 map D trash
+map C $cleantrash
 
 # Define a custom 'open' command
 cmd open ${{
