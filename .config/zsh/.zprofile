@@ -12,7 +12,6 @@ export PATH="$PATH:$HOME/.local/bin/:$HOME/local/share/JetBrains/Toolbox/scripts
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 
 alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings"
 alias yarn=yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc
