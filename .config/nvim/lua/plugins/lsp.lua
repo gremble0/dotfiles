@@ -46,6 +46,7 @@ local servers = {
     },
   },
   gopls = {},
+  bashls = {},
   jdtls = {
     cmd = {
       "java",
