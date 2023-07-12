@@ -45,6 +45,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  gopls = {},
   jdtls = {
     cmd = {
       "java",
