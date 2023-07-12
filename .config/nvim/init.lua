@@ -1,5 +1,6 @@
 require("core.options")
 require("core.mappings")
+require("core.colors")
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -114,15 +115,15 @@ require("lazy").setup({
     end
   },
 
-  {
-    -- Colorscheme
-    "metalelf0/jellybeans-nvim",
-    dependencies = { "rktjmp/lush.nvim" },
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme "jellybeans-nvim"
-    end,
-  },
+  -- {
+  --   -- Colorscheme
+  --   "metalelf0/jellybeans-nvim",
+  --   dependencies = { "rktjmp/lush.nvim" },
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme "jellybeans-nvim"
+  --   end,
+  -- },
 
   {
     -- Fuzzy Finder (files, lsp, etc)
@@ -152,6 +153,3 @@ require("lazy").setup({
     end
   },
 }, {})
-
--- Change color of colorcolumn
-vim.cmd.highlight "ColorColumn guibg=#111111"
