@@ -7,8 +7,15 @@ luasnip.config.setup {}
 
 cmp.setup {
   formatting = {
-    fields = { "kind", "menu", "abbr" },
-    format = lspkind.cmp_format(),
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
+      local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 35 })(entry, vim_item)
+      local strings = vim.split(kind.kind, "%s", { trimempty = true })
+      kind.kind = " " .. (strings[1] or "")
+      kind.menu = " (" .. (strings[2] or "") .. ")"
+
+      return kind
+    end
   },
   snippet = {
     expand = function(args)
@@ -21,42 +28,42 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<C-Space>"] = cmp.mapping.complete {},
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.locally_jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    ["<CR>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace },
+    ["<Tab>"] = cmp.mapping(
+      function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif luasnip.expand_or_locally_jumpable() then
+          luasnip.expand_or_jump()
+        else
+          fallback()
+        end
+      end, { "i", "s" }
+    ),
+    ["<S-Tab>"] = cmp.mapping(
+      function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif luasnip.locally_jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { "i", "s" }
+    ),
   },
   sources = {
     { name = "nvim_lsp" },
   },
   window = {
     completion = {
-      side_padding = 1,
+      side_padding = 0,
       col_offset = -3,
       winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:None",
-      scrollbar = false,
+      scrollbar = true,
     },
     documentation = {
-      side_padding = 1,
+      side_padding = 0,
       winhighlight = "Normal:Pmenu,Search:None",
     },
   },
