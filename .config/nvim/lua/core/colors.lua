@@ -127,6 +127,9 @@ hi("TSUnderline", { underline = true })
 hi("TSStrike", { strikethrough = true })
 hi("TSURI", { fg = morningglory_blue, underline = true })
 
+-- Lualine
+hi("lualine_a_visual", { bg = morningglory_blue })
+
 -- Telescope
 hi("TelescopeBorder", { fg = black_two })
 hi("TelescopePromptTitle", { fg = fg })
