@@ -175,3 +175,6 @@ hi("CmpItemKindFunction", { fg = gold_yellow })
 hi("CmpItemKindTypeParameter", { fg = gold_yellow })
 hi("CmpItemKindMethod", { fg = gold_yellow })
 hi("CmpItemKindValue", { fg = gold_yellow })
+
+-- Indent-blankline
+hi("IndentBlanklineChar", { fg = gray_one, nocombine = true })

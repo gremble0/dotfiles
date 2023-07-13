@@ -62,7 +62,8 @@ require("lazy").setup({
     -- Add indentation guides even on blank lines
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("plugins.indent_blankline")
+      require("indent_blankline").setup({})
+      -- require("plugins.indent_blankline")
     end
   },
 
