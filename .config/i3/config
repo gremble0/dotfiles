@@ -13,7 +13,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nitrogen --restore
 
 # Run polybar on startup for statusbar.
-exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/polybar_start.sh
+exec_always --no-startup-id polybarstart
 
 # Change keyboard layout when hitting alt + space
 exec_always "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
