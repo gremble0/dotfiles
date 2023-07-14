@@ -1,3 +1,4 @@
+#!/bin/sh
 # kill old instances
 killall polybar
 

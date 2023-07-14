@@ -9,14 +9,10 @@ font pango:Cantarell 12
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# Run nitrogen on startup
+# Run nitrogen on startup for wallpaper
 exec --no-startup-id nitrogen --restore
 
-# Run polybar on startup. This program shows a statusbar
+# Run polybar on startup for statusbar.
 exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/polybar_start.sh
 
 # Change keyboard layout when hitting alt + space
@@ -37,9 +33,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use custom scripts to adjust monitor brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessdown
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessup
+# Use custom scripts to adjust monitor brightness (-d decrements by 10%, -i increments by 10%)
+bindsym XF86MonBrightnessDown exec --no-startup-id brightness -d
+bindsym XF86MonBrightnessUp exec --no-startup-id brightness -i
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -50,7 +46,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # Kill focused window
 bindsym $mod+w kill
 
-# Start rofi (a program launcher)
+# Start rofi (a program launcher similar to dmenu)
 bindsym $mod+d exec "rofi -modi drun,run -show drun"
 
 # Change focus
