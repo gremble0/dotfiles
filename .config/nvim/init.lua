@@ -1,6 +1,5 @@
 require("core.options")
 require("core.mappings")
-require("core.colors")
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -23,6 +22,14 @@ require("lazy").setup({
 
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
+
+  -- My theme
+  {
+    "gremble0/yellowbeans.nvim",
+    config = function()
+      vim.cmd.colorscheme("yellowbeans")
+    end
+  },
 
   {
     -- Add display colors such as #fff inside the terminal

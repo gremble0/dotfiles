@@ -1,6 +1,6 @@
 -- [[ Configure Nvim Tree ]]
 require("nvim-tree").setup {
-  vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree" }),
+  vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree", silent = true }),
 
   disable_netrw = true,
   hijack_netrw = true,
@@ -30,8 +30,8 @@ require("nvim-tree").setup {
         folder = {
           default = "",
           empty = "",
-          empty_open = "",
-          open = "",
+          empty_open = "",
+          open = "",
           symlink = "",
           symlink_open = "",
           arrow_open = "",
