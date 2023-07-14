@@ -13,7 +13,7 @@ button {
 	--vaccentcolor-active: rgb(var(--accent));
 	--main-font: Cantarell;
 	--font-display: var(--main-font);
-	--code-font: JetBrainsMono Nerd Font, Consolas, Liberation Mono, Menlo, monospace; */
+	--code-font: JetBrainsMono Nerd Font, Consolas, Liberation Mono, Menlo, monospace;
 }
 
 ::placeholder, body, button, input, select, textarea {

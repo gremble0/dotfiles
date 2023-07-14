@@ -3,20 +3,8 @@
 
 # ... Except ...
 !.gitignore
-!.zprofile
-
 
 !.local/
-
-!.local/share/
-!.local/share/themes/
-!.local/share/themes/Material-Black-Mango/
-!.local/share/themes/Material-Black-Mango/*
-!.local/share/themes/Material-Black-Mango/gtk-2.0/
-!.local/share/themes/Material-Black-Mango/gtk-2.0/*
-!.local/share/themes/Material-Black-Mango/gtk-3.0/
-!.local/share/themes/Material-Black-Mango/gtk-3.0/*
-
 !.local/bin/
 !.local/bin/*
 
@@ -42,12 +30,6 @@
 !.config/rofi/
 !.config/rofi/*
 
-!.config/picom/
-!.config/picom/*
-
-!.config/terminator/
-!.config/terminator/*
-
 !.config/alacritty/
 !.config/alacritty/*
 
@@ -55,7 +37,9 @@
 !.config/tmux/*
 
 !.config/BetterDiscord/
-!.config/BetterDiscord/*
+!.config/BetterDiscord/data/
+!.config/BetterDiscord/data/stable/
+!.config/BetterDiscord/data/stable/custom.css
 
 !.config/polybar/
 !.config/polybar/*
@@ -63,11 +47,15 @@
 !.config/zsh/
 !.config/zsh/*
 
-!.config/X11/
-!.config/X11/*
+!.config/lf/
+!.config/lf/*
 
+# The following configs are no longer used
 !.config/ranger/
 !.config/ranger/*
 
-!.config/lf/
-!.config/lf/*
+!.config/terminator/
+!.config/terminator/*
+
+!.config/picom/
+!.config/picom/*
