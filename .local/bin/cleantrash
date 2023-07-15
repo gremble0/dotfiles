@@ -3,4 +3,4 @@
 echo -n "Delete the contents of ~/.local/share/lf/trash ? [Y/n] "
 read confirmation
 confirmation=$(echo "$confirmation" | tr "A-Z" "a-z")
-[[ $confirmation == "y" || -z "$confirmation" ]] && rm ~/.local/share/lf/trash/* -rf
+[[ $confirmation == "y" || -z "$confirmation" ]] && find $XDG_DATA_HOME/lf/trash/ -name . -o -prune -exec rm -rf -- {} +

@@ -42,8 +42,8 @@ set scrolloff 5
 set cursorpreviewfmt ""
 
 # Use custom preview script to preview files
-set previewer "~/.config/lf/previewer"
-set cleaner "~/.config/lf/cleaner"
+set previewer "lfpreviewer"
+set cleaner "lfcleaner"
 
 # Use enter for shell commands
 map <enter> shell
