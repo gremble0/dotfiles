@@ -39,7 +39,8 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- Editing
+vim.opt.scrolloff = 5
+vim.opt.undofile = true
 vim.opt.timeoutlen = 400
 vim.opt.ttimeoutlen = 5
-vim.opt.undofile = true
 vim.opt.updatetime = 50 -- Interval for writing swap file to disk, also used by gitsigns

@@ -22,6 +22,7 @@ export M2_HOME="$XDG_DATA_HOME/m2"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 export OPAMROOT="$XDG_DATA_HOME/opam"
+export GOPATH="$XDG_DATA_HOME/go"
 
 alias minecraft-launcher=minecraft-launcher --workDir="$XDG_DATA_HOME/minecraft"
 

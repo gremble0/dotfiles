@@ -23,8 +23,8 @@ require("lazy").setup({
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
 
-  -- My theme
   {
+    -- My theme
     "gremble0/yellowbeans.nvim",
     config = function()
       vim.cmd.colorscheme("yellowbeans")

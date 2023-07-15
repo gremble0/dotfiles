@@ -21,11 +21,11 @@ exec_always "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option node
 # Take screenshot with printscreen using maim, pipe it to xclip to copy to clipboard
 bindsym Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
 # Selection screenshot and download
-bindsym Control+Print exec --no-startup-id maim --format=png --select $HOME/Pictures/Screenshots/screenshot.png | xclip -selection clipboard -t image/png
+bindsym Control+Print exec --no-startup-id maim --format=png --select $HOME/Pictures/Screenshots/screenshot.png
 # Fullscreen screenshot
 bindsym Shift+Print exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png
 # Fullscreen screenshot and download
-bindsym Control+Shift+Print exec --no-startup-id maim --format=png $HOME/Pictures/Screenshots/screenshot.png | xclip -selection clipboard -t image/png
+bindsym Control+Shift+Print exec --no-startup-id maim --format=png $HOME/Pictures/Screenshots/screenshot.png
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
