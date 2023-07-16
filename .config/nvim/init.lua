@@ -150,4 +150,8 @@ require("lazy").setup({
       require("plugins.treesitter")
     end
   },
-}, {})
+}, {
+    ui = {
+      border = "single"
+    }
+  })
