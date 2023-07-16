@@ -23,6 +23,9 @@ require("lazy").setup({
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
 
+  -- Add indentation guides even on blank lines
+  "lukas-reineke/indent-blankline.nvim",
+
   {
     -- My theme
     "gremble0/yellowbeans.nvim",
@@ -33,7 +36,8 @@ require("lazy").setup({
 
   {
     -- Add display colors such as #fff inside the terminal
-    "norcalli/nvim-colorizer.lua",
+    -- Also use NvChads' fork as the original is no longer maintained
+    "NvChad/nvim-colorizer.lua",
     config = function()
       vim.defer_fn(function()
         require("colorizer").attach_to_buffer(0)
@@ -62,15 +66,6 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     config = function()
       require("plugins.lualine")
-    end
-  },
-
-  {
-    -- Add indentation guides even on blank lines
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("indent_blankline").setup({})
-      -- require("plugins.indent_blankline")
     end
   },
 
@@ -151,7 +146,7 @@ require("lazy").setup({
     end
   },
 }, {
-    ui = {
-      border = "single"
-    }
-  })
+  ui = {
+    border = "single"
+  }
+})

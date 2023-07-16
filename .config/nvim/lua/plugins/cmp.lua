@@ -62,13 +62,13 @@ cmp.setup {
       border = cmpborder,
       side_padding = 0,
       col_offset = -3,
-      winhighlight = "Normal:Pmenu,FloatBorder:PmenuBg,CursorLine:PmenuSel,Search:None",
+      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
       scrollbar = true,
     }),
     documentation = cmp.config.window.bordered({
       border = cmpborder,
       side_padding = 0,
-      winhighlight = "Normal:Pmenu,FloatBorder:PmenuBg,Search:None",
+      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
     }),
   },
 }
