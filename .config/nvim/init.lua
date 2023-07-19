@@ -36,8 +36,7 @@ require("lazy").setup({
 
   {
     -- Add display colors such as #fff inside the terminal
-    -- Also use NvChads' fork as the original is no longer maintained
-    "NvChad/nvim-colorizer.lua",
+    "norcalli/nvim-colorizer.lua",
     config = function()
       vim.defer_fn(function()
         require("colorizer").attach_to_buffer(0)
