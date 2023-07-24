@@ -1,53 +1,45 @@
-# i3 config file (v4)
 # Setting alt key as modifier to be used with other keybinds
 set $mod Mod1
 
 # Font for window titles.
 font pango:Cantarell 12
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# Run nitrogen on startup for wallpaper
-exec --no-startup-id nitrogen --restore
-
-# Run polybar on startup for statusbar.
-exec_always --no-startup-id polybarstart
+# Run nitrogen for wallpaper
+exec "nitrogen --restore"
 
 # Change keyboard layout when hitting alt + space
 exec_always "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
 
-# Take screenshot with printscreen using maim, pipe it to xclip to copy to clipboard
-bindsym Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
-# Selection screenshot and download
-bindsym Control+Print exec --no-startup-id maim --format=png --select $HOME/Pictures/Screenshots/screenshot.png
-# Fullscreen screenshot
-bindsym Shift+Print exec --no-startup-id maim --format=png | xclip -selection clipboard -t image/png
-# Fullscreen screenshot and download
-bindsym Control+Shift+Print exec --no-startup-id maim --format=png $HOME/Pictures/Screenshots/screenshot.png
+# Run polybar for statusbar
+exec_always "polybarstart"
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status"
+bindsym XF86AudioMicMute exec --no-startup-id "pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status"
 
 # Use custom scripts to adjust monitor brightness (-d decrements by 10%, -i increments by 10%)
-bindsym XF86MonBrightnessDown exec --no-startup-id brightness -d
-bindsym XF86MonBrightnessUp exec --no-startup-id brightness -i
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+bindsym XF86MonBrightnessDown exec --no-startup-id "brightness -d"
+bindsym XF86MonBrightnessUp exec --no-startup-id "brightness -i"
 
 # Start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec "i3-sensible-terminal"
 
 # Kill focused window
 bindsym $mod+w kill
 
 # Start rofi (a program launcher similar to dmenu)
 bindsym $mod+d exec "rofi -modi drun,run -show drun"
+
+# Take screenshot with printscreen using maim, pipe it to xclip to copy to clipboard
+bindsym Print exec --no-startup-id "maim --format=png --select | xclip -selection clipboard -t image/png"
+# Selection screenshot and download
+bindsym Control+Print exec --no-startup-id "maim --format=png --select $HOME/Pictures/Screenshots/screenshot.png"
+# Fullscreen screenshot
+bindsym Shift+Print exec --no-startup-id "maim --format=png | xclip -selection clipboard -t image/png"
+# Fullscreen screenshot and download
+bindsym Control+Shift+Print exec --no-startup-id "maim --format=png $HOME/Pictures/Screenshots/screenshot.png"
 
 # Change focus
 bindsym $mod+h focus left
@@ -80,18 +72,8 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s floating toggle
 bindsym $mod+e layout toggle split
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 # Assign each workspace to specific screen (the screens are hardcoded in so 
 # it would have to be changed for every computer)
@@ -107,28 +89,28 @@ workspace 9 output HDMI-0
 workspace 10 output DP-0
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+1 workspace number "1"
+bindsym $mod+2 workspace number "2"
+bindsym $mod+3 workspace number "3"
+bindsym $mod+4 workspace number "4"
+bindsym $mod+5 workspace number "5"
+bindsym $mod+6 workspace number "6"
+bindsym $mod+7 workspace number "7"
+bindsym $mod+8 workspace number "8"
+bindsym $mod+9 workspace number "9"
+bindsym $mod+0 workspace number "10"
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1 workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2 workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3 workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4 workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5 workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6 workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7 workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8 workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9 workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10 workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace number "1" workspace number "1"
+bindsym $mod+Shift+2 move container to workspace number "2" workspace number "2"
+bindsym $mod+Shift+3 move container to workspace number "3" workspace number "3"
+bindsym $mod+Shift+4 move container to workspace number "4" workspace number "4"
+bindsym $mod+Shift+5 move container to workspace number "5" workspace number "5"
+bindsym $mod+Shift+6 move container to workspace number "6" workspace number "6"
+bindsym $mod+Shift+7 move container to workspace number "7" workspace number "7"
+bindsym $mod+Shift+8 move container to workspace number "8" workspace number "8"
+bindsym $mod+Shift+9 move container to workspace number "9" workspace number "9"
+bindsym $mod+Shift+0 move container to workspace number "10" workspace number "10"
 
 # Assign programs to specific workspace
 assign [class="Steam"] 1
@@ -145,11 +127,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Resize window with keys above vim keys
 bindsym $mod+y resize shrink width 15 px or 15 ppt
-bindsym $mod+u resize grow width 15 px or 15 ppt
-bindsym $mod+i resize shrink height 15 px or 15 ppt
-bindsym $mod+o resize grow height 15 px or 15 ppt
-
-bindsym $mod+r mode "resize"
+bindsym $mod+u resize shrink height 15 px or 15 ppt
+bindsym $mod+i resize grow height 15 px or 15 ppt
+bindsym $mod+o resize grow width 15 px or 15 ppt
 
 client.focused          #e1b655 #151515 #ffffff #e1b655 #e1b655
 client.focused_inactive #000000 #151515 #ffffff #151515 #000000
