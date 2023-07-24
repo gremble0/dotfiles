@@ -4,40 +4,38 @@ configuration {
 }
 
 * {
-    selected-normal-foreground:  #FFF;
-    foreground:                  #FFF;
-    normal-foreground:           @foreground;
-    alternate-normal-background: #101010;
-    red:                         rgba ( 220, 50, 47, 100 % );
-    selected-urgent-foreground:  @foreground;
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    urgent-foreground:           rgba ( 255, 82, 82, 100 % );
-    alternate-urgent-background: rgba ( 69, 90, 100, 100 % );
-    active-foreground:           rgba ( 0, 188, 212, 100 % );
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    selected-active-foreground:  rgba ( 253, 246, 227, 100 % );
-    alternate-active-background: #101010;
-    background:                  #101010;
-    bordercolor:                 #000;
-    alternate-normal-foreground: @foreground;
-    normal-background:           #101010;
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  #E1B655;
-    border-color:                #E1B655;
+    foreground:                  #ffffff;
+    background:                  #151515;
+    selected:                    #e1b655;
+    border-color:                #282828;
     separatorcolor:              @background;
+
+    normal-foreground:           @foreground;
+    normal-background:           @background;
+    selected-normal-foreground:  @background;
+    selected-normal-background:  @selected;
+    alternate-normal-foreground: @foreground;
+    alternate-normal-background: @background;
+
+    urgent-foreground:           rgba ( 255, 82, 82, 100 % );
     urgent-background:           rgba ( 69, 90, 100, 100 % );
+    selected-urgent-foreground:  @foreground;
     selected-urgent-background:  rgba ( 255, 82, 82, 100 % );
     alternate-urgent-foreground: @urgent-foreground;
-    background-color:            rgba ( 0, 0, 0, 0 % );
-    alternate-active-foreground: @active-foreground;
+    alternate-urgent-background: rgba ( 69, 90, 100, 100 % );
+
+    active-foreground:           rgba ( 0, 188, 212, 100 % );
     active-background:           rgba ( 69, 90, 100, 100 % );
-    selected-active-background:  #101010;
+    selected-active-foreground:  rgba ( 253, 246, 227, 100 % );
+    selected-active-background:  @background;
+    alternate-active-background: @background;
+    alternate-active-foreground: @active-foreground;
 }
 window {
     background-color: @background;
     border:           1;
     padding:          0;
-    height:           436px;
+    height:           452;
     width:            50ch;
 }
 mainbox {
@@ -46,21 +44,23 @@ mainbox {
     padding: 0;
 }
 message {
-    border:       1px solid 0px 0px;
+    border:       1;
     border-color: @separatorcolor;
-    padding:      1px;
+    padding:      1;
 }
 textbox {
     text-color: @foreground;
 }
 listview {
-    background-color: #101010;
-    fixed-height: 0;
-    scrollbar:    false;
+    background-color: #151515;
+    fixed-height:     true;
+    scrollbar:        true;
+    dynamic:          true;
+    padding:          6 4 8 8;
 }
 element {
     border:  0;
-    padding: 6px;
+    padding: 6;
 }
 element-text {
     background-color: inherit;
@@ -86,6 +86,7 @@ element.normal.active {
 element.selected.normal {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
+    font-weight:      bold;
 }
 element.selected.urgent {
     background-color: @selected-urgent-background;
@@ -108,29 +109,26 @@ element.alternate.active {
     text-color:       @alternate-active-foreground;
 }
 mode-switcher {
-    border:       2px dash 0px 0px ;
+    border:       1 dash 0 0 ;
     border-color: @separatorcolor;
 }
 button.selected {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
 }
-case-indicator {
-    expand: true;
-    spacing:    0;
-    text-color: @normal-foreground;
-}
 entry {
-    spacing:    0;
-    text-color: @normal-foreground;
-    padding: 10;
-    placeholder: "";
+    text-color:  @normal-foreground;
+    padding:     16 8 16 8;
+    placeholder: "Run a program";
 }
 prompt {
     spacing:    0;
     text-color: @normal-foreground;
 }
 inputbar {
-    children:   [ entry, case-indicator ];
-    background-color: #1c1c1c;
+    children:   [ entry ];
+}
+scrollbar {
+  handle-width: 4;
+  handle-color: #333333;
 }
