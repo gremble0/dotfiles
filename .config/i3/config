@@ -132,8 +132,8 @@ bindsym $mod+i resize grow height 15 px or 15 ppt
 bindsym $mod+o resize grow width 15 px or 15 ppt
 
 client.focused          #e1b655 #151515 #ffffff #e1b655 #e1b655
-client.focused_inactive #000000 #151515 #ffffff #151515 #000000
-client.unfocused        #000000 #151515 #888888 #151515 #000000
+client.focused_inactive #282828 #151515 #ffffff #151515 #282828
+client.unfocused        #282828 #151515 #888888 #151515 #282828
 client.background       #151515
 
 default_border pixel 1
