@@ -21,8 +21,6 @@
 !.config/nvim/lua/custom/*
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
-!.config/nvim/lua/plugins/configs/
-!.config/nvim/lua/plugins/configs/*
 
 !.config/i3/
 !.config/i3/*
@@ -36,9 +34,6 @@
 !.config/tmux/
 !.config/tmux/*
 
-!.config/BetterDiscord/
-!.config/BetterDiscord/data/
-!.config/BetterDiscord/data/stable/
 !.config/BetterDiscord/data/stable/custom.css
 
 !.config/polybar/
