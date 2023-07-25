@@ -66,6 +66,7 @@ element-text {
     background-color: inherit;
     text-color:       inherit;
     vertical-align: 0.5;
+    font: "pango:Cantarell bold 16";
 }
 element-icon {
     size: 3.4ch;
@@ -86,7 +87,6 @@ element.normal.active {
 element.selected.normal {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
-    font-weight:      bold;
 }
 element.selected.urgent {
     background-color: @selected-urgent-background;
