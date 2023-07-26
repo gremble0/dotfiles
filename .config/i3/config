@@ -4,15 +4,6 @@ set $mod Mod1
 # Font for window titles.
 font pango:Cantarell 12
 
-# Run nitrogen for wallpaper
-exec "nitrogen --restore"
-
-# Change keyboard layout when hitting alt + space
-exec_always "setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys"
-
-# Run polybar for statusbar
-exec_always "polybarstart"
-
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status"

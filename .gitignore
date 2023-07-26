@@ -25,6 +25,9 @@
 !.config/i3/
 !.config/i3/*
 
+!.config/X11/
+!.config/X11/*
+
 !.config/rofi/
 !.config/rofi/*
 
