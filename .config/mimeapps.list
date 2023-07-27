@@ -1,0 +1,10 @@
+[Default Applications]
+text/plain=text.desktop;
+
+image/png=img.desktop;
+image/jpeg=img.desktop;
+image/jpg=img.desktop;
+image/gif=img.desktop;
+
+video/x-matroska=video.desktop
+video/mp4=video.desktop
