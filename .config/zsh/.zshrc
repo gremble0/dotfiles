@@ -47,7 +47,7 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # Run tmux on startup
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    exec tmux new-session -A -s main
+    exec tmux new-session
 fi
 
 # Opam configuration
