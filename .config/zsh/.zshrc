@@ -1,3 +1,11 @@
+# Source plugins
+if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+source $XDG_CONFIG_HOME/zsh/powerlevel10k/p10k.zsh
+source $XDG_CONFIG_HOME/zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
+source $XDG_CONFIG_HOME/zsh/vi-mode/zsh-vi-mode.plugin.zsh
+
 # History in .cache directory
 HISTSIZE=10000
 SAVEHIST=10000
@@ -32,13 +40,6 @@ alias ll="ls -AhgGoF --group-directories-first --color=auto"
 alias grep="grep --color=auto"
 
 alias shutdown="shutdown now"
-
-# Setting prompt
-PS1="%B%F{yellow}%n@%m%f%F{blue}%~%f %F{green}$%f%b "
-
-# Source plugins
-source $XDG_CONFIG_HOME/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $XDG_CONFIG_HOME/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Remove underline from syntax highlighting
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
