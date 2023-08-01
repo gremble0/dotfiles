@@ -1,50 +1,50 @@
 button {
-	--accentcolor: var(--accent-alt);
+    --accentcolor: var(--accent-alt);
 }
 
 :root {
-	--background-solid: #1c1c1c;
-	--background-solid-dark: #1a1a1a;
-	--background-solid-darker: #171717;
-	--background-solid-darkest: #111111;
-	--black: 18, 18, 18;
-	--white: 255, 255, 255;
-	--vaccentcolor-hover: rgb(var(--accent));
-	--vaccentcolor-active: rgb(var(--accent));
-	--main-font: Cantarell;
-	--font-display: var(--main-font);
-	--code-font: JetBrainsMono Nerd Font, Consolas, Liberation Mono, Menlo, monospace;
+    --background-solid: #1c1c1c;
+    --background-solid-dark: #151515;
+    --background-solid-darker: #191919;
+    --background-solid-darkest: #101010;
+    --black: 18, 18, 18;
+    --white: 255, 255, 255;
+    --vaccentcolor-hover: rgb(var(--accent));
+    --vaccentcolor-active: rgb(var(--accent));
+    --main-font: Cantarell;
+    --font-display: var(--main-font);
+    --code-font: JetBrainsMono Nerd Font, Consolas, Liberation Mono, Menlo, monospace;
 }
 
 ::placeholder, body, button, input, select, textarea {
-	font-family: var(--main-font);
+    font-family: var(--main-font);
 }
 
 code {
-	font-family: var(--code-font);
+    font-family: var(--code-font);
 }
 
 .theme-dark,
 .theme-light {
-	--background-primary: var(--background-solid);
-	--background-mobile-primary: var(--background-primary);
-	--background-secondary: var(--background-solid-dark);
-	--background-mobile-secondary: var(--background-secondary);
-	--background-secondary-alt: var(--background-solid-darker);
-	--background-tertiary: var(--background-solid-darkest);
-	--background-floating: var(--background-solid-dark);
-	--background-secondary: var(--background-solid-dark);
-	--background-accent: var(--background-solid-dark);
-	--background-message-hover: rgba(var(--black), 0.4);
-	--channeltextarea-background: var(--background-solid-darker);
-	--activity-card-background: rgba(var(--white), 0.05);
-	--deprecated-store-bg: transparent;
-	--background-modifier-hover: rgba(35, 35, 35, 1);
-	--background-modifier-active: rgba(38, 38, 38, 1);
-	--background-modifier-selected: rgba(40, 40, 40, 1);
-	--channels-default: rgba(var(--white), 0.6);
-	--deprecated-quickswitcher-input-background: var(--background-solid);
-	--deprecated-card-bg: rgba(var(--white), 0.05);
+    --background-primary: var(--background-solid);
+    --background-mobile-primary: var(--background-primary);
+    --background-secondary: var(--background-solid-dark);
+    --background-mobile-secondary: var(--background-secondary);
+    --background-secondary-alt: var(--background-solid-darker);
+    --background-tertiary: var(--background-solid-darkest);
+    --background-floating: var(--background-solid-dark);
+    --background-secondary: var(--background-solid-dark);
+    --background-accent: var(--background-solid-dark);
+    --background-message-hover: rgba(var(--black), 0.4);
+    --channeltextarea-background: var(--background-solid-darker);
+    --activity-card-background: rgba(var(--white), 0.05);
+    --deprecated-store-bg: transparent;
+    --background-modifier-hover: rgba(35, 35, 35, 1);
+    --background-modifier-active: rgba(38, 38, 38, 1);
+    --background-modifier-selected: rgba(40, 40, 40, 1);
+    --channels-default: rgba(var(--white), 0.6);
+    --deprecated-quickswitcher-input-background: var(--background-solid);
+    --deprecated-card-bg: rgba(var(--white), 0.05);
 }
 
 /* popup menu when @ing */
