@@ -63,8 +63,9 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s floating toggle
 bindsym $mod+e layout toggle split
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# Mouse functionality
 floating_modifier $mod
+focus_follows_mouse no
 
 # Assign each workspace to specific screen (the screens are hardcoded in so 
 # it would have to be changed for every computer)
@@ -122,6 +123,7 @@ bindsym $mod+u resize shrink height 15 px or 15 ppt
 bindsym $mod+i resize grow height 15 px or 15 ppt
 bindsym $mod+o resize grow width 15 px or 15 ppt
 
+# Appearance stuff
 client.focused          #e1b655 #151515 #ffffff #e1b655 #e1b655
 client.focused_inactive #282828 #151515 #ffffff #151515 #282828
 client.unfocused        #282828 #151515 #888888 #151515 #282828
@@ -133,5 +135,3 @@ default_floating_border pixel 1
 gaps inner 5
 gaps outer 0
 smart_gaps off
-
-focus_follows_mouse no
