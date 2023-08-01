@@ -29,28 +29,31 @@
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
 
-!.config/i3/
-!.config/i3/*
-
 !.config/X11/
 !.config/X11/*
 
+!.config/i3/
+!.config/i3/*
+
+!.config/picom/
+!.config/picom/*
+
+!.config/polybar/
+!.config/polybar/*
+
 !.config/rofi/
 !.config/rofi/*
+
+!.config/BetterDiscord/data/stable/custom.css
+
+!.config/zsh/
+!.config/zsh/*
 
 !.config/alacritty/
 !.config/alacritty/*
 
 !.config/tmux/
 !.config/tmux/*
-
-!.config/BetterDiscord/data/stable/custom.css
-
-!.config/polybar/
-!.config/polybar/*
-
-!.config/zsh/
-!.config/zsh/*
 
 !.config/lf/
 !.config/lf/*
@@ -61,6 +64,3 @@
 
 !.config/terminator/
 !.config/terminator/*
-
-!.config/picom/
-!.config/picom/*
