@@ -35,6 +35,9 @@
 !.config/i3/
 !.config/i3/*
 
+!.config/dwm/
+!.config/dwm/config.h
+
 !.config/picom/
 !.config/picom/*
 

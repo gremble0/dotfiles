@@ -2,11 +2,15 @@
 # Set wallpaper with nitrogen
 nitrogen --restore &
 
+# Start statusbar
+# polybarstart &
+
+# Start compositor
+picom &
+
 # Add dual keyboard layouts with setxkbmap
 setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys &
 
-# Start statusbar
-polybarstart &
-
 # Start window manager
-i3
+# i3
+exec startdwm > $XDG_CACHE_HOME/dwm/dwm.log
