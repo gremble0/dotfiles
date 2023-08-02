@@ -8,8 +8,8 @@
 !.local/
 !.local/bin/
 !.local/bin/*
-!.local/bin/dwmbar/
-!.local/bin/dwmbar/*
+!.local/bin/statusbar/
+!.local/bin/statusbar/*
 
 !.local/share/
 !.local/share/applications/

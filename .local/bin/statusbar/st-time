@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "󰃮  $(date | cut -d " " -f 5)"

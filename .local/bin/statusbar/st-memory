@@ -1,0 +1,3 @@
+#!/bin/sh
+meminfo=$(cat /proc/meminfo)
+total=$($meminfo | grep "MemTotal" | cut -d " " -f 3)
