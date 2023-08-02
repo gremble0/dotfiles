@@ -15,6 +15,7 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_fg, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray1, col_yellow, col_yellow },
+	[Icon]		 = { col_yellow, col_gray1, col_yellow },
 };
 
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };

@@ -7,17 +7,17 @@ status=$(cat /sys/class/power_supply/$BAT/status)
 capacity=$(cat /sys/class/power_supply/$BAT/capacity)
 
 if [ "$status" = "Not charging" ]; then
-    echo "󰂅  $capacity%" && exit 0
+    echo -e "\x03󰂅  \x01$capacity%" && exit 0
 elif [ "$status" = "Charging" ]; then
-    [ $capacity -gt 80 ] && echo "󰂋  $capacity%" && exit 0
-    [ $capacity -gt 60 ] && echo "󰢞  $capacity%" && exit 0
-    [ $capacity -gt 40 ] && echo "󰢝  $capacity%" && exit 0
-    [ $capacity -gt 20 ] && echo "󰂇  $capacity%" && exit 0
-    echo "󰢜 $capacity%"
+    [ $capacity -gt 80 ] && echo -e "\x03󰂋  \x01$capacity%" && exit 0
+    [ $capacity -gt 60 ] && echo -e "\x03󰢞  \x01$capacity%" && exit 0
+    [ $capacity -gt 40 ] && echo -e "\x03󰢝  \x01$capacity%" && exit 0
+    [ $capacity -gt 20 ] && echo -e "\x03󰂇  \x01$capacity%" && exit 0
+    echo -e "󰢜 $capacity%"
 else
-    [ $capacity -gt 80 ] && echo "󰂂 $capacity%" && exit 0
-    [ $capacity -gt 60 ] && echo "󰂀 $capacity%" && exit 0
-    [ $capacity -gt 40 ] && echo "󰁾 $capacity%" && exit 0
-    [ $capacity -gt 20 ] && echo "󰁼 $capacity%" && exit 0
-    echo "󰁺 $capacity%"
+    [ $capacity -gt 80 ] && echo -e "\x03󰂂 \x01$capacity%" && exit 0
+    [ $capacity -gt 60 ] && echo -e "\x03󰂀 \x01$capacity%" && exit 0
+    [ $capacity -gt 40 ] && echo -e "\x03󰁾 \x01$capacity%" && exit 0
+    [ $capacity -gt 20 ] && echo -e "\x03󰁼 \x01$capacity%" && exit 0
+    echo -e "󰁺 $capacity%"
 fi
