@@ -2,9 +2,6 @@
 # Set wallpaper with nitrogen
 nitrogen --restore &
 
-# Start statusbar
-# polybarstart &
-
 # Start compositor
 picom &
 
@@ -12,5 +9,4 @@ picom &
 setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys &
 
 # Start window manager
-# i3
-exec startdwm > $XDG_CACHE_HOME/dwm/dwm.log
+dwmstart > $XDG_CACHE_HOME/dwm/dwm.log

@@ -1,0 +1,2 @@
+#!/bin/sh
+current_time=$(date | cut -d " " -f 5)

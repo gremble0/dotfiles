@@ -5,7 +5,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 # Adds binaries in home directory to path
-export PATH="$PATH:$HOME/.local/bin/:$HOME/local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/dwmbar:$HOME/local/share/JetBrains/Toolbox/scripts"
 
 # Cleaning up home directory
 # Config files
