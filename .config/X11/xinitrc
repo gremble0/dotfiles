@@ -9,4 +9,5 @@ picom &
 setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys &
 
 # Start window manager
+dwmsetbar &
 dwmstart > $XDG_CACHE_HOME/dwm/dwm.log
