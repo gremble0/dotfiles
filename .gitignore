@@ -38,7 +38,9 @@
 !.config/i3/*
 
 !.config/dwm/
-!.config/dwm/config.h
+!.config/dwm/*.h
+!.config/dwm/*.c
+!.config/dwm/Makefile
 
 !.config/picom/
 !.config/picom/*
