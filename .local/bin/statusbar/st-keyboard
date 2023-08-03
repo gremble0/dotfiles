@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# keylayout() is a slightly modified version of this code:
+# https://gist.github.com/fikovnik/ef428e82a26774280c4fdf8f96ce8eeb
+echo -e "\x03   \x01$(keylayout)"

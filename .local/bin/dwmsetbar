@@ -1,6 +1,10 @@
 #!/bin/sh
 
 while true; do
-    xsetroot -name "$(st-battery)   $(st-memory)   $(st-time) "
-    sleep 1s
+    cache="$(st-battery)   $(st-keyboard)   $(st-memory)"
+    for i in {1..60}; do
+        xsetroot -name "$cache $(st-time) "
+        sleep 1s
+    done
+    $i=1
 done
