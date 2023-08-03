@@ -1,3 +1,8 @@
 #!/bin/sh
-meminfo=$(cat /proc/meminfo)
-total=$($meminfo | grep "MemTotal" | cut -d " " -f 3)
+
+total_memory=$(grep 'MemTotal' /proc/meminfo | sed 's/[a-zA-Z :]//g')
+free_memory=$(grep 'MemFree' /proc/meminfo | sed 's/[a-zA-Z :]//g')
+used_memory=$(($total_memory-$free_memory))
+
+# echo "YOYOOY"
+echo -e "\x03󰘚 \x01$(($used_memory/1000)) MB/$(($total_memory/1000)) MB"

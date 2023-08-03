@@ -1,6 +1,6 @@
 #!/bin/sh
 
 while true; do
-    xsetroot -name "$(st-battery)   $(st-time) "
+    xsetroot -name "$(st-battery)   $(st-memory)   $(st-time) "
     sleep 1s
 done
