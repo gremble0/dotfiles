@@ -1,0 +1,9 @@
+#!/bin/sh
+# Wrapper script to increase volume and refresh the statusbar
+
+case $1 in
+    "-d") pactl -- set-sink-volume 0 -10%;;
+    "-i") pactl -- set-sink-volume 0 +10%;;
+esac
+
+refreshbar

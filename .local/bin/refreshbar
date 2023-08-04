@@ -1,0 +1,4 @@
+#!/bin/sh
+
+kill $(ps -e | awk '/setbar/ { print $1; exit 0 }')
+setbar &
