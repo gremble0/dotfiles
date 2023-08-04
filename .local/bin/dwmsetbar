@@ -2,9 +2,8 @@
 
 while true; do
     cache="$(st-battery)   $(st-keyboard)   $(st-memory)"
-    for i in {1..60}; do
-        xsetroot -name "$cache $(st-time) "
+    for i in {1..5}; do
+        xsetroot -name "$cache   $(st-time)"
         sleep 1s
     done
-    $i=1
 done
