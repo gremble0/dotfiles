@@ -1,4 +1,6 @@
 #!/bin/sh
+# Script to clean up image previews drawn by ueberzug
+
 if [ -n "$FIFO_UEBERZUG" ]; then
 	printf '{"action": "remove", "identifier": "PREVIEW"}\n' > "$FIFO_UEBERZUG"
 fi

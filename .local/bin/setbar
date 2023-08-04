@@ -1,4 +1,5 @@
 #!/bin/sh
+# Script to continously update the contents of the statusbar
 
 while true; do
     cache="$(st-battery)   $(st-volume)   $(st-keyboard)   $(st-memory)"

@@ -1,5 +1,6 @@
 #!/bin/sh
 # Script to change brightness
+
 usage="USAGE: brightness [OPTION]
 Change active screens brightness. Screen brightness values should be in the range 0..1
 

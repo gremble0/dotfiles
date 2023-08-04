@@ -1,6 +1,6 @@
 #!/bin/sh
+# Wrapper script to restart dwm in place and log stderror to file
 
 while true; do
-    # Log stderror to file 
     dwm 2> $XDG_CACHE_HOME/dwm/dwm.log
 done

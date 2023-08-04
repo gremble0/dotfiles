@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # File preview handler for lf.
 
 set -C -f

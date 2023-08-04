@@ -2,8 +2,8 @@
 # Wrapper script to increase volume and refresh the statusbar
 
 case $1 in
-    "-d") pactl -- set-sink-volume 0 -10%;;
-    "-i") pactl -- set-sink-volume 0 +10%;;
+    "-i" | "--increment") pactl -- set-sink-volume 0 +10%;;
+    "-d" | "--decrement") pactl -- set-sink-volume 0 -10%;;
 esac
 
 refreshbar

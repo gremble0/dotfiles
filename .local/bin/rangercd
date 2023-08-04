@@ -1,5 +1,6 @@
 #!/bin/sh
-# Make ranger cd to dir after usage
+# Wrapper sript to make ranger cd to dir after usage
+
 temp_file="$(mktemp -t "rangercd.XXXXXXXXXX")"
 ranger --choosedir="$temp_file" -- "${@:-$PWD}"
 if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
