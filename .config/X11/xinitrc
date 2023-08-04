@@ -6,8 +6,8 @@ nitrogen --restore &
 picom &
 
 # Add dual keyboard layouts with setxkbmap
-setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys &
+setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys
 
 # Start window manager
-dwmsetbar &
+setbar &
 dwmstart > $XDG_CACHE_HOME/dwm/dwm.log
