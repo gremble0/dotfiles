@@ -2,8 +2,8 @@
 
 [ $(ls /sys/class/power_supply/ -l | grep "BAT*" | wc -l) = 0 ] && exit 0
 
-# TODO: find a better way to find battery name (maybe just export as environment variable in zprofile?)
-BAT=$(ls -l /sys/class/power_supply | grep "BAT*" | cut -d " " -f 11)
+# exit 0 in case there are multiple batteries
+BAT=$(ls -l /sys/class/power_supply | awk '/BAT/ { print $9; exit 0 }')
 status=$(cat /sys/class/power_supply/$BAT/status)
 capacity=$(cat /sys/class/power_supply/$BAT/capacity)
 
