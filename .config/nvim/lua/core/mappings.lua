@@ -36,8 +36,8 @@ local open_float_opts = {
 }
 
 local open_float = function() vim.diagnostic.open_float(open_float_opts) end
-local goto_next = function() vim.diagnostic.goto_prev({ float = open_float_opts }) end
-local goto_prev = function() vim.diagnostic.goto_next({ float = open_float_opts }) end
+local goto_next = function() vim.diagnostic.goto_next({ float = open_float_opts }) end
+local goto_prev = function() vim.diagnostic.goto_prev({ float = open_float_opts }) end
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "gp", goto_prev, { desc = "go to previous diagnostic message" })
