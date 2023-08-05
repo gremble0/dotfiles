@@ -27,10 +27,23 @@ vim.keymap.set("n", "<Esc>", ":noh <CR>", { desc = "clear highlights" })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+local open_float_opts = {
+  focusable = false,
+  close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+  border = "single",
+  source = "always", -- show source in diagnostic popup window
+  prefix = " "
+}
+
+local open_float = function() vim.diagnostic.open_float(open_float_opts) end
+local goto_next = function() vim.diagnostic.goto_prev({ float = open_float_opts }) end
+local goto_prev = function() vim.diagnostic.goto_next({ float = open_float_opts }) end
+
 -- Diagnostic keymaps
-vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, { desc = "go to previous diagnostic message" })
-vim.keymap.set("n", "gn", vim.diagnostic.goto_next, { desc = "go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "open floating diagnostic message" })
+vim.keymap.set("n", "gp", goto_prev, { desc = "go to previous diagnostic message" })
+vim.keymap.set("n", "gn", goto_next, { desc = "go to next diagnostic message" })
+vim.keymap.set("n", "<leader>e", open_float, { desc = "open floating diagnostic message" }
+)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostics list" })
 
 --- VISUAL MODE KEYBINDS ---
