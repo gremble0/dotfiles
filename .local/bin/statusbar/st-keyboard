@@ -2,4 +2,6 @@
 
 # keylayout() is a slightly modified version of this code:
 # https://gist.github.com/fikovnik/ef428e82a26774280c4fdf8f96ce8eeb
+caps=$(xset q | awk '/Caps Lock/ { print $4 }')
+[ $caps = "on" ] && echo -e "\x03   \x01$(keylayout) \x03CAPS LOCK\x01" && exit 0
 echo -e "\x03   \x01$(keylayout)"
