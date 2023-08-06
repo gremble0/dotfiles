@@ -5,6 +5,9 @@ nitrogen --restore &
 # Start compositor
 picom &
 
+# Bind keys
+sxhkd &
+
 # Add dual keyboard layouts with setxkbmap
 setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys
 

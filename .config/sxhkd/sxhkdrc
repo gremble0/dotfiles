@@ -1,0 +1,39 @@
+# Mod key combinations
+alt + d
+    rofi -show drun -show-icons
+
+alt + Return
+    $TERMINAL
+
+Caps_Lock; @Caps_Lock
+    refreshbar
+
+# Fn lock functionality
+XF86AudioRaiseVolume
+    pactl -- set-sink-volume 0 +10% && refreshbar
+
+XF86AudioLowerVolume 
+    pactl -- set-sink-volume 0 -10% && refreshbar
+
+XF86MonBrightnessDown 
+    brightness -d
+
+XF86MonBrightnessUp 
+    brightness -i
+
+# Screenshotting
+# Take screenshot using maim, pipe it to xclip to copy to clipboard
+Print
+    maim --format=png --select | xclip -selection clipboard -t image/png
+
+# Selection screenshot and download
+ctrl + Print
+    maim --format=png --select $HOME/Pictures/Screenshots/screenshot.png
+
+# Fullscreen screenshot
+shift + Print
+    maim --format=png | xclip -selection clipboard -t image/png
+
+# Fullscreen screenshot and download
+ctrl + shift + Print
+    maim --format=png $HOME/Pictures/Screenshots/screenshot.png
