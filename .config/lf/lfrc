@@ -16,7 +16,7 @@ set relativenumber
 set numberfmt "\033[34m"
 
 # Change prompt
-set promptfmt "\033[33;1m%u@%h\033[0m\033[34;1m%d\033[0m\033[1m%f\033[0m"
+set promptfmt "\033[33;1m❯ \033[0m\033[34;1m%d\033[0m\033[1m%f\033[0m"
 
 # Remove time from statusbar
 set timefmt ""

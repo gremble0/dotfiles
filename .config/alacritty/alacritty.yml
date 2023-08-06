@@ -20,7 +20,7 @@ font:
 colors:
   primary:
     background: "#151515"
-    foreground: "#ffffff"
+    foreground: "#cccccc"
   normal:
     black: "#151515"
     red: "#cc0000"
@@ -29,7 +29,7 @@ colors:
     blue: "#8197bf"
     magenta: "#75507b"
     cyan: "#06989a"
-    white: "#ffffff"
+    white: "#cccccc"
   bright:
     black: "#191919"
     red: "#ef2929"
@@ -38,9 +38,9 @@ colors:
     blue: "#a3b9df"
     magenta: "#ad7fa8"
     cyan: "#34e2e2"
-    white: "#dddddd"
+    white: "#ffffff"
   cursor:
-    cursor: "#ffffff"
+    cursor: "#cccccc"
 
 key_bindings:
   # Differentiate between keys when pressed with modifiers 
