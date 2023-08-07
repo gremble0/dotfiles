@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if grep -xq 'up' /sys/class/net/wlan*/operstate 2>/dev/null ; then
+	format="\x03   \x01UP"
+elif grep -xq 'up' /sys/class/net/wwan*/operstate 2>/dev/null ; then
+	format="\x03󰈀   \x01UP"
+else
+	format="\x03󱘖   \x01DOWN"
+fi
+
+echo -e "$format"
