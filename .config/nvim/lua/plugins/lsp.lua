@@ -34,33 +34,6 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
     lsp.buf.format()
   end, { desc = "Format current buffer with LSP" })
-
-  -- Automatically display diagnostics when hovering over an error
-  -- vim.api.nvim_create_autocmd("CursorHold", {
-  --   buffer = bufnr,
-  --   callback = function()
-  --
-  --     if not vim.b.diagnostics_pos then
-  --       vim.b.diagnostics_pos = { nil, nil }
-  --     end
-  --
-  --     local cursor_pos = vim.api.nvim_win_get_cursor(0)
-  --     if (cursor_pos[1] ~= vim.b.diagnostics_pos[1] or cursor_pos[2] ~= vim.b.diagnostics_pos[2])
-  --         and #vim.diagnostic.get() > 0
-  --     then
-  --       vim.diagnostic.open_float(nil, {
-  --         focusable = false,
-  --         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-  --         border = "single",
-  --         source = "always", -- show source in diagnostic popup window
-  --         prefix = " ",
-  --       })
-  --     end
-  --
-  --     vim.b.diagnostics_pos = cursor_pos
-  --   end,
-  -- })
-
 end
 
 -- Add border to floating windows, get the border style from the theme file
@@ -74,6 +47,7 @@ local servers = {
   clangd = {},
   pyright = {},
   tsserver = {},
+  cssls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
