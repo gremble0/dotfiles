@@ -1,7 +1,8 @@
 #!/bin/sh
 
-volume=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+volume=$(pactl list sinks | grep "Volume:" | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
 
-[ $volume -lt 50 ] && echo -e "\x03   \x01$volume%" && exit 0
-[ $volume -ge 50 ] && echo -e "\x03   \x01$volume%" && exit 0
-# TODO: volume is muted
+[ $(pactl list sinks | grep "Mute" | cut -d " " -f 2) = "yes" ] && echo -e "\x04󰖁   $volume%\x01" && exit 0
+[ $volume -lt 33 ] && echo -e "\x03󰕿   \x01$volume%" && exit 0
+[ $volume -lt 66 ] && echo -e "\x03󰖀   \x01$volume%" && exit 0
+echo -e "\x03󰕾   \x01$volume%" && exit 0

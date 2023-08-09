@@ -10,10 +10,13 @@ Caps_Lock; @Caps_Lock
 
 # Fn lock functionality
 XF86AudioRaiseVolume
-    pactl -- set-sink-volume 0 +10% && refreshbar
+    pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ +10% && refreshbar
 
 XF86AudioLowerVolume 
-    pactl -- set-sink-volume 0 -10% && refreshbar
+    pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ -10% && refreshbar
+
+XF86AudioMute 
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && refreshbar
 
 XF86MonBrightnessDown 
     brightness -d
