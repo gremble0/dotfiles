@@ -11,9 +11,10 @@
 !.local/bin/statusbar/
 !.local/bin/statusbar/*
 
-!.local/share/
-!.local/share/applications/
-!.local/share/applications/*
+!.local/share/applications/file.desktop
+!.local/share/applications/img.desktop
+!.local/share/applications/text.desktop
+!.local/share/applications/video.desktop
 
 #.config/ folders
 !.config/
