@@ -1,12 +1,45 @@
-# Mod key combinations
+# Restart sxhkd
+alt + Escape
+    pkill -USR1 -x sxhkd
+
+# BSPWM
+# Restarting/Quitting BSPWM
+alt + shift + {Escape,BackSpace}
+    bspc {wm -r,quit}
+
+# Kill active window
+alt + w
+    bspc node -c
+
+# Navigation
+alt + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+# Focus or send to the given desktop
+alt + {_,shift + }{1-9}
+    bspc {desktop -f,node -d} {1-9}
+
+# Resizing
+alt + ctrl + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# Toggle monocle mode (more useful than fullscreen imo)
+alt + f
+    bspc desktop -l next
+
+# Set the tiling layout
+alt + {t,shift + t,s}
+	bspc node -t {tiled,pseudo_tiled,floating}
+
+# Run programs
 alt + d
     rofi -show drun -show-icons
 
+alt + b
+    firefox
+
 alt + Return
     $TERMINAL
-
-Caps_Lock; @Caps_Lock
-    refreshbar
 
 # Fn lock functionality
 XF86AudioRaiseVolume

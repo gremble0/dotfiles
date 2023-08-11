@@ -35,6 +35,9 @@
 !.config/X11/
 !.config/X11/*
 
+!.config/bspwm/
+!.config/bspwm/*
+
 !.config/sxhkd/
 !.config/sxhkd/*
 

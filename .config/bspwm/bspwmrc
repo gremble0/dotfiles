@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Assigning desktops to specific monitors
+# for monitor in $(bspc query -M); do
+bspc monitor HDMI-0 -d 1 3 5 7 9
+bspc monitor DP-0 -d 2 4 6 8
+# done
+
+# Assigning programs to specific desktops
+bspc rule -a steam desktop='^1' state=floating
+bspc rule -a discord desktop='^4'
+
+# Theming
+bspc config border_width 1
+
+bspc config normal_border_color "#191919"
+bspc config active_border_color "#191919"
+bspc config focused_border_color "#e1b655"
+bspc config presel_border_color "#e1b655"
+bspc config urgent_border_color "#d22b2b"
