@@ -15,4 +15,5 @@ setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys
 polybarstart &
 
 # Start window manager
-i3
+# i3
+bspwm
