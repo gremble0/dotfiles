@@ -24,12 +24,12 @@ alt + ctrl + {h,j,k,l}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # Toggle monocle mode (more useful than fullscreen imo)
-alt + f
+alt + m
     bspc desktop -l next
 
 # Set the tiling layout
-alt + {t,shift + t,s}
-	bspc node -t {tiled,pseudo_tiled,floating}
+alt + {t,s,f}
+	bspc node -t {tiled,floating,fullscreen}
 
 # Run programs
 alt + d
