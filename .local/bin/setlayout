@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sleep 5
+setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys

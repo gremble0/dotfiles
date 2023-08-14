@@ -9,11 +9,10 @@ picom &
 sxhkd &
 
 # Add dual keyboard layouts with setxkbmap
-setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys
+setlayout &
 
 # Start statusbar
 polybarstart &
 
 # Start window manager
-# i3
 bspwm
