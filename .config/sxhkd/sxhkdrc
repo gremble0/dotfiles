@@ -39,7 +39,7 @@ alt + b
     firefox
 
 alt + Return
-    $TERMINAL
+    emacsclient -c -a "emacs"
 
 # Fn lock functionality
 XF86AudioRaiseVolume
