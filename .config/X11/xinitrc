@@ -14,5 +14,8 @@ setlayout &
 # Start statusbar
 polybarstart &
 
+# Start emacs daemon
+emacs --daemon &
+
 # Start window manager
 bspwm

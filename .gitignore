@@ -32,6 +32,9 @@
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
 
+!.config/emacs/
+!.config/emacs/init.el
+
 !.config/X11/
 !.config/X11/*
 
