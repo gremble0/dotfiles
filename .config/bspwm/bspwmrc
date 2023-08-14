@@ -7,7 +7,7 @@ bspc monitor DP-0 -d 2 4 6 8
 # done
 
 # Assigning programs to specific desktops
-bspc rule -a steam desktop='1' state=floating
+bspc rule -a steam desktop='1'
 bspc rule -a discord desktop='4'
 
 # Theming

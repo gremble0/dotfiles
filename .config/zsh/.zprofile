@@ -48,5 +48,5 @@ export LS_COLORS='*.jpg=00;35:*.jpeg=00;35:*.avif=00;35:*.mjpeg=00;35:*.gif=00;3
 
 # Run startx if i3 session is not already active
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-    pgrep i3 || startx "$XDG_CONFIG_HOME/X11/xinitrc"
+    startx "$XDG_CONFIG_HOME/X11/xinitrc"
 fi 

@@ -35,8 +35,7 @@ window {
     background-color: @background;
     border:           1;
     padding:          0;
-    border-radius:    7;
-    height:           452;
+    height:           460px;
     width:            50ch;
 }
 mainbox {
