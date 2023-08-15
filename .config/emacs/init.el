@@ -120,9 +120,21 @@
 
   (general-def 'insert
     "C-h" 'backward-char
-    "C-j" 'previous-line
-    "C-k" 'next-line
-    "C-l" 'forward-char))
+    "C-j" 'next-line
+    "C-k" 'previous-line
+    "C-l" 'forward-char)
+
+  ;; Dired keybinds
+  (general-def ('normal 'insert) dired-mode-map
+    "a" 'dired-create-empty-file ;; TODO: and refresh
+    "r" 'dired-do-rename ;; dired-rename-file
+    "d" 'dired-delete-file
+    "<return>" 'dired-open-file
+    "<backspace>" 'dired-up-directory)
+
+  (general-def minibuffer-local-completion-map
+    "<return>" nil
+  ))
 
 ;; Terminal
 (use-package vterm
@@ -206,7 +218,7 @@
 
 ;; Set theme
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes")
-(load-theme 'yellowbeans)
+(load-theme 'yellowbeans t)
 
 ;; Set fonts
 (set-face-attribute 'default nil
