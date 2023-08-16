@@ -47,50 +47,63 @@ set cursorpreviewfmt ""
 set previewer "lfpreviewer"
 set cleaner "lfcleaner"
 
-# Use enter for shell commands
-map <enter> shell
+# Use enter to open file
+map <enter> $$EDITOR "$f"
 
 # Show the result of execution of previous commands
 map ` !true
 
-# Execute current file (must be executable)
+# Execute files
 map x $$f
-map X !$f
+map X makeex
+map R removeex
 
-# Mappings for deleting
+# Trashing/deleting
 map D trash
 map C $cleantrash
+
+# Make files and folders
+map A push %mkdir<space>
+map a push %touch<space>
 
 # Command to open file with appropriate program
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
-	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
-	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
+        image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
         text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx ;;
-	image/x-xcf) gimp $f ;;
-	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
-	setsid -f nsxiv -aio 2>/dev/null | while read -r file; do
-	    [ -z "$file" ] && continue
-	    lf -remote "send select \"$file\""
-	    lf -remote "send toggle"
-	done &
-	;;
-	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
-	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+        image/x-xcf) gimp $f ;;
+        image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
+        setsid -f nsxiv -aio 2>/dev/null | while read -r file; do
+            [ -z "$file" ] && continue
+            lf -remote "send select \"$file\""
+            lf -remote "send toggle"
+            done &
+            ;;
+        audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
+        video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+        application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
         *) $EDITOR $fx ;;
     esac
 }}
-
-# Keymaps to make files and folders from lf
-map A :push %mkdir<space>
-map a :push %touch<space>
 
 # Make sure trash folder exists
 %mkdir -p ~/.local/share/lf/trash
 
 # Move current file or selected files to trash folder
 cmd trash %set -f; mv $fx ~/.local/share/lf/trash
+
+# Make file executable
+cmd makeex ${{
+    chmod +x $f
+    lf -remote 'send reload'
+}}
+
+# Make file not executable
+cmd removeex ${{
+    chmod -x $f
+    lf -remote 'send reload'
+}}
 
 # Extract the current file with the right command
 cmd extract ${{
