@@ -76,6 +76,7 @@
     :prefix "SPC"
     :global-prefix "M-SPC")
 
+  (load "~/.config/emacs/buffer-move.el")
   (leader-keys
     ;; Leader combinations instead of double tapping key
     "d" "dd"
@@ -126,8 +127,8 @@
 
   ;; Dired keybinds
   (general-def ('normal 'insert) dired-mode-map
-    "a" 'dired-create-empty-file ;; TODO: and refresh
-    "r" 'dired-do-rename ;; dired-rename-file
+    "a" 'dired-create-empty-file
+    "r" 'dired-do-rename
     "d" 'dired-delete-file
     "<return>" 'dired-open-file
     "<backspace>" 'dired-up-directory)
@@ -137,6 +138,11 @@
   ))
 
 ;; Terminal
+(use-package eshell-syntax-highlighting
+  :after esh-mode
+  :config
+  (eshell-syntax-highlighting-global-mode +1))
+
 (use-package vterm
   :config
   (setq shell-file-name "/bin/zsh"
@@ -154,10 +160,6 @@
                          (or (equal major-mode 'vterm-mode)
                              (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
                   (display-buffer-reuse-window display-buffer-at-bottom)
-                  ;;(display-buffer-reuse-window display-buffer-in-direction)
-                  ;;display-buffer-in-direction/direction/dedicated is added in emacs27
-                  ;;(direction . bottom)
-                  ;;(dedicated . t) ;dedicated is supported in emacs27
                   (reusable-frames . visible)
                   (window-height . 0.4))))
 
@@ -263,7 +265,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("52487739a5864f2c022ddf861c9c7cedad9c028ac61145a8a6447c6784ad4b9c" default)))
+   '("6558fa279269fa352947bf310f7dc2b6e25745d539c9974628e569a3dbff78db" "68483b0eb8ad569b1212b1e160ff920ac98dc7cf67668a0eb53ffac632778300" "9b7cae793c4e8bbbdab743fa38f857176fb09f77ca0690d8aa960e40b3900109" "30af43ce54f038a9c1c60893a7100d40ef5e7e86d307a1b5c338f768708c32f9" "93bb13b355ca389a2929fc14bb27b8f864234ef3e444728871037d2d6e5c1299" "ee92cd6b037bbc6e496cdcca1e306c4c864ff6ee712c2fad33916a33b8bdb005" "52487739a5864f2c022ddf861c9c7cedad9c028ac61145a8a6447c6784ad4b9c" default)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

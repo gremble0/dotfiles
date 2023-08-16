@@ -39,7 +39,7 @@ alt + b
     firefox
 
 alt + Return
-    emacsclient -c -a "emacs"
+    alacritty
 
 # Fn lock functionality
 XF86AudioRaiseVolume
