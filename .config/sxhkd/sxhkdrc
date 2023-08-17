@@ -29,17 +29,17 @@ alt + m
 
 # Set the tiling layout
 alt + {t,s,f}
-	bspc node -t {tiled,floating,fullscreen}
+    bspc node -t {tiled,floating,fullscreen}
 
 # Run programs
 alt + d
     rofi -show drun -show-icons
 
 alt + b
-    firefox
+    $BROWSER
 
 alt + Return
-    alacritty
+    $=VISUAL
 
 # Fn lock functionality
 XF86AudioRaiseVolume
