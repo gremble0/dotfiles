@@ -101,7 +101,7 @@
     "bb" 'switch-to-buffer
     "bn" 'next-buffer
     "bp" 'previous-buffer
-    "bc" 'kill-this-buffer
+    "bc" 'kill-buffer-and-window
     "be" 'eval-buffer
 
     ;; File navigation
@@ -131,9 +131,15 @@
 
     ;; Miscellaneous
     "g" 'magit-status
-    "t" 'vterm-toggle)
+    "t" 'vterm-toggle
 
+    ;; LSP
+    "lr" 'lsp-rename
+    "lf" 'lsp-find-references
+    "ld" 'lsp-find-definition
+    "lt" 'lsp-find-type-definition)
 
+  ;; Leader keybinds in visual mode
   (general-create-definer leader-keys-visual
     :states '(visual)
     :keymaps 'override
@@ -142,6 +148,7 @@
   (leader-keys-visual
     "/" 'comment-or-uncomment-region)
 
+  ;; Leader keybinds in normal mode
   (general-create-definer leader-keys-normal
     :states '(normal)
     :keymaps 'override
@@ -150,6 +157,7 @@
   (leader-keys-normal
     "/" 'comment-line)
 
+  ;; Navigate text in insert mode
   (general-def 'insert
     "C-h" 'backward-char
     "C-j" 'next-line
@@ -157,15 +165,12 @@
     "C-l" 'forward-char)
 
   ;; Dired keybinds
-  (general-def ('normal 'insert) dired-mode-map
+  (general-def ('normal 'insert 'visual 'emacs) dired-mode-map
     "a" 'dired-create-empty-file
     "r" 'dired-do-rename
     "d" 'dired-do-delete
     "<return>" 'dired-open-file
-    "<backspace>" 'dired-up-directory)
-
-  (general-def minibuffer-local-completion-map
-    "<return>" nil))
+    "<backspace>" 'dired-up-directory))
 
 ;; Terminal
 (use-package eshell-syntax-highlighting
@@ -202,6 +207,19 @@
 				("png" . "nsxiv")
 				("mkv" . "mpv")
 				("mp4" . "mpv"))))
+
+;; LSP integration
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-l")
+  :config
+  (lsp-enable-which-key-integration t))
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+			 (require 'lsp-pyright)
+			 (lsp))))
 
 ;; Command completion
 (use-package ivy
