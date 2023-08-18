@@ -43,6 +43,8 @@
   ;; Assume :elpaca t unless otherwise specified.
   (setq elpaca-use-package-by-default t))
 
+(setq use-package-always-ensure t)
+
 ;; Block until current queue processed.
 (elpaca-wait)
 
@@ -76,7 +78,6 @@
 
 (use-package evil-collection
   :after evil
-  :ensure t
   :custom (evil-collection-setup-minibuffer t)
   :init (evil-collection-init))
 
@@ -101,7 +102,7 @@
     "bb" 'switch-to-buffer
     "bn" 'next-buffer
     "bp" 'previous-buffer
-    "bc" 'kill-buffer-and-window
+    "bk" 'kill-buffer-and-window
     "be" 'eval-buffer
 
     ;; File navigation
@@ -110,16 +111,14 @@
     "fe" 'dired-jump
     "fs" 'dired
 
-    ;; Splitting and closing windows
+    ;; Navigating windows
     "wc" 'evil-window-delete
     "ws" 'evil-window-split
     "wv" 'evil-window-vsplit
-    ;; Navigating windows
     "wh" 'evil-window-left
     "wj" 'evil-window-down
     "wk" 'evil-window-up
     "wl" 'evil-window-right
-    ;; Moving windows
     "wH" 'evil-window-move-far-left
     "wJ" 'evil-window-move-very-bottom
     "wK" 'evil-window-move-very-top
@@ -129,15 +128,19 @@
     "hf" 'describe-function
     "hv" 'describe-variable
 
-    ;; Miscellaneous
-    "g" 'magit-status
-    "t" 'vterm-toggle
+    ;; Git
+    "gs" 'magit-status
+    "gn" 'git-gutter:next-hunk
+    "gp" 'git-gutter:previous-hunk
 
     ;; LSP
     "lr" 'lsp-rename
     "lf" 'lsp-find-references
     "ld" 'lsp-find-definition
-    "lt" 'lsp-find-type-definition)
+    "lt" 'lsp-find-type-definition
+
+    ;; Miscellaneous
+    "t" 'vterm-toggle)
 
   ;; Leader keybinds in visual mode
   (general-create-definer leader-keys-visual
@@ -216,7 +219,6 @@
   (lsp-enable-which-key-integration t))
 
 (use-package lsp-pyright
-  :ensure t
   :hook (python-mode . (lambda ()
 			 (require 'lsp-pyright)
 			 (lsp))))
@@ -231,12 +233,10 @@
   (ivy-mode))
 
 (use-package all-the-icons-ivy-rich
-  :ensure t
   :init (all-the-icons-ivy-rich-mode 1))
 
 (use-package ivy-rich
   :after ivy
-  :ensure t
   :init (ivy-rich-mode 1) ;; this gets us descriptions in M-x.
   :custom
   (ivy-virtual-abbreviate 'full
@@ -252,16 +252,34 @@
 
 ;; Icons
 (use-package all-the-icons
-  :ensure t
   :if (display-graphic-p))
 
 (use-package all-the-icons-dired
   :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
 
+;; Preview colors while editing
 (use-package rainbow-mode
   :hook org-mode prog-mode)
 
+;; Git
 (use-package magit)
+
+(use-package git-gutter
+  :hook (prog-mode . git-gutter-mode)
+  :config
+  (setq git-gutter:update-interval 0.50))
+
+(defface git-gutter:added
+  '((t :inherit default :weight bold :foreground "#60a840"))
+  "Face displayed in gutter for new git hunks")
+
+(defface git-gutter:modified
+  '((t :inherit git-gutter:added :foreground "#ffa500"))
+  "Face displayed in gutter for modified git hunks")
+
+(defface git-gutter:modified
+  '((t :inherit git-gutter:added :foreground "#d22b2b"))
+  "Face displayed in gutter for modified git hunks")
 
 ;; Language support
 (use-package lua-mode)
@@ -305,10 +323,6 @@
 
       ls-lisp-dirs-first t
       ls-lisp-use-insert-directory-program nil)
-
-;; Some keybinds
-(keymap-global-set "C-c C-p" 'previous-buffer)
-(keymap-global-set "C-c C-n" 'next-buffer)
 
 ;; Modeline
 (setq-default mode-line-format
