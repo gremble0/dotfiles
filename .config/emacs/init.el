@@ -224,44 +224,23 @@
 			 (require 'lsp-pyright)
 			 (lsp))))
 
-;; Command completion
-(use-package ivy
-  :custom
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq enable-recursive-minibuffers t)
+;; Completion
+(use-package vertico
+  :config (vertico-mode)
+
+(use-package marginalia
   :config
-  (ivy-mode))
+  (setq marginalia-align 'right)
+  (marginalia-mode))
 
-(use-package all-the-icons-ivy-rich
-  :init (all-the-icons-ivy-rich-mode 1))
-
-(use-package ivy-rich
-  :after ivy
-  :init (ivy-rich-mode 1) ;; this gets us descriptions in M-x.
+(use-package orderless
   :custom
-  (ivy-virtual-abbreviate 'full
-   ivy-rich-switch-buffer-align-virtual-buffer t
-   ivy-rich-path-style 'abbrev)
-  :config
-  (ivy-set-display-transformer 'ivy-switch-buffer
-                               'ivy-rich-switch-buffer-transformer))
-
-(use-package counsel
-  :after ivy
-  :config (counsel-mode))
-
-;; Icons
-(use-package all-the-icons
-  :if (display-graphic-p))
-
-(use-package all-the-icons-dired
-  :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
+  (completion-styles '(orderless)))
 
 ;; Mode-Line
-;; (use-package mood-line
-;;   :config
-;;   (mood-line-mode))
+(use-package mood-line
+  :config
+  (mood-line-mode))
 
 ;; Preview colors while editing
 (use-package rainbow-mode
@@ -374,40 +353,124 @@
   "Face for cyan colors in terminal"
   :group 'vterm)
 
+(defface orderless-match-face-0
+  '((t :inherit 'font-lock-keyword-face))
+  "First face for orderless matches")
+
+(defface orderless-match-face-1
+  '((t :inherit 'font-lock-variable-name-face))
+  "Second face for orderless matches")
+
+(defface orderless-match-face-2
+  '((t :inherit 'font-lock-string-face))
+  "Third face for orderless matches")
+
+(defface orderless-match-face-3
+  '((t :inherit 'font-lock-function-name-face))
+  "Fourth face for orderless matches")
+
 ;; Mode-Line
-(setq-default mode-line-format
-	      '((:eval (mode-line-evil-mode))
-		" "
-		(:eval (mode-line-buffer-name))
-		" "
-		(:eval (mode-line-major-mode))))
+;; Large parts of this is taken from mood-line: https://gitlab.com/jessieh/mood-line
+;; (defun mode-line-separated-format (left right)
+;;   "Format a mode line with a `LEFT' and `RIGHT' justified list of elements.
+;; The mode line should fit the `window-width' with space between the lists."
+;;   (let ((reserve (length right)))
+;;     (concat left
+;;             " "
+;;             (propertize " "
+;;                         'display `((space :align-to (- right
+;;                                                        (- 0 right-margin)
+;;                                                        ,reserve))))
+;;             right)))
 
-(defcustom evil-mode-state-alist
-  '((normal   . ("NORMAL"   . font-lock-function-name-face))
-    (insert   . ("INSERT"   . font-lock-string-face))
-    (visual   . ("VISUAL"   . font-lock-keyword-face))
-    (replace  . ("REPLACE"  . font-lock-type-face))
-    (motion   . ("MOTION"   . font-lock-constant-face))
-    (operator . ("OPERATOR" . font-lock-function-name-face))
-    (emacs    . ("EMACS"    . font-lock-builtin-face)))
-  "Display current evil-mode state"
-  :type '(alist
-	  :key-type symbol
-	  :value-type
-	  (cons (string: tag "Display Text") (choice :tag "Face" face plist))))
+;; (setq-default mode-line-format
+;; 	      '((:eval
+;; 		 (mode-line-separated-format
+;; 		  ;; Left
+;; 		  (format-mode-line
+;; 		  '(" "
+;; 		    (:eval (mode-line-evil-mode))
+;; 		    " "
+;; 		    (:eval (mode-line-buffer-name))))
+;; 		   ;; Right
+;; 		   (format-mode-line
+;; 		    '(" "
+;; 		      (:eval (mode-line-major-mode))
+;; 		      " "
+;; 		      (:eval (mode-line-vc))
+;; 		      " "))))))
 
-(defun mode-line-evil-mode ()
-  "Display the current evil-mode state."
-  (when (boundp 'evil-state)
-    (let ((mode-cons (alist-get evil-state evil-mode-state-alist)))
-      (propertize (car mode-cons)
-                  'face (cdr mode-cons)))))
+;; (defcustom evil-mode-state-alist
+;;   '((normal   . ("NORMAL"   . font-lock-function-name-face))
+;;     (insert   . ("INSERT"   . font-lock-string-face))
+;;     (visual   . ("VISUAL"   . font-lock-keyword-face))
+;;     (replace  . ("REPLACE"  . font-lock-constant-face))
+;;     (motion   . ("MOTION"   . font-lock-variable-name-face));
+;;     (operator . ("OPERATOR" . font-lock-function-name-face));
+;;     (emacs    . ("EMACS"    . font-lock-builtin-face)))
+;;   "Display current evil-mode state"
+;;   :type '(alist
+;; 	  :key-type symbol
+;; 	  :value-type
+;; 	  (cons (string: tag "Display Text") (choice :tag "Face" face plist))))
 
-(defun mode-line-buffer-name ()
-  (propertize (buffer-name) 'face 'mode-line))
+;; (defun mode-line-evil-mode ()
+;;   "Display the current evil-mode state."
+;;   (when (boundp 'evil-state)
+;;     (let ((mode-cons (alist-get evil-state evil-mode-state-alist)))
+;;       (propertize (car mode-cons)
+;;                   'face (cdr mode-cons)))))
 
-(defun mode-line-major-mode ()
-  (propertize (capitalize (symbol-name major-mode)) 'face 'mode-line))
+;; (defun mode-line-buffer-name ()
+;;   (propertize (buffer-name) 'face 'mode-line))
+
+;; (defun mode-line-major-mode ()
+;;   (propertize (capitalize (symbol-name major-mode)) 'face 'mode-line))
+
+;; (defvar-local mode-line-vc-text nil)
+
+;; (defun mode-line-vc-update (&rest _)
+;;   "Update `mode-line-vc-text' against the current VCS state."
+;;   (setq mode-line-vc-text
+;;         (when (and vc-mode
+;;                    buffer-file-name)
+;;           (let* ((backend (vc-backend buffer-file-name))
+;;                  (branch (substring-no-properties vc-mode
+;;                                                   (+ (if (eq backend 'Hg) 2 3)
+;;                                                      2)))
+;;                  (state (vc-state buffer-file-name
+;;                                   (vc-backend buffer-file-name))))
+;;             (cond
+;;              ((memq state '(edited added))
+;;               (format #("%s +  "
+;;                         0 2 (face mode-line))
+;;                       branch))
+;;              ((eq state 'needs-merge)
+;;               (format #("%s >  "
+;;                         0 2 (face mode-line))
+;;                       branch))
+;;              ((eq state 'needs-update)
+;;               (format #("%s v  "
+;;                         0 2 (face mode-line))
+;;                       branch))
+;;              ((memq state '(removed conflict unregistered))
+;;               (format #("%s x  "
+;;                         0 2 (face mode-line))
+;;                       branch))
+;;              (t
+;;               (format #("%s -  "
+;;                         0 5 (face mode-line))
+;;                       branch)))))))
+
+;; (add-hook 'find-file-hook
+;; 	  #'mode-line-vc-update)
+;; (add-hook 'after-save-hook
+;; 	  #'mode-line-vc-update)
+;; (advice-add 'vc-refresh-state :after
+;; 	  #'mode-line-vc-update)
+
+;; (defun mode-line-vc ()
+;;   mode-line-vc-text)
 
 ;; Autogenerated
 (custom-set-variables

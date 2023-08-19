@@ -52,7 +52,7 @@
    `(mode-line-buffer-id ((,class (:box nil :bold t :foreground ,fg1 :background ,unspec))))
    `(mode-line-highlight ((,class (:box nil :foreground ,selection :weight bold))))
    `(mode-line-emphasis ((,class (:foreground ,fg1))))
-   `(vertical-border ((,class (:foreground ,fg3))))
+   `(vertical-border ((,class (:foreground ,selection))))
    `(minibuffer-prompt ((,class (:bold t :foreground ,builtin))))
    `(default-italic ((,class (:italic t))))
    `(link ((,class (:foreground ,const :underline t))))
