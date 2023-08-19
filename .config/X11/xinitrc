@@ -15,7 +15,7 @@ setlayout &
 polybarstart &
 
 # Start emacs daemon
-emacs --daemon -y &
+emacs --daemon &
 
 # Start window manager
 bspwm

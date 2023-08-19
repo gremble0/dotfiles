@@ -257,6 +257,10 @@
 (use-package all-the-icons-dired
   :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
 
+;; Modeline
+;; (use-package mood-line
+;;   :config (mood-line-mode))
+
 ;; Preview colors while editing
 (use-package rainbow-mode
   :hook org-mode prog-mode)
@@ -268,18 +272,6 @@
   :hook (prog-mode . git-gutter-mode)
   :config
   (setq git-gutter:update-interval 0.50))
-
-(defface git-gutter:added
-  '((t :inherit default :weight bold :foreground "#60a840"))
-  "Face displayed in gutter for new git hunks")
-
-(defface git-gutter:modified
-  '((t :inherit git-gutter:added :foreground "#ffa500"))
-  "Face displayed in gutter for modified git hunks")
-
-(defface git-gutter:modified
-  '((t :inherit git-gutter:added :foreground "#d22b2b"))
-  "Face displayed in gutter for modified git hunks")
 
 ;; Language support
 (use-package lua-mode)
@@ -324,27 +316,94 @@
       ls-lisp-dirs-first t
       ls-lisp-use-insert-directory-program nil)
 
-;; Modeline
-(setq-default mode-line-format
-	      '("%e"
-	        modeline-buffer-name
-		"  "
-		modeline-major-mode))
+;; Defining some font faces
+;; Git-gutter font faces
+(defgroup git-gutter nil
+  "Group for colors used by git-gutter"
+  :group 'processes)
+
+(defface git-gutter:added
+  '((t :inherit default :weight bold :foreground "#60a840"))
+  "Face displayed in gutter for new git hunks"
+  :group 'git-gutter)
+
+(defface git-gutter:modified
+  '((t :inherit git-gutter:added :foreground "#ffa500"))
+  "Face displayed in gutter for modified git hunks"
+  :group 'git-gutter)
+
+(defface git-gutter:modified
+  '((t :inherit git-gutter:added :foreground "#d22b2b"))
+  "Face displayed in gutter for modified git hunks"
+  :group 'git-gutter)
+
+;; Modeline font faces
+(defgroup modeline nil
+  "Group for colors used in the modeline"
+  :group 'processes)
 
 (defface modeline-default-face
   '((t :background "#191919" :foreground "#cccccc"))
-  "Face for background color of modeline")
+  "Face for background color of modeline"
+  :group 'modeline)
 
-(defface modeline-buffer-name-style
-  '((t :inherit modeline-default-face :foreground "#e1b655"))
-  "Face for buffer-name section in modeline")
+;; Vterm font faces
+(defgroup vterm nil
+  "Group for colors used by vterm"
+  :group 'processes)
+
+(defface vterm-color-red
+  '((t :background "#cc0000":foreground "#cc0000"))
+  "Face for red colors in terminal"
+  :group 'vterm)
+
+(defface vterm-color-green
+  '((t :foreground "#99ad6a"))
+  "Face for green colors in terminal"
+  :group 'vterm)
+
+(defface vterm-color-yellow
+  '((t :foreground "#e1b655"))
+  "Face for yellow colors in terminal"
+  :group 'vterm)
+
+(defface vterm-color-blue
+  '((t :foreground "#8197bf"))
+  "Face for blue colors in terminal"
+  :group 'vterm)
+
+(defface vterm-color-magenta
+  '((t :foreground "#75507b"))
+  "Face for magenta colors in terminal"
+  :group 'vterm)
+
+(defface vterm-color-cyan
+  '((t :foreground "#06989a"))
+  "Face for cyan colors in terminal"
+  :group 'vterm)
+
+;; Modeline
+(setq-default mode-line-format
+	      '("%e"
+		modeline-evil-mode
+	        modeline-buffer-name
+		modeline-major-mode))
+
+(defun modeline-evil-mode-format ()
+  (format "%s " evil-state))
+
+(defvar-local modeline-evil-mode
+    '(:eval
+      (propertize (modeline-evil-mode-format) 'face 'modeline-default-face)))
+
+(put 'modeline-evil-mode 'risky-local-variable t)
 
 (defun modeline-buffer-name-format ()
   (format " %s " (buffer-name)))
 
 (defvar-local modeline-buffer-name
     '(:eval
-      (propertize (modeline-buffer-name-format) 'face 'modeline-buffer-name-style)))
+      (propertize (modeline-buffer-name-format) 'face 'modeline-default-face)))
 
 (put 'modeline-buffer-name 'risky-local-variable t)
 
