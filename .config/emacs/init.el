@@ -78,67 +78,42 @@
 
 (use-package evil-collection
   :after evil
-  :custom (evil-collection-setup-minibuffer t)
-  :init (evil-collection-init))
+  :config
+  (setq evil-collection-setup-minibuffer t)
+  (evil-collection-init))
 
 (use-package general
   :config
   (general-evil-setup)
 
-  (general-create-definer keys-general
-    :keymaps 'override
-    :prefix "C-c")
+  (general-def '(normal visual emacs)
+    ;; Buffer commands
+    "C-c C-i" 'ibuffer
+    "C-c C-b" 'switch-to-buffer
+    "C-c C-n" 'next-buffer
+    "C-c C-p" 'previous-buffer
+    "C-c C-k" 'kill-buffer-and-window
+    "C-c C-e" 'eval-buffer
 
-  (keys-general
-    ;; Buffer
-    "C-i" 'ibuffer
-    "C-b" 'switch-to-buffer
-    "C-n" 'next-buffer
-    "C-p" 'previous-buffer
-    "C-k" 'kill-buffer-and-window
-    "C-e" 'eval-buffer
+    ;; Help commands
+    "C-h F" 'describe-face)
 
-    ;; Git
-    "gs" 'magit-status
-    "gn" 'git-gutter:next-hunk
-    "gp" 'git-gutter:previous-hunk
-
-    ;; Miscellaneous
-    "C-t" 'vterm-toggle)
-
-  (general-create-definer keys-help
-    :keymaps 'override
-    :prefix "C-h")
-
-  (keys-help
-    "F" 'describe-face)
-
-  ;; Leader keybinds in visual mode
-  (general-create-definer keys-visual
-    :states '(visual)
-    :keymaps 'override
-    :prefix "SPC")
+  ;; Keybinds for specific vim modes
+  (general-def 'normal
+    "/" 'comment-line)
   
-  (keys-visual
+  (general-def 'visual
     "/" 'comment-or-uncomment-region
     "<tab>" 'indent-region)
 
-  ;; Leader keybinds in normal mode
-  (general-create-definer keys-normal
-    :states '(normal)
-    :keymaps 'override
-    :prefix "SPC")
-  
-  (keys-normal
-    "/" 'comment-line)
-
-  ;; Navigate text in insert mode
   (general-def 'insert
+    ;; Navigate text in insert mode
     "C-h" 'backward-char
     "C-j" 'next-line
     "C-k" 'previous-line
     "C-l" 'forward-char
 
+    ;; Force completion to load
     "C-n" 'completion-at-point)
 
   ;; Dired keybinds
@@ -162,6 +137,7 @@
 
 (use-package vterm-toggle
   :after vterm
+  :bind (("C-c C-v" . 'vterm-toggle))
   :config
   (setq vterm-toggle-fullscreen-p nil)
   (setq vterm-toggle-scope 'project)
@@ -198,9 +174,23 @@
 			 (lsp))))
 
 ;; Completion
+(defun minibuffer-backward-kill (arg)
+  "When minibuffer is completing a file name delete up to parent
+folder, otherwise delete a word"
+  (interactive "p")
+  (if minibuffer-completing-file-name
+      ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
+      (if (string-match-p "/." (minibuffer-contents))
+          (zap-up-to-char (- arg) ?/)
+        (delete-minibuffer-contents))
+    (backward-kill-word arg)))
+
 (use-package vertico
   :config
   (vertico-mode))
+
+(use-package consult
+  :bind (("C-s" . consult-line)))
 
 (use-package marginalia
   :config
@@ -217,7 +207,7 @@
 	corfu-quit-no-match 'separator)
   (global-corfu-mode))
 
-;; ;; Icons
+;; Icons
 (use-package all-the-icons
   :if (display-graphic-p))
 
@@ -237,10 +227,13 @@
   :hook org-mode prog-mode help-mode)
 
 ;; Git
-(use-package magit)
+(use-package magit
+  :bind (("C-c gs" . 'magit-status)))
 
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
+  :bind (("C-c gn" . 'git-gutter:next-hunk)
+	 ("C-c gp" . 'git-gutter:previous-hunk))
   :config
   (setq git-gutter:update-interval 0.50))
 
