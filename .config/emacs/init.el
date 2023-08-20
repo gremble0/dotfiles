@@ -4,31 +4,31 @@
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
 (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-			:ref nil
-			:files (:defaults (:exclude "extensions"))
-			:build (:not elpaca--activate-package)))
+			      :ref nil
+			      :files (:defaults (:exclude "extensions"))
+			      :build (:not elpaca--activate-package)))
 (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
- (build (expand-file-name "elpaca/" elpaca-builds-directory))
- (order (cdr elpaca-order))
- (default-directory repo))
+       (build (expand-file-name "elpaca/" elpaca-builds-directory))
+       (order (cdr elpaca-order))
+       (default-directory repo))
   (add-to-list 'load-path (if (file-exists-p build) build repo))
   (unless (file-exists-p repo)
     (make-directory repo t)
     (when (< emacs-major-version 28) (require 'subr-x))
     (condition-case-unless-debug err
-  (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-	   ((zerop (call-process "git" nil buffer t "clone"
-				 (plist-get order :repo) repo)))
-	   ((zerop (call-process "git" nil buffer t "checkout"
-				 (or (plist-get order :ref) "--"))))
-	   (emacs (concat invocation-directory invocation-name))
-	   ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-				 "--eval" "(byte-recompile-directory \".\" 0 'force)")))
-	   ((require 'elpaca))
-	   ((elpaca-generate-autoloads "elpaca" repo)))
-      (progn (message "%s" (buffer-string)) (kill-buffer buffer))
-    (error "%s" (with-current-buffer buffer (buffer-string))))
-((error) (warn "%s" err) (delete-directory repo 'recursive))))
+	(if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
+		 ((zerop (call-process "git" nil buffer t "clone"
+				       (plist-get order :repo) repo)))
+		 ((zerop (call-process "git" nil buffer t "checkout"
+				       (or (plist-get order :ref) "--"))))
+		 (emacs (concat invocation-directory invocation-name))
+		 ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+				       "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+		 ((require 'elpaca))
+		 ((elpaca-generate-autoloads "elpaca" repo)))
+	    (progn (message "%s" (buffer-string)) (kill-buffer buffer))
+	  (error "%s" (with-current-buffer buffer (buffer-string))))
+      ((error) (warn "%s" err) (delete-directory repo 'recursive))))
   (unless (require 'elpaca-autoloads nil t)
     (require 'elpaca)
     (elpaca-generate-autoloads "elpaca" repo)
@@ -105,12 +105,6 @@
     "bk" 'kill-buffer-and-window
     "be" 'eval-buffer
 
-    ;; File navigation
-    "ff" 'find-file
-    "fr" 'counsel-recentf
-    "fe" 'dired-jump
-    "fs" 'dired
-
     ;; Navigating windows
     "wc" 'evil-window-delete
     "ws" 'evil-window-split
@@ -150,7 +144,8 @@
     :prefix "SPC")
   
   (leader-keys-visual
-    "/" 'comment-or-uncomment-region)
+    "/" 'comment-or-uncomment-region
+    "<tab>" 'indent-region)
 
   ;; Leader keybinds in normal mode
   (general-create-definer leader-keys-normal
@@ -166,7 +161,9 @@
     "C-h" 'backward-char
     "C-j" 'next-line
     "C-k" 'previous-line
-    "C-l" 'forward-char)
+    "C-l" 'forward-char
+
+    "C-n" 'completion-at-point)
 
   ;; Dired keybinds
   (general-def ('normal 'insert 'visual 'emacs) dired-mode-map
@@ -226,7 +223,8 @@
 
 ;; Completion
 (use-package vertico
-  :config (vertico-mode)
+  :config
+  (vertico-mode))
 
 (use-package marginalia
   :config
@@ -234,8 +232,24 @@
   (marginalia-mode))
 
 (use-package orderless
-  :custom
-  (completion-styles '(orderless)))
+  :config
+  (setq completion-styles '(orderless flex)))
+
+(use-package corfu
+  :config
+  (setq corfu-auto t
+	corfu-quit-no-match 'separator)
+  (global-corfu-mode))
+
+;; ;; Icons
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package all-the-icons-completion
+  :after (marginalia all-the-icons)
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init
+  (all-the-icons-completion-mode))
 
 ;; Mode-Line
 (use-package mood-line
@@ -353,124 +367,40 @@
   "Face for cyan colors in terminal"
   :group 'vterm)
 
+;; Orderless font faces
 (defface orderless-match-face-0
-  '((t :inherit 'font-lock-keyword-face))
+  '((t :inherit 'font-lock-function-name-face))
   "First face for orderless matches")
 
 (defface orderless-match-face-1
-  '((t :inherit 'font-lock-variable-name-face))
+  '((t :inherit 'font-lock-keyword-face))
   "Second face for orderless matches")
 
 (defface orderless-match-face-2
-  '((t :inherit 'font-lock-string-face))
+  '((t :inherit 'font-lock-variable-name-face))
   "Third face for orderless matches")
 
 (defface orderless-match-face-3
-  '((t :inherit 'font-lock-function-name-face))
+  '((t :inherit 'font-lock-string-face))
   "Fourth face for orderless matches")
 
-;; Mode-Line
-;; Large parts of this is taken from mood-line: https://gitlab.com/jessieh/mood-line
-;; (defun mode-line-separated-format (left right)
-;;   "Format a mode line with a `LEFT' and `RIGHT' justified list of elements.
-;; The mode line should fit the `window-width' with space between the lists."
-;;   (let ((reserve (length right)))
-;;     (concat left
-;;             " "
-;;             (propertize " "
-;;                         'display `((space :align-to (- right
-;;                                                        (- 0 right-margin)
-;;                                                        ,reserve))))
-;;             right)))
+;; Vertico font faces
+(defface vertico-current
+  '((t :inherit region))
+  "Face usedd to highlight the currently selected candidate")
 
-;; (setq-default mode-line-format
-;; 	      '((:eval
-;; 		 (mode-line-separated-format
-;; 		  ;; Left
-;; 		  (format-mode-line
-;; 		  '(" "
-;; 		    (:eval (mode-line-evil-mode))
-;; 		    " "
-;; 		    (:eval (mode-line-buffer-name))))
-;; 		   ;; Right
-;; 		   (format-mode-line
-;; 		    '(" "
-;; 		      (:eval (mode-line-major-mode))
-;; 		      " "
-;; 		      (:eval (mode-line-vc))
-;; 		      " "))))))
+;; Corfu font faces
+(defface corfu-current
+  '((t :inherit region))
+  "Face used to highlight the currently selected candidate")
 
-;; (defcustom evil-mode-state-alist
-;;   '((normal   . ("NORMAL"   . font-lock-function-name-face))
-;;     (insert   . ("INSERT"   . font-lock-string-face))
-;;     (visual   . ("VISUAL"   . font-lock-keyword-face))
-;;     (replace  . ("REPLACE"  . font-lock-constant-face))
-;;     (motion   . ("MOTION"   . font-lock-variable-name-face));
-;;     (operator . ("OPERATOR" . font-lock-function-name-face));
-;;     (emacs    . ("EMACS"    . font-lock-builtin-face)))
-;;   "Display current evil-mode state"
-;;   :type '(alist
-;; 	  :key-type symbol
-;; 	  :value-type
-;; 	  (cons (string: tag "Display Text") (choice :tag "Face" face plist))))
+(defface corfu-default
+  '((t :foreground "#cccccc" :background "#191919"))
+  "Face used to highlight the currently selected candidate")
 
-;; (defun mode-line-evil-mode ()
-;;   "Display the current evil-mode state."
-;;   (when (boundp 'evil-state)
-;;     (let ((mode-cons (alist-get evil-state evil-mode-state-alist)))
-;;       (propertize (car mode-cons)
-;;                   'face (cdr mode-cons)))))
-
-;; (defun mode-line-buffer-name ()
-;;   (propertize (buffer-name) 'face 'mode-line))
-
-;; (defun mode-line-major-mode ()
-;;   (propertize (capitalize (symbol-name major-mode)) 'face 'mode-line))
-
-;; (defvar-local mode-line-vc-text nil)
-
-;; (defun mode-line-vc-update (&rest _)
-;;   "Update `mode-line-vc-text' against the current VCS state."
-;;   (setq mode-line-vc-text
-;;         (when (and vc-mode
-;;                    buffer-file-name)
-;;           (let* ((backend (vc-backend buffer-file-name))
-;;                  (branch (substring-no-properties vc-mode
-;;                                                   (+ (if (eq backend 'Hg) 2 3)
-;;                                                      2)))
-;;                  (state (vc-state buffer-file-name
-;;                                   (vc-backend buffer-file-name))))
-;;             (cond
-;;              ((memq state '(edited added))
-;;               (format #("%s +  "
-;;                         0 2 (face mode-line))
-;;                       branch))
-;;              ((eq state 'needs-merge)
-;;               (format #("%s >  "
-;;                         0 2 (face mode-line))
-;;                       branch))
-;;              ((eq state 'needs-update)
-;;               (format #("%s v  "
-;;                         0 2 (face mode-line))
-;;                       branch))
-;;              ((memq state '(removed conflict unregistered))
-;;               (format #("%s x  "
-;;                         0 2 (face mode-line))
-;;                       branch))
-;;              (t
-;;               (format #("%s -  "
-;;                         0 5 (face mode-line))
-;;                       branch)))))))
-
-;; (add-hook 'find-file-hook
-;; 	  #'mode-line-vc-update)
-;; (add-hook 'after-save-hook
-;; 	  #'mode-line-vc-update)
-;; (advice-add 'vc-refresh-state :after
-;; 	  #'mode-line-vc-update)
-
-;; (defun mode-line-vc ()
-;;   mode-line-vc-text)
+(defface corfu-border
+  '((t :foreground "#333333" :background "#333333"))
+  "Face used for thin border")
 
 ;; Autogenerated
 (custom-set-variables
@@ -479,7 +409,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("6558fa279269fa352947bf310f7dc2b6e25745d539c9974628e569a3dbff78db" "68483b0eb8ad569b1212b1e160ff920ac98dc7cf67668a0eb53ffac632778300" "9b7cae793c4e8bbbdab743fa38f857176fb09f77ca0690d8aa960e40b3900109" "30af43ce54f038a9c1c60893a7100d40ef5e7e86d307a1b5c338f768708c32f9" "93bb13b355ca389a2929fc14bb27b8f864234ef3e444728871037d2d6e5c1299" "ee92cd6b037bbc6e496cdcca1e306c4c864ff6ee712c2fad33916a33b8bdb005" "52487739a5864f2c022ddf861c9c7cedad9c028ac61145a8a6447c6784ad4b9c" default)))
+   '("6558fa279269fa352947bf310f7dc2b6e25745d539c9974628e569a3dbff78db" "68483b0eb8ad569b1212b1e160ff920ac98dc7cf67668a0eb53ffac632778300" "9b7cae793c4e8bbbdab743fa38f857176fb09f77ca0690d8aa960e40b3900109" "30af43ce54f038a9c1c60893a7100d40ef5e7e86d307a1b5c338f768708c32f9" "93bb13b355ca389a2929fc14bb27b8f864234ef3e444728871037d2d6e5c1299" "ee92cd6b037bbc6e496cdcca1e306c4c864ff6ee712c2fad33916a33b8bdb005" "52487739a5864f2c022ddf861c9c7cedad9c028ac61145a8a6447c6784ad4b9c" default))
+ '(package-selected-packages
+   '(vertico magit orderless git-gutter general evil which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
