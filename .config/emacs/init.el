@@ -85,75 +85,51 @@
   :config
   (general-evil-setup)
 
-  (general-create-definer leader-keys-general
-    :states '(normal insert visual emacs)
+  (general-create-definer keys-general
     :keymaps 'override
-    :prefix "SPC"
-    :global-prefix "M-SPC")
+    :prefix "C-c")
 
-  (leader-keys-general
-    ;; Editing text
-    "d" "dd"
-    "y" "yy"
-    "z" "zz"
-
-    ;; Buffer shortcuts
-    "bi" 'ibuffer
-    "bb" 'switch-to-buffer
-    "bn" 'next-buffer
-    "bp" 'previous-buffer
-    "bk" 'kill-buffer-and-window
-    "be" 'eval-buffer
-
-    ;; Navigating windows
-    "wc" 'evil-window-delete
-    "ws" 'evil-window-split
-    "wv" 'evil-window-vsplit
-    "wh" 'evil-window-left
-    "wj" 'evil-window-down
-    "wk" 'evil-window-up
-    "wl" 'evil-window-right
-    "wH" 'evil-window-move-far-left
-    "wJ" 'evil-window-move-very-bottom
-    "wK" 'evil-window-move-very-top
-    "wL" 'evil-window-move-far-right
-
-    ;; Help
-    "hf" 'describe-function
-    "hv" 'describe-variable
-    "hc" 'describe-face
+  (keys-general
+    ;; Buffer
+    "C-i" 'ibuffer
+    "C-b" 'switch-to-buffer
+    "C-n" 'next-buffer
+    "C-p" 'previous-buffer
+    "C-k" 'kill-buffer-and-window
+    "C-e" 'eval-buffer
 
     ;; Git
     "gs" 'magit-status
     "gn" 'git-gutter:next-hunk
     "gp" 'git-gutter:previous-hunk
 
-    ;; LSP
-    "lr" 'lsp-rename
-    "lf" 'lsp-find-references
-    "ld" 'lsp-find-definition
-    "lt" 'lsp-find-type-definition
-
     ;; Miscellaneous
-    "t" 'vterm-toggle)
+    "C-t" 'vterm-toggle)
+
+  (general-create-definer keys-help
+    :keymaps 'override
+    :prefix "C-h")
+
+  (keys-help
+    "F" 'describe-face)
 
   ;; Leader keybinds in visual mode
-  (general-create-definer leader-keys-visual
+  (general-create-definer keys-visual
     :states '(visual)
     :keymaps 'override
     :prefix "SPC")
   
-  (leader-keys-visual
+  (keys-visual
     "/" 'comment-or-uncomment-region
     "<tab>" 'indent-region)
 
   ;; Leader keybinds in normal mode
-  (general-create-definer leader-keys-normal
+  (general-create-definer keys-normal
     :states '(normal)
     :keymaps 'override
     :prefix "SPC")
   
-  (leader-keys-normal
+  (keys-normal
     "/" 'comment-line)
 
   ;; Navigate text in insert mode
@@ -166,7 +142,7 @@
     "C-n" 'completion-at-point)
 
   ;; Dired keybinds
-  (general-def ('normal 'insert 'visual 'emacs) dired-mode-map
+  (general-def ('normal 'insert 'emacs) dired-mode-map
     "a" 'dired-create-empty-file
     "r" 'dired-do-rename
     "d" 'dired-do-delete
@@ -258,7 +234,7 @@
 
 ;; Preview colors while editing
 (use-package rainbow-mode
-  :hook org-mode prog-mode)
+  :hook org-mode prog-mode help-mode)
 
 ;; Git
 (use-package magit)
