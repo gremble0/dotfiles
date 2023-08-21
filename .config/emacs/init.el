@@ -51,8 +51,8 @@
 ;; Install packages
 (use-package which-key
   :init
-    (which-key-mode 1)
-  :config
+  (which-key-mode)
+  :init
   (setq which-key-side-window-location 'bottom
 	which-key-sort-order #'which-key-key-order-alpha
 	which-key-sort-uppercase-first nil
@@ -78,12 +78,12 @@
 
 (use-package evil-collection
   :after evil
-  :config
+  :init
   (setq evil-collection-setup-minibuffer t)
   (evil-collection-init))
 
 (use-package general
-  :config
+  :init
   (general-evil-setup)
 
   (general-def '(normal visual emacs)
@@ -119,6 +119,7 @@
   ;; Dired keybinds
   (general-def ('normal 'insert 'emacs) dired-mode-map
     "a" 'dired-create-empty-file
+    "A" 'dired-create-directory
     "r" 'dired-do-rename
     "d" 'dired-do-delete
     "<return>" 'dired-open-file
@@ -127,34 +128,34 @@
 ;; Terminal
 (use-package eshell-syntax-highlighting
   :after esh-mode
-  :config
-  (eshell-syntax-highlighting-global-mode +1))
+  :init
+  (eshell-syntax-highlighting-global-mode))
 
 (use-package vterm
-  :config
+  :init
   (setq shell-file-name "/bin/zsh"
 	vterm-max-scrollback 10000))
 
 (use-package vterm-toggle
   :after vterm
   :bind (("C-c C-v" . 'vterm-toggle))
-  :config
+  :init
   (setq vterm-toggle-fullscreen-p nil)
   (setq vterm-toggle-scope 'project)
   (add-to-list 'display-buffer-alist
                '((lambda (buffer-or-name _)
-                     (let ((buffer (get-buffer buffer-or-name)))
-                       (with-current-buffer buffer
-                         (or (equal major-mode 'vterm-mode)
-                             (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
-                  (display-buffer-reuse-window display-buffer-at-bottom)
-                  (reusable-frames . visible)
-                  (window-height . 0.4))))
+                   (let ((buffer (get-buffer buffer-or-name)))
+                     (with-current-buffer buffer
+                       (or (equal major-mode 'vterm-mode)
+                           (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
+                 (display-buffer-reuse-window display-buffer-at-bottom)
+                 (reusable-frames . visible)
+                 (window-height . 0.4))))
 
 ;; Dired
 (use-package dired-open
   :after dired
-  :config
+  :init
   (setq dired-open-extensions '(("gif" . "nsxiv")
 				("jpg" . "nsxiv")
 				("png" . "nsxiv")
@@ -164,9 +165,7 @@
 ;; LSP integration
 (use-package lsp-mode
   :init
-  (setq lsp-keymap-prefix "C-l")
-  :config
-  (lsp-enable-which-key-integration t))
+  (setq lsp-keymap-prefix "C-l"))
 
 (use-package lsp-pyright
   :hook (python-mode . (lambda ()
@@ -195,16 +194,16 @@ folder, otherwise delete a character"
   :bind (("C-s" . consult-line)))
 
 (use-package marginalia
-  :config
+  :init
   (setq marginalia-align 'right)
   (marginalia-mode))
 
 (use-package orderless
-  :config
+  :init
   (setq completion-styles '(orderless flex)))
 
 (use-package corfu
-  :config
+  :init
   (setq corfu-auto t
 	corfu-quit-no-match 'separator)
   (global-corfu-mode))
@@ -221,7 +220,7 @@ folder, otherwise delete a character"
 
 ;; Mode-Line
 (use-package mood-line
-  :config
+  :init
   (mood-line-mode))
 
 ;; Preview colors while editing
@@ -229,14 +228,13 @@ folder, otherwise delete a character"
   :hook org-mode prog-mode help-mode)
 
 ;; Git
-(use-package magit
-  :bind (("C-c gs" . 'magit-status)))
+(use-package magit)
 
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
   :bind (("C-c gn" . 'git-gutter:next-hunk)
 	 ("C-c gp" . 'git-gutter:previous-hunk))
-  :config
+  :init
   (setq git-gutter:update-interval 0.50))
 
 ;; Language support
