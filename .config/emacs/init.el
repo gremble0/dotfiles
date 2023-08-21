@@ -176,17 +176,19 @@
 ;; Completion
 (defun minibuffer-backward-kill (arg)
   "When minibuffer is completing a file name delete up to parent
-folder, otherwise delete a word"
+folder, otherwise delete a character"
   (interactive "p")
   (if minibuffer-completing-file-name
       ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
       (if (string-match-p "/." (minibuffer-contents))
           (zap-up-to-char (- arg) ?/)
-        (delete-minibuffer-contents))
-    (backward-kill-word arg)))
+	(delete-minibuffer-contents))
+      (backward-kill-word arg)))
 
 (use-package vertico
-  :config
+  :bind (:map minibuffer-local-map
+	      ("C-<backspace>" . minibuffer-backward-kill))
+  :init
   (vertico-mode))
 
 (use-package consult
@@ -307,32 +309,32 @@ folder, otherwise delete a word"
   :group 'processes)
 
 (defface vterm-color-red
-  '((t :background "#cc0000":foreground "#cc0000"))
+  '((t :background "#cc0000" :foreground "#cc0000"))
   "Face for red colors in terminal"
   :group 'vterm)
 
 (defface vterm-color-green
-  '((t :foreground "#99ad6a"))
+  '((t :background "#99ad6a" :foreground "#99ad6a"))
   "Face for green colors in terminal"
   :group 'vterm)
 
 (defface vterm-color-yellow
-  '((t :foreground "#e1b655"))
+  '((t :background "#e1b655" :foreground "#e1b655"))
   "Face for yellow colors in terminal"
   :group 'vterm)
 
 (defface vterm-color-blue
-  '((t :foreground "#8197bf"))
+  '((t :background "#8197bf" :foreground "#8197bf"))
   "Face for blue colors in terminal"
   :group 'vterm)
 
 (defface vterm-color-magenta
-  '((t :foreground "#75507b"))
+  '((t :background "#75507b" :foreground "#75507b"))
   "Face for magenta colors in terminal"
   :group 'vterm)
 
 (defface vterm-color-cyan
-  '((t :foreground "#06989a"))
+  '((t :background "#06989a" :foreground "#06989a"))
   "Face for cyan colors in terminal"
   :group 'vterm)
 
