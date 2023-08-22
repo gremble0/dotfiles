@@ -233,12 +233,13 @@
    `(vertico-current ((t :inherit region)))
    `(corfu-current ((t :inherit region)))
    `(corfu-default ((t :foreground ,fg1 :background ,bg2)))
-   `(corfu-border ((t :foreground ,selection :background ,selection))))
+   `(corfu-border ((t :foreground ,selection :background ,selection)))
+   `(highlight-indent-guides-character-face ((t :foreground ,comment))))
    ;; Legacy
    (if (< emacs-major-version 22)
        (custom-theme-set-faces
         'yellowbeans
-        `(show-paren-match-face ((,class (:background ,bad))))) ;; obsoleted in 22.1, removed 2016
+        `(show-paren-match-face ((,class (:background ,builtin))))) ;; obsoleted in 22.1, removed 2016
      (custom-theme-set-faces
       'yellowbeans
       `(show-paren-match ((,class (:foreground ,builtin))))
