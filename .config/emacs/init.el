@@ -113,7 +113,7 @@
     "C-k" 'previous-line
     "C-l" 'forward-char
 
-    ;; Force completion to load
+    ;; Force completion
     "C-n" 'completion-at-point)
 
   ;; Dired keybinds
@@ -122,7 +122,6 @@
     "A" 'dired-create-directory
     "r" 'dired-do-rename
     "d" 'dired-do-delete
-    "<return>" 'dired-open-file
     "<backspace>" 'dired-up-directory))
 
 ;; Terminal
@@ -141,52 +140,19 @@
   :bind (("C-c C-v" . 'vterm-toggle))
   :init
   (setq vterm-toggle-fullscreen-p nil)
-  (setq vterm-toggle-scope 'project)
-  (add-to-list 'display-buffer-alist
-               '((lambda (buffer-or-name _)
-                   (let ((buffer (get-buffer buffer-or-name)))
-                     (with-current-buffer buffer
-                       (or (equal major-mode 'vterm-mode)
-                           (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
-                 (display-buffer-reuse-window display-buffer-at-bottom)
-                 (reusable-frames . visible)
-                 (window-height . 0.4))))
-
-;; Dired
-(use-package dired-open
-  :after dired
-  :init
-  (setq dired-open-extensions '(("gif" . "nsxiv")
-				("jpg" . "nsxiv")
-				("png" . "nsxiv")
-				("mkv" . "mpv")
-				("mp4" . "mpv"))))
-
-;; LSP integration
-(use-package lsp-mode
-  :init
-  (setq lsp-keymap-prefix "C-l"))
-
-(use-package lsp-pyright
-  :hook (python-mode . (lambda ()
-			 (require 'lsp-pyright)
-			 (lsp))))
+  (setq vterm-toggle-scope 'project))
 
 ;; Completion
-(defun minibuffer-backward-kill (arg)
-  "When minibuffer is completing a file name delete up to parent
-folder, otherwise delete a character"
-  (interactive "p")
-  (if minibuffer-completing-file-name
-      ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
-      (if (string-match-p "/." (minibuffer-contents))
-          (zap-up-to-char (- arg) ?/)
-	(delete-minibuffer-contents))
-      (backward-kill-word arg)))
-
 (use-package vertico
   :bind (:map minibuffer-local-map
-	      ("C-<backspace>" . minibuffer-backward-kill))
+	      ("C-<backspace>" . (lambda (arg)
+				   (interactive "p")
+				   ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
+				   (if minibuffer-completing-file-name
+				       (if (string-match-p "/." (minibuffer-contents))
+					   (zap-up-to-char (- arg) ?/)
+					 (delete-minibuffer-contents))
+				     (backward-kill-word arg)))))
   :init
   (vertico-mode))
 
@@ -238,7 +204,20 @@ folder, otherwise delete a character"
   (setq git-gutter:update-interval 0.50))
 
 ;; Language support
+(use-package eros
+  :init
+  (eros-mode))
+
 (use-package lua-mode)
+
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-l"))
+
+(use-package lsp-pyright
+  :hook (python-mode . (lambda ()
+			 (require 'lsp-pyright)
+			 (lsp))))
 
 ;; Set theme
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes")
