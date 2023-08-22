@@ -27,8 +27,6 @@
 !.config/nvim/lua/*
 !.config/nvim/lua/core/
 !.config/nvim/lua/core/*
-!.config/nvim/lua/custom/
-!.config/nvim/lua/custom/*
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
 
@@ -63,18 +61,12 @@
 !.config/tmux/
 !.config/tmux/*
 
+!.config/polybar/
+!.config/polybar/*
+
 !.config/lf/
 !.config/lf/*
 
 # The following configs are no longer used
-!.config/ranger/
-!.config/ranger/*
-
-!.config/terminator/
-!.config/terminator/*
-
 !.config/i3/
 !.config/i3/*
-
-!.config/polybar/
-!.config/polybar/*
