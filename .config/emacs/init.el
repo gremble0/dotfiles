@@ -157,9 +157,32 @@
 
 (use-package lua-mode)
 
+(use-package geiser
+  :init
+  (setq geiser-active-implementations '(racket)))
+
+(use-package geiser-chez
+  :after geiser)
+
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-l"))
+
+(add-to-list 'load-path "~/.config/emacs/elpaca/repos/elisp-tree-sitter/core")
+(add-to-list 'load-path "~/.config/emacs/elpaca/repos/elisp-tree-sitter/lisp")
+(add-to-list 'load-path "~/.config/emacs/elpaca/repos/tree-sitter-langs")
+(require 'tree-sitter)
+(require 'tree-sitter-hl)
+(require 'tree-sitter-langs)
+(require 'tree-sitter-debug)
+(require 'tree-sitter-query)
+
+;; (use-package tree-sitter
+;;   :init
+;;   (global-tree-sitter-mode)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+;; (use-package tree-sitter-langs)
 
 (use-package lsp-pyright
   :hook (python-mode . (lambda ()
