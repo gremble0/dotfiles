@@ -40,7 +40,7 @@
   (general-def '(normal visual emacs)
     ;; Buffer commands
     "C-c C-i" 'ibuffer
-    "C-c C-b" 'switch-to-buffer
+    "C-c C-b" 'consult-buffer
     "C-c C-n" 'next-buffer
     "C-c C-p" 'previous-buffer
     "C-c C-k" 'kill-buffer-and-window
@@ -124,16 +124,6 @@
 	corfu-quit-no-match 'separator)
   (global-corfu-mode))
 
-;; Icons
-(use-package all-the-icons
-  :if (display-graphic-p))
-
-(use-package all-the-icons-completion
-  :after (marginalia all-the-icons)
-  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
-  :init
-  (all-the-icons-completion-mode))
-
 ;; Mode-Line
 (use-package mood-line
   :init
@@ -145,10 +135,6 @@
   (setq highlight-indent-guides-method 'character)
   (setq highlight-indent-guides-auto-character-face-perc 100)
   :hook (prog-mode . highlight-indent-guides-mode))
-
-;; Self explanatory
-(use-package smartparens
-  :hook (prog-mode . smartparens-mode))
 
 ;; Preview colors while editing
 (use-package rainbow-mode
@@ -231,7 +217,7 @@
  '(highlight-indent-guides-auto-even-face-perc 100)
  '(highlight-indent-guides-auto-odd-face-perc 100)
  '(package-selected-packages
-   '(vertico magit orderless git-gutter general evil which-key)))
+   '(geiser-racket vertico magit orderless git-gutter general evil which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
