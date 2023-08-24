@@ -33,7 +33,7 @@ alt + {t,s,f}
 
 # Run programs
 alt + d
-    rofi -show drun -show-icons
+    rofi -monitor -1 -show drun -show-icons
 
 alt + b
     $BROWSER
