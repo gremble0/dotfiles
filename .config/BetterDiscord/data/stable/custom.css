@@ -11,13 +11,7 @@ button {
     --white: 255, 255, 255;
     --vaccentcolor-hover: rgb(var(--accent));
     --vaccentcolor-active: rgb(var(--accent));
-    --main-font: Cantarell;
-    --font-display: var(--main-font);
     --code-font: JetBrainsMono Nerd Font, Consolas, Liberation Mono, Menlo, monospace;
-}
-
-::placeholder, body, button, input, select, textarea {
-    font-family: var(--main-font);
 }
 
 code {
