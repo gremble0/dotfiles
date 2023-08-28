@@ -1,3 +1,7 @@
+;; Setup for use-package
+(require 'package)
+(require 'use-package-ensure)
+
 (setq package-user-dir "~/.config/emacs/packages"
       use-package-always-ensure t)
 
@@ -7,26 +11,11 @@
 ;; Install packages
 ;; Show hints for keybinds
 (use-package which-key
-  :ensure t
   :init
-  (which-key-mode)
-  :init
-  (setq which-key-side-window-location 'bottom
- 	which-key-sort-order #'which-key-key-order-alpha
- 	which-key-sort-uppercase-first nil
- 	which-key-add-column-padding 1
- 	which-key-max-display-columns nil
- 	which-key-min-display-lines 6
- 	which-key-side-window-slot -10
- 	which-key-side-window-max-height 0.25
- 	which-key-idle-delay 0.8
- 	which-key-max-description-length 25
- 	which-key-allow-imprecise-window-fit t
- 	which-key-separator " → " ))
+  (which-key-mode))
 
 ;; Evil mode
 (use-package evil
-  :ensure t
   :init
   (setq evil-want-keybinding nil
  	evil-want-C-u-scroll t
@@ -36,14 +25,13 @@
   (evil-mode))
 
 (use-package evil-collection
-  :ensure t
   :after evil
   :init
   (setq evil-collection-setup-minibuffer t)
   (evil-collection-init))
 
+;; Keybinds
 (use-package general
-  :ensure t
   :init
   (general-evil-setup)
 
@@ -90,19 +78,16 @@
 
 ;; Terminal
 (use-package eshell-syntax-highlighting
-  :ensure t
   :after esh-mode
   :init
   (eshell-syntax-highlighting-global-mode))
 
 (use-package vterm
-  :ensure t
   :init
   (setq shell-file-name "/bin/zsh"
 	vterm-max-scrollback 10000))
 
 (use-package vterm-toggle
-  :ensure t
   :after vterm
   :init
   (setq vterm-toggle-fullscreen-p nil)
@@ -110,7 +95,6 @@
 
 ;; Completion
 (use-package vertico
-  :ensure t
   :bind (:map minibuffer-local-map
 	      ("C-<backspace>" . (lambda (arg)
 				   (interactive "p")
@@ -120,39 +104,40 @@
 					 (delete-minibuffer-contents))
 				     (backward-kill-word arg)))))
   :init
-  (vertico-mode))
+  (vertico-mode)
+  (vertico-mouse-mode))
 
-(use-package consult
-  :ensure t)
+(use-package consult)
 
 (use-package marginalia
-  :ensure t
   :init
   (setq marginalia-align 'right)
   (marginalia-mode))
 
 (use-package orderless
-  :ensure t
   :init
   (setq completion-styles '(orderless flex)))
 
 (use-package corfu
-  :ensure t
+  :bind
+  (:map corfu-map
+	("TAB" . corfu-next)
+	([tab] . corfu-next)
+	("S-TAB" . corfu-previous)
+	([backtab] . corfu-previous))
   :init
   (setq corfu-auto t
-	corfu-auto-delay 0.1
+	corfu-auto-delay 0.05
 	corfu-quit-no-match 'separator)
   (global-corfu-mode))
 
 ;; Mode-Line
 (use-package mood-line
-  :ensure t
   :init
   (mood-line-mode))
 
 ;; See lines as indentation guides
 (use-package highlight-indent-guides
-  :ensure t
   :init
   (setq highlight-indent-guides-method 'character)
   (setq highlight-indent-guides-auto-character-face-perc 100)
@@ -160,15 +145,12 @@
 
 ;; Preview colors while editing
 (use-package rainbow-mode
-  :ensure t
   :hook org-mode prog-mode help-mode)
 
 ;; Git
-(use-package magit
-  :ensure t)
+(use-package magit)
 
 (use-package git-gutter
-  :ensure t
   :hook (prog-mode . git-gutter-mode)
   :bind (("C-c gn" . 'git-gutter:next-hunk)
 	 ("C-c gp" . 'git-gutter:previous-hunk))
@@ -177,24 +159,19 @@
 
 ;; Language support
 (use-package eros
-  :ensure t
   :init
   (eros-mode))
 
-(use-package lua-mode
-  :ensure t)
+(use-package lua-mode)
 
 (use-package geiser
-  :ensure t
   :init
   (setq geiser-active-implementations '(racket)))
 
 (use-package geiser-racket
-  :ensure t
   :after geiser)
 
 (use-package lsp-mode
-  :ensure t
   :custom
   (lsp-completion-provider :none)
   :init
@@ -205,19 +182,17 @@
   :hook
   (lsp-completion-mode . corfu-setup-completion))
 
-(use-package tree-sitter
-  :ensure t
-  :init
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-
-(use-package tree-sitter-langs
-  :ensure t)
-
 (use-package lsp-pyright
   :hook (python-mode . (lambda ()
 			 (require 'lsp-pyright)
 			 (lsp))))
+
+(use-package tree-sitter
+  :init
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+(use-package tree-sitter-langs)
 
 ;; Set theme
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes")
