@@ -74,7 +74,11 @@
     "A" 'dired-create-directory
     "r" 'dired-do-rename
     "d" 'dired-do-delete
-    "<backspace>" 'dired-up-directory))
+    "<RET>" 'dired-single-buffer
+    "<backspace>" 'dired-single-up-directory))
+
+;; Dired
+(use-package dired-single)
 
 ;; Terminal
 (use-package eshell-syntax-highlighting
@@ -187,6 +191,11 @@
 			 (require 'lsp-pyright)
 			 (lsp))))
 
+(use-package lsp-java
+  :hook (java-mode . (lambda ()
+		       (require 'lsp-java)
+		       (lsp))))
+
 (use-package tree-sitter
   :init
   (global-tree-sitter-mode)
@@ -241,7 +250,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(which-key vterm-toggle vertico rainbow-mode orderless mood-line marginalia magit lua-mode lsp-mode highlight-indent-guides git-gutter general geiser-racket evil-collection eshell-syntax-highlighting eros corfu consult)))
+   '(lsp-java which-key vterm-toggle vertico rainbow-mode orderless mood-line marginalia magit lua-mode lsp-mode highlight-indent-guides git-gutter general geiser-racket evil-collection eshell-syntax-highlighting eros corfu consult)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
