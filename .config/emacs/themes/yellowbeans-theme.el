@@ -195,7 +195,7 @@
    `(orderless-match-face-3 ((t :inherit 'font-lock-string-face)))
    `(vertico-current ((t :inherit region)))
    `(corfu-current ((t :inherit region)))
-   `(corfu-default ((t :foreground ,fg1 :background ,bg2)))
+   `(corfu-default ((t :background ,bg2)))
    `(corfu-border ((t :foreground ,selection :background ,selection)))
    `(highlight-indent-guides-character-face ((t :foreground ,comment))))
    ;; Legacy

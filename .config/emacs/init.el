@@ -4,10 +4,6 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-(use-package vertico
-  :ensure t
-  :init (vertico-mode))
-
 ;; Install packages
 ;; Show hints for keybinds
 (use-package which-key
@@ -144,6 +140,7 @@
   :ensure t
   :init
   (setq corfu-auto t
+	corfu-auto-delay 0.1
 	corfu-quit-no-match 'separator)
   (global-corfu-mode))
 
@@ -198,8 +195,15 @@
 
 (use-package lsp-mode
   :ensure t
+  :custom
+  (lsp-completion-provider :none)
   :init
-  (setq lsp-keymap-prefix "C-l"))
+  (defun corfu-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(orderless)))
+  (setq lsp-keymap-prefix "C-l")
+  :hook
+  (lsp-completion-mode . corfu-setup-completion))
 
 (use-package tree-sitter
   :ensure t
