@@ -11,7 +11,7 @@
 ;; Install packages
 ;; Show hints for keybinds
 (use-package which-key
-  :init
+  :config
   (which-key-mode))
 
 ;; Evil mode
@@ -22,60 +22,57 @@
  	evil-vsplit-window-below t
  	evil-want-fine-undo 'fine
  	evil-undo-system 'undo-redo)
+  :config
+  ;; Insert mode keybinds
+  (evil-define-key 'insert 'global
+    (kbd "C-h") 'evil-backward-char
+    (kbd "C-h") 'evil-backward-char
+    (kbd "C-j") 'evil-next-line
+    (kbd "C-k") 'evil-previous-line
+    (kbd "C-l") 'evil-forward-char
+    (kbd "C-n") 'completion-at-point)
+
+  ;; Motion state keybinds (visual, normal, emacs)
+  (evil-define-key 'motion 'global
+    (kbd "C-c C-i") 'ibuffer
+    (kbd "C-c C-b") 'consult-buffer
+    (kbd "C-c C-n") 'next-buffer
+    (kbd "C-c C-p") 'previous-buffer
+    (kbd "C-c C-k") 'kill-buffer-and-window
+    (kbd "C-c C-e") 'eval-buffer
+    (kbd "C-c C-r") 'eval-region
+
+    (kbd "C-c C-t") 'vterm-toggle
+    (kbd "C-h F") 'describe-face
+    (kbd "M-r") 'shell-command
+    (kbd "C-s") 'consult-line)
+
+  ;; Visual state keybinds
+  (evil-define-key 'visual 'global
+    (kbd "/") 'comment-or-uncomment-region
+    (kbd "<tab>") 'indent-region)
+    
+  ;; Normal state keybinds
+  (evil-define-key 'normal 'global
+    (kbd "/") 'comment-line)
+
+  ;; Dired keybinds
+  (evil-define-key 'motion 'dired-mode-map
+    (kbd "a") 'dired-create-empty-file
+    (kbd "A") 'dired-create-directory
+    (kbd "r") 'dired-do-rename
+    (kbd "d") 'dired-do-delete
+    (kbd "<RET>") 'dired-single-buffer
+    (kbd "<backspace>") 'dired-single-up-directory)
+    
   (evil-mode))
 
 (use-package evil-collection
   :after evil
   :init
   (setq evil-collection-setup-minibuffer t)
+  :config
   (evil-collection-init))
-
-;; Keybinds
-(use-package general
-  :init
-  (general-evil-setup)
-
-  (general-def '(normal visual emacs)
-    ;; Buffer commands
-    "C-c C-i" 'ibuffer
-    "C-c C-b" 'consult-buffer
-    "C-c C-n" 'next-buffer
-    "C-c C-p" 'previous-buffer
-    "C-c C-k" 'kill-buffer-and-window
-    "C-c C-e" 'eval-buffer
-
-    ;; Misc
-    "C-c C-t" 'vterm-toggle
-    "C-h F" 'describe-face
-    "M-r" 'shell-command
-    "C-s" 'consult-line)
-
-  ;; Keybinds for specific vim modes
-  (general-def 'normal
-    "/" 'comment-line)
-  
-  (general-def 'visual
-    "/" 'comment-or-uncomment-region
-    "<tab>" 'indent-region)
-
-  (general-def 'insert
-    ;; Navigate text in insert mode
-    "C-h" 'backward-char
-    "C-j" 'next-line
-    "C-k" 'previous-line
-    "C-l" 'forward-char
-
-    ;; Force completion
-    "C-n" 'completion-at-point)
-
-  ;; Dired keybinds
-  (general-def ('normal 'insert 'emacs) dired-mode-map
-    "a" 'dired-create-empty-file
-    "A" 'dired-create-directory
-    "r" 'dired-do-rename
-    "d" 'dired-do-delete
-    "<RET>" 'dired-single-buffer
-    "<backspace>" 'dired-single-up-directory))
 
 ;; Dired
 (use-package dired-single)
@@ -83,19 +80,18 @@
 ;; Terminal
 (use-package eshell-syntax-highlighting
   :after esh-mode
-  :init
+  :config
   (eshell-syntax-highlighting-global-mode))
 
 (use-package vterm
   :init
-  (setq shell-file-name "/bin/zsh"
-	vterm-max-scrollback 10000))
+  (setq vterm-max-scrollback 10000))
 
 (use-package vterm-toggle
   :after vterm
   :init
-  (setq vterm-toggle-fullscreen-p nil)
-  (setq vterm-toggle-scope 'project))
+  (setq vterm-toggle-fullscreen-p nil
+        vterm-toggle-scope 'project))
 
 ;; Completion
 (use-package vertico
@@ -107,7 +103,7 @@
 					   (zap-up-to-char (- arg) ?/)
 					 (delete-minibuffer-contents))
 				     (backward-kill-word arg)))))
-  :init
+  :config
   (vertico-mode)
   (vertico-mouse-mode))
 
@@ -116,6 +112,7 @@
 (use-package marginalia
   :init
   (setq marginalia-align 'right)
+  :config
   (marginalia-mode))
 
 (use-package orderless
@@ -123,21 +120,16 @@
   (setq completion-styles '(orderless flex)))
 
 (use-package corfu
-  :bind
-  (:map corfu-map
-	("TAB" . corfu-next)
-	([tab] . corfu-next)
-	("S-TAB" . corfu-previous)
-	([backtab] . corfu-previous))
   :init
   (setq corfu-auto t
 	corfu-auto-delay 0.05
 	corfu-quit-no-match 'separator)
+  :config
   (global-corfu-mode))
 
 ;; Mode-Line
 (use-package mood-line
-  :init
+  :config
   (mood-line-mode))
 
 ;; See lines as indentation guides
@@ -145,11 +137,13 @@
   :init
   (setq highlight-indent-guides-method 'character)
   (setq highlight-indent-guides-auto-character-face-perc 100)
-  :hook (prog-mode . highlight-indent-guides-mode))
+  :hook
+  (prog-mode . highlight-indent-guides-mode))
 
 ;; Preview colors while editing
 (use-package rainbow-mode
-  :hook org-mode prog-mode help-mode)
+  :hook
+  org-mode prog-mode help-mode)
 
 ;; Git
 (use-package magit)
@@ -163,7 +157,7 @@
 
 ;; Language support
 (use-package eros
-  :init
+  :config
   (eros-mode))
 
 (use-package lua-mode)
@@ -186,18 +180,17 @@
   :hook
   (lsp-completion-mode . corfu-setup-completion))
 
+;; TODO: Make this prettier and more easily extensible - dolist maybe?
 (use-package lsp-pyright
-  :hook (python-mode . (lambda ()
-			 (require 'lsp-pyright)
-			 (lsp))))
+  :hook
+  (python-mode . lsp))
 
 (use-package lsp-java
-  :hook (java-mode . (lambda ()
-		       (require 'lsp-java)
-		       (lsp))))
-
+  :hook
+  (java-mode . lsp))
+  
 (use-package tree-sitter
-  :init
+  :config
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
@@ -238,6 +231,8 @@
 
       inhibit-startup-message t
       initial-scratch-message nil
+
+      shell-file-name "/bin/zsh"
 
       dired-listing-switches "-AhgGoF --group-directories-first --color=auto"
 
