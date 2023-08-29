@@ -54,17 +54,9 @@
     
   ;; Normal state keybinds
   (evil-define-key 'normal 'global
-    (kbd "/") 'comment-line)
+    (kbd "/") 'comment-line
+    (kbd "<tab>") 'evil-indent-line)
 
-  ;; Dired keybinds
-  (evil-define-key 'motion 'dired-mode-map
-    (kbd "a") 'dired-create-empty-file
-    (kbd "A") 'dired-create-directory
-    (kbd "r") 'dired-do-rename
-    (kbd "d") 'dired-do-delete
-    (kbd "<RET>") 'dired-single-buffer
-    (kbd "<backspace>") 'dired-single-up-directory)
-    
   (evil-mode))
 
 (use-package evil-collection
@@ -91,18 +83,19 @@
   :after vterm
   :init
   (setq vterm-toggle-fullscreen-p nil
-        vterm-toggle-scope 'project))
+	vterm-toggle-scope 'project))
 
 ;; Completion
 (use-package vertico
-  :bind (:map minibuffer-local-map
-	      ("C-<backspace>" . (lambda (arg)
-				   (interactive "p")
-				   (if minibuffer-completing-file-name
-				       (if (string-match-p "/." (minibuffer-contents))
-					   (zap-up-to-char (- arg) ?/)
-					 (delete-minibuffer-contents))
-				     (backward-kill-word arg)))))
+  :bind
+  (:map minibuffer-local-map
+	("C-<backspace>" . (lambda (arg)
+			     (interactive "p")
+			     (if minibuffer-completing-file-name
+				 (if (string-match-p "/." (minibuffer-contents))
+				     (zap-up-to-char (- arg) ?/)
+				   (delete-minibuffer-contents))
+			       (backward-kill-word arg)))))
   :config
   (vertico-mode)
   (vertico-mouse-mode))
@@ -149,9 +142,11 @@
 (use-package magit)
 
 (use-package git-gutter
-  :hook (prog-mode . git-gutter-mode)
-  :bind (("C-c gn" . 'git-gutter:next-hunk)
-	 ("C-c gp" . 'git-gutter:previous-hunk))
+  :hook
+  (prog-mode . git-gutter-mode)
+  :bind
+  (("C-c gn" . 'git-gutter:next-hunk)
+   ("C-c gp" . 'git-gutter:previous-hunk))
   :init
   (setq git-gutter:update-interval 0.50))
 
