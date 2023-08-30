@@ -15,9 +15,13 @@ alt + w
 alt + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
-# Focus or send to the given desktop
-alt + {_,shift + }{1-9}
-    bspc {desktop -f,node -d} {1-9}
+# Focus given desktop
+alt + {1-9}
+    bspc desktop -f {1-9}
+
+# Move active window to given desktop and focus it
+alt + shift + {1-9}
+    bspc node -d {1-9} --follow
 
 # Resizing
 alt + ctrl + {h,j,k,l}
