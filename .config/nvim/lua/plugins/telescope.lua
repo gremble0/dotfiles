@@ -6,6 +6,7 @@ require("telescope").setup {
       "-L",
       "--color=never",
       "--no-heading",
+      "--hidden",
       "--with-filename",
       "--line-number",
       "--column",
@@ -25,9 +26,9 @@ require("telescope").setup {
     file_sorter = require("telescope.sorters").get_fuzzy_file,
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-    set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+    set_env = { ["COLORTERM"] = "truecolor" },
     mappings = {
-      n = { ["q"] = require("telescope.actions").close },
+      i = { ["<esc>"] = require("telescope.actions").close },
     },
   },
 }
@@ -35,9 +36,9 @@ require("telescope").setup {
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
 
-vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
-
-vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
-vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
-vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+vim.keymap.set("n", "<leader>fo", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind [F]iles" })
+vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind [B]buffers" })
+vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
+vim.keymap.set("n", "<leader>fz", require("telescope.builtin").current_buffer_fuzzy_find, { desc = "[S]earch [D]iagnostics" })
+vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })

@@ -8,8 +8,9 @@ picom &
 # Bind keys
 sxhkd &
 
-# Add dual keyboard layouts with setxkbmap
+# Set keyboard settings
 setlayout &
+setxkbmap -option caps:escape
 
 # Start statusbar
 polybarstart &
