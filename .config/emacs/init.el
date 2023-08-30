@@ -1,4 +1,11 @@
-;; Setup for use-package
+;;; init.el --- Main entrypoint for my personal emacs configuration
+
+;;; Commentary:
+;; This file is mainly a string of package imports with some configuration
+;; done to each package + the default settings for GNU emacs. Feel free
+;; to copy anything you like
+
+;;; Code:
 (require 'package)
 (require 'use-package-ensure)
 
@@ -14,7 +21,7 @@
   :config
   (which-key-mode))
 
-;; Evil mode
+;; Editing
 (use-package evil
   :init
   (setq evil-want-keybinding nil
@@ -54,8 +61,8 @@
     
   ;; Normal state keybinds
   (evil-define-key 'normal 'global
-    (kbd "/") 'comment-line
-    (kbd "<tab>") 'evil-indent-line)
+    (kbd "/") 'comment-line)
+    ;; (kbd "<tab>") 'evil-indent-line)
 
   (evil-mode))
 
@@ -65,6 +72,21 @@
   (setq evil-collection-setup-minibuffer t)
   :config
   (evil-collection-init))
+
+(use-package highlight-indent-guides
+  :init
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-auto-character-face-perc 100)
+  :hook
+  (prog-mode . highlight-indent-guides-mode))
+
+(use-package rainbow-mode
+  :hook
+  org-mode prog-mode help-mode)
+
+(use-package undohist
+  :config
+  (undohist-initialize))
 
 ;; Dired
 (use-package dired-single)
@@ -124,19 +146,6 @@
 (use-package mood-line
   :config
   (mood-line-mode))
-
-;; See lines as indentation guides
-(use-package highlight-indent-guides
-  :init
-  (setq highlight-indent-guides-method 'character)
-  (setq highlight-indent-guides-auto-character-face-perc 100)
-  :hook
-  (prog-mode . highlight-indent-guides-mode))
-
-;; Preview colors while editing
-(use-package rainbow-mode
-  :hook
-  org-mode prog-mode help-mode)
 
 ;; Git
 (use-package magit)
