@@ -23,12 +23,11 @@
 
 ;; Editing
 (use-package evil
-  :init
-  (setq evil-want-keybinding nil
- 	evil-want-C-u-scroll t
- 	evil-vsplit-window-below t
- 	evil-want-fine-undo 'fine
- 	evil-undo-system 'undo-redo)
+  :custom
+  (evil-want-keybinding nil)
+  (evil-want-C-u-scroll t)
+  (evil-want-fine-undo 'fine)
+  (evil-undo-system 'undo-redo)
   :config
   ;; Insert mode keybinds
   (evil-define-key 'insert 'global
@@ -64,23 +63,23 @@
     (kbd "/") 'comment-line
     (kbd "<tab>") 'evil-indent-line)
 
-  ;; (evil-define-key 'normal 'dired-mode-map
-  ;;   (kbd "h") 'dired-single-up-directory
-  ;;   (kbd "l") 'dired-single-buffer)
+  (evil-define-key 'normal 'dired-mode-map
+    (kbd "<RET>") 'dired-single-buffer
+    (kbd "<backspace>") 'dired-single-up-directory)
 
   (evil-mode))
 
 (use-package evil-collection
   :after evil
-  :init
-  (setq evil-collection-setup-minibuffer t)
+  :custom
+  (evil-collection-setup-minibuffer t)
   :config
   (evil-collection-init))
 
 (use-package highlight-indent-guides
-  :init
-  (setq highlight-indent-guides-method 'character
-        highlight-indent-guides-auto-character-face-perc 100)
+  :custom
+  (highlight-indent-guides-method 'character)
+  (highlight-indent-guides-auto-character-face-perc 100)
   :hook
   (prog-mode . highlight-indent-guides-mode))
 
@@ -95,10 +94,10 @@
 ;; Dired
 (use-package dired
   :ensure nil
-  :init
-  (setq dired-listing-switches "-AhgGoF --group-directories-first --color=auto"
-	dired-recursive-copies 'always
-	dired-recursive-deletes 'always))
+  :custom
+  (dired-listing-switches "-AhgGoF --group-directories-first --color=auto")
+  (dired-recursive-copies 'always)
+  (dired-recursive-deletes 'always))
 
 (use-package dired-single)
 
@@ -109,14 +108,14 @@
   (eshell-syntax-highlighting-global-mode))
 
 (use-package vterm
-  :init
-  (setq vterm-max-scrollback 10000))
+  :custom
+  (vterm-max-scrollback 10000))
 
 (use-package vterm-toggle
   :after vterm
-  :init
-  (setq vterm-toggle-fullscreen-p nil
-	vterm-toggle-scope 'project))
+  :custom
+  (vterm-toggle-fullscreen-p nil)
+  (vterm-toggle-scope 'project))
 
 ;; Completion
 (use-package vertico
@@ -136,20 +135,20 @@
 (use-package consult)
 
 (use-package marginalia
-  :init
-  (setq marginalia-align 'right)
+  :custom
+  (marginalia-align 'right)
   :config
   (marginalia-mode))
 
 (use-package orderless
-  :init
-  (setq completion-styles '(orderless flex)))
+  :custom
+  (completion-styles '(orderless flex)))
 
 (use-package corfu
-  :init
-  (setq corfu-auto t
-	corfu-auto-delay 0.05
-	corfu-quit-no-match 'separator)
+  :custom
+  (corfu-auto t)
+  (corfu-auto-delay 0.05)
+  (corfu-quit-no-match 'separator)
   :config
   (global-corfu-mode))
 
@@ -167,8 +166,8 @@
   :bind
   (("C-c gn" . 'git-gutter:next-hunk)
    ("C-c gp" . 'git-gutter:previous-hunk))
-  :init
-  (setq git-gutter:update-interval 0.50))
+  :custom
+  (git-gutter:update-interval 0.50))
 
 ;; Language support
 (use-package eros
@@ -178,8 +177,8 @@
 (use-package lua-mode)
 
 (use-package geiser
-  :init
-  (setq geiser-active-implementations '(racket)))
+  :custom
+  (geiser-active-implementations '(racket)))
 
 (use-package geiser-racket
   :after geiser)
@@ -187,11 +186,11 @@
 (use-package lsp-mode
   :custom
   (lsp-completion-provider :none)
+  (lsp-keymap-prefix "C-l")
   :init
   (defun corfu-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(orderless)))
-  (setq lsp-keymap-prefix "C-l")
   :hook
   (lsp-completion-mode . corfu-setup-completion))
 
