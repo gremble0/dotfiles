@@ -35,6 +35,7 @@ bindkey -M menuselect "j" vi-down-line-or-history
 alias c="clear"
 alias n="nvim"
 alias lf="lfcd"
+alias sxiv="nsxiv"
 
 alias ls="ls -CF --group-directories-first --color=auto"
 alias ll="ls -AhgGoF --group-directories-first --color=auto"

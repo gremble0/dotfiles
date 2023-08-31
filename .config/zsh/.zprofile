@@ -23,8 +23,9 @@ export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 export OPAMROOT="$XDG_DATA_HOME/opam"
 export GOPATH="$XDG_DATA_HOME/go"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
-alias minecraft-launcher=minecraft-launcher --workDir="$XDG_DATA_HOME/minecraft"
+alias minecraft-launcher="minecraft-launcher --workDir='$XDG_DATA_HOME/minecraft'"
 
 # Cache files
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
