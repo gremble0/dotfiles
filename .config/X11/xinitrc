@@ -9,8 +9,7 @@ picom &
 sxhkd &
 
 # Set keyboard settings
-setlayout &
-setxkbmap -option caps:escape
+setkeyboard &
 
 # Start statusbar
 polybarstart &
