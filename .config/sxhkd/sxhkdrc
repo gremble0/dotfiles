@@ -2,6 +2,10 @@
 alt + Escape
     pkill -USR1 -x sxhkd
 
+# Reset keykboard settings because it keeps randomly resetting sometimes
+alt + space
+    setkeyboard
+
 # BSPWM
 # Restarting/Quitting BSPWM
 alt + shift + {Escape,BackSpace}
