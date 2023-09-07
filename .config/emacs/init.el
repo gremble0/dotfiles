@@ -186,6 +186,10 @@
 (use-package lsp-mode
   :custom
   (lsp-completion-provider :none)
+  (lsp-headerline-breadcrumb-enable nil)
+  (lsp-signature-render-documentation nil)
+  (gc-cons-threshold 100000000)
+  (read-process-output-max 1000000)
   (lsp-keymap-prefix "C-l")
   :init
   (defun corfu-setup-completion ()
@@ -193,6 +197,14 @@
           '(orderless)))
   :hook
   (lsp-completion-mode . corfu-setup-completion))
+
+(use-package lsp-ui
+  :custom
+  (lsp-ui-doc-enable t)
+  (lsp-ui-doc-position 'at-point)
+  :config
+  (evil-define-key 'motion 'lsp-mode-map
+    (kbd "K") 'lsp-ui-doc-show))
 
 ;; TODO: Make this prettier and more easily extensible - dolist maybe?
 (use-package lsp-pyright

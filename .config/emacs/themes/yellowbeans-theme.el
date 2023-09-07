@@ -47,6 +47,7 @@
    `(tree-sitter-hl-face:attribute ((,class (:inherit font-lock-property-name-face))))
    `(tree-sitter-hl-face:label ((,class (:inherit font-lock-property-name-face))))
    `(tree-sitter-hl-face:function.call ((,class (:inherit font-lock-function-call-face))))
+   `(lsp-ui-doc-background ((,class (:background ,bg2))))
    `(region ((,class (:background ,selection))))
    `(highlight ((,class (:foreground ,fg3 :background ,bg4))))
    `(hl-line ((,class (:background  ,bg3))))
