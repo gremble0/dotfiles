@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 ;; This file is mainly a string of package imports with some configuration
-;; done to each package + the default settings for GNU emacs. Feel free
+;; done to each package + the default settings for GNU Emacs. Feel free
 ;; to copy anything you like
 
 ;;; Code:
@@ -54,18 +54,18 @@
     (kbd "C-s") 'consult-line)
 
   ;; Visual state keybinds
-  (evil-define-key 'visual 'global
+  (evil-define-key 'visual prog-mode-map
     (kbd "/") 'comment-or-uncomment-region
     (kbd "<tab>") 'indent-region)
     
   ;; Normal state keybinds
-  (evil-define-key 'normal 'global
+  (evil-define-key 'normal prog-mode-map
     (kbd "/") 'comment-line
     (kbd "<tab>") 'evil-indent-line)
 
-  (evil-define-key 'normal 'dired-mode-map
-    (kbd "<RET>") 'dired-single-buffer
-    (kbd "<backspace>") 'dired-single-up-directory)
+  (evil-define-key 'normal dired-mode-map
+    (kbd "l") 'dired-single-buffer
+    (kbd "h") 'dired-single-up-directory)
 
   (evil-mode))
 
@@ -185,7 +185,9 @@
 ;; Mode-Line
 (use-package mood-line
   :config
-  (mood-line-mode))
+  (mood-line-mode)
+  :custom
+  (mood-line-glyph-alist mood-line-glyphs-fira-code))
 
 ;; Git
 (use-package magit)
