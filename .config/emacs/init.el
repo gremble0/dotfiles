@@ -234,6 +234,7 @@
   :custom
   (lsp-ui-doc-enable t)
   (lsp-ui-doc-position 'at-point)
+  (lsp-ui-sideline-enable nil)
   :config
   (evil-define-key 'motion 'lsp-mode-map
     (kbd "K") 'lsp-ui-doc-show))
