@@ -87,9 +87,9 @@
   :hook
   org-mode prog-mode help-mode)
 
-(use-package undohist
+(use-package undo-fu-session
   :config
-  (undohist-initialize))
+  (undo-fu-session-global-mode))
 
 ;; Dired
 (use-package dired
