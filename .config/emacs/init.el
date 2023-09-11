@@ -223,6 +223,7 @@
   (gc-cons-threshold 100000000)
   (read-process-output-max 1000000)
   (lsp-keymap-prefix "C-l")
+  (lsp-modeline-code-action-fallback-icon "󰌵")
   :init
   (defun corfu-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
@@ -273,6 +274,9 @@
   :height 110
   :weight 'medium)
 (add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-14"))
+
+;; Colored emoji font
+(set-fontset-font t 'symbol "Noto Color Emoji" nil 'append)
 
 ;; Set some sensible settings
 (menu-bar-mode -1)
