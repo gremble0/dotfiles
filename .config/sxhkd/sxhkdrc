@@ -1,52 +1,55 @@
 # Restart sxhkd
-alt + Escape
+super + Escape
     pkill -USR1 -x sxhkd
 
 # Reset keykboard settings because it keeps randomly resetting sometimes
-alt + space
+super + space
     setkeyboard
 
 # BSPWM
 # Restarting/Quitting BSPWM
-alt + shift + {Escape,BackSpace}
+super + shift + {Escape,BackSpace}
     bspc {wm -r,quit}
 
 # Kill active window
-alt + w
+super + w
     bspc node -c
 
 # Navigation
-alt + {_,shift + }{h,j,k,l}
+super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
 # Focus given desktop
-alt + {1-9}
+super + {1-9}
     bspc desktop -f {1-9}
 
 # Move active window to given desktop and focus it
-alt + shift + {1-9}
+super + shift + {1-9}
     bspc node -d {1-9} --follow
 
 # Resizing
-alt + ctrl + {h,j,k,l}
+super + ctrl + {h,j,k,l}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # Toggle monocle mode (more useful than fullscreen imo)
-alt + m
+super + m
     bspc desktop -l next
 
 # Set the tiling layout
-alt + {t,s,f}
+super + {t,s,f}
     bspc node -t {tiled,floating,fullscreen}
 
 # Run programs
-alt + d
+super + d
     rofi -monitor -1 -show drun -show-icons
 
-alt + b
+super + b
     $BROWSER
 
-alt + Return
+super + Return
+    $TERMINAL
+
+super + shift + Return
     $=VISUAL
 
 # Fn lock functionality
