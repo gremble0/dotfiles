@@ -1,5 +1,5 @@
 #!/bin/sh
 
-sleep 10
+# When upgrading pacman packages it unsets the keyboard settings, this script just resets them
 setxkbmap -option 'grp:alt_space_toggle' -layout us,no -option nodeadkeys
 setxkbmap -option caps:escape

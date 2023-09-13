@@ -35,6 +35,9 @@
 !.config/emacs/themes/
 !.config/emacs/themes/yellowbeans-theme.el
 
+!.config/hypr/
+!.config/hypr/*
+
 !.config/X11/
 !.config/X11/*
 
