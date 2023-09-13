@@ -49,4 +49,7 @@ export LS_COLORS='*.jpg=00;35:*.jpeg=00;35:*.avif=00;35:*.mjpeg=00;35:*.gif=00;3
 
 # [ "$(tty)" = "/dev/tty1" ] && startx "$XDG_CONFIG_HOME/X11/xinitrc" && xrdb -merge "$XDG_CONFIG_HOME/X11/xresources"
 
-[ "$(tty)" = "/dev/tty1" ] && Hyprland
+if [ "$(tty)" = "/dev/tty1" ]; then
+     Hyprland
+     emacs --daemon &
+fi
