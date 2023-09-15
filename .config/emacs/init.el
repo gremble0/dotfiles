@@ -295,6 +295,9 @@
               inhibit-startup-message t
               initial-scratch-message nil
 
+              confirm-kill-processes nil
+              kill-buffer-query-functions nil
+
               shell-file-name "/bin/zsh"
               
               backup-directory-alist '((".*" . "~/.cache/emacs"))
