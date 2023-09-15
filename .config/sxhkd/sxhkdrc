@@ -47,7 +47,7 @@ super + b
     $BROWSER
 
 super + Return
-    $TERMINAL
+    $TERMINAL -e tmux
 
 super + shift + Return
     $=VISUAL
