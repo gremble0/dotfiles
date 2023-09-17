@@ -29,9 +29,16 @@ super + shift + {1-9}
 
 # Resizing
 super + ctrl + {h,j,k,l}
-    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+    {bspc node @parent/second -z left -20 0; \
+     bspc node @parent/first -z right -20 0, \
+     bspc node @parent/second -z top 0 +20; \
+     bspc node @parent/first -z bottom 0 +20, \
+     bspc node @parent/first -z bottom 0 -20; \
+     bspc node @parent/second -z top 0 -20, \
+     bspc node @parent/first -z right +20 0; \
+     bspc node @parent/second -z left +20 0}
 
-# Toggle monocle mode (more useful than fullscreen imo)
+# Toggle monocle mode
 super + m
     bspc desktop -l next
 
