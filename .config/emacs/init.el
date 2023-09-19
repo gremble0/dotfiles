@@ -63,10 +63,6 @@
     (kbd "/") 'comment-line
     (kbd "<tab>") 'evil-indent-line)
 
-  (evil-define-key 'normal dired-mode-map
-    (kbd "l") 'dired-single-buffer
-    (kbd "h") 'dired-single-up-directory)
-
   (evil-mode))
 
 (use-package evil-collection
@@ -97,7 +93,11 @@
   :custom
   (dired-listing-switches "-AhgGoF --group-directories-first --color=auto")
   (dired-recursive-copies 'always)
-  (dired-recursive-deletes 'always))
+  (dired-recursive-deletes 'always)
+  :config
+  (evil-define-key 'normal dired-mode-map
+    (kbd "l") 'dired-single-buffer
+    (kbd "h") 'dired-single-up-directory))
 
 (use-package dired-single)
 
@@ -195,22 +195,23 @@
 (use-package git-gutter
   :hook
   (prog-mode . git-gutter-mode)
-  :bind
-  (("C-c gn" . 'git-gutter:next-hunk)
-   ("C-c gp" . 'git-gutter:previous-hunk))
   :custom
-  (git-gutter:update-interval 0.50))
+  (git-gutter:update-interval 0.50)
+  :config
+  (evil-define-key 'motion 'global
+    (kbd "C-c n") 'git-gutter:next-hunk
+    (kbd "C-c p") 'git-gutter:previous-hunk))
 
 ;; Language support
-(use-package eros
-  :config
-  (eros-mode))
-
 (use-package lua-mode)
 
 (use-package geiser
   :custom
-  (geiser-active-implementations '(racket)))
+  (geiser-active-implementations '(racket))
+  :config
+  (evil-define-key 'motion geiser-mode-map
+    (kbd "C-c C-r") 'geiser-eval-region
+    (kbd "C-c C-e") 'geiser-eval-buffer))
 
 (use-package geiser-racket
   :after geiser)
@@ -232,6 +233,7 @@
   (lsp-completion-mode . corfu-setup-completion))
 
 (use-package lsp-ui
+  :after lsp
   :custom
   (lsp-ui-doc-enable t)
   (lsp-ui-doc-position 'at-point)
