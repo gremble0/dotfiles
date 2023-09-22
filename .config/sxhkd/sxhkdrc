@@ -50,7 +50,7 @@ super + {t,s,f}
 super + d
     rofi -monitor -1 -show drun -show-icons
 
-super + b
+super + shift + b
     $BROWSER
 
 super + Return
