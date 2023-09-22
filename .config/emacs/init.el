@@ -233,13 +233,13 @@
   (lsp-completion-mode . corfu-setup-completion))
 
 (use-package lsp-ui
-  :after lsp
+  :after lsp-mode
   :custom
   (lsp-ui-doc-enable t)
   (lsp-ui-doc-position 'at-point)
   (lsp-ui-sideline-enable nil)
   :config
-  (evil-define-key 'motion 'lsp-mode-map
+  (evil-define-key 'motion lsp-mode-map
     (kbd "K") 'lsp-ui-doc-show))
 
 ;; TODO: Make this prettier and more easily extensible - dolist maybe?
