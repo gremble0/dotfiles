@@ -40,13 +40,9 @@ alias sxiv="nsxiv"
 alias ls="ls -CF --group-directories-first --color=auto"
 alias ll="ls -AhgGoF --group-directories-first --color=auto"
 alias grep="grep --color=auto"
+alias fzf="fzf --reverse --height 50%"
 
 alias shutdown="shutdown now"
-
-# Run tmux on startup
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#     exec tmux new-session
-# fi
 
 # Opam configuration
 [[ ! -r $XDG_DATA_HOME/opam/opam-init/init.zsh ]] || source $XDG_DATA_HOME/opam/opam-init/init.zsh > /dev/null 2> /dev/null

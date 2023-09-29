@@ -35,9 +35,6 @@
 !.config/emacs/themes/
 !.config/emacs/themes/yellowbeans-theme.el
 
-!.config/hypr/
-!.config/hypr/*
-
 !.config/X11/
 !.config/X11/*
 
@@ -73,3 +70,6 @@
 # The following configs are no longer used
 !.config/i3/
 !.config/i3/*
+
+!.config/hypr/
+!.config/hypr/*
