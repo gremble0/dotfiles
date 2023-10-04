@@ -32,17 +32,17 @@ bindkey -M menuselect "l" vi-forward-char
 bindkey -M menuselect "j" vi-down-line-or-history
 
 # Aliases
-alias c="clear"
-alias n="nvim"
-alias lf="lfcd"
-alias sxiv="nsxiv"
+alias c='clear'
+alias n='nvim'
+alias f='nvim $(fzf --reverse --height 50%)'
+alias lf='lfcd'
+alias sxiv='nsxiv'
 
-alias ls="ls -CF --group-directories-first --color=auto"
-alias ll="ls -AhgGoF --group-directories-first --color=auto"
-alias grep="grep --color=auto"
-alias fzf="fzf --reverse --height 50%"
+alias ls='ls -CF --group-directories-first --color=auto'
+alias ll='ls -AhgGoF --group-directories-first --color=auto'
+alias grep='grep --color=auto'
 
-alias shutdown="shutdown now"
+alias shutdown='shutdown now'
 
 # Opam configuration
 [[ ! -r $XDG_DATA_HOME/opam/opam-init/init.zsh ]] || source $XDG_DATA_HOME/opam/opam-init/init.zsh > /dev/null 2> /dev/null
