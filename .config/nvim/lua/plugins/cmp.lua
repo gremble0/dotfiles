@@ -29,7 +29,7 @@ cmp.setup {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-e>"] = cmp.mapping.close(),
+    ["<C-g>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace },
     ["<Tab>"] = cmp.mapping(
       function(fallback)

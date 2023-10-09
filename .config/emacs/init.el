@@ -38,18 +38,18 @@
     (kbd "C-l") 'evil-forward-char
     (kbd "C-n") 'completion-at-point)
 
-  ;; Motion state keybinds (visual, normal, emacs)
-  (evil-define-key 'motion 'global
-    (kbd "C-c C-i") 'ibuffer
-    (kbd "C-c C-b") 'consult-buffer
-    (kbd "C-c C-n") 'next-buffer
-    (kbd "C-c C-p") 'previous-buffer
+  ;; General keybinds mode keybinds
+  (evil-define-key '(normal visual motion emacs operator replace) 'global
+    (kbd "C-i") 'ibuffer
+    (kbd "C-b") 'consult-buffer
+    (kbd "C-n") 'next-buffer
+    (kbd "C-p") 'previous-buffer
     (kbd "C-c C-k") 'kill-buffer-and-window
     (kbd "C-c C-e") 'eval-buffer
     (kbd "C-c C-r") 'eval-region
 
-    (kbd "C-c C-t") 'vterm-toggle
     (kbd "C-h F") 'describe-face
+    (kbd "C-t") 'vterm-toggle
     (kbd "M-r") 'shell-command
     (kbd "C-s") 'consult-line)
 
