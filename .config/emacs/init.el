@@ -40,9 +40,9 @@
 
   ;; General keybinds mode keybinds
   (evil-define-key '(normal visual motion emacs operator replace) 'global
-    (kbd "C-i") 'ibuffer
     (kbd "C-n") 'next-buffer
     (kbd "C-p") 'previous-buffer
+    (kbd "C-c C-i") 'ibuffer
     (kbd "C-c C-k") 'kill-buffer-and-window
     (kbd "C-c C-e") 'eval-buffer
     (kbd "C-c C-r") 'eval-region
@@ -92,8 +92,11 @@
   (dired-recursive-deletes 'always)
   :config
   (evil-define-key 'normal dired-mode-map
-    (kbd "l") 'dired-single-buffer
-    (kbd "h") 'dired-single-up-directory))
+    (kbd "RET") 'dired-single-buffer
+    (kbd "<backspace>") 'dired-single-up-directory
+    (kbd "C-t") nil)
+  (evil-define-key '(normal visual motion emacs operator replace) 'global
+    (kbd "C-j") 'dired-jump))
 
 (use-package dired-single)
 
@@ -202,7 +205,7 @@
   (evil-define-key 'motion 'global
     (kbd "C-c n") 'git-gutter:next-hunk
     (kbd "C-c p") 'git-gutter:previous-hunk)
-  (git-gutter-mode))
+  (global-git-gutter-mode))
 
 ;; Language support
 (use-package lua-mode)
