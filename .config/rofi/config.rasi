@@ -34,8 +34,6 @@ configuration {
 window {
     background-color: @background;
     border:           1;
-    padding:          0;
-    height:           460px;
     width:            50ch;
 }
 mainbox {
@@ -52,11 +50,12 @@ textbox {
     text-color: @foreground;
 }
 listview {
-    background-color: #151515;
-    fixed-height:     true;
-    scrollbar:        true;
-    dynamic:          true;
-    padding:          6 4 8 8;
+    lines:          8;
+    columns:        1;
+    fixed-height:   false;
+    scrollbar:      false;
+    border:         1px 0 0;
+    border-color:   @border-color;
 }
 element {
     border:  0;
@@ -65,8 +64,8 @@ element {
 element-text {
     background-color: inherit;
     text-color:       inherit;
-    vertical-align: 0.5;
-    font: "pango:Cantarell bold 16";
+    vertical-align:   0.5;
+    font:             "pango:Cantarell bold 16";
 }
 element-icon {
     size: 3.4ch;
@@ -109,7 +108,7 @@ element.alternate.active {
     text-color:       @alternate-active-foreground;
 }
 mode-switcher {
-    border:       1 dash 0 0 ;
+    border:       1 dash 0 0;
     border-color: @separatorcolor;
 }
 button.selected {
@@ -118,7 +117,7 @@ button.selected {
 }
 entry {
     text-color:  @normal-foreground;
-    padding:     16 8 16 8;
+    padding:     12;
     placeholder: "Run a program";
 }
 prompt {
@@ -126,9 +125,15 @@ prompt {
     text-color: @normal-foreground;
 }
 inputbar {
-    children:   [ entry ];
+    children: [ icon-search, entry ];
+}
+icon-search {
+    expand:   false;
+    filename: "search.png";
+    size:     25px;
+    padding:  0 0 0 10;
 }
 scrollbar {
-  handle-width: 4;
-  handle-color: #333333;
+    handle-width: 4;
+    handle-color: #333333;
 }
