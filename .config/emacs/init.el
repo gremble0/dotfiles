@@ -41,17 +41,13 @@
   ;; General keybinds mode keybinds
   (evil-define-key '(normal visual motion emacs operator replace) 'global
     (kbd "C-i") 'ibuffer
-    (kbd "C-b") 'consult-buffer
     (kbd "C-n") 'next-buffer
     (kbd "C-p") 'previous-buffer
     (kbd "C-c C-k") 'kill-buffer-and-window
     (kbd "C-c C-e") 'eval-buffer
     (kbd "C-c C-r") 'eval-region
-
     (kbd "C-h F") 'describe-face
-    (kbd "C-t") 'vterm-toggle
-    (kbd "M-r") 'shell-command
-    (kbd "C-s") 'consult-line)
+    (kbd "M-r") 'shell-command)
 
   ;; Visual state keybinds
   (evil-define-key 'visual prog-mode-map
@@ -115,7 +111,10 @@
   :after vterm
   :custom
   (vterm-toggle-fullscreen-p nil)
-  (vterm-toggle-scope 'project))
+  (vterm-toggle-scope 'project)
+  :config
+  (evil-define-key '(normal visual motion emacs operator replace) 'global
+    (kbd "C-t") 'vterm-toggle))
 
 ;; Completion
 (use-package vertico
@@ -162,7 +161,11 @@
   (vertico-mouse-mode)
   (vertico-multiform-mode))
 
-(use-package consult)
+(use-package consult
+  :config
+  (evil-define-key '(normal visual motion emacs operator replace) 'global
+    (kbd "C-b") 'consult-buffer
+    (kbd "C-s") 'consult-line))
 
 (use-package marginalia
   :custom
@@ -193,14 +196,13 @@
 (use-package magit)
 
 (use-package git-gutter
-  :hook
-  (prog-mode . git-gutter-mode)
   :custom
   (git-gutter:update-interval 0.50)
   :config
   (evil-define-key 'motion 'global
     (kbd "C-c n") 'git-gutter:next-hunk
-    (kbd "C-c p") 'git-gutter:previous-hunk))
+    (kbd "C-c p") 'git-gutter:previous-hunk)
+  (git-gutter-mode))
 
 ;; Language support
 (use-package lua-mode)
