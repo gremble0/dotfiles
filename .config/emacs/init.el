@@ -40,6 +40,7 @@
 
   ;; General keybinds mode keybinds
   (evil-define-key '(normal visual motion emacs operator replace) 'global
+    (kbd "C-f") 'find-file
     (kbd "C-n") 'next-buffer
     (kbd "C-p") 'previous-buffer
     (kbd "C-c C-i") 'ibuffer
@@ -93,7 +94,9 @@
   :config
   (evil-define-key 'normal dired-mode-map
     (kbd "RET") 'dired-single-buffer
+    (kbd "l") 'dired-single-buffer
     (kbd "<backspace>") 'dired-single-up-directory
+    (kbd "h") 'dired-single-up-directory
     (kbd "C-t") nil)
   (evil-define-key '(normal visual motion emacs operator replace) 'global
     (kbd "C-j") 'dired-jump))
