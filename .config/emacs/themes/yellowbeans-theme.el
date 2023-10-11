@@ -44,6 +44,7 @@
    `(font-lock-warning-face ((,class (:foreground ,bad :background ,bg3))))
    `(font-lock-warning-face ((,class (:foreground ,bad :background ,bg3))))
    `(fixed-pitch-serif ((,class (:family JetBrainsMono Nerd Font))))
+   `(fixed-pitch ((,class (:family JetBrainsMono Nerd Font))))
    `(xref-line-number ((,class (:inherit line-number))))
    `(xref-match ((,class (:inherit orderless-match-face-0))))
    `(xref-file-header ((,class (:box (:line-width 1 :color ,selection) :foreground ,builtin))))
