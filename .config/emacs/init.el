@@ -32,33 +32,30 @@
   ;; Insert mode keybinds
   (evil-define-key 'insert 'global
     (kbd "C-h") 'evil-backward-char
-    (kbd "C-h") 'evil-backward-char
     (kbd "C-j") 'evil-next-line
     (kbd "C-k") 'evil-previous-line
-    (kbd "C-l") 'evil-forward-char
-    (kbd "C-n") 'completion-at-point)
+    (kbd "C-l") 'evil-forward-char)
 
-  ;; General keybinds mode keybinds
+  ;; General keybinds
   (evil-define-key '(normal visual motion emacs operator replace) 'global
-    (kbd "C-f") 'find-file
-    (kbd "C-n") 'next-buffer
-    (kbd "C-p") 'previous-buffer
     (kbd "C-c C-i") 'ibuffer
     (kbd "C-c C-k") 'kill-buffer-and-window
     (kbd "C-c C-e") 'eval-buffer
     (kbd "C-c C-r") 'eval-region
-    (kbd "C-h F") 'describe-face
-    (kbd "M-r") 'shell-command)
+    (kbd "C-f")     'find-file
+    (kbd "C-n")     'next-buffer
+    (kbd "C-p")     'previous-buffer
+    (kbd "C-e")     'shell-command)
 
   ;; Visual state keybinds
   (evil-define-key 'visual prog-mode-map
-    (kbd "/") 'comment-or-uncomment-region
-    (kbd "<tab>") 'indent-region)
+    (kbd "<tab>") 'indent-region
+    (kbd "/")     'comment-or-uncomment-region)
     
   ;; Normal state keybinds
   (evil-define-key 'normal prog-mode-map
-    (kbd "/") 'comment-line
-    (kbd "<tab>") 'evil-indent-line)
+    (kbd "<tab>") 'evil-indent-line
+    (kbd "/")     'comment-line)
 
   (evil-mode))
 
@@ -205,7 +202,7 @@
   :custom
   (git-gutter:update-interval 0.50)
   :config
-  (evil-define-key 'motion 'global
+  (evil-define-key '(normal visual motion emacs operator replace) 'global
     (kbd "C-c n") 'git-gutter:next-hunk
     (kbd "C-c p") 'git-gutter:previous-hunk)
   (global-git-gutter-mode))
@@ -217,7 +214,7 @@
   :custom
   (geiser-active-implementations '(racket))
   :config
-  (evil-define-key 'motion geiser-mode-map
+  (evil-define-key '(normal visual motion emacs operator replac) geiser-mode-map
     (kbd "C-c C-r") 'geiser-eval-region
     (kbd "C-c C-e") 'geiser-eval-buffer))
 
@@ -238,7 +235,8 @@
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(orderless)))
   :hook
-  (lsp-completion-mode . corfu-setup-completion))
+  (lsp-completion-mode . corfu-setup-completion)
+  (c-mode . lsp))
 
 (use-package lsp-ui
   :after lsp-mode
@@ -258,7 +256,7 @@
 (use-package lsp-java
   :hook
   (java-mode . lsp))
-  
+
 (use-package tree-sitter
   :config
   (global-tree-sitter-mode)

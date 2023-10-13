@@ -48,6 +48,7 @@
    `(xref-line-number ((,class (:inherit line-number))))
    `(xref-match ((,class (:inherit orderless-match-face-0))))
    `(xref-file-header ((,class (:box (:line-width 1 :color ,selection) :foreground ,builtin))))
+   `(tree-sitter-hl-face:variable.special ((,class (:inherit font-lock-constant-face))))
    `(tree-sitter-hl-face:property ((,class (:inherit font-lock-property-name-face))))
    `(tree-sitter-hl-face:attribute ((,class (:inherit font-lock-property-name-face))))
    `(tree-sitter-hl-face:label ((,class (:inherit font-lock-property-name-face))))
