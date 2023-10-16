@@ -34,7 +34,8 @@
     (kbd "C-h") 'evil-backward-char
     (kbd "C-j") 'evil-next-line
     (kbd "C-k") 'evil-previous-line
-    (kbd "C-l") 'evil-forward-char)
+    (kbd "C-l") 'evil-forward-char
+    (kbd "C-n") 'completion-at-point)
 
   ;; General keybinds
   (evil-define-key '(normal visual motion emacs operator replace) 'global
