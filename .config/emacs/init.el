@@ -15,6 +15,19 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; Custom mode to stop other plugins from overwriting keybinds intended to be global
+(defvar global-keys-map (make-keymap)
+  "Keymap for global-keys-mode")
+
+(define-minor-mode global-keys-mode
+  "Minor mode for my personal keybindings."
+  :init-value t
+  :global t
+  :keymap global-keys-map)
+
+(add-to-list 'emulation-mode-map-alists
+             `((global-keys-mode . ,global-keys-map)))
+
 ;; Install packages
 ;; Show hints for keybinds
 (use-package which-key
@@ -30,15 +43,14 @@
   (evil-undo-system 'undo-redo)
   :config
   ;; Insert mode keybinds
-  (evil-define-key 'insert 'global
+  (evil-define-key 'insert global-keys-map
     (kbd "C-h") 'evil-backward-char
     (kbd "C-j") 'evil-next-line
     (kbd "C-k") 'evil-previous-line
-    (kbd "C-l") 'evil-forward-char
-    (kbd "C-n") 'completion-at-point)
+    (kbd "C-l") 'evil-forward-char)
 
   ;; General keybinds
-  (evil-define-key '(normal visual motion emacs operator replace) 'global
+  (evil-define-key '(normal visual motion emacs operator replace) global-keys-map
     (kbd "C-c C-i") 'ibuffer
     (kbd "C-c C-k") 'kill-buffer-and-window
     (kbd "C-c C-e") 'eval-buffer
@@ -96,7 +108,7 @@
     (kbd "<backspace>") 'dired-single-up-directory
     (kbd "h") 'dired-single-up-directory
     (kbd "C-t") nil)
-  (evil-define-key '(normal visual motion emacs operator replace) 'global
+  (evil-define-key '(normal visual motion emacs operator replace) global-keys-map
     (kbd "C-j") 'dired-jump))
 
 (use-package dired-single)
@@ -117,7 +129,7 @@
   (vterm-toggle-fullscreen-p nil)
   (vterm-toggle-scope 'project)
   :config
-  (evil-define-key '(normal visual motion emacs operator replace) 'global
+  (evil-define-key '(normal visual motion emacs operator replace) global-keys-map
     (kbd "C-t") 'vterm-toggle))
 
 ;; Completion
@@ -167,7 +179,7 @@
 
 (use-package consult
   :config
-  (evil-define-key '(normal visual motion emacs operator replace) 'global
+  (evil-define-key '(normal visual motion emacs operator replace) global-keys-map
     (kbd "C-b") 'consult-buffer
     (kbd "C-s") 'consult-line))
 
@@ -203,7 +215,7 @@
   :custom
   (git-gutter:update-interval 0.50)
   :config
-  (evil-define-key '(normal visual motion emacs operator replace) 'global
+  (evil-define-key '(normal visual motion emacs operator replace) global-keys-map
     (kbd "C-c n") 'git-gutter:next-hunk
     (kbd "C-c p") 'git-gutter:previous-hunk)
   (global-git-gutter-mode))
@@ -249,7 +261,6 @@
   (evil-define-key 'motion lsp-mode-map
     (kbd "K") 'lsp-ui-doc-show))
 
-;; TODO: Make this prettier and more easily extensible - dolist maybe?
 (use-package lsp-pyright
   :hook
   (python-mode . lsp))
