@@ -38,6 +38,10 @@
   (prog-mode . highlight-indent-guides-mode))
 
 (use-package rainbow-mode
+  :custom
+  (rainbow-r-colors nil)
+  (rainbow-x-colors nil)
+  (rainbow-html-colors nil)
   :hook
   org-mode prog-mode help-mode)
 
