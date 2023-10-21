@@ -32,6 +32,8 @@
 
 !.config/emacs/
 !.config/emacs/init.el
+!.config/emacs/core/
+!.config/emacs/core/*
 !.config/emacs/themes/
 !.config/emacs/themes/yellowbeans-theme.el
 
