@@ -23,15 +23,29 @@ require("lazy").setup({
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
 
-  -- Add indentation guides even on blank lines
-  "lukas-reineke/indent-blankline.nvim",
-
   {
     -- My theme
     "gremble0/yellowbeans.nvim",
     config = function()
       vim.cmd.colorscheme("yellowbeans")
     end
+  },
+
+  -- Add indentation guides even on blank lines
+  -- "lukas-reineke/indent-blankline.nvim",
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      indent = {
+        highlight = { "VertSplit", "VertSplit" },
+      },
+      scope = {
+        highlight = { "Comment", "Comment" },
+        show_start = false,
+        show_end = false,
+      },
+    },
   },
 
   {
@@ -44,13 +58,13 @@ require("lazy").setup({
     end
   },
 
-  {
-    -- File manager
-    "nvim-tree/nvim-tree.lua",
-    config = function()
-      require("plugins.nvimtree")
-    end
-  },
+  -- {
+  --   -- File manager
+  --   "nvim-tree/nvim-tree.lua",
+  --   config = function()
+  --     require("plugins.nvimtree")
+  --   end
+  -- },
 
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes

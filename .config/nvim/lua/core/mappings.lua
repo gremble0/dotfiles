@@ -21,11 +21,17 @@ vim.keymap.set("n", "<leader>j", ":m .+1<CR>", { desc = "move current line down"
 vim.keymap.set("n", "<leader>k", ":m .-2<CR>", { desc = "move current line up" })
 
 -- Clear highlights with escape
-vim.keymap.set("n", "<Esc>", ":noh <CR>", { desc = "clear highlights" })
+vim.keymap.set("n", "<Esc>", ":noh<CR>", { desc = "clear highlights" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Open netrw
+vim.keymap.set("n", "<C-e>", ":Ex<CR>", { desc = "clear highlights" })
+
+-- Open git fugitive
+vim.keymap.set("n", "<leader>gt", ":Git<CR>", { desc = "clear highlights" })
 
 local open_float_opts = {
   focusable = false,
@@ -42,8 +48,7 @@ local goto_prev = function() vim.diagnostic.goto_prev({ float = open_float_opts 
 -- Diagnostic keymaps
 vim.keymap.set("n", "gp", goto_prev, { desc = "go to previous diagnostic message" })
 vim.keymap.set("n", "gn", goto_next, { desc = "go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", open_float, { desc = "open floating diagnostic message" }
-)
+vim.keymap.set("n", "<leader>e", open_float, { desc = "open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostics list" })
 
 --- VISUAL MODE KEYBINDS ---
