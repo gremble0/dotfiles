@@ -1,4 +1,5 @@
 (use-package lua-mode)
+(use-package go-mode)
 
 (use-package geiser
   :custom
@@ -22,7 +23,8 @@
           '(orderless)))
   :hook
   (lsp-completion-mode . corfu-setup-completion)
-  (c-mode . lsp))
+  (c-mode . lsp)
+  (go-mode . lsp))
 
 (use-package lsp-pyright
   :hook

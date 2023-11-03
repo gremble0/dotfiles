@@ -54,4 +54,3 @@
 (custom-set-variables
  '(package-selected-packages
    '(lsp-java which-key vterm-toggle vertico rainbow-mode orderless mood-line marginalia magit lua-mode lsp-mode highlight-indent-guides git-gutter general geiser-racket evil-collection eshell-syntax-highlighting eros corfu consult)))
-(custom-set-faces)
