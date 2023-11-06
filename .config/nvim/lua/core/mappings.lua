@@ -28,7 +28,7 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Open netrw
-vim.keymap.set("n", "<C-e>", ":Ex<CR>", { desc = "clear highlights" })
+vim.keymap.set("n", "<C-e>", ":Ex<CR>", { desc = "open netrw" })
 
 -- Open git fugitive
 vim.keymap.set("n", "<leader>gt", ":Git<CR>", { desc = "clear highlights" })

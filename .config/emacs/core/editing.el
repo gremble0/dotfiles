@@ -83,4 +83,8 @@
   :config
   (undo-fu-session-global-mode))
 
+(use-package yasnippet
+  :config
+  (yas-global-mode))
+
 (provide 'editing)
