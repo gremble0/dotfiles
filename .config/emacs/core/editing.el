@@ -37,7 +37,7 @@
     (kbd "C-f")     'find-file
     (kbd "C-n")     'next-buffer
     (kbd "C-p")     'previous-buffer
-    (kbd "C-e")     'shell-command
+    (kbd "C-e")     'compile
     (kbd "C-b")     'consult-buffer
     (kbd "C-s")     'consult-line
     (kbd "C-j")     'dired-jump
