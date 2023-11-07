@@ -43,6 +43,7 @@
               kill-buffer-query-functions nil
 
               shell-file-name "/bin/zsh"
+              compile-command ""
               
               backup-directory-alist '((".*" . "~/.cache/emacs"))
               

@@ -70,6 +70,10 @@
     (kbd "h")           'dired-single-up-directory
     (kbd "C-t")         nil)
 
+  (evil-define-key 'insert minibuffer-mode-map
+    (kbd "C-p") 'previous-line-or-history-element
+    (kbd "C-n") 'next-line-or-history-element)
+
   (evil-mode))
 
 (use-package evil-collection

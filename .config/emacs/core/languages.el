@@ -41,4 +41,6 @@
 
 (use-package tree-sitter-langs)
 
+(setq-default c-basic-offset 4)
+
 (provide 'languages)
