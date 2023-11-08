@@ -1,5 +1,4 @@
 ;; Theme template made with https://mswift42.github.io/themecreator/
-;; based on my previous neovim scheme that you can find here https://github.com/gremble0/yellowbeans.nvim
 (deftheme yellowbeans)
 (let ((class '((class color) (min-colors 89)))
       (fg1 "#cccccc")
@@ -26,6 +25,8 @@
   (custom-theme-set-faces
    'yellowbeans
    `(default ((,class (:background ,bg1 :foreground ,fg1))))
+   `(success ((,class (:foreground ,good))))
+   `(warning ((,class (:foreground ,neutral))))
    `(error ((,class (:foreground ,bad))))
    `(font-lock-builtin-face ((,class (:foreground ,builtin))))
    `(font-lock-comment-face ((,class (:foreground ,bg6))))
@@ -38,8 +39,7 @@
    `(font-lock-string-face ((,class (:foreground ,str))))
    `(font-lock-type-face ((,class (:foreground ,type ))))
    `(font-lock-variable-name-face ((,class (:foreground ,var))))
-   `(font-lock-warning-face ((,class (:foreground ,bad :background ,bg3))))
-   `(font-lock-warning-face ((,class (:foreground ,bad :background ,bg3))))
+   `(font-lock-warning-face ((,class (:foreground ,bad))))
    `(fixed-pitch-serif ((,class (:family JetBrainsMono Nerd Font))))
    `(fixed-pitch ((,class (:family JetBrainsMono Nerd Font))))
    `(xref-line-number ((,class (:inherit line-number))))
@@ -148,12 +148,12 @@
    `(rainbow-delimiters-depth-7-face ((,class :foreground ,type)))
    `(rainbow-delimiters-depth-8-face ((,class :foreground ,var)))
    `(magit-item-highlight ((,class :background ,bg5)))
-   `(magit-section-heading        ((,class (:foreground ,keyword :weight bold))))
-   `(magit-hunk-heading           ((,class (:background ,bg5))))
-   `(magit-section-highlight      ((,class (:background ,bg3))))
+   `(magit-section-heading ((,class (:foreground ,keyword :weight bold))))
+   `(magit-hunk-heading ((,class (:background ,bg5))))
+   `(magit-section-highlight ((,class (:background ,bg3))))
    `(magit-hunk-heading-highlight ((,class (:background ,bg5))))
    `(magit-diff-context-highlight ((,class (:background ,bg5 :foreground ,fg3))))
-   `(magit-diffstat-added   ((,class (:foreground ,type))))
+   `(magit-diffstat-added ((,class (:foreground ,type))))
    `(magit-diffstat-removed ((,class (:foreground ,var))))
    `(magit-process-ok ((,class (:foreground ,builtin :weight bold))))
    `(magit-process-ng ((,class (:foreground ,bad :weight bold))))

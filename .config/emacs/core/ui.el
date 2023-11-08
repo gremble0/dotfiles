@@ -50,6 +50,7 @@
 (use-package git-gutter
   :custom
   (git-gutter:update-interval 0.50)
+  (git-gutter:hide-gutter t)
   :config
   (global-git-gutter-mode))
 
@@ -58,6 +59,14 @@
   :custom
   (lsp-ui-doc-enable t)
   (lsp-ui-doc-position 'at-point)
+  (lsp-ui-doc-border "#282828")
   (lsp-ui-sideline-enable nil))
+
+;; From: https://stackoverflow.com/questions/1242352/get-font-face-under-cursor-in-emacs
+(defun what-face (pos)
+    (interactive "d")
+        (let ((face (or (get-char-property (point) 'read-face-name)
+            (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
 (provide 'ui)

@@ -27,7 +27,7 @@
     (kbd "C-l") 'evil-forward-char)
 
   ;; General keybinds
-  (evil-define-key '(normal visual motion emacs operator replace) global-keys-map
+  (evil-define-key '(normal visual) global-keys-map
     (kbd "C-c C-i") 'ibuffer
     (kbd "C-c C-k") 'kill-buffer-and-window
     (kbd "C-c C-e") 'eval-buffer
@@ -54,13 +54,8 @@
     (kbd "/")     'comment-line)
 
   ;; Lsp keybinds
-  (evil-define-key '(normal visual motion emacs operator replace) lsp-mode-map
+  (evil-define-key 'normal lsp-mode-map
     (kbd "K") 'lsp-ui-doc-show)
-
-  ;; Geiser keybinds
-  (evil-define-key '(normal visual motion emacs operator replace) geiser-mode-map
-    (kbd "C-c C-r") 'geiser-eval-region
-    (kbd "C-c C-e") 'geiser-eval-buffer)
 
   ;; Dired keybinds
   (evil-define-key 'normal dired-mode-map
@@ -73,6 +68,9 @@
   (evil-define-key 'insert minibuffer-mode-map
     (kbd "C-p") 'previous-line-or-history-element
     (kbd "C-n") 'next-line-or-history-element)
+
+  (evil-define-key 'normal compilation-mode-map
+    (kbd "C-s") 'consult-compile-error)
 
   (evil-mode))
 
