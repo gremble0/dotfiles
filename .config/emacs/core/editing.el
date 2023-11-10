@@ -4,11 +4,11 @@
 
 ;; Automatically focus newly opened windows.
 ;; From: https://stackoverflow.com/questions/6464738/how-can-i-switch-focus-after-buffer-split-in-emacs
-(setq split-window-preferred-function 'my/split-window-func)
-(defun my/split-window-func (&optional window)
+(defun split-window-func (&optional window)
   (let ((new-window (split-window-sensibly window)))
     (if (not (active-minibuffer-window))
         (select-window new-window))))
+(setq split-window-preferred-function 'split-window-func)
 
 (define-minor-mode global-keys-mode
   "Minor mode for my personal keybindings."
@@ -29,10 +29,12 @@
   :config
   ;; Insert mode keybinds
   (evil-define-key 'insert global-keys-map
-    (kbd "C-h") 'evil-backward-char
-    (kbd "C-j") 'evil-next-line
-    (kbd "C-k") 'evil-previous-line
-    (kbd "C-l") 'evil-forward-char)
+    (kbd "C-h") 'backward-char
+    (kbd "C-j") 'next-line
+    (kbd "C-k") 'previous-line
+    (kbd "C-l") 'forward-char
+    (kbd "C-a") 'move-beginning-of-line
+    (kbd "C-e") 'move-end-of-line)
 
   ;; General keybinds
   (evil-define-key '(normal visual) global-keys-map
@@ -45,11 +47,13 @@
     (kbd "C-f")     'find-file
     (kbd "C-n")     'next-buffer
     (kbd "C-p")     'previous-buffer
-    (kbd "C-e")     'compile
+    (kbd "C-q")     'compile
     (kbd "C-b")     'consult-buffer
     (kbd "C-s")     'consult-line
     (kbd "C-j")     'dired-jump
-    (kbd "C-t")     'vterm-toggle)
+    (kbd "C-t")     'vterm-toggle
+    (kbd "C-a")     'move-beginning-of-line
+    (kbd "C-e")     'move-end-of-line)
 
   ;; Visual state keybinds
   (evil-define-key 'visual prog-mode-map
