@@ -2,6 +2,14 @@
 (defvar global-keys-map (make-keymap)
   "Keymap for global-keys-mode")
 
+;; Automatically focus newly opened windows.
+;; From: https://stackoverflow.com/questions/6464738/how-can-i-switch-focus-after-buffer-split-in-emacs
+(setq split-window-preferred-function 'my/split-window-func)
+(defun my/split-window-func (&optional window)
+  (let ((new-window (split-window-sensibly window)))
+    (if (not (active-minibuffer-window))
+        (select-window new-window))))
+
 (define-minor-mode global-keys-mode
   "Minor mode for my personal keybindings."
   :init-value t
