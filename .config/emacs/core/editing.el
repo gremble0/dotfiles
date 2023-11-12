@@ -107,6 +107,7 @@
  ("C-c C-r"  . eval-region)
  ("C-c C-n"  . next-buffer)
  ("C-c C-p"  . previous-buffer)
+ ("C-c C-o"  . compile)
  ("C-c n"    . git-gutter:next-hunk)
  ("C-c p"    . git-gutter:previous-hunk)
  ("C-,"      . undo)

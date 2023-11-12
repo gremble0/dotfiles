@@ -1,13 +1,6 @@
 (use-package lua-mode)
 (use-package go-mode)
 
-(use-package geiser
-  :custom
-  (geiser-active-implementations '(racket)))
-
-(use-package geiser-racket
-  :after geiser)
-
 (use-package lsp-mode
   :custom
   (lsp-completion-provider :none)
@@ -15,7 +8,7 @@
   (lsp-signature-render-documentation nil)
   (gc-cons-threshold 100000000)
   (read-process-output-max 1000000)
-  (lsp-keymap-prefix "C-l")
+  (lsp-keymap-prefix "C-q")
   (lsp-modeline-code-action-fallback-icon "󰌵")
   :init
   (defun corfu-setup-completion ()
@@ -33,6 +26,12 @@
 (use-package lsp-java
   :hook
   (java-mode . lsp))
+
+(use-package lsp-scheme
+  :custom
+  (lsp-scheme-implementation "guile")
+  :hook
+  (scheme-mode . lsp-scheme))
 
 (use-package tree-sitter
   :config
