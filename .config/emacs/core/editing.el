@@ -96,17 +96,26 @@
 (use-package expand-region
   :bind (("C-i" . er/expand-region)))
 
+(use-package multiple-cursors
+  :bind (("C-c C-m" . mc/edit-lines)))
+
 (bind-keys
  :map global-map
- ("C-c n" . git-gutter:next-hunk)
- ("C-c p" . git-gutter:previous-hunk)
- ("C-,"   . undo)
- ("C-."   . undo-redo))
+ ("C-c C-i"  . ibuffer)
+ ("C-c C-k"  . kill-buffer-and-window)
+ ("C-c C-e"  . eval-buffer)
+ ("C-c C-r"  . eval-region)
+ ("C-c C-n"  . next-buffer)
+ ("C-c C-p"  . previous-buffer)
+ ("C-c n"    . git-gutter:next-hunk)
+ ("C-c p"    . git-gutter:previous-hunk)
+ ("C-,"      . undo)
+ ("C-."      . undo-redo))
 
 (bind-keys
  :map prog-mode-map
  ("<tab>" . indent-region)
- ("C-/"   . comment-or-uncomment-region))
+ ("C-/" . comment-or-uncomment-region))
 
 (use-package undo-fu-session
   :config
