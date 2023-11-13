@@ -11,34 +11,6 @@
 (add-to-list 'emulation-mode-map-alists
              `((global-keys-mode . ,global-keys-map)))
 
-;; Keybinds
-(bind-keys
- :map global-keys-map
- ("C-c C-i"  . ibuffer)
- ("C-c C-k"  . kill-buffer-and-window)
- ("C-c C-e"  . eval-buffer)
- ("C-c C-r"  . eval-region)
- ("C-c C-n"  . next-buffer)
- ("C-c C-p"  . previous-buffer)
- ("C-c n"    . git-gutter:next-hunk)
- ("C-c p"    . git-gutter:previous-hunk)
- ("C-o"      . compile)
- ("C-,"      . undo)
- ("C-."      . undo-redo)
- ("C-z"      . nil))
-
-;; Mode specific keybinds
-(bind-keys
- :map prog-mode-map
- ("<tab>" . indent-region))
-
-(bind-keys
- :map dired-mode-map
- ("<backspace>" . dired-single-up-directory)
- ("b"           . dired-single-up-directory)
- ("RET"         . dired-single-buffer)
- ("f"           . dired-single-buffer))
-
 ;; Automatically focus newly opened windows.
 ;; From: https://stackoverflow.com/questions/6464738/how-can-i-switch-focus-after-buffer-split-in-emacs
 (defun split-window-func (&optional window)
@@ -49,78 +21,78 @@
 (setq split-window-preferred-function 'split-window-func)
 
 ;; Editing
-;; (use-package evil
-;;  :custom
-;;  (evil-want-keybinding nil)
-;;  (evil-want-C-u-scroll t)
-;;  (evil-want-fine-undo 'fine)
-;;  (evil-undo-system 'undo-redo)
-;;  :config
-;;  ;; Insert mode keybinds
-;;  (evil-define-key 'insert global-keys-map
-;;    (kbd "C-h") 'backward-char
-;;    (kbd "C-j") 'next-line
-;;    (kbd "C-k") 'previous-line
-;;    (kbd "C-l") 'forward-char
-;;    (kbd "C-a") 'move-beginning-of-line
-;;    (kbd "C-e") 'move-end-of-line)
+(use-package evil
+  :custom
+  (evil-want-keybinding nil)
+  (evil-want-C-u-scroll t)
+  (evil-want-fine-undo 'fine)
+  (evil-undo-system 'undo-redo)
+  :config
+  ;; Insert mode keybinds
+  (evil-define-key 'insert global-keys-map
+    (kbd "C-h") 'backward-char
+    (kbd "C-j") 'next-line
+    (kbd "C-k") 'previous-line
+    (kbd "C-l") 'forward-char
+    (kbd "C-a") 'move-beginning-of-line
+    (kbd "C-e") 'move-end-of-line)
 
-;;  ;; General keybinds
-;;  (evil-define-key '(normal visual) global-keys-map
-;;    (kbd "C-c C-i") 'ibuffer
-;;    (kbd "C-c C-k") 'kill-buffer-and-window
-;;    (kbd "C-c C-e") 'eval-buffer
-;;    (kbd "C-c C-r") 'eval-region
-;;    (kbd "C-c n")   'git-gutter:next-hunk
-;;    (kbd "C-c p")   'git-gutter:previous-hunk
-;;    (kbd "C-f")     'find-file
-;;    (kbd "C-n")     'next-buffer
-;;    (kbd "C-p")     'previous-buffer
-;;    (kbd "C-q")     'compile
-;;    (kbd "C-b")     'consult-buffer
-;;    (kbd "C-s")     'consult-line
-;;    (kbd "C-j")     'dired-jump
-;;    (kbd "C-t")     'vterm-toggle
-;;    (kbd "C-a")     'move-beginning-of-line
-;;    (kbd "C-e")     'move-end-of-line)
+  ;; General keybinds
+  (evil-define-key '(normal visual) global-keys-map
+    (kbd "C-c C-i") 'ibuffer
+    (kbd "C-c C-k") 'kill-buffer-and-window
+    (kbd "C-c C-e") 'eval-buffer
+    (kbd "C-c C-r") 'eval-region
+    (kbd "C-c n")   'git-gutter:next-hunk
+    (kbd "C-c p")   'git-gutter:previous-hunk
+    (kbd "C-f")     'find-file
+    (kbd "C-n")     'next-buffer
+    (kbd "C-p")     'previous-buffer
+    (kbd "C-q")     'compile
+    (kbd "C-b")     'consult-buffer
+    (kbd "C-s")     'consult-line
+    (kbd "C-j")     'dired-jump
+    (kbd "C-t")     'vterm-toggle
+    (kbd "C-a")     'move-beginning-of-line
+    (kbd "C-e")     'move-end-of-line)
 
-;;  ;; Visual state keybinds
-;;  (evil-define-key 'visual prog-mode-map
-;;    (kbd "<tab>") 'indent-region
-;;    (kbd "/")     'comment-or-uncomment-region)
-   
-;;  ;; Normal state keybinds
-;;  (evil-define-key 'normal prog-mode-map
-;;    (kbd "<tab>") 'evil-indent-line
-;;    (kbd "/")     'comment-line)
+  ;; Visual state keybinds
+  (evil-define-key 'visual prog-mode-map
+    (kbd "<tab>") 'indent-region
+    (kbd "/")     'comment-or-uncomment-region)
 
-;;  ;; Lsp keybinds
-;;  (evil-define-key 'normal lsp-mode-map
-;;    (kbd "K") 'lsp-ui-doc-show)
+  ;; Normal state keybinds
+  (evil-define-key 'normal prog-mode-map
+    (kbd "<tab>") 'evil-indent-line
+    (kbd "/")     'comment-line)
 
-;;  ;; Dired keybinds
-;;  (evil-define-key 'normal dired-mode-map
-;;    (kbd "<backspace>") 'dired-single-up-directory
-;;    (kbd "RET")         'dired-single-buffer
-;;    (kbd "l")           'dired-single-buffer
-;;    (kbd "h")           'dired-single-up-directory
-;;    (kbd "C-t")         nil)
+  ;; Lsp keybinds
+  (evil-define-key 'normal lsp-mode-map
+    (kbd "K") 'lsp-ui-doc-show)
 
-;;  (evil-define-key 'insert minibuffer-mode-map
-;;    (kbd "C-p") 'previous-line-or-history-element
-;;    (kbd "C-n") 'next-line-or-history-element)
+  ;; Dired keybinds
+  (evil-define-key 'normal dired-mode-map
+    (kbd "<backspace>") 'dired-single-up-directory
+    (kbd "RET")         'dired-single-buffer
+    (kbd "l")           'dired-single-buffer
+    (kbd "h")           'dired-single-up-directory
+    (kbd "C-t")         nil)
 
-;;  (evil-define-key 'normal compilation-mode-map
-;;    (kbd "C-s") 'consult-compile-error)
+  (evil-define-key 'insert minibuffer-mode-map
+    (kbd "C-p") 'previous-line-or-history-element
+    (kbd "C-n") 'next-line-or-history-element)
 
-;;  (evil-mode))
+  (evil-define-key 'normal compilation-mode-map
+    (kbd "C-s") 'consult-compile-error)
 
-;; (use-package evil-collection
-;;  :after evil
-;;  :custom
-;;  (evil-collection-setup-minibuffer t)
-;;  :config
-;;  (evil-collection-init))
+  (evil-mode))
+
+(use-package evil-collection
+  :after evil
+  :custom
+  (evil-collection-setup-minibuffer t)
+  :config
+  (evil-collection-init))
 
 (use-package expand-region
   :bind (("C-i" . er/expand-region)))

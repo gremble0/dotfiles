@@ -1,3 +1,4 @@
+;; Vertico for completion framework
 (use-package vertico
   :init
   ;; Mostly taken from the wiki: https://github.com/minad/vertico/wiki
@@ -42,7 +43,9 @@
   (vertico-mouse-mode)
   (vertico-multiform-mode))
 
-(use-package consult)
+(use-package consult
+  :custom
+  (consult-line-start-from-top t))
 
 (use-package marginalia
   :custom

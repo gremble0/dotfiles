@@ -1,6 +1,8 @@
+;; Major mode for languages
 (use-package lua-mode)
 (use-package go-mode)
 
+;; LSP setup
 (use-package lsp-mode
   :custom
   (lsp-completion-provider :none)
@@ -8,33 +10,27 @@
   (lsp-signature-render-documentation nil)
   (gc-cons-threshold 100000000)
   (read-process-output-max 1000000)
-  (lsp-keymap-prefix "C-;")
+  (lsp-keymap-prefix "C-l")
   (lsp-modeline-code-action-fallback-icon "󰌵")
   :init
   (defun corfu-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(orderless)))
-  :bind
-  (("C-; C-k" . lsp-ui-doc-show))
   :hook
   (lsp-completion-mode . corfu-setup-completion)
   (c-mode . lsp)
-  (go-mode . lsp))
-
-(use-package lsp-pyright
-  :hook
-  (python-mode . lsp))
-
-(use-package lsp-java
-  :hook
-  (java-mode . lsp))
-
-(use-package lsp-scheme
-  :custom
-  (lsp-scheme-implementation "guile")
-  :hook
+  (go-mode . lsp)
+  (python-mode . lsp)
+  (java-mode . lsp)
   (scheme-mode . lsp-scheme))
 
+(use-package lsp-pyright)
+(use-package lsp-java)
+(use-package lsp-scheme
+  :custom
+  (lsp-scheme-implementation "guile"))
+
+;; Treesitter for better syntax highlighting
 (use-package tree-sitter
   :config
   (global-tree-sitter-mode)
@@ -42,6 +38,7 @@
 
 (use-package tree-sitter-langs)
 
+;; Language specific settings
 (setq-default c-basic-offset 4)
 
 (provide 'languages)
