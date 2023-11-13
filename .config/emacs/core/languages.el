@@ -8,12 +8,14 @@
   (lsp-signature-render-documentation nil)
   (gc-cons-threshold 100000000)
   (read-process-output-max 1000000)
-  (lsp-keymap-prefix "C-q")
+  (lsp-keymap-prefix "C-;")
   (lsp-modeline-code-action-fallback-icon "󰌵")
   :init
   (defun corfu-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(orderless)))
+  :bind
+  (("C-; C-k" . lsp-ui-doc-show))
   :hook
   (lsp-completion-mode . corfu-setup-completion)
   (c-mode . lsp)

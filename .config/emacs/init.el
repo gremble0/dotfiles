@@ -51,4 +51,6 @@
               indent-tabs-mode nil
               indent-line-function 'insert-tab
 
-              undo-no-redo t)
+              undo-no-redo t
+
+              help-window-select t)

@@ -2,14 +2,6 @@
 (defvar global-keys-map (make-keymap)
   "Keymap for global-keys-mode")
 
-;; Automatically focus newly opened windows.
-;; From: https://stackoverflow.com/questions/6464738/how-can-i-switch-focus-after-buffer-split-in-emacs
-(defun split-window-func (&optional window)
-  (let ((new-window (split-window-sensibly window)))
-    (if (not (active-minibuffer-window))
-        (select-window new-window))))
-(setq split-window-preferred-function 'split-window-func)
-
 (define-minor-mode global-keys-mode
   "Minor mode for my personal keybindings."
   :init-value t
@@ -18,6 +10,43 @@
 
 (add-to-list 'emulation-mode-map-alists
              `((global-keys-mode . ,global-keys-map)))
+
+;; Keybinds
+(bind-keys
+ :map global-keys-map
+ ("C-c C-i"  . ibuffer)
+ ("C-c C-k"  . kill-buffer-and-window)
+ ("C-c C-e"  . eval-buffer)
+ ("C-c C-r"  . eval-region)
+ ("C-c C-n"  . next-buffer)
+ ("C-c C-p"  . previous-buffer)
+ ("C-c n"    . git-gutter:next-hunk)
+ ("C-c p"    . git-gutter:previous-hunk)
+ ("C-o"      . compile)
+ ("C-,"      . undo)
+ ("C-."      . undo-redo)
+ ("C-z"      . nil))
+
+;; Mode specific keybinds
+(bind-keys
+ :map prog-mode-map
+ ("<tab>" . indent-region))
+
+(bind-keys
+ :map dired-mode-map
+ ("<backspace>" . dired-single-up-directory)
+ ("b"           . dired-single-up-directory)
+ ("RET"         . dired-single-buffer)
+ ("f"           . dired-single-buffer))
+
+;; Automatically focus newly opened windows.
+;; From: https://stackoverflow.com/questions/6464738/how-can-i-switch-focus-after-buffer-split-in-emacs
+(defun split-window-func (&optional window)
+  (let ((new-window (split-window-sensibly window)))
+    (if (not (active-minibuffer-window))
+        (select-window new-window))))
+
+(setq split-window-preferred-function 'split-window-func)
 
 ;; Editing
 ;; (use-package evil
@@ -98,25 +127,6 @@
 
 (use-package multiple-cursors
   :bind (("C-c C-m" . mc/edit-lines)))
-
-(bind-keys
- :map global-map
- ("C-c C-i"  . ibuffer)
- ("C-c C-k"  . kill-buffer-and-window)
- ("C-c C-e"  . eval-buffer)
- ("C-c C-r"  . eval-region)
- ("C-c C-n"  . next-buffer)
- ("C-c C-p"  . previous-buffer)
- ("C-c C-o"  . compile)
- ("C-c n"    . git-gutter:next-hunk)
- ("C-c p"    . git-gutter:previous-hunk)
- ("C-,"      . undo)
- ("C-."      . undo-redo))
-
-(bind-keys
- :map prog-mode-map
- ("<tab>" . indent-region)
- ("C-/" . comment-or-uncomment-region))
 
 (use-package undo-fu-session
   :config
