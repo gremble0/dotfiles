@@ -4,9 +4,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# Adds binaries in home directory to path
-export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$HOME/local/share/JetBrains/Toolbox/scripts"
-
 # Cleaning up home directory
 # Config files
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0"
@@ -26,6 +23,9 @@ export GOPATH="$XDG_DATA_HOME/go"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
 alias minecraft-launcher="minecraft-launcher --workDir='$XDG_DATA_HOME/minecraft'"
+
+# Extend PATH
+export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$GOPATH/bin"
 
 # Cache files
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
