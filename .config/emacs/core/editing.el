@@ -94,12 +94,6 @@
   :config
   (evil-collection-init))
 
-(use-package expand-region
-  :bind (("C-i" . er/expand-region)))
-
-(use-package multiple-cursors
-  :bind (("C-c C-m" . mc/edit-lines)))
-
 (use-package undo-fu-session
   :config
   (undo-fu-session-global-mode))
