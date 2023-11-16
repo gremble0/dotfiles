@@ -1,9 +1,9 @@
 ;;; init.el --- Main entrypoint for my personal emacs configuration
 
 ;;; Commentary:
-;; This file is mainly a string of package imports with some configuration
-;; done to each package + the default settings for GNU Emacs. Feel free
-;; to copy anything you like
+;; This file is the main entry point to my emacs config that initializes
+;; the package manager and loads all the modules under ./core. It also
+;; changes some default variables
 
 ;;; Code:
 ;; Initialize package manager
@@ -16,7 +16,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-;; Install packages
+;; Load core modules
 (use-package ui         :load-path "core")
 (use-package editing    :load-path "core")
 (use-package languages  :load-path "core")

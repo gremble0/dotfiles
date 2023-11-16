@@ -94,9 +94,9 @@
   :config
   (evil-collection-init))
 
-(use-package undo-fu-session
+(use-package undohist
   :config
-  (undo-fu-session-global-mode))
+  (undohist-initialize))
 
 (use-package yasnippet
   :config

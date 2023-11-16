@@ -28,6 +28,7 @@
    `(success ((,class (:foreground ,good))))
    `(warning ((,class (:foreground ,neutral))))
    `(error ((,class (:foreground ,bad))))
+   `(help-key-binding ((,class (:box (:color ,bg4) :foreground ,keyword :background ,bg2))))
    `(font-lock-builtin-face ((,class (:foreground ,builtin))))
    `(font-lock-comment-face ((,class (:foreground ,bg6))))
    `(font-lock-negation-char-face ((,class (:foreground ,const))))
