@@ -24,7 +24,6 @@
 
   (custom-theme-set-variables
    'gremble-gruber
-   ;; TODO: 'dark ?
    '(frame-background-mode 'dark))
 
   (custom-theme-set-faces
@@ -34,8 +33,8 @@
    `(cursor                   ((t :background ,gremble-gruber-yellow)))
    `(default                  ((t :foreground ,gremble-gruber-fg1
                                   :background ,gremble-gruber-bg1)))
-   `(fringe                   ((t :background ,gremble-gruber-bg1
-                                  :foreground ,gremble-gruber-bad))) ;; TODO
+   `(fringe                   ((t :foreground ,gremble-gruber-fg4
+                                  :background ,gremble-gruber-bg1))) ;; TODO
    `(help-key-binding         ((t :foreground ,gremble-gruber-yellow
                                   :background ,gremble-gruber-bg2
                                   :box (:color ,gremble-gruber-bg4))))
@@ -45,7 +44,11 @@
    `(link                     ((t :foreground ,gremble-gruber-niagara)))
    `(region                   ((t :background ,gremble-gruber-bg5)))
    `(vertical-border          ((t :foreground ,gremble-gruber-bg4)))
+   `(show-paren-match         ((t :foreground ,gremble-gruber-yellow)))
+   `(show-paren-mismatch      ((t :foreground ,gremble-gruber-bad)))
    `(minibuffer-prompt        ((t :foreground ,gremble-gruber-yellow)))
+   `(isearch                  ((t :foreground ,gremble-gruber-yellow :background ,gremble-gruber-bg5)))
+   `(trailing-whitespace      ((t :background ,gremble-gruber-bad)))
 
    ;; Fonts
    ;; `(fixed-pitch-serif ((t (:family JetBrainsMono Nerd Font))))
@@ -69,7 +72,7 @@
    `(font-lock-builtin-face         ((t :foreground ,gremble-gruber-yellow)))
    `(font-lock-comment-face         ((t :foreground ,gremble-gruber-bg6)))
    `(font-lock-constant-face        ((t :foreground ,gremble-gruber-moss)))
-   `(font-lock-doc-face             ((t :foreground ,gremble-gruber-bad))) ;; TODO
+   `(font-lock-doc-face             ((t :foreground ,gremble-gruber-olive)))
    `(font-lock-doc-face-string-face ((t :foreground ,gremble-gruber-bad))) ;; TODO
    `(font-lock-function-name-face   ((t :foreground ,gremble-gruber-niagara)))
    `(font-lock-keyword-face         ((t :foreground ,gremble-gruber-yellow :bold t)))
@@ -113,6 +116,27 @@
                                    :background gremble-gruber-moss))))
    `(term-color-white   ((t ,(list :foreground gremble-gruber-fg1
                                    :background gremble-gruber-fg1))))
+
+   ;; Git gutter
+   `(git-gutter:added    ((t :foreground ,gremble-gruber-good)))
+   `(git-gutter:deleted  ((t :foreground ,gremble-gruber-bad)))
+   `(git-gutter:modified ((t :foreground ,gremble-gruber-neutral)))
+
+   ;; Magit, TODO: revisit
+   `(magit-item-highlight         ((t :background ,gremble-gruber-bg5)))
+   `(magit-section-heading        ((t :foreground ,gremble-gruber-yellow :weight bold)))
+   `(magit-hunk-heading           ((t :background ,gremble-gruber-bg5)))
+   `(magit-section-highlight      ((t :background ,gremble-gruber-bg3)))
+   `(magit-hunk-heading-highlight ((t :background ,gremble-gruber-bg5)))
+   `(magit-diff-context-highlight ((t :background ,gremble-gruber-bg5 :foreground ,gremble-gruber-fg3)))
+   `(magit-diffstat-added         ((t :foreground ,gremble-gruber-good)))
+   `(magit-diffstat-removed       ((t :foreground ,gremble-gruber-bad)))
+   `(magit-process-ok             ((t :foreground ,gremble-gruber-neutral :weight bold)))
+   `(magit-process-ng             ((t :foreground ,gremble-gruber-bad :weight bold)))
+   `(magit-branch                 ((t :foreground ,gremble-gruber-moss :weight bold)))
+   `(magit-log-author             ((t :foreground ,gremble-gruber-fg3)))
+   `(magit-hash                   ((t :foreground ,gremble-gruber-fg2)))
+   `(magit-diff-file-header       ((t :foreground ,gremble-gruber-fg2 :background gremble-gruber-bg5)))
 
    ;; Orderless
    `(orderless-match-face-0 ((t :foreground ,gremble-gruber-yellow)))
