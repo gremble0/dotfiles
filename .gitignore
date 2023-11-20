@@ -36,6 +36,7 @@
 !.config/emacs/core/*
 !.config/emacs/themes/
 !.config/emacs/themes/yellowbeans-theme.el
+!.config/emacs/themes/gremble-gruber-theme.el
 
 !.config/X11/
 !.config/X11/*
