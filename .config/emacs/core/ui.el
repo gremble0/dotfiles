@@ -1,6 +1,6 @@
 ;; Set theme
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes")
-(load-theme 'yellowbeans t)
+(load-theme 'gremble-gruber t)
 
 ;; Set fonts
 (set-face-attribute 'default nil

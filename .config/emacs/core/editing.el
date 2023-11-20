@@ -83,7 +83,8 @@
     (kbd "C-n") 'next-line-or-history-element)
 
   (evil-define-key 'normal compilation-mode-map
-    (kbd "C-s") 'consult-compile-error)
+    (kbd "C-s") 'consult-compile-error
+    (kbd "K") 'kill-compilation)
 
   (evil-mode))
 
