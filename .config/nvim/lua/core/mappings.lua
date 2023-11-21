@@ -30,9 +30,6 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Open netrw
 vim.keymap.set("n", "<C-e>", ":Ex<CR>", { desc = "open netrw" })
 
--- Open git fugitive
-vim.keymap.set("n", "<leader>gt", ":Git<CR>", { desc = "clear highlights" })
-
 local open_float_opts = {
   focusable = false,
   close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },

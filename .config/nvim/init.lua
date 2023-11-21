@@ -18,7 +18,18 @@ vim.opt.rtp:prepend(lazypath)
 -- Import plugins using lazy
 require("lazy").setup({
   -- Git functionality inside nvim
-  "tpope/vim-fugitive",
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "sindrets/diffview.nvim",
+      "ibhagwan/fzf-lua",
+    },
+    config = function ()
+      require("plugins.neogit")
+    end
+  },
 
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",

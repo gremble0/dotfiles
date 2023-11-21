@@ -47,5 +47,4 @@ vim.opt.ttimeoutlen = 5
 vim.opt.updatetime = 50 -- Interval for writing swap file to disk, also used by gitsigns
 
 -- Directories
-vim.opt.autochdir = true
 vim.g.netrw_banner = 0
