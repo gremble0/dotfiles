@@ -44,7 +44,7 @@ vim.opt.sidescrolloff = 5
 vim.opt.undofile = true
 vim.opt.timeoutlen = 400
 vim.opt.ttimeoutlen = 5
-vim.opt.updatetime = 50 -- Interval for writing swap file to disk, also used by gitsigns
+vim.opt.updatetime = 50
 vim.opt.pumheight = 8
 
 -- Directories

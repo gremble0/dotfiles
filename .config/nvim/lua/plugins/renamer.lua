@@ -1,5 +1,5 @@
 -- Functions to open a popup window to rename variables/function.
--- Taken from @Malace: https://www.reddit.com/r/neovim/comments/ql4iuj/rename_hover_including_window_title_and/
+-- Taken from: https://www.reddit.com/r/neovim/comments/ql4iuj/rename_hover_including_window_title_and/
 local M = {}
 
 M.open = function()
@@ -25,7 +25,6 @@ M.open = function()
 
   vim.api.nvim_buf_set_keymap(0, "i", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
   vim.api.nvim_buf_set_keymap(0, "n", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
-
   vim.api.nvim_buf_set_keymap(
     0,
     "i",
