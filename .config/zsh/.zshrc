@@ -44,7 +44,7 @@ alias grep='grep --color=auto'
 
 alias shutdown='shutdown now'
 
-export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+export FZF_DEFAULT_COMMAND='find .'
 export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ " --color=dark,prompt:3,pointer:4,info:2,query:7:regular,hl:3,hl+:3,gutter:0,bg+:#333333'
 
 # Opam configuration

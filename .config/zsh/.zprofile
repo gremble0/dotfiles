@@ -21,7 +21,9 @@ export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 export OPAMROOT="$XDG_DATA_HOME/opam"
 export GOPATH="$XDG_DATA_HOME/go"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 
+export PYTHONSTARTUP="/etc/python/pythonrc"
 alias minecraft-launcher="minecraft-launcher --workDir='$XDG_DATA_HOME/minecraft'"
 
 # Extend PATH
