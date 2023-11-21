@@ -19,6 +19,7 @@
   :hook
   (lsp-completion-mode . corfu-setup-completion)
   (c-mode . lsp)
+  (c++-mode . lsp)
   (go-mode . lsp)
   (python-mode . lsp)
   (java-mode . lsp)
