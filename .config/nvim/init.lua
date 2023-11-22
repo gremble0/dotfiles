@@ -69,14 +69,6 @@ require("lazy").setup({
     end
   },
 
-  -- {
-  --   -- File manager
-  --   "nvim-tree/nvim-tree.lua",
-  --   config = function()
-  --     require("plugins.nvimtree")
-  --   end
-  -- },
-
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
@@ -90,7 +82,8 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     config = function()
       require("plugins.lualine")
-    end
+    end,
+    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
   },
 
   {
