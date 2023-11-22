@@ -31,15 +31,6 @@ bindkey -M menuselect "k" vi-up-line-or-history
 bindkey -M menuselect "l" vi-forward-char
 bindkey -M menuselect "j" vi-down-line-or-history
 
-# For fzf
-dirname+() {
-    if [[ -d "$1" ]]; then
-        echo "$1"
-    else
-        echo "$(dirname $1)"
-    fi
-}
-
 # Aliases
 alias c='clear'
 alias n='nvim'
