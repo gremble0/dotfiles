@@ -15,7 +15,7 @@ font:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
 
-  size: 15
+  size: 16
 
 colors:
   primary:
@@ -45,16 +45,17 @@ colors:
 key_bindings:
   # Differentiate between keys when pressed with modifiers 
   # This is only done for binds used in tmux
-  - { key: T, mods: Control|Shift, chars: "\x1b[27;6;116~" }
-  - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" }
-  - { key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~" }
-  - { key: Key0, mods: Control, chars: "\x1b[27;5;48~" }
-  - { key: Key1, mods: Control, chars: "\x1b[27;5;49~" }
-  - { key: Key2, mods: Control, chars: "\x1b[27;5;50~" }
-  - { key: Key3, mods: Control, chars: "\x1b[27;5;51~" }
-  - { key: Key4, mods: Control, chars: "\x1b[27;5;52~" }
-  - { key: Key5, mods: Control, chars: "\x1b[27;5;53~" }
-  - { key: Key6, mods: Control, chars: "\x1b[27;5;54~" }
-  - { key: Key7, mods: Control, chars: "\x1b[27;5;55~" }
-  - { key: Key8, mods: Control, chars: "\x1b[27;5;56~" }
-  - { key: Key9, mods: Control, chars: "\x1b[27;5;57~" }
+  - { key: T,        mods: Control|Shift, chars: "\x1b[27;6;116~" }
+  - { key: Tab,      mods: Control,       chars: "\x1b[27;5;9~"   }
+  - { key: Tab,      mods: Control|Shift, chars: "\x1b[27;6;9~"   }
+  - { key: Key0,     mods: Control,       chars: "\x1b[27;5;48~"  }
+  - { key: Key1,     mods: Control,       chars: "\x1b[27;5;49~"  }
+  - { key: Key2,     mods: Control,       chars: "\x1b[27;5;50~"  }
+  - { key: Key3,     mods: Control,       chars: "\x1b[27;5;51~"  }
+  - { key: Key4,     mods: Control,       chars: "\x1b[27;5;52~"  }
+  - { key: Key5,     mods: Control,       chars: "\x1b[27;5;53~"  }
+  - { key: Key6,     mods: Control,       chars: "\x1b[27;5;54~"  }
+  - { key: Key7,     mods: Control,       chars: "\x1b[27;5;55~"  }
+  - { key: Key8,     mods: Control,       chars: "\x1b[27;5;56~"  }
+  - { key: Key9,     mods: Control,       chars: "\x1b[27;5;57~"  }
+  - { key: LBracket, mods: Control,       chars: "\x1b[27;5;91~"  }
