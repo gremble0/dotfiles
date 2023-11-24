@@ -8,7 +8,6 @@ vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
-vim.opt.colorcolumn = "79"
 vim.opt.signcolumn = "yes"
 
 -- Indenting
@@ -49,3 +48,4 @@ vim.opt.pumheight = 8
 
 -- Directories
 vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 20
