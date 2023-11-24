@@ -15,12 +15,11 @@ HISTFILE=$XDG_CACHE_HOME/zsh/history
 
 # Completion
 autoload -U compinit
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 zstyle ":completion:*" menu select
 zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}"
+zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
 zmodload zsh/complist
-
-# Move zcompdump to .cache folder
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 # Include hidden files.
 _comp_options+=(globdots)
@@ -46,6 +45,3 @@ alias shutdown='shutdown now'
 
 export FZF_DEFAULT_COMMAND='find .'
 export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ " --color=dark,prompt:3,pointer:4,info:2,query:7:regular,hl:3,hl+:3,gutter:0,bg+:#333333'
-
-# Opam configuration
-[[ ! -r $XDG_DATA_HOME/opam/opam-init/init.zsh ]] || source $XDG_DATA_HOME/opam/opam-init/init.zsh > /dev/null 2> /dev/null
