@@ -34,6 +34,9 @@ require("lazy").setup({
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
 
+  -- Built in REPLs for functional programming
+  "Olical/conjure",
+
   {
     -- My theme
     "gremble0/yellowbeans.nvim",
@@ -83,7 +86,7 @@ require("lazy").setup({
     config = function()
       require("plugins.lualine")
     end,
-    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
   },
 
   {
@@ -105,7 +108,7 @@ require("lazy").setup({
       -- Useful status updates for LSP
       { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
+      -- Additional lua configuration
       "folke/neodev.nvim",
     },
     config = function()
@@ -114,7 +117,7 @@ require("lazy").setup({
   },
 
   {
-    -- Autocompletion
+    -- Completion
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
