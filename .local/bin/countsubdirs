@@ -1,0 +1,8 @@
+#!/bin/sh
+subdirs=$(ls -A)
+
+for subdir in $subdirs; do
+    if [ -d $subdir ]; then
+        echo "$subdir: $(ls -AlR $subdir | wc -l)"
+    fi
+done
