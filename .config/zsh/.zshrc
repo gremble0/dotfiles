@@ -30,10 +30,22 @@ bindkey -M menuselect "k" vi-up-line-or-history
 bindkey -M menuselect "l" vi-forward-char
 bindkey -M menuselect "j" vi-down-line-or-history
 
+fzfcd() {
+    local out="$(fzf)"
+
+    if [ -z $out ]; then
+        echo "fzf search cancelled"
+    elif [ -d "$out" ]; then
+        cd "$out"
+    else
+        cd "$(dirname $out)"
+    fi
+}
+
 # Aliases
 alias c='clear'
 alias n='nvim'
-alias f='cd $(dirname+ $(fzf))'
+alias f='fzfcd'
 alias lf='lfcd'
 alias sxiv='nsxiv'
 

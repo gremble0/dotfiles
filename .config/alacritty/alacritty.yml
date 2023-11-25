@@ -40,7 +40,7 @@ colors:
     cyan: "#34e2e2"
     white: "#ffffff"
   cursor:
-    cursor: "#cccccc"
+    cursor: "#e1b655"
 
 key_bindings:
   # Differentiate between keys when pressed with modifiers 

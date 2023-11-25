@@ -37,8 +37,7 @@ export GRIPHOME="$XDG_CACHE_HOME/grip"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # System defaults
-export EDITOR="emacs -nw"
-export VISUAL="emacsclient -c -a \"emacs\""
+export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export FILE="lf"
