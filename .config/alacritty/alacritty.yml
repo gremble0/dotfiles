@@ -59,3 +59,4 @@ key_bindings:
   - { key: Key8,     mods: Control,       chars: "\x1b[27;5;56~"  }
   - { key: Key9,     mods: Control,       chars: "\x1b[27;5;57~"  }
   - { key: LBracket, mods: Control,       chars: "\x1b[27;5;91~"  }
+  - { key: Back,     mods: Control,       chars: "\x17"           }

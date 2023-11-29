@@ -4,18 +4,18 @@
 
 ;; Set fonts
 (set-face-attribute 'default nil
-  :font "JetBrainsMono Nerd Font"
+  :font "JetBrainsMono NFM"
   :height 140
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
-  :font "JetBrainsMono Nerd Font"
+  :font "JetBrainsMono NFM"
   :height 140
   :weight 'medium)
 (set-face-attribute 'variable-pitch nil
   :font "Cantarell"
   :height 110
   :weight 'medium)
-(add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-14"))
+(add-to-list 'default-frame-alist '(font . "JetBrainsMono NFM-14"))
 
 ;; Colored emoji font
 (set-fontset-font t 'symbol "Noto Color Emoji" nil 'append)
