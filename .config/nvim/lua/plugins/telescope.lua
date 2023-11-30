@@ -14,13 +14,15 @@ require("telescope").setup {
     },
     selection_caret = "  ",
     entry_prefix = "  ",
+    prompt_prefix = "  ",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     layout_config = {
       horizontal = {
+        height = 0.5,
+        width = 0.75,
         prompt_position = "top",
         preview_width = 0.5,
-        results_width = 0.8,
       },
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
