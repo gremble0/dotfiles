@@ -23,12 +23,12 @@ colors:
     foreground: "#cccccc"
   normal:
     black: "#151515"
-    red: "#cc0000"
-    green: "#99ad6a"
+    red: "#f22b2b"
+    green: "#9aae6b"
     yellow: "#e1b655"
     blue: "#8197bf"
-    magenta: "#75507b"
-    cyan: "#06989a"
+    magenta: "#b6a6ff"
+    cyan: "#b0d0f0"
     white: "#cccccc"
   bright:
     black: "#191919"
@@ -44,7 +44,6 @@ colors:
 
 key_bindings:
   # Differentiate between keys when pressed with modifiers 
-  # This is only done for binds used in tmux
   - { key: T,        mods: Control|Shift, chars: "\x1b[27;6;116~" }
   - { key: Tab,      mods: Control,       chars: "\x1b[27;5;9~"   }
   - { key: Tab,      mods: Control|Shift, chars: "\x1b[27;6;9~"   }

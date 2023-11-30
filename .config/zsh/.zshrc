@@ -49,8 +49,8 @@ alias f='fzfcd'
 alias lf='lfcd'
 alias sxiv='nsxiv'
 
-alias ls='ls -CF --group-directories-first --color=auto'
-alias ll='ls -AhgGoF --group-directories-first --color=auto'
+alias ls='eza -F --group-directories-first'
+alias ll='eza -AFl --group-directories-first'
 alias grep='grep --color=auto'
 
 alias shutdown='shutdown now'
