@@ -52,12 +52,13 @@ require("lazy").setup({
     main = "ibl",
     opts = {
       indent = {
-        highlight = { "VertSplit", "VertSplit" },
+        highlight = { "VertSplit" },
+        char = "▏",
       },
       scope = {
-        highlight = { "Comment", "Comment" },
+        highlight = { "Comment" },
+        char = "▏",
         show_start = false,
-        show_end = false,
       },
     },
   },

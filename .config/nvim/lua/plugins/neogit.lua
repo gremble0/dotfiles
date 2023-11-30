@@ -6,10 +6,36 @@ neogit.setup {
 
   disable_hint = true,
   kind = "vsplit",
+  graph_style = "unicode",
+  commit_editor = {
+    kind = "split",
+  },
+  commit_view = {
+    kind = "split",
+    verify_commit = os.execute("which gpg") == 0,
+  },
+  commit_select_view = {
+    kind = "split",
+  },
+  log_view = {
+    kind = "split",
+  },
+  reflog_view = {
+    kind = "split",
+  },
   mappings = {
-    popup = {
+    popup = { -- Change to emacs keybinds
       ["p"] = "PushPopup",
       ["P"] = "PullPopup",
     }
-  }
+  },
+  integrations = {
+    telescope = true,
+    fzf_lua = true,
+  },
+  signs = {
+    hunk = { "", "" },
+    item = { "", "" },
+    section = { "", "" },
+  },
 }

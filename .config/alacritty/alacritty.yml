@@ -15,7 +15,7 @@ font:
     family: JetBrainsMono NFM
     style: Bold Italic
 
-  size: 16
+  size: 12
 
 colors:
   primary:
@@ -40,7 +40,7 @@ colors:
     cyan: "#34e2e2"
     white: "#ffffff"
   cursor:
-    cursor: "#e1b655"
+    cursor: "#cccccc"
 
 key_bindings:
   # Differentiate between keys when pressed with modifiers 
