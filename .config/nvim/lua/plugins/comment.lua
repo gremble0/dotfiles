@@ -1,4 +1,4 @@
--- [[ Configure Comment ]]
+-- [[ Configure Comment.nvim ]]
 require("Comment").setup {
   toggler = {
     line = "<leader>/",

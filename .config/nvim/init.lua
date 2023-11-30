@@ -50,17 +50,9 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    opts = {
-      indent = {
-        highlight = { "VertSplit" },
-        char = "▏",
-      },
-      scope = {
-        highlight = { "Comment" },
-        char = "▏",
-        show_start = false,
-      },
-    },
+    config = function ()
+      require("plugins.ibl")
+    end
   },
 
   {
@@ -84,10 +76,10 @@ require("lazy").setup({
   {
     -- Set lualine as statusline
     "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     config = function()
       require("plugins.lualine")
     end,
-    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
   },
 
   {
