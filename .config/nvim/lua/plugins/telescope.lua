@@ -11,6 +11,7 @@ require("telescope").setup {
       "--line-number",
       "--column",
       "--smart-case",
+      "--no-ignore-vsc",
     },
     selection_caret = "  ",
     entry_prefix = "  ",

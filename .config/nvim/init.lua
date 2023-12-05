@@ -1,5 +1,6 @@
 require("core.options")
 require("core.mappings")
+--require("killring").setup()
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
