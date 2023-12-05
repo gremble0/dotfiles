@@ -20,6 +20,7 @@ export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 export OPAMROOT="$XDG_DATA_HOME/opam"
 export GOPATH="$XDG_DATA_HOME/go"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 

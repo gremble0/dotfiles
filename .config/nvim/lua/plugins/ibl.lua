@@ -8,5 +8,6 @@ require("ibl").setup {
     highlight = { "Comment" },
     char = "▏",
     show_start = false,
+    show_end = false,
   },
 }
