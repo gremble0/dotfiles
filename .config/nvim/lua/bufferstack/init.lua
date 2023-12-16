@@ -6,6 +6,13 @@ local M = {}
 
 ---@param buffer integer
 function M.add_buffer(buffer)
+  -- check if we already have buffer
+  for _, buf in ipairs(M.buffers) do
+    if buf == buffer then
+      return
+    end
+  end
+
   M.buffers[#M.buffers + 1] = buffer
 end
 
