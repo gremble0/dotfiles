@@ -11,33 +11,36 @@ end
 
 ---@param buffer integer
 function M.delete_buffer(buffer)
-  print("ASD")
   for i, buf in ipairs(M.buffers) do
     if buf == buffer then
-      M.buffers[i] = M.buffers[i + 1]
-      return
+      for j = i, #M.buffers do
+        M.buffers[j] = M.buffers[j + 1]
+      end
+      break
     end
   end
 end
 
 function M.bprevious()
   local last_buffer = M.buffers[#M.buffers]
+  vim.api.nvim_set_current_buf(last_buffer)
+
   for i = #M.buffers, 1, -1 do
     M.buffers[i] = M.buffers[i - 1]
   end
 
   M.buffers[1] = last_buffer
-  vim.api.nvim_set_current_buf(last_buffer)
 end
 
 function M.bnext()
   local first_buffer = M.buffers[1]
+  vim.api.nvim_set_current_buf(first_buffer)
+
   for i = 1, #M.buffers do
     M.buffers[i] = M.buffers[i + 1]
   end
 
   M.buffers[#M.buffers + 1] = first_buffer
-  vim.api.nvim_set_current_buf(first_buffer)
 end
 
 function M.show()
@@ -61,12 +64,8 @@ function M.setup()
   })
 
   vim.api.nvim_create_autocmd("BufUnload", {
-    callback = function() print(vim.api.nvim_get_current_buf()) end
+    callback = function() M.delete_buffer(vim.api.nvim_get_current_buf()) end
   })
-
-  -- vim.api.nvim_create_autocmd("BufUnload", {
-  --   callback = function() M.delete_buffer(vim.api.nvim_get_current_buf()) end
-  -- })
 end
 
 return M
