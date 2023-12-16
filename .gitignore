@@ -29,6 +29,8 @@
 !.config/nvim/lua/core/*
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
+!.config/nvim/lua/bufferstack/
+!.config/nvim/lua/bufferstack/*
 
 !.config/emacs/
 !.config/emacs/init.el
