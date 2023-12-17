@@ -17,20 +17,19 @@ function M.add_buffer(buffer)
   M.buffers_index = #M.buffers
 end
 
----@param buffer integer
-function M.delete_buffer(buffer)
-  print("ASD")
+function M.garbage_collect()
   for i, buf in ipairs(M.buffers) do
-    if buf == buffer then
+    if not vim.api.nvim_buf_is_loaded(buf) then
       for j = i, #M.buffers do
         M.buffers[j] = M.buffers[j + 1]
       end
-      break
     end
   end
 end
 
 function M.bprevious()
+  M.garbage_collect()
+
   if M.buffers_index == 1 then
     M.buffers_index = #M.buffers
   else
@@ -41,6 +40,8 @@ function M.bprevious()
 end
 
 function M.bnext()
+  M.garbage_collect()
+
   if M.buffers_index == #M.buffers then
     M.buffers_index = 1
   else
@@ -72,10 +73,6 @@ function M.setup()
   vim.api.nvim_create_autocmd("BufEnter", {
     callback = function() M.add_buffer(vim.api.nvim_get_current_buf()) end
   })
-
-  -- vim.api.nvim_create_autocmd("BufUnload", {
-  --   callback = function() M.delete_buffer(vim.api.nvim_get_current_buf()) end
-  -- })
 end
 
 return M
