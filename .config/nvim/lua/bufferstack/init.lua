@@ -1,23 +1,25 @@
 ---@class BufferStack
 ---@field buffers integer[]
+---@field buffers_index integer
 local M = {}
-
---TODO remove killed buffers
 
 ---@param buffer integer
 function M.add_buffer(buffer)
   -- check if we already have buffer
-  for _, buf in ipairs(M.buffers) do
+  for i, buf in ipairs(M.buffers) do
     if buf == buffer then
+      M.buffers_index = i
       return
     end
   end
 
   M.buffers[#M.buffers + 1] = buffer
+  M.buffers_index = #M.buffers
 end
 
 ---@param buffer integer
 function M.delete_buffer(buffer)
+  print("ASD")
   for i, buf in ipairs(M.buffers) do
     if buf == buffer then
       for j = i, #M.buffers do
@@ -29,27 +31,25 @@ function M.delete_buffer(buffer)
 end
 
 function M.bprevious()
-  local last_buffer = M.buffers[#M.buffers]
-
-  for i = #M.buffers, 1, -1 do
-    M.buffers[i] = M.buffers[i - 1]
+  if M.buffers_index == 1 then
+    M.buffers_index = #M.buffers
+  else
+    M.buffers_index = M.buffers_index - 1
   end
 
-  M.buffers[1] = last_buffer
-  vim.api.nvim_set_current_buf(M.buffers[1])
+  vim.api.nvim_set_current_buf(M.buffers[M.buffers_index])
 end
 
 function M.bnext()
-  local first_buffer = M.buffers[1]
-
-  print(#M.buffers)
-  for i = 1, #M.buffers do
-    M.buffers[i] = M.buffers[i + 1]
+  if M.buffers_index == #M.buffers then
+    M.buffers_index = 1
+  else
+    M.buffers_index = M.buffers_index + 1
   end
-  print(#M.buffers)
 
-  M.buffers[#M.buffers + 1] = first_buffer
-  vim.api.nvim_set_current_buf(M.buffers[1])
+  print(M.buffers_index)
+
+  vim.api.nvim_set_current_buf(M.buffers[M.buffers_index])
 end
 
 function M.show()
@@ -68,13 +68,14 @@ end
 function M.setup()
   -- TODO autocmd group
   M.buffers = {}
+  M.buffers_index = 1
   vim.api.nvim_create_autocmd("BufEnter", {
     callback = function() M.add_buffer(vim.api.nvim_get_current_buf()) end
   })
 
-  vim.api.nvim_create_autocmd("BufUnload", {
-    callback = function() M.delete_buffer(vim.api.nvim_get_current_buf()) end
-  })
+  -- vim.api.nvim_create_autocmd("BufUnload", {
+  --   callback = function() M.delete_buffer(vim.api.nvim_get_current_buf()) end
+  -- })
 end
 
 return M
