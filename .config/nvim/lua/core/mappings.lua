@@ -9,8 +9,8 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "move to window above" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "move to window to the right" })
 
 -- Buffer navigation
-vim.keymap.set("n", "<C-p>", ":bprev<CR>", { desc = "go to previous buffer", silent = true })
-vim.keymap.set("n", "<C-n>", ":bnext<CR>", { desc = "go to next buffer", silent = true })
+-- vim.keymap.set("n", "<C-p>", ":bprev<CR>", { desc = "go to previous buffer", silent = true })
+-- vim.keymap.set("n", "<C-n>", ":bnext<CR>", { desc = "go to next buffer", silent = true })
 vim.keymap.set("n", "<C-c>", "<C-w>c", { desc = "close buffer", silent = true })
 
 -- Move current line up or down 

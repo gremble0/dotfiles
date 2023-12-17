@@ -1,10 +1,6 @@
 require("core.options")
 require("core.mappings")
-require("bufferstack").setup()
 -- TODO: fix hl group NeogitFilePath
-vim.keymap.set("n", "<C-n>", require("bufferstack").bnext)
-vim.keymap.set("n", "<C-p>", require("bufferstack").bprevious)
-vim.keymap.set("n", "<C-t>", require("bufferstack").show)
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -52,6 +48,16 @@ require("lazy").setup({
     config = function()
       require("killring").setup()
       vim.keymap.set("n", "<leader>gk", require("killring").open)
+    end
+  },
+
+  {
+    "gremble0/bufferstack.nvim",
+    config = function()
+      require("bufferstack").setup()
+      vim.keymap.set("n", "<C-n>", require("bufferstack").bnext)
+      vim.keymap.set("n", "<C-p>", require("bufferstack").bprevious)
+      vim.keymap.set("n", "<C-t>", require("bufferstack").show)
     end
   },
 
