@@ -1,6 +1,10 @@
 require("core.options")
 require("core.mappings")
---require("killring").setup()
+require("bufferstack").setup()
+-- TODO: fix hl group NeogitFilePath
+vim.keymap.set("n", "<C-n>", require("bufferstack").bnext)
+vim.keymap.set("n", "<C-p>", require("bufferstack").bprevious)
+vim.keymap.set("n", "<C-t>", require("bufferstack").show)
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -35,14 +39,19 @@ require("lazy").setup({
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
 
-  -- Built in REPLs for functional programming
-  "Olical/conjure",
-
   {
     -- My theme
     "gremble0/yellowbeans.nvim",
     config = function()
       vim.cmd.colorscheme("yellowbeans")
+    end
+  },
+
+  {
+    "gremble0/killring.nvim",
+    config = function()
+      require("killring").setup()
+      vim.keymap.set("n", "<leader>gk", require("killring").open)
     end
   },
 

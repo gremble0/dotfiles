@@ -30,24 +30,26 @@ end
 
 function M.bprevious()
   local last_buffer = M.buffers[#M.buffers]
-  vim.api.nvim_set_current_buf(last_buffer)
 
   for i = #M.buffers, 1, -1 do
     M.buffers[i] = M.buffers[i - 1]
   end
 
   M.buffers[1] = last_buffer
+  vim.api.nvim_set_current_buf(M.buffers[1])
 end
 
 function M.bnext()
   local first_buffer = M.buffers[1]
-  vim.api.nvim_set_current_buf(first_buffer)
 
+  print(#M.buffers)
   for i = 1, #M.buffers do
     M.buffers[i] = M.buffers[i + 1]
   end
+  print(#M.buffers)
 
   M.buffers[#M.buffers + 1] = first_buffer
+  vim.api.nvim_set_current_buf(M.buffers[1])
 end
 
 function M.show()
