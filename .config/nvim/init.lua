@@ -54,10 +54,7 @@ require("lazy").setup({
   {
     "gremble0/bufferstack.nvim",
     config = function()
-      require("bufferstack").setup()
-      vim.keymap.set("n", "<C-n>", require("bufferstack").bnext)
-      vim.keymap.set("n", "<C-p>", require("bufferstack").bprevious)
-      vim.keymap.set("n", "<C-t>", require("bufferstack").show)
+      require("plugins.bufferstack")
     end
   },
 

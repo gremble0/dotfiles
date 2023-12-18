@@ -46,8 +46,8 @@ fzfcd() {
 alias c='clear'
 alias n='nvim'
 alias f='fzfcd'
-alias lf='lfcd'
-alias sxiv='nsxiv'
+alias l='lfcd'
+alias i='nsxiv'
 
 alias ls='eza -F --group-directories-first'
 alias ll='eza -AFl --group-directories-first'
