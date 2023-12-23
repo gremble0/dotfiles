@@ -95,6 +95,14 @@ require("lazy").setup({
   },
 
   {
+    "prichrd/netrw.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+    config = function()
+      require("netrw").setup()
+    end,
+  },
+
+  {
     -- "<leader>/" to comment visual regions/lines
     "numToStr/Comment.nvim",
     config = function()

@@ -8,7 +8,7 @@ picom &
 # Bind keys
 sxhkd &
 
-# Set keyboard settings
+# Set keyboard settings (custom script)
 setkeyboard &
 
 # Start statusbar

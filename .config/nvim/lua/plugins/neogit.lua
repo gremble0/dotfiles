@@ -32,6 +32,7 @@ neogit.setup {
   integrations = {
     telescope = true,
     fzf_lua = true,
+    diffview = true,
   },
   signs = {
     hunk = { "", "" },
