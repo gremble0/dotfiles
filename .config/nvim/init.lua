@@ -46,8 +46,7 @@ require("lazy").setup({
   {
     "gremble0/killring.nvim",
     config = function()
-      require("killring").setup()
-      vim.keymap.set("n", "<leader>gk", require("killring").open)
+      require("plugins.killring")
     end
   },
 
