@@ -36,10 +36,8 @@ local on_attach = function(_, bufnr)
   end, { desc = "Format current buffer with LSP" })
 end
 
--- Add border to floating windows, get the border style from the theme file
-require("lspconfig.ui.windows").default_options.border = require("yellowbeans.styles").border
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single"
+  border = "rounded",
 })
 
 -- List of configured language servers

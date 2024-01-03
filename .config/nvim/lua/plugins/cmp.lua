@@ -5,8 +5,6 @@ local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup()
 
-local cmpborder = { "┌",  "─",  "┐",  "│",  "┘",  "─",  "└",  "│" }
-
 cmp.setup {
   formatting = {
     expandable_indicator = false,
@@ -68,7 +66,7 @@ cmp.setup {
   },
   window = {
     completion = cmp.config.window.bordered({
-      border = cmpborder, -- "rounded"
+      border = "rounded",
       side_padding = 0,
       col_offset = -3,
       winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
@@ -76,7 +74,7 @@ cmp.setup {
       scrolloff = 2,
     }),
     documentation = cmp.config.window.bordered({
-      border = cmpborder, -- "rounded"
+      border = "rounded",
       side_padding = 0,
       winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
       scrolloff = 2,

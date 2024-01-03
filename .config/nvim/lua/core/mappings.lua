@@ -30,7 +30,7 @@ vim.keymap.set("n", "<C-e>", ":Ex<CR>", { desc = "open netrw" })
 local open_float_opts = {
   focusable = false,
   close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-  border = "single",
+  border = "rounded",
   source = "always", -- show source in diagnostic popup window
   prefix = " ",
 }

@@ -119,7 +119,7 @@ require("lazy").setup({
       {
         "williamboman/mason.nvim",
         config = true,
-        opts = { ui = { border = "single" } },
+        opts = { ui = { border = "rounded" } },
       },
       "williamboman/mason-lspconfig.nvim",
 
@@ -185,6 +185,6 @@ require("lazy").setup({
   },
 }, {
   ui = {
-    border = "single"
+    border = "rounded"
   }
 })

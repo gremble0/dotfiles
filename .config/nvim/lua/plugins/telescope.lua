@@ -28,7 +28,6 @@ require("telescope").setup {
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-    borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
     set_env = { ["COLORTERM"] = "truecolor" },
     mappings = {
       i = { ["<esc>"] = require("telescope.actions").close },
