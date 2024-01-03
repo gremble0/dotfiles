@@ -2,6 +2,17 @@
 -- Define function that will be called whenever a language server attatches to a buffer
 local lsp = vim.lsp
 
+local rename = function()
+  local cur_name = vim.fn.expand("<cword>")
+
+  local new_name = vim.fn.input("rename " .. cur_name .. ": ")
+  if #new_name > 0 and new_name ~= cur_name then
+    local params = vim.lsp.util.make_position_params()
+    params.newName = new_name
+    vim.lsp.buf_request(0, "textDocument/rename", params)
+  end
+end
+
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
@@ -11,7 +22,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap("<leader>rn", require("plugins.renamer").open, "[R]e[n]ame")
+  nmap("<leader>rn", rename, "[R]e[n]ame")
   nmap("<leader>ca", lsp.buf.code_action, "[C]ode [A]ction")
 
   nmap("gd", lsp.buf.definition, "[G]oto [D]efinition")
@@ -103,3 +114,5 @@ require("mason-lspconfig").setup_handlers {
     }
   end,
 }
+
+-- vim.diagnostic.config({})
