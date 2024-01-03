@@ -2,10 +2,22 @@
 -- Define function that will be called whenever a language server attatches to a buffer
 local lsp = vim.lsp
 
+-- Configure diagnostic floats
+vim.diagnostic.config({
+  update_in_insert = true,
+  float = {
+    focusable = false,
+    border = "rounded",
+    source = "always",
+    prefix = "",
+  },
+})
+
+-- Get user input for renaming the word currently under the cursor
 local rename = function()
   local cur_name = vim.fn.expand("<cword>")
 
-  local new_name = vim.fn.input("rename " .. cur_name .. ": ")
+  local new_name = vim.fn.input("Rename '" .. cur_name .. "': ")
   if #new_name > 0 and new_name ~= cur_name then
     local params = vim.lsp.util.make_position_params()
     params.newName = new_name
@@ -14,37 +26,33 @@ local rename = function()
 end
 
 local on_attach = function(_, bufnr)
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = "LSP: " .. desc
-    end
+  local telescope_builtin = require("telescope.builtin")
 
-    vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-  end
+  vim.keymap.set("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: [R]e[n]ame" })
+  vim.keymap.set("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: [C]ode [A]ction" })
 
-  nmap("<leader>rn", rename, "[R]e[n]ame")
-  nmap("<leader>ca", lsp.buf.code_action, "[C]ode [A]ction")
+  vim.keymap.set("n", "gd", lsp.buf.definition, { buffer = bufnr, desc = "LSP: [G]oto [D]efinition" })
+  vim.keymap.set("n", "gD", lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
+  vim.keymap.set("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: [G]oto [I]mplementation" })
+  vim.keymap.set("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: [G]oto [T]ype Definition" })
 
-  nmap("gd", lsp.buf.definition, "[G]oto [D]efinition")
-  nmap("gD", lsp.buf.declaration, "[G]oto [D]eclaration")
-  nmap("gi", lsp.buf.implementation, "[G]oto [I]mplementation")
-  nmap("gt", lsp.buf.type_definition, "[G]oto [T]ype Definition")
+  vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: [G]oto [R]eferences" })
+  vim.keymap.set("n", "gs", telescope_builtin.lsp_dynamic_workspace_symbols,
+    { buffer = bufnr, desc = "LSP: [G]oto Workspace [S]ymbols" })
 
-  nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-  nmap("gs", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[G]oto Workspace [S]ymbols")
+  vim.keymap.set("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover Documentation" })
+  vim.keymap.set("n", "<C-k>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
 
-  nmap("K", lsp.buf.hover, "Hover Documentation")
-  nmap("<C-k>", lsp.buf.signature_help, "Signature Documentation")
+  vim.keymap.set("n", "<leader>wa", lsp.buf.add_workspace_folder,
+    { buffer = bufnr, desc = "LSP: [W]orkspace [A]dd Folder" })
+  vim.keymap.set("n", "<leader>wr", lsp.buf.remove_workspace_folder,
+    { buffer = bufnr, desc = "LSP: [W]orkspace [R]emove Folder" })
 
-  nmap("<leader>wa", lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-  nmap("<leader>wr", lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-  nmap("<leader>wl", function()
+  vim.keymap.set("n", "<leader>wl", function()
     print(vim.inspect(lsp.buf.list_workspace_folders()))
-  end, "[W]orkspace [L]ist Folders")
+  end, { buffer = bufnr, desc = "[W]orkspace [L]ist Folders" })
 
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-    lsp.buf.format()
-  end, { desc = "Format current buffer with LSP" })
+  vim.keymap.set("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: For[M]a[T] current buffer" })
 end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

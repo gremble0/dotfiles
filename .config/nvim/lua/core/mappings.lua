@@ -13,7 +13,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "move to window to the right" })
 -- vim.keymap.set("n", "<C-n>", ":bnext<CR>", { desc = "go to next buffer", silent = true })
 vim.keymap.set("n", "<C-c>", "<C-w>c", { desc = "close buffer", silent = true })
 
--- Move current line up or down 
+-- Move current line up or down
 vim.keymap.set("n", "<leader>j", ":m .+1<CR>", { desc = "move current line down", silent = true })
 vim.keymap.set("n", "<leader>k", ":m .-2<CR>", { desc = "move current line up", silent = true })
 
@@ -27,22 +27,10 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Open netrw
 vim.keymap.set("n", "<C-e>", ":Ex<CR>", { desc = "open netrw" })
 
-local open_float_opts = {
-  focusable = false,
-  close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-  border = "rounded",
-  source = "always", -- show source in diagnostic popup window
-  prefix = " ",
-}
-
-local open_float = function() vim.diagnostic.open_float(open_float_opts) end
-local goto_next = function() vim.diagnostic.goto_next({ float = open_float_opts }) end
-local goto_prev = function() vim.diagnostic.goto_prev({ float = open_float_opts }) end
-
 -- Diagnostic keymaps
-vim.keymap.set("n", "gp", goto_prev, { desc = "go to previous diagnostic message" })
-vim.keymap.set("n", "gn", goto_next, { desc = "go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", open_float, { desc = "open floating diagnostic message" })
+vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, { desc = "go to previous diagnostic message" })
+vim.keymap.set("n", "gn", vim.diagnostic.goto_next, { desc = "go to next diagnostic message" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "open floating diagnostic message" })
 
 --- VISUAL MODE KEYBINDS ---
 vim.keymap.set("v", "<leader>j", "dp", { desc = "move selected lines down" })

@@ -1,6 +1,8 @@
 require("core.options")
 require("core.mappings")
 -- TODO: fix hl group NeogitFilePath
+-- TODO: Lsp signature help
+-- neogen plugin
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -18,7 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Import plugins using lazy
 require("lazy").setup({
-  -- My theme
+  -- Theme
   {
     "gremble0/yellowbeans.nvim",
     priority = 1000,
