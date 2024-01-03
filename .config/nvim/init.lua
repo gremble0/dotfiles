@@ -18,7 +18,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Import plugins using lazy
 require("lazy").setup({
-  -- Git functionality inside nvim
+  -- My theme
+  {
+    "gremble0/yellowbeans.nvim",
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("yellowbeans")
+    end
+  },
+
+  -- Git functionality like magit inside nvim
   {
     "NeogitOrg/neogit",
     dependencies = {
@@ -34,14 +43,6 @@ require("lazy").setup({
 
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
-
-  {
-    -- My theme
-    "gremble0/yellowbeans.nvim",
-    config = function()
-      vim.cmd.colorscheme("yellowbeans")
-    end
-  },
 
   {
     "gremble0/killring.nvim",
@@ -66,8 +67,8 @@ require("lazy").setup({
     end
   },
 
+  -- Display colors such as #fff inside the terminal
   {
-    -- Display colors such as #fff inside the terminal
     "norcalli/nvim-colorizer.lua",
     config = function()
       vim.defer_fn(function()
@@ -76,16 +77,16 @@ require("lazy").setup({
     end
   },
 
+  -- Adds git releated signs to the gutter, as well as utilities for managing changes
   {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
     config = function()
       require("plugins.gitsigns")
     end
   },
 
+  -- Statusline
   {
-    -- Set lualine as statusline
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     config = function()
@@ -93,6 +94,7 @@ require("lazy").setup({
     end,
   },
 
+  -- Prettier netrw
   {
     "prichrd/netrw.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
@@ -101,16 +103,16 @@ require("lazy").setup({
     end,
   },
 
+  -- Keybinds for commenting regions
   {
-    -- "<leader>/" to comment visual regions/lines
     "numToStr/Comment.nvim",
     config = function()
       require("plugins.comment")
     end
   },
 
+  -- LSP Configuration & Plugins
   {
-    -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -132,8 +134,8 @@ require("lazy").setup({
     end
   },
 
+  -- Completion
   {
-    -- Completion
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
@@ -154,8 +156,8 @@ require("lazy").setup({
     end
   },
 
+  -- Fuzzy Finder (files, lsp, etc)
   {
-    -- Fuzzy Finder (files, lsp, etc)
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     branch = "0.1.x",
@@ -172,8 +174,8 @@ require("lazy").setup({
     end,
   },
 
+  -- Highlight, edit, and navigate code
   {
-    -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
