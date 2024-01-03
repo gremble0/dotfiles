@@ -27,9 +27,6 @@
 
 (use-package lsp-pyright)
 (use-package lsp-java)
-(use-package lsp-scheme
-  :custom
-  (lsp-scheme-implementation "guile"))
 
 ;; Treesitter for better syntax highlighting
 (use-package tree-sitter

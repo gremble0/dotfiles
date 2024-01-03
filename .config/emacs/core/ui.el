@@ -59,8 +59,7 @@
   :custom
   (lsp-ui-doc-enable t)
   (lsp-ui-doc-position 'at-point)
-  (lsp-ui-doc-border "#282828")
-  (lsp-ui-sideline-enable nil))
+  (lsp-ui-doc-border "#282828"))
 
 ;; See font face for text at point
 ;; From: https://stackoverflow.com/questions/1242352/get-font-face-under-cursor-in-emacs

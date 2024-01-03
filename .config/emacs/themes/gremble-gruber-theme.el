@@ -17,9 +17,9 @@
       (gremble-gruber-moss      "#7c9081")
       (gremble-gruber-olive     "#9aae6b")
       (gremble-gruber-yellow    "#e1b655")
-      (gremble-gruber-good      "#60a840")
+      (gremble-gruber-good      "#b3e27c")
       (gremble-gruber-neutral   "#ffa500")
-      (gremble-gruber-bad       "#d22b2b")
+      (gremble-gruber-bad       "#f22b2b")
       (gremble-gruber-wisteria  "#9e95c7"))
 
   (custom-theme-set-variables
