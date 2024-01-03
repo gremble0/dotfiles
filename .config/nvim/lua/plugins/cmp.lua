@@ -3,7 +3,11 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
-luasnip.config.setup {}
+luasnip.config.setup()
+
+vim.keymap.set({ "i", "s", "n" }, "<C-/>", function() luasnip.expand() end, { silent = true })
+vim.keymap.set({ "i", "s", "n" }, "<C-;>", function() luasnip.jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s", "n" }, "<C-,>", function() luasnip.jump(-1) end, { silent = true })
 
 local has_words_before = function()
   unpack = unpack or table.unpack
