@@ -2,7 +2,6 @@ require("core.options")
 require("core.mappings")
 -- TODO: fix hl group NeogitFilePath
 -- TODO: Lsp signature help
--- neogen plugin
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -38,7 +37,7 @@ require("lazy").setup({
       "sindrets/diffview.nvim",
       "ibhagwan/fzf-lua",
     },
-    config = function ()
+    config = function()
       require("plugins.neogit")
     end
   },
@@ -64,7 +63,7 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    config = function ()
+    config = function()
       require("plugins.ibl")
     end
   },
@@ -158,6 +157,15 @@ require("lazy").setup({
     end
   },
 
+  -- Generate documentation
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("plugins.neogen")
+    end,
+  },
+
   -- Fuzzy Finder (files, lsp, etc)
   {
     "nvim-telescope/telescope.nvim",
@@ -165,7 +173,7 @@ require("lazy").setup({
     branch = "0.1.x",
     config = function()
       require("plugins.telescope")
-    end
+    end,
   },
 
   {
