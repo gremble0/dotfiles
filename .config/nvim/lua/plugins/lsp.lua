@@ -1,5 +1,4 @@
 -- [[ Configures native lsp and integrates nvim-cmp and mason to apply language servers ]]
--- Define function that will be called whenever a language server attatches to a buffer
 local lsp = vim.lsp
 
 -- Configure diagnostic floats
@@ -28,31 +27,31 @@ end
 local on_attach = function(_, bufnr)
   local telescope_builtin = require("telescope.builtin")
 
-  vim.keymap.set("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: [R]e[n]ame" })
-  vim.keymap.set("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: [C]ode [A]ction" })
+  vim.keymap.set("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: Rename" })
+  vim.keymap.set("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
 
-  vim.keymap.set("n", "gd", lsp.buf.definition, { buffer = bufnr, desc = "LSP: [G]oto [D]efinition" })
-  vim.keymap.set("n", "gD", lsp.buf.declaration, { buffer = bufnr, desc = "LSP: [G]oto [D]eclaration" })
-  vim.keymap.set("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: [G]oto [I]mplementation" })
-  vim.keymap.set("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: [G]oto [T]ype Definition" })
+  vim.keymap.set("n", "gd", lsp.buf.definition, { buffer = bufnr, desc = "LSP: Goto definition" })
+  vim.keymap.set("n", "gD", lsp.buf.declaration, { buffer = bufnr, desc = "LSP: Goto declaration" })
+  vim.keymap.set("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Goto implementation" })
+  vim.keymap.set("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Goto type Definition" })
 
-  vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: [G]oto [R]eferences" })
+  vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: Goto references" })
   vim.keymap.set("n", "gs", telescope_builtin.lsp_dynamic_workspace_symbols,
-    { buffer = bufnr, desc = "LSP: [G]oto Workspace [S]ymbols" })
+    { buffer = bufnr, desc = "LSP: Goto workspace symbols" })
 
-  vim.keymap.set("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover Documentation" })
-  vim.keymap.set("n", "<C-k>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
+  vim.keymap.set("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
+  -- vim.keymap.set("n", "<C-k>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
 
   vim.keymap.set("n", "<leader>wa", lsp.buf.add_workspace_folder,
-    { buffer = bufnr, desc = "LSP: [W]orkspace [A]dd Folder" })
+    { buffer = bufnr, desc = "LSP: Add workspace folder" })
   vim.keymap.set("n", "<leader>wr", lsp.buf.remove_workspace_folder,
-    { buffer = bufnr, desc = "LSP: [W]orkspace [R]emove Folder" })
+    { buffer = bufnr, desc = "LSP: Remove workspace folder" })
 
   vim.keymap.set("n", "<leader>wl", function()
     print(vim.inspect(lsp.buf.list_workspace_folders()))
-  end, { buffer = bufnr, desc = "[W]orkspace [L]ist Folders" })
+  end, { buffer = bufnr, desc = "List workspace folders" })
 
-  vim.keymap.set("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: For[M]a[T] current buffer" })
+  vim.keymap.set("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: Format current buffer" })
 end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -70,7 +69,7 @@ local servers = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       diagnostics = {
-        globals = { 'vim' }
+        globals = { "vim" }
       },
     },
   },
@@ -122,5 +121,3 @@ require("mason-lspconfig").setup_handlers {
     }
   end,
 }
-
--- vim.diagnostic.config({})
