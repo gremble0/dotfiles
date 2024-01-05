@@ -1,44 +1,30 @@
--- [[ Configure Treesitter ]]
-require("nvim-treesitter.configs").setup {
-  ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "vimdoc", "vim" },
+--[[ Configure Treesitter ]]
+local treesitter_configs = require("nvim-treesitter.configs")
 
+treesitter_configs.setup {
+  ensure_installed = { "c", "cpp", "go", "lua", "python", "tsx", "typescript", "vimdoc", "vim" },
+  sync_install = false,
+  auto_install = true,
+  ignore_install = {},
   highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<c-space>",
-      node_incremental = "<c-space>",
-      scope_incremental = "<c-s>",
-      node_decremental = "<M-space>",
+      init_selection = "v<Tab>",
+      node_incremental = "<Tab>",
+      node_decremental = "<S-Tab>",
     },
   },
   textobjects = {
     select = {
       enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
+      lookahead = true,
     },
     move = {
       enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ["<leader>a"] = "@parameter.inner",
-      },
-      swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
-      },
+      set_jumps = true,
     },
   },
+  modules = {},
 }
