@@ -1,10 +1,9 @@
 require("core.options")
 require("core.mappings")
--- TODO: fix hl group NeogitFilePath
 -- TODO: Lsp signature help
 
 -- Initialize lazy
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     "git",
@@ -42,9 +41,17 @@ require("lazy").setup({
     end
   },
 
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require("plugins.whichkey")
+    end,
+  },
+
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
 
+  -- Save deletion history to a killring
   {
     "gremble0/killring.nvim",
     config = function()
@@ -52,6 +59,7 @@ require("lazy").setup({
     end
   },
 
+  -- Fix unintuitive :bprevious and :bnext behavior
   {
     "gremble0/bufferstack.nvim",
     config = function()
@@ -180,7 +188,7 @@ require("lazy").setup({
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
     cond = function()
-      return vim.fn.executable "make" == 1
+      return vim.fn.executable("make") == 1
     end,
   },
 
