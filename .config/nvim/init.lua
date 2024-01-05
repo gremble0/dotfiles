@@ -157,21 +157,16 @@ require("lazy").setup({
       -- Adds a number of user-friendly snippets
       "rafamadriz/friendly-snippets",
 
+      -- Generate documentation
+      "danymat/neogen",
+      -- Required by neogen
+      "nvim-treesitter/nvim-treesitter",
       -- Adds icons to cmp window
       "onsails/lspkind.nvim"
     },
     config = function()
       require("plugins.cmp")
     end
-  },
-
-  -- Generate documentation
-  {
-    "danymat/neogen",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("plugins.neogen")
-    end,
   },
 
   -- Fuzzy Finder (files, lsp, etc)

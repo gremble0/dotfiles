@@ -2,6 +2,7 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 local luasnip = require("luasnip")
+local neogen = require("neogen")
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup()
 
@@ -81,3 +82,7 @@ cmp.setup {
     }),
   },
 }
+
+neogen.setup({ snippet_engine = "luasnip" })
+
+vim.keymap.set("n", "<leader>gd", neogen.generate, { desc = "Generate documentation" })
