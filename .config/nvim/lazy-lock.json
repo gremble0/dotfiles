@@ -7,7 +7,7 @@
   "diffview.nvim": { "branch": "main", "commit": "3dc498c9777fe79156f3d32dddd483b8b3dbd95f" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "friendly-snippets": { "branch": "main", "commit": "53d3df271d031c405255e99410628c26a8f0d2b0" },
-  "fzf-lua": { "branch": "main", "commit": "6ee0ba3ec336cc570468778dc63ac125178b1a5b" },
+  "fzf-lua": { "branch": "main", "commit": "d4eb38625d22c48512ce8590a6248736ffc067a1" },
   "gitsigns.nvim": { "branch": "main", "commit": "3e6e91b09f0468c32d3b96dcacf4b947f037ce25" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3c8a185da4b8ab7aef487219f5e001b11d4b6aaf" },
   "killring.nvim": { "branch": "master", "commit": "6b44862f5f4f0f6d067f14337aa57656636ab7c9" },

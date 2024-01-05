@@ -1,6 +1,5 @@
 require("core.options")
 require("core.mappings")
--- TODO: Lsp signature help
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -41,6 +40,7 @@ require("lazy").setup({
     end
   },
 
+  -- Pretty UI to help with keybinds
   {
     "folke/which-key.nvim",
     config = function()
@@ -158,9 +158,8 @@ require("lazy").setup({
       "rafamadriz/friendly-snippets",
 
       -- Generate documentation
-      "danymat/neogen",
-      -- Required by neogen
-      "nvim-treesitter/nvim-treesitter",
+      { "danymat/neogen", dependencies = { "nvim-treesitter/nvim-treesitter" } },
+
       -- Adds icons to cmp window
       "onsails/lspkind.nvim"
     },
@@ -172,18 +171,19 @@ require("lazy").setup({
   -- Fuzzy Finder (files, lsp, etc)
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        cond = function()
+          return vim.fn.executable("make") == 1
+        end,
+      },
+    },
     branch = "0.1.x",
     config = function()
       require("plugins.telescope")
-    end,
-  },
-
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
-    cond = function()
-      return vim.fn.executable("make") == 1
     end,
   },
 
