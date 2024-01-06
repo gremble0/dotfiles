@@ -1,3 +1,4 @@
+-- [[ Configure bufferstack ]]
 local bufferstack = require("bufferstack")
 
 bufferstack.setup {
