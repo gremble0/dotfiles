@@ -1,4 +1,5 @@
 -- [[ Configure Lualine ]]
+local lualine = require("lualine")
 
 -- Make section for lsp info for in statusline
 local lsp_section = function()
@@ -13,7 +14,7 @@ local lsp_section = function()
   return ""
 end
 
-require("lualine").setup {
+lualine.setup({
   options = {
     component_separators = "",
     refresh = { statusline = 200 },
@@ -29,4 +30,4 @@ require("lualine").setup {
     lualine_y = { { "filetype", colored = false } },
     lualine_z = { "location" },
   },
-}
+})

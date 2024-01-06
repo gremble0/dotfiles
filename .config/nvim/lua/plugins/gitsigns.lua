@@ -1,5 +1,7 @@
 -- [[ Configure gitsigns ]]
-require("gitsigns").setup {
+local gitsigns = require("gitsigns")
+
+gitsigns.setup {
   signs = {
     add = { text = "+" },
     change = { text = "~" },
@@ -9,6 +11,6 @@ require("gitsigns").setup {
   },
 }
 
-vim.keymap.set("n", "<leader>hp", require("gitsigns").prev_hunk, { desc = "Goto previous git hunk" })
-vim.keymap.set("n", "<leader>hn", require("gitsigns").next_hunk, {  desc = "Goto next git hunk" })
-vim.keymap.set("n", "<leader>hv", require("gitsigns").preview_hunk, {  desc = "Preview git hunk" })
+vim.keymap.set("n", "<leader>hp", gitsigns.prev_hunk, { desc = "Goto previous git hunk" })
+vim.keymap.set("n", "<leader>hn", gitsigns.next_hunk, {  desc = "Goto next git hunk" })
+vim.keymap.set("n", "<leader>hv", gitsigns.preview_hunk, {  desc = "Preview git hunk" })

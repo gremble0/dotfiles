@@ -1,5 +1,7 @@
 -- [[ Configure ibl (indent-blankline.nvim) ]]
-require("ibl").setup {
+local ibl = require("ibl")
+
+ibl.setup({
   indent = {
     highlight = { "VertSplit" },
     char = "▏",
@@ -10,4 +12,4 @@ require("ibl").setup {
     show_start = false,
     show_end = false,
   },
-}
+})

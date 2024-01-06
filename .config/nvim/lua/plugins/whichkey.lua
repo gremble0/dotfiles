@@ -1,4 +1,6 @@
-require("which-key").setup({
+local whichkey = require("which-key")
+
+whichkey.setup({
   window = {
     border = "rounded",
   },
