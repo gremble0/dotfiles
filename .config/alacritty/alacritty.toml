@@ -1,0 +1,135 @@
+[colors.bright]
+black = "#191919"
+blue = "#a3b9df"
+cyan = "#34e2e2"
+green = "#bbcf8c"
+magenta = "#ad7fa8"
+red = "#ef2929"
+white = "#ffffff"
+yellow = "#f3d877"
+
+[colors.cursor]
+cursor = "#cccccc"
+
+[colors.normal]
+black = "#151515"
+blue = "#8197bf"
+cyan = "#b0d0f0"
+green = "#9aae6b"
+magenta = "#b6a6ff"
+red = "#f22b2b"
+white = "#cccccc"
+yellow = "#e1b655"
+
+[colors.primary]
+background = "#151515"
+foreground = "#cccccc"
+
+[font]
+size = 12
+
+[font.bold]
+family = "JetBrainsMono NFM"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono NFM"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono NFM"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono NFM"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;116~"
+key = "T"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;9~"
+key = "Tab"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;9~"
+key = "Tab"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;48~"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;49~"
+key = "Key1"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;50~"
+key = "Key2"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;51~"
+key = "Key3"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;52~"
+key = "Key4"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;53~"
+key = "Key5"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;54~"
+key = "Key6"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;55~"
+key = "Key7"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;56~"
+key = "Key8"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;57~"
+key = "Key9"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;91~"
+key = "LBracket"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Back"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;59~"
+key = "Semicolon"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;44~"
+key = "Comma"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;47~"
+key = "Slash"
+mods = "Control"
