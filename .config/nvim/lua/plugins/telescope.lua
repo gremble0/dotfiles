@@ -4,7 +4,7 @@ local actions = require("telescope.actions")
 local sorters = require("telescope.sorters")
 local telescope_builtin = require("telescope.builtin")
 
-telescope.setup {
+telescope.setup({
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -38,7 +38,7 @@ telescope.setup {
       i = { ["<esc>"] = actions.close },
     },
   },
-}
+})
 
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, "fzf")

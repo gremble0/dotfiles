@@ -80,9 +80,7 @@ require("lazy").setup({
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      vim.defer_fn(function()
-        require("colorizer").attach_to_buffer(0)
-      end, 0)
+      require("colorizer").setup({ "*" }, { names = false })
     end
   },
 

@@ -1,7 +1,7 @@
 -- [[ Configure bufferstack ]]
 local bufferstack = require("bufferstack")
 
-bufferstack.setup {
+bufferstack.setup({
   bprevious = "<C-p>",
   bnext = "<C-n>",
-}
+})

@@ -1,7 +1,7 @@
 -- [[ Configure Neogit ]]
 local neogit = require("neogit")
 
-neogit.setup {
+neogit.setup({
   vim.keymap.set("n", "<leader>gt", neogit.open, { desc = "Open neogit" }),
 
   disable_hint = true,
@@ -39,4 +39,4 @@ neogit.setup {
     item = { "", "" },
     section = { "", "" },
   },
-}
+})
