@@ -43,10 +43,11 @@ telescope.setup({
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, "fzf")
 
-vim.keymap.set("n", "<leader>o", telescope_builtin.oldfiles, { desc = "Find recently opened files" })
-vim.keymap.set("n", "<leader>f", telescope_builtin.find_files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>b", telescope_builtin.buffers, { desc = "Find open buffers" })
-vim.keymap.set("n", "<leader>z", telescope_builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find current buffer" })
-vim.keymap.set("n", "<leader>d", telescope_builtin.diagnostics, { desc = "Get diagnostics" })
-vim.keymap.set("n", "<leader>gh", telescope_builtin.help_tags, { desc = "Find help" })
-vim.keymap.set("n", "<leader>gr", telescope_builtin.live_grep, { desc = "Live grep" })
+local ks = vim.keymap.set
+ks("n", "<leader>o", telescope_builtin.oldfiles, { desc = "Find recently opened files" })
+ks("n", "<leader>f", telescope_builtin.find_files, { desc = "Find files" })
+ks("n", "<leader>b", telescope_builtin.buffers, { desc = "Find open buffers" })
+ks("n", "<leader>z", telescope_builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find current buffer" })
+ks("n", "<leader>d", telescope_builtin.diagnostics, { desc = "Get diagnostics" })
+ks("n", "<leader>gh", telescope_builtin.help_tags, { desc = "Find help" })
+ks("n", "<leader>gr", telescope_builtin.live_grep, { desc = "Live grep" })

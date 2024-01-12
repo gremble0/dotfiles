@@ -22,9 +22,7 @@ lualine.setup({
   },
   sections = {
     lualine_a = { { "mode", icons_enabled = true } },
-    lualine_b = {
-      "filename",
-    },
+    lualine_b = { "filename" },
     lualine_c = { "branch", "diff" },
     lualine_x = { "diagnostics", lsp_section },
     lualine_y = { { "filetype", colored = false } },
