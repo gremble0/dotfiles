@@ -25,9 +25,6 @@ ks("n", "k", "v:count == 0 ? 'gk' : 'k'",
 ks("n", "j", "v:count == 0 ? 'gj' : 'j'",
     { desc = "Move down with word wrapping", expr = true, silent = true })
 
--- Open netrw
-ks("n", "<C-e>", ":Ex<CR>", { desc = "Open netrw" })
-
 -- Diagnostic keymaps
 ks("n", "gp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 ks("n", "gn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })

@@ -101,13 +101,12 @@ require("lazy").setup({
     end,
   },
 
-  -- Prettier netrw
   {
-    "prichrd/netrw.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+    "stevearc/oil.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("netrw").setup()
-    end,
+      require("plugins.oil")
+    end
   },
 
   -- Keybinds for commenting regions
