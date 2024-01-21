@@ -18,14 +18,14 @@ telescope.setup({
       "--smart-case",
       "--no-ignore-vcs",
     },
-    selection_caret = "  ",
-    entry_prefix = "  ",
-    prompt_prefix = "  ",
+    selection_caret = " ",
+    entry_prefix = " ",
+    prompt_prefix = "❯ ",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     layout_config = {
       horizontal = {
-        height = 0.5,
+        height = 0.65,
         width = 0.75,
         prompt_position = "top",
         preview_width = 0.5,
@@ -33,9 +33,11 @@ telescope.setup({
     },
     file_sorter = sorters.get_fuzzy_file,
     generic_sorter = sorters.get_generic_fuzzy_sorter,
-    set_env = { ["COLORTERM"] = "truecolor" },
     mappings = {
-      i = { ["<esc>"] = actions.close },
+      i = {
+        ["<esc>"] = actions.close,
+        ["<C-l>"] = false,
+      },
     },
   },
 })
