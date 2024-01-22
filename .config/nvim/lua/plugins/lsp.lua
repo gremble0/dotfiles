@@ -64,6 +64,7 @@ local servers = {
   clangd = {},
   pyright = {},
   tsserver = {},
+  tailwindcss = {},
   cssls = {},
   lua_ls = {
     Lua = {
@@ -86,8 +87,7 @@ local servers = {
       "--add-modules=ALL-SYSTEM",
       "--add-opens", "java.base/java.util=ALL-UNNAMED",
       "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-      "-jar",
-      "~/.local/share/nvim/mason/share/jdtls/org.eclipse.equinox.launcher.jar",
+      "-jar", "~/.local/share/nvim/mason/share/jdtls/org.eclipse.equinox.launcher.jar",
       "-configuration", "~/.local/share/nvim/mason/share/jdtls/config/config.ini",
       "-data", "~/.local/share/nvim/java"
     },
@@ -122,3 +122,5 @@ require("mason-lspconfig").setup_handlers({
     }
   end,
 })
+
+require('lspconfig.ui.windows').default_options.border = "rounded"
