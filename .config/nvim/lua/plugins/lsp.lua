@@ -12,6 +12,18 @@ vim.diagnostic.config({
   },
 })
 
+local icons = {
+  Error = '󰅚 ',
+  Warn = '󰀪 ',
+  Info = '󰋽 ',
+  Hint = '󰌶 ',
+}
+
+for type, icon in pairs(icons) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
+
 -- Get user input for renaming the word currently under the cursor
 local rename = function()
   local cur_name = vim.fn.expand("<cword>")
