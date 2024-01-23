@@ -40,6 +40,14 @@ require("lazy").setup({
     end
   },
 
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup()
+      vim.notify = require("notify")
+    end
+  },
+
   -- Pretty UI to help with keybinds
   {
     "folke/which-key.nvim",
