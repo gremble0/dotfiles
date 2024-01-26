@@ -23,7 +23,7 @@ require("lazy").setup({
     priority = 1000,
     config = function()
       vim.cmd.colorscheme("yellowbeans")
-    end
+    end,
   },
 
   -- Git functionality like magit inside nvim
@@ -37,15 +37,14 @@ require("lazy").setup({
     },
     config = function()
       require("plugins.neogit")
-    end
+    end,
   },
 
   {
     "rcarriga/nvim-notify",
     config = function()
-      require("notify").setup()
-      vim.notify = require("notify")
-    end
+      require("plugins.notify")
+    end,
   },
 
   -- Pretty UI to help with keybinds
@@ -64,7 +63,7 @@ require("lazy").setup({
     "gremble0/killring.nvim",
     config = function()
       require("plugins.killring")
-    end
+    end,
   },
 
   -- Fix unintuitive :bprevious and :bnext behavior
@@ -72,7 +71,7 @@ require("lazy").setup({
     "gremble0/bufferstack.nvim",
     config = function()
       require("plugins.bufferstack")
-    end
+    end,
   },
 
   -- Add indentation guides even on blank lines
@@ -81,7 +80,7 @@ require("lazy").setup({
     main = "ibl",
     config = function()
       require("plugins.ibl")
-    end
+    end,
   },
 
   -- Display colors such as #fff inside the terminal
@@ -89,7 +88,7 @@ require("lazy").setup({
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({ "*" }, { names = false })
-    end
+    end,
   },
 
   -- Adds git releated signs to the gutter, as well as utilities for managing changes
@@ -97,7 +96,7 @@ require("lazy").setup({
     "lewis6991/gitsigns.nvim",
     config = function()
       require("plugins.gitsigns")
-    end
+    end,
   },
 
   -- Statusline
@@ -114,7 +113,7 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.oil")
-    end
+    end,
   },
 
   -- Keybinds for commenting regions
@@ -122,7 +121,7 @@ require("lazy").setup({
     "numToStr/Comment.nvim",
     config = function()
       require("plugins.comment")
-    end
+    end,
   },
 
   -- LSP Configuration & Plugins
@@ -145,7 +144,7 @@ require("lazy").setup({
     },
     config = function()
       require("plugins.lsp")
-    end
+    end,
   },
 
   -- Completion
@@ -163,14 +162,14 @@ require("lazy").setup({
       "rafamadriz/friendly-snippets",
 
       -- Generate documentation
-      { "danymat/neogen", dependencies = { "nvim-treesitter/nvim-treesitter" } },
+      { "danymat/neogen", dependencies = "nvim-treesitter/nvim-treesitter" },
 
       -- Adds icons to cmp window
       "onsails/lspkind.nvim"
     },
     config = function()
       require("plugins.cmp")
-    end
+    end,
   },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -197,7 +196,7 @@ require("lazy").setup({
     build = ":TSUpdate",
     config = function()
       require("plugins.treesitter")
-    end
+    end,
   },
 }, {
   ui = {
