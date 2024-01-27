@@ -13,8 +13,8 @@ cmp.setup({
     format = function(entry, vim_item)
       local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 35 })(entry, vim_item)
       local strings = vim.split(kind.kind, "%s", { trimempty = true })
-      kind.kind = " " .. (strings[1] or "")
-      kind.menu = " (" .. (strings[2] or "") .. ")"
+      kind.kind = strings[1] or ""
+      kind.menu = strings[2] and ("(" .. strings[2] .. ")") or ""
 
       return kind
     end
@@ -69,24 +69,54 @@ cmp.setup({
   window = {
     completion = cmp.config.window.bordered({
       border = "rounded",
-      side_padding = 0,
-      col_offset = -3,
-      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-      scrollbar = true,
       scrolloff = 2,
     }),
     documentation = cmp.config.window.bordered({
       border = "rounded",
-      side_padding = 0,
-      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
       scrolloff = 2,
-      scrollbar = true,
     }),
   },
 })
 
 cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = {
+    ["<C-n>"] = {
+      c = function()
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          cmp.complete()
+        end
+      end,
+    },
+    ["<Tab>"] = {
+      c = function()
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          cmp.complete()
+        end
+      end,
+    },
+    ["<C-p>"] = {
+      c = function()
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          cmp.complete()
+        end
+      end,
+    },
+    ["<S-Tab>"] = {
+      c = function()
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          cmp.complete()
+        end
+      end,
+    },
+  },
   sources = cmp.config.sources({
     { name = "cmdline" }
   })
