@@ -103,13 +103,6 @@ local servers = {
       "-configuration", "~/.local/share/nvim/mason/share/jdtls/config/config.ini",
       "-data", "~/.local/share/nvim/java"
     },
-    settings = {
-      java = {
-        signatureHelp = { enabled = true },
-        import = { enabled = false },
-        rename = { enabled = true }
-      }
-    },
   },
 }
 

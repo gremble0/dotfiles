@@ -6,7 +6,7 @@ local neogen = require("neogen")
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup()
 
-cmp.setup {
+cmp.setup({
   formatting = {
     expandable_indicator = false,
     fields = { "kind", "abbr", "menu" },
@@ -24,7 +24,7 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert {
+  mapping = cmp.mapping.preset.insert({
     ["<C-n>"] = cmp.mapping(function(_)
       if cmp.visible() then
         cmp.select_next_item()
@@ -61,9 +61,10 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-g>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace },
-  },
+  }),
   sources = {
     { name = "nvim_lsp" },
+    { name = "luasnip" },
   },
   window = {
     completion = cmp.config.window.bordered({
@@ -79,9 +80,17 @@ cmp.setup {
       side_padding = 0,
       winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
       scrolloff = 2,
+      scrollbar = true,
     }),
   },
-}
+})
+
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "cmdline" }
+  })
+})
 
 neogen.setup({ snippet_engine = "luasnip" })
 
