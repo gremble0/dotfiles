@@ -15,6 +15,7 @@ alias yarn=yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc
 
 # Data files
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
 export M2_HOME="$XDG_DATA_HOME/m2"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
@@ -28,7 +29,7 @@ export PYTHONSTARTUP="/etc/python/pythonrc"
 alias minecraft-launcher="minecraft-launcher --workDir='$XDG_DATA_HOME/minecraft'"
 
 # Extend PATH
-export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$GOPATH/bin"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$GOPATH/bin:$JAVA_HOME/bin"
 
 # Cache files
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"

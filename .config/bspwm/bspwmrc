@@ -3,17 +3,16 @@
 # Assigning desktops to specific monitors
 MONS="$(bspc query -M)"
 if [ $(echo "$MONS" | wc -l) -eq 2 ]; then
-    # For desktop
+    # 2 monitors
     bspc monitor "$(echo $MONS | awk '{ print $2 }')" -d 1 3 5 7 9
     bspc monitor "$(echo $MONS | awk '{ print $1 }')" -d 2 4 6 8
 else
-    # For laptop
+    # 1 monitor
     bspc monitor $MONS -d 1 2 3 4 5 6 7 8 9
 fi
 
 # Assigning programs to specific desktops
-bspc rule -a steam desktop='1'
-bspc rule -a discord desktop='4'
+bspc rule -a discord desktop="4"
 
 # Theming
 bspc config pointer_modifier mod4
