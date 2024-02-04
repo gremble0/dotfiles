@@ -73,22 +73,10 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 
 -- List of configured language servers
 local servers = {
-  clangd = {},
-  pyright = {},
-  tsserver = {},
-  tailwindcss = {},
-  cssls = {},
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      diagnostics = {
-        globals = { "vim" }
-      },
-    },
-  },
-  gopls = {},
   bashls = {},
+  clangd = {},
+  cssls = {},
+  gopls = {},
   jdtls = {
     cmd = {
       "java",
@@ -104,6 +92,17 @@ local servers = {
       "-data", "~/.local/share/nvim/java"
     },
   },
+  lua_ls = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" }
+      },
+    },
+  },
+  omnisharp = {},
+  pyright = {},
+  tailwindcss = {},
+  tsserver = {},
 }
 
 -- Setup neovim lua configuration
@@ -120,11 +119,11 @@ require("mason-lspconfig").setup({
 
 require("mason-lspconfig").setup_handlers({
   function(server_name)
-    require("lspconfig")[server_name].setup {
+    require("lspconfig")[server_name].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
-    }
+    })
   end,
 })
 
