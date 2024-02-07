@@ -14,18 +14,18 @@ alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings
 alias yarn=yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc
 
 # Data files
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GOPATH="$XDG_DATA_HOME/go"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
 export M2_HOME="$XDG_DATA_HOME/m2"
+export OPAMROOT="$XDG_DATA_HOME/opam"
+export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
+export PYTHONSTARTUP="$XDG_DATA_HOME/pythonrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
-export OPAMROOT="$XDG_DATA_HOME/opam"
-export GOPATH="$XDG_DATA_HOME/go"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 
-export PYTHONSTARTUP="/etc/python/pythonrc"
 alias minecraft-launcher="minecraft-launcher --workDir='$XDG_DATA_HOME/minecraft'"
 
 # Extend PATH
