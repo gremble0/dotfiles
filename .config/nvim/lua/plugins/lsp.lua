@@ -30,7 +30,7 @@ local on_attach = function(_, bufnr)
     { buffer = bufnr, desc = "LSP: Goto workspace symbols" })
 
   ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
-  -- ks("n", "<C-k>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
+  ks("i", "<C-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
 
   ks("n", "<leader>wa", lsp.buf.add_workspace_folder,
     { buffer = bufnr, desc = "LSP: Add workspace folder" })
@@ -44,9 +44,16 @@ local on_attach = function(_, bufnr)
   ks("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: Format current buffer" })
 end
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "rounded",
+  }
+)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  }
+)
 
 -- List of configured language servers
 local servers = {
