@@ -1,5 +1,4 @@
-require("core.options")
-require("core.mappings")
+require("core")
 
 -- Initialize lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

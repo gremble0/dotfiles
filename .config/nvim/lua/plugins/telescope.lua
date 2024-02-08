@@ -50,6 +50,5 @@ ks("n", "<leader>o", telescope_builtin.oldfiles, { desc = "Find recently opened 
 ks("n", "<leader>f", telescope_builtin.find_files, { desc = "Find files" })
 ks("n", "<leader>b", telescope_builtin.buffers, { desc = "Find open buffers" })
 ks("n", "<leader>z", telescope_builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find current buffer" })
-ks("n", "<leader>d", telescope_builtin.diagnostics, { desc = "Get diagnostics" })
 ks("n", "<leader>gh", telescope_builtin.help_tags, { desc = "Find help" })
 ks("n", "<leader>gr", telescope_builtin.live_grep, { desc = "Live grep" })
