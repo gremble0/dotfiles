@@ -25,6 +25,12 @@ require("lazy").setup({
     end,
   },
 
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      require("plugins.fugitive")
+    end,
+  },
   -- Git functionality like magit inside nvim
   {
     "NeogitOrg/neogit",
@@ -123,10 +129,10 @@ require("lazy").setup({
       -- Automatically install LSPs to stdpath for neovim
       {
         "williamboman/mason.nvim",
+        dependencies = "williamboman/mason-lspconfig.nvim",
         config = true,
         opts = { ui = { border = "rounded" } },
       },
-      "williamboman/mason-lspconfig.nvim",
 
       -- Useful status updates for LSP
       { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
@@ -137,7 +143,7 @@ require("lazy").setup({
       -- Better java LSP functionality
       "mfussenegger/nvim-jdtls",
 
-      -- Diagnostics
+      -- Pretty UI for diagnostics
       "folke/trouble.nvim",
     },
     config = function()
