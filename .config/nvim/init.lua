@@ -40,6 +40,7 @@ require("lazy").setup({
     end,
   },
 
+  -- Pretty UI for notifications
   {
     "rcarriga/nvim-notify",
     config = function()
@@ -57,14 +58,6 @@ require("lazy").setup({
 
   -- Adjusts indentation based on what the file is using
   "tpope/vim-sleuth",
-
-  -- Save deletion history to a killring
-  {
-    "gremble0/killring.nvim",
-    config = function()
-      require("plugins.killring")
-    end,
-  },
 
   -- Fix unintuitive :bprevious and :bnext behavior
   {
@@ -107,6 +100,7 @@ require("lazy").setup({
     end,
   },
 
+  -- DWIM File navigation and editing 
   {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -141,7 +135,11 @@ require("lazy").setup({
       -- Additional lua configuration
       "folke/neodev.nvim",
 
+      -- Better java LSP functionality
       "mfussenegger/nvim-jdtls",
+
+      -- Diagnostics
+      "folke/trouble.nvim",
     },
     config = function()
       require("plugins.lsp")

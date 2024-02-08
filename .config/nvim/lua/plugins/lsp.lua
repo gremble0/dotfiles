@@ -1,5 +1,6 @@
 -- [[ Configures native lsp and integrates nvim-cmp and mason to apply language servers ]]
 local lsp = vim.lsp
+local ks = vim.keymap.set
 
 -- Configure diagnostic floats
 vim.diagnostic.config({
@@ -20,8 +21,8 @@ local icons = {
 }
 
 for type, icon in pairs(icons) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- Get user input for renaming the word currently under the cursor
@@ -39,7 +40,6 @@ end
 local on_attach = function(_, bufnr)
   local telescope_builtin = require("telescope.builtin")
 
-  local ks = vim.keymap.set
   ks("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: Rename" })
   ks("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
 
@@ -105,6 +105,14 @@ local servers = {
   tsserver = {},
 }
 
+-- Nice UI for diagnostics
+require("trouble").setup({
+  action_keys = {
+    cancel = {},
+  },
+})
+ks("n", "<leader>t", require("trouble").open, { desc = "Open trouble split" })
+
 -- Setup neovim lua configuration
 require("neodev").setup()
 
@@ -127,4 +135,4 @@ require("mason-lspconfig").setup_handlers({
   end,
 })
 
-require('lspconfig.ui.windows').default_options.border = "rounded"
+require("lspconfig.ui.windows").default_options.border = "rounded"
