@@ -31,19 +31,6 @@ require("lazy").setup({
       require("plugins.fugitive")
     end,
   },
-  -- Git functionality like magit inside nvim
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "sindrets/diffview.nvim",
-      "ibhagwan/fzf-lua",
-    },
-    config = function()
-      require("plugins.neogit")
-    end,
-  },
 
   -- Pretty UI for notifications
   {
