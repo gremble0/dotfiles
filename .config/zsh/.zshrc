@@ -24,12 +24,6 @@ zmodload zsh/complist
 # Include hidden files.
 _comp_options+=(globdots)
 
-# Navigate menuselect with vi keybinds
-bindkey -M menuselect "h" vi-backward-char
-bindkey -M menuselect "k" vi-up-line-or-history
-bindkey -M menuselect "l" vi-forward-char
-bindkey -M menuselect "j" vi-down-line-or-history
-
 fzfcd() {
     local out="$(fzf)"
 
