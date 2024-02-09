@@ -20,3 +20,11 @@ vim.api.nvim_create_autocmd("FileType", {
     com.ks("n", "q", com.delete_cur_buf, ks_opts)
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = file_open_rules_group,
+  pattern = "qf",
+  callback = function()
+    com.ks("n", "q", com.delete_cur_buf, ks_opts)
+  end,
+})

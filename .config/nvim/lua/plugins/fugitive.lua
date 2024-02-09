@@ -10,8 +10,8 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "fugitive",
   callback = function()
 
-    vim.keymap.del("n", "p", { buffer = 0 })
-    vim.keymap.del("n", "P", { buffer = 0 })
+    com.kd("n", "p", { buffer = 0 })
+    com.kd("n", "P", { buffer = 0 })
 
     com.ks("n", "q", com.delete_cur_buf, ks_opts)
     com.ks("n", "pu", ":echo 'git push' | Git push<CR>", ks_opts)

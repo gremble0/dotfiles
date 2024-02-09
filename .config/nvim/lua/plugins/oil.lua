@@ -1,4 +1,6 @@
 -- [[ Configure oil ]]
+local com = require("core.common")
+
 require("oil").setup({
   columns = { "permissions", "size", "mtime", "icon" },
   keymaps = {
@@ -9,4 +11,4 @@ require("oil").setup({
   view_options = { show_hidden = true },
 })
 
-vim.keymap.set("n", "<C-e>", require("oil").open, { desc = "Open file explorer (oil)" })
+com.ks("n", "<C-e>", require("oil").open, { desc = "Open file explorer (oil)" })
