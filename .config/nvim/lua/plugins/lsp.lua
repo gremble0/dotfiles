@@ -1,6 +1,6 @@
 -- [[ Configures native lsp and integrates nvim-cmp and mason to apply language servers ]]
 local lsp = vim.lsp
-local ks = vim.keymap.set
+local com = require("core.common")
 
 -- Get user input for renaming the word currently under the cursor
 local rename = function()
@@ -8,51 +8,47 @@ local rename = function()
 
   local new_name = vim.fn.input("Rename '" .. cur_name .. "': ")
   if #new_name > 0 and new_name ~= cur_name then
-    local params = vim.lsp.util.make_position_params()
+    local params = lsp.util.make_position_params()
     params.newName = new_name
-    vim.lsp.buf_request(0, "textDocument/rename", params)
+    lsp.buf_request(0, "textDocument/rename", params)
   end
 end
 
 local on_attach = function(_, bufnr)
   local telescope_builtin = require("telescope.builtin")
 
-  ks("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: Rename" })
-  ks("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
+  com.ks("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: Rename" })
+  com.ks("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
 
-  ks("n", "gd", lsp.buf.definition, { buffer = bufnr, desc = "LSP: Goto definition" })
-  ks("n", "gD", lsp.buf.declaration, { buffer = bufnr, desc = "LSP: Goto declaration" })
-  ks("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Goto implementation" })
-  ks("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Goto type Definition" })
+  com.ks("n", "gd", lsp.buf.definition, { buffer = bufnr, desc = "LSP: Goto definition" })
+  com.ks("n", "gD", lsp.buf.declaration, { buffer = bufnr, desc = "LSP: Goto declaration" })
+  com.ks("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Goto implementation" })
+  com.ks("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Goto type Definition" })
 
-  ks("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: Goto references" })
-  ks("n", "gs", telescope_builtin.lsp_dynamic_workspace_symbols,
+  com.ks("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: Goto references" })
+  com.ks("n", "gs", telescope_builtin.lsp_dynamic_workspace_symbols,
     { buffer = bufnr, desc = "LSP: Goto workspace symbols" })
 
-  ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
-  ks("i", "<C-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
+  com.ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
+  com.ks("i", "<C-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
 
-  ks("n", "<leader>wa", lsp.buf.add_workspace_folder,
+  com.ks("n", "<leader>wa", lsp.buf.add_workspace_folder,
     { buffer = bufnr, desc = "LSP: Add workspace folder" })
-  ks("n", "<leader>wr", lsp.buf.remove_workspace_folder,
+  com.ks("n", "<leader>wr", lsp.buf.remove_workspace_folder,
     { buffer = bufnr, desc = "LSP: Remove workspace folder" })
 
-  ks("n", "<leader>wl", function()
+  com.ks("n", "<leader>wl", function()
     print(vim.inspect(lsp.buf.list_workspace_folders()))
   end, { buffer = bufnr, desc = "List workspace folders" })
 
-  ks("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: Format current buffer" })
+  com.ks("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: Format current buffer" })
 end
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "rounded",
-  }
+lsp.handlers["textDocument/hover"] = lsp.with(
+  lsp.handlers.hover, { border = "rounded" }
 )
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  }
+lsp.handlers["textDocument/signatureHelp"] = lsp.with(
+  lsp.handlers.signature_help, { border = "rounded" }
 )
 
 -- List of configured language servers
@@ -83,7 +79,6 @@ local servers = {
       },
     },
   },
-  omnisharp = {},
   pyright = {},
   tailwindcss = {},
   tsserver = {},
@@ -95,14 +90,15 @@ require("trouble").setup({
     cancel = {},
   },
 })
-ks("n", "<leader>t", require("trouble").open, { desc = "Open trouble split" })
+com.ks("n", "<leader>t", require("trouble").open, { desc = "Open trouble split" })
 
 -- Setup neovim lua configuration
 require("neodev").setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = require("cmp_nvim_lsp").default_capabilities(
+  lsp.protocol.make_client_capabilities()
+)
 
 -- Ensure the servers above are installed
 require("mason-lspconfig").setup({
