@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.del("n", "p", { buffer = 0 })
     vim.keymap.del("n", "P", { buffer = 0 })
 
-    com.ks("n", "q", ":close<CR>", ks_opts)
+    com.ks("n", "q", com.delete_cur_buf, ks_opts)
     com.ks("n", "pu", ":echo 'git push' | Git push<CR>", ks_opts)
     com.ks("n", "Pu", ":echo 'git pull' | Git pull<CR>", ks_opts)
     -- ks("n", "<Tab>", ":<C-U>execute StageInline('toggle',line('.'),v:count)<CR>", ks_opts)
