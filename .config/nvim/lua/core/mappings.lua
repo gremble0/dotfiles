@@ -1,5 +1,3 @@
--- [[ Keymaps ]]
-
 local ks = require("core.common").ks
 
 --- NORMAL MODE KEYBINDS
@@ -31,15 +29,13 @@ ks("n", "gn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message"
 ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 
 --- VISUAL MODE KEYBINDS
-ks("v", "<leader>j", "dp", { desc = "Move selected lines down" })
-ks("v", "<leader>k", "dkP", { desc = "Move selected lines up" })
+ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
+ks("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 
 --- INSERT MODE KEYBINDS
 ks("i", "<C-h>", "<Left>", { desc = "Move left" })
 ks("i", "<C-j>", "<Down>", { desc = "Move down" })
 ks("i", "<C-k>", "<Up>", { desc = "Move up" })
 ks("i", "<C-l>", "<Right>", { desc = "Move right" })
-
--- Emacs like navigation
 ks("i", "<C-a>", "<Home>", { desc = "Move to the start of the line" })
 ks("i", "<C-e>", "<End>", { desc = "Move to the end of the line" })

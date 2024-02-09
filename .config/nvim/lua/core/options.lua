@@ -1,4 +1,3 @@
--- [[ Default vim options ]]
 -- Assigning leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
