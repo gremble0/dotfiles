@@ -1,7 +1,7 @@
--- [[ Configure Nvim Tree ]]
-require("nvim-tree").setup({
-  vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree", silent = true }),
+local nvim_tree = require("nvim-tree")
+local com = require("core.common")
 
+nvim_tree.setup({
   disable_netrw = true,
   hijack_netrw = true,
   git = {
@@ -41,3 +41,5 @@ require("nvim-tree").setup({
     },
   },
 })
+
+com.ks("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree", silent = true })

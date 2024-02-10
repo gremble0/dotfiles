@@ -1,4 +1,3 @@
--- [[ Configure ibl (indent-blankline.nvim) ]]
 local ibl = require("ibl")
 
 ibl.setup({

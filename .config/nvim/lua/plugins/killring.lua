@@ -1,4 +1,3 @@
--- [[ Configure killring ]]
 local killring = require("killring")
 local com = require("core.common")
 

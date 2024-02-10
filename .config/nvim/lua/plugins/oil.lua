@@ -1,7 +1,7 @@
--- [[ Configure oil ]]
+local oil = require("oil")
 local com = require("core.common")
 
-require("oil").setup({
+oil.setup({
   columns = { "permissions", "size", "mtime", "icon" },
   keymaps = {
     ["<CR>"] = "actions.select",
@@ -11,4 +11,4 @@ require("oil").setup({
   view_options = { show_hidden = true },
 })
 
-com.ks("n", "<C-e>", require("oil").open, { desc = "Open file explorer (oil)" })
+com.ks("n", "<C-e>", oil.open, { desc = "Open file explorer (oil)" })

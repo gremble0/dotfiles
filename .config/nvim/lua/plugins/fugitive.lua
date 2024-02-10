@@ -1,6 +1,5 @@
 local com = require("core.common")
 
-local ks_opts = { noremap = true, silent = true, buffer = 0 }
 local fugitive_group = vim.api.nvim_create_augroup("FugitiveCustom", {})
 
 com.ks("n", "<leader>gt", ":vertical Git<CR>", { silent = true })
@@ -12,8 +11,8 @@ vim.api.nvim_create_autocmd("FileType", {
     com.kd("n", "p", { buffer = 0 })
     com.kd("n", "P", { buffer = 0 })
 
-    com.ks("n", "q", com.delete_cur_buf, ks_opts)
-    com.ks("n", "pu", ":Git push<CR>", ks_opts)
-    com.ks("n", "Pu", ":Git pull<CR>", ks_opts)
+    com.ks("n", "q", com.delete_cur_buf, { desc = "Delete current buffer" })
+    com.ks("n", "pu", ":Git push<CR>", { desc = "Git push", silent = true })
+    com.ks("n", "Pu", ":Git pull<CR>", { desc = "Git pull", silent = true })
   end,
 })

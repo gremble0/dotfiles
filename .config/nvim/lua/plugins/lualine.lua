@@ -1,4 +1,3 @@
--- [[ Configure Lualine ]]
 local lualine = require("lualine")
 
 -- Make section for lsp info for in statusline

@@ -1,4 +1,3 @@
--- [[ Configure gitsigns ]]
 local gitsigns = require("gitsigns")
 local com = require("core.common")
 

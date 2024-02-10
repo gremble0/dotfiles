@@ -1,4 +1,3 @@
--- [[ Configure nvim-cmp and luasnip ]]
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 local luasnip = require("luasnip")

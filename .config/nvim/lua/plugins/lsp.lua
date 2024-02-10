@@ -1,4 +1,3 @@
--- [[ Configures native lsp and integrates nvim-cmp and mason to apply language servers ]]
 local lsp = vim.lsp
 local com = require("core.common")
 
@@ -30,16 +29,7 @@ local on_attach = function(_, bufnr)
     { buffer = bufnr, desc = "LSP: Goto workspace symbols" })
 
   com.ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
-  com.ks("i", "<C-S-k>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
-
-  com.ks("n", "<leader>wa", lsp.buf.add_workspace_folder,
-    { buffer = bufnr, desc = "LSP: Add workspace folder" })
-  com.ks("n", "<leader>wr", lsp.buf.remove_workspace_folder,
-    { buffer = bufnr, desc = "LSP: Remove workspace folder" })
-
-  com.ks("n", "<leader>wl", function()
-    print(vim.inspect(lsp.buf.list_workspace_folders()))
-  end, { buffer = bufnr, desc = "List workspace folders" })
+  com.ks("i", "<C-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
 
   com.ks("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: Format current buffer" })
 end
