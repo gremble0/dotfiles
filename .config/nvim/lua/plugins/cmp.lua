@@ -7,6 +7,9 @@ local com = require("core.common")
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup()
 
+neogen.setup({ snippet_engine = "luasnip" })
+com.ks("n", "<leader>gd", neogen.generate, { desc = "Generate documentation" })
+
 cmp.setup({
   formatting = {
     expandable_indicator = false,
@@ -118,11 +121,5 @@ cmp.setup.cmdline(":", {
       end,
     },
   },
-  sources = cmp.config.sources({
-    { name = "cmdline" }
-  })
+  sources = cmp.config.sources({ { name = "cmdline" } })
 })
-
-neogen.setup({ snippet_engine = "luasnip" })
-
-com.ks("n", "<leader>gd", neogen.generate, { desc = "Generate documentation" })
