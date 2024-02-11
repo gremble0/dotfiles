@@ -9,6 +9,7 @@ local trouble = require("trouble")
 
 local lsp = vim.lsp
 
+lsp_config_windows.default_options.border = "rounded"
 lsp.handlers["textDocument/hover"] = lsp.with(
   lsp.handlers.hover, { border = "rounded" }
 )
@@ -92,5 +93,3 @@ mason_lspconfig.setup_handlers({
     })
   end,
 })
-
-lsp_config_windows.default_options.border = "rounded"

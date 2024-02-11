@@ -1,7 +1,6 @@
 local treesitter_configs = require("nvim-treesitter.configs")
 
 treesitter_configs.setup({
-  ensure_installed = { "c", "cpp", "go", "lua", "python", "tsx", "typescript", "vimdoc", "vim" },
   sync_install = false,
   auto_install = true,
   ignore_install = {},

@@ -8,7 +8,6 @@ vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
-vim.opt.listchars = "tab:→\\ ,nbsp:␣,trail:·"
 
 -- Indenting
 vim.opt.smartindent = true
