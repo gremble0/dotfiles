@@ -29,8 +29,8 @@ ks("n", "gn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message"
 ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 
 --- VISUAL MODE KEYBINDS
-ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
-ks("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
+ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
+ks("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up", silent = true })
 
 --- INSERT MODE KEYBINDS
 ks("i", "<C-h>", "<Left>", { desc = "Move left" })
