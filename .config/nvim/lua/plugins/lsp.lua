@@ -69,7 +69,6 @@ local servers = {
   },
   lua_ls = { Lua = { diagnostics = { globals = { "vim" } } } },
   pyright = {},
-  tailwindcss = {},
   tsserver = {},
 }
 
