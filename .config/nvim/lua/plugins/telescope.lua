@@ -1,9 +1,21 @@
-  local action_state = require("telescope.actions.state")
+local action_state = require("telescope.actions.state")
 local actions = require("telescope.actions")
 local com = require("core.common")
 local sorters = require("telescope.sorters")
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
+
+-- actions.delete_buffer doesn't work like expected unless prompt is closed
+-- before calling nvim_buf_delete()
+local delete_buffer = function(prompt_bufnr)
+  local current_picker = action_state.get_current_picker(prompt_bufnr)
+  actions.close(prompt_bufnr)
+  current_picker:delete_selection(function(selection)
+    local force = vim.api.nvim_buf_get_option(selection.bufnr, "buftype") == "terminal"
+    local ok = pcall(vim.api.nvim_buf_delete, selection.bufnr, { force = force })
+    return ok
+  end)
+end
 
 telescope.setup({
   defaults = {
@@ -47,36 +59,19 @@ telescope.setup({
       sort_lastused = true,
       mappings = {
         i = {
-          ["<C-g>"] = actions.delete_buffer + actions.close,
+          ["<C-c>"] = delete_buffer,
         }
       }
     }
   }
 })
 
--- actions.delete_buffer doesn't work like expected
-local function delete_buffer(prompt_bufnr)
-  local selection = action_state.get_selected_entry()
-  actions.close(prompt_bufnr)
-  vim.api.nvim_buf_delete(selection.bufnr, {})
-end
-
-local function buffers_with_delete()
-  telescope_builtin.buffers({
-    attach_mappings = function(_, map)
-      map("i", "<C-c>", delete_buffer)
-      map("n", "<C-c>", delete_buffer)
-      return true
-    end,
-  })
-end
-
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, "fzf")
 
 com.ks("n", "<leader>o", telescope_builtin.oldfiles, { desc = "Find recently opened files" })
 com.ks("n", "<leader>f", telescope_builtin.find_files, { desc = "Find files" })
-com.ks("n", "<leader>b", buffers_with_delete, {noremap = true, silent = true})
+com.ks("n", "<leader>b", telescope_builtin.buffers, { desc = "Find open buffers" })
 com.ks("n", "<leader>z", telescope_builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find current buffer" })
 com.ks("n", "<leader>gh", telescope_builtin.help_tags, { desc = "Find help" })
 com.ks("n", "<leader>gr", telescope_builtin.live_grep, { desc = "Live grep" })

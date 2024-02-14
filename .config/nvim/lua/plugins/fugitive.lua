@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("FileType", {
     com.kd("n", "p", { buffer = 0 })
     com.kd("n", "P", { buffer = 0 })
 
-    com.ks("n", "q", com.win_close, { desc = "Delete current buffer", buffer = 0 })
+    com.ks("n", "q", com.buf_delete, { desc = "Delete current buffer", buffer = 0 })
     com.ks("n", "pu", ":Git push<CR>", { desc = "Git push", silent = true, buffer = 0 })
     com.ks("n", "Pu", ":Git pull<CR>", { desc = "Git pull", silent = true, buffer = 0 })
   end,
