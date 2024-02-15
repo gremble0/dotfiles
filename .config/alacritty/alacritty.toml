@@ -133,3 +133,13 @@ mods = "Control"
 chars = "\u001B[27;5;47~"
 key = "Slash"
 mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;107~"
+key = "K"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;75~"
+key = "K"
+mods = "Control|Shift"

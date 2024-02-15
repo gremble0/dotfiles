@@ -8,7 +8,7 @@ ks("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
 ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 
 -- Buffer navigation
-ks("n", "<C-c>", "<C-w>c", { desc = "Close buffer", silent = true })
+ks("n", "<C-c>", ":bd<CR>", { desc = "Close buffer", silent = true })
 
 -- Move current line up or down
 ks("n", "<leader>j", ":m .+1<CR>", { desc = "Move current line down", silent = true })

@@ -41,7 +41,7 @@ local on_attach = function(_, bufnr)
   com.ks("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: Goto references" })
 
   com.ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
-  com.ks("i", "<C-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
+  com.ks("i", "<C-S-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
 
   com.ks("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: Format current buffer" })
 end
