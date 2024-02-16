@@ -16,6 +16,12 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Import plugins using lazy
 require("lazy").setup({
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
   -- Theme
   {
     "gremble0/yellowbeans.nvim",
