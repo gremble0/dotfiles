@@ -167,15 +167,22 @@ require("lazy").setup({
       -- Adds LSP completion capabilities
       "hrsh7th/cmp-nvim-lsp",
 
-      -- Generate documentation
-      { "danymat/neogen", dependencies = "nvim-treesitter/nvim-treesitter" },
-
       -- Adds icons to cmp window
       "onsails/lspkind.nvim"
     },
     config = function()
       require("plugins.cmp")
     end,
+  },
+
+  -- Generate documentation
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = { snippet_engine = "luasnip" },
+    keys = {
+      { "<leader>gd", ":Neogen<CR>", desc = "Generate documentation", silent = true },
+    }
   },
 
   -- Fuzzy Finder (files, lsp, etc)

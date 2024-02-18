@@ -1,14 +1,9 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 local luasnip = require("luasnip")
-local neogen = require("neogen")
-local com = require("core.common")
 
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup()
-
-neogen.setup({ snippet_engine = "luasnip" })
-com.ks("n", "<leader>gd", neogen.generate, { desc = "Generate documentation" })
 
 cmp.setup({
   formatting = {
