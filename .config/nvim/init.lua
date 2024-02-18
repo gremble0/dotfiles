@@ -22,6 +22,7 @@ require("lazy").setup({
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
+
   -- Theme
   {
     "gremble0/yellowbeans.nvim",
@@ -33,6 +34,7 @@ require("lazy").setup({
 
   {
     "tpope/vim-fugitive",
+    keys = { { "<leader>gt", ":vertical Git<CR>", silent = true } },
     config = function()
       require("plugins.fugitive")
     end,
@@ -98,10 +100,11 @@ require("lazy").setup({
     end,
   },
 
-  -- DWIM File navigation and editing 
+  -- DWIM File navigation and editing
   {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = { { "<C-e>", ":Oil<CR>", desc = "Open file explorer (oil)", silent = true } },
     config = function()
       require("plugins.oil")
     end,
@@ -135,12 +138,18 @@ require("lazy").setup({
 
       -- Better java LSP functionality
       "mfussenegger/nvim-jdtls",
-
-      -- Pretty UI for diagnostics
-      "folke/trouble.nvim",
     },
     config = function()
       require("plugins.lsp")
+    end,
+  },
+
+  -- Pretty UI for diagnostics
+  {
+    "folke/trouble.nvim",
+    keys = { { "<leader>t", ":Trouble<CR>", desc = "Open trouble split", silent = true } },
+    config = function()
+      require("trouble").setup({ action_keys = { cancel = {} } })
     end,
   },
 
@@ -183,6 +192,13 @@ require("lazy").setup({
     config = function()
       require("plugins.telescope")
     end,
+    keys = {
+      { "<leader>o",  ":Telescope oldfiles<CR>",   desc = "Find recently opened files", silent = true },
+      { "<leader>f",  ":Telescope find_files<CR>", desc = "Find files",                 silent = true },
+      { "<leader>b",  ":Telescope buffers<CR>",    desc = "Find open buffers",          silent = true },
+      { "<leader>gh", ":Telescope help_tags<CR>",  desc = "Find help",                  silent = true },
+      { "<leader>gr", ":Telescope live_grep<CR>",  desc = "Live grep",                  silent = true },
+    },
   },
 
   -- Highlight, edit, and navigate code

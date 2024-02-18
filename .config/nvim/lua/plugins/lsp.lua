@@ -5,7 +5,6 @@ local lsp_config_windows = require("lspconfig.ui.windows")
 local mason_lspconfig = require("mason-lspconfig")
 local neodev = require("neodev")
 local telescope_builtin = require("telescope.builtin")
-local trouble = require("trouble")
 
 local lsp = vim.lsp
 
@@ -71,10 +70,6 @@ local servers = {
   pyright = {},
   tsserver = {},
 }
-
--- Nice UI for diagnostics
-trouble.setup({ action_keys = { cancel = {} } })
-com.ks("n", "<leader>t", trouble.open, { desc = "Open trouble split" })
 
 -- Setup neovim lua configuration
 neodev.setup()

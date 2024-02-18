@@ -1,9 +1,7 @@
 local action_state = require("telescope.actions.state")
 local actions = require("telescope.actions")
-local com = require("core.common")
 local sorters = require("telescope.sorters")
 local telescope = require("telescope")
-local telescope_builtin = require("telescope.builtin")
 
 -- actions.delete_buffer doesn't work like expected unless prompt is closed
 -- before calling nvim_buf_delete()
@@ -57,23 +55,10 @@ telescope.setup({
     buffers = {
       show_all_buffers = true,
       sort_lastused = true,
-      mappings = {
-        i = {
-          ["<C-c>"] = delete_buffer,
-        }
-      }
+      mappings = { i = { ["<C-c>"] = delete_buffer } },
     }
   }
 })
 
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, "fzf")
-
-com.ks("n", "<leader>o", telescope_builtin.oldfiles, { desc = "Find recently opened files" })
-com.ks("n", "<leader>f", telescope_builtin.find_files, { desc = "Find files" })
-com.ks("n", "<leader>b", telescope_builtin.buffers, { desc = "Find open buffers" })
-com.ks("n", "<leader>z", telescope_builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find current buffer" })
-com.ks("n", "<leader>gh", telescope_builtin.help_tags, { desc = "Find help" })
-com.ks("n", "<leader>gr", telescope_builtin.live_grep, { desc = "Live grep" })
-
--- ["<RET>"] = actions.file_vsplit,

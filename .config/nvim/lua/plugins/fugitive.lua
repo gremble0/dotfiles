@@ -2,8 +2,6 @@ local com = require("core.common")
 
 local fugitive_group = vim.api.nvim_create_augroup("FugitiveCustom", {})
 
-com.ks("n", "<leader>gt", ":vertical Git<CR>", { silent = true })
-
 vim.api.nvim_create_autocmd("FileType", {
   group = fugitive_group,
   pattern = "fugitive",
