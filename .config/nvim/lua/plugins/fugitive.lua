@@ -1,16 +1,16 @@
-local com = require("core.common")
-
 local fugitive_group = vim.api.nvim_create_augroup("FugitiveCustom", {})
+
+local kd = vim.keymap.del
+local ks = vim.keymap.set
 
 vim.api.nvim_create_autocmd("FileType", {
   group = fugitive_group,
   pattern = "fugitive",
   callback = function()
-    com.kd("n", "p", { buffer = 0 })
-    com.kd("n", "P", { buffer = 0 })
+    kd("n", "p", { buffer = 0 })
+    kd("n", "P", { buffer = 0 })
 
-    com.ks("n", "q", com.buf_delete, { desc = "Delete current buffer", buffer = 0 })
-    com.ks("n", "pu", ":Git push<CR>", { desc = "Git push", silent = true, buffer = 0 })
-    com.ks("n", "Pu", ":Git pull<CR>", { desc = "Git pull", silent = true, buffer = 0 })
+    ks("n", "pu", ":Git push<CR>", { desc = "Git push", silent = true, buffer = 0 })
+    ks("n", "Pu", ":Git pull<CR>", { desc = "Git pull", silent = true, buffer = 0 })
   end,
 })

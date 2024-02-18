@@ -1,4 +1,4 @@
-local ks = require("core.common").ks
+local ks = vim.keymap.set
 
 --- NORMAL MODE KEYBINDS
 -- Faster navigation between windows

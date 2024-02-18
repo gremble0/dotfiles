@@ -1,5 +1,4 @@
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local com = require("core.common")
 local lsp_config = require("lspconfig")
 local lsp_config_windows = require("lspconfig.ui.windows")
 local mason_lspconfig = require("mason-lspconfig")
@@ -7,6 +6,7 @@ local neodev = require("neodev")
 local telescope_builtin = require("telescope.builtin")
 
 local lsp = vim.lsp
+local ks = vim.keymap.set
 
 lsp_config_windows.default_options.border = "rounded"
 lsp.handlers["textDocument/hover"] = lsp.with(
@@ -29,20 +29,20 @@ local rename = function()
 end
 
 local on_attach = function(_, bufnr)
-  com.ks("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: Rename" })
-  com.ks("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
+  ks("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: Rename" })
+  ks("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
 
-  com.ks("n", "gd", lsp.buf.definition, { buffer = bufnr, desc = "LSP: Goto definition" })
-  com.ks("n", "gD", lsp.buf.declaration, { buffer = bufnr, desc = "LSP: Goto declaration" })
-  com.ks("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Goto implementation" })
-  com.ks("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Goto type Definition" })
+  ks("n", "gd", lsp.buf.definition, { buffer = bufnr, desc = "LSP: Goto definition" })
+  ks("n", "gD", lsp.buf.declaration, { buffer = bufnr, desc = "LSP: Goto declaration" })
+  ks("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Goto implementation" })
+  ks("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Goto type Definition" })
 
-  com.ks("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: Goto references" })
+  ks("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: Goto references" })
 
-  com.ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
-  com.ks("i", "<C-S-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
+  ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
+  ks("i", "<C-S-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
 
-  com.ks("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: Format current buffer" })
+  ks("n", "<leader>mt", lsp.buf.format, { buffer = bufnr, desc = "LSP: Format current buffer" })
 end
 
 -- List of configured language servers

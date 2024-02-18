@@ -34,7 +34,7 @@ require("lazy").setup({
 
   {
     "tpope/vim-fugitive",
-    keys = { { "<leader>gt", ":vertical Git<CR>", silent = true } },
+    keys = { { "<leader>gt", ":vertical Git<CR>", desc = "Open fugitive", silent = true } },
     config = function()
       require("plugins.fugitive")
     end,
@@ -86,9 +86,12 @@ require("lazy").setup({
   -- Adds git releated signs to the gutter, as well as utilities for managing changes
   {
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require("plugins.gitsigns")
-    end,
+    opts = {},
+    keys = {
+      { "<leader>hp", ":Gitsigns prev_hunk<CR>", desc = "Goto previous git hunk", silent = true },
+      { "<leader>hn", ":Gitsigns next_hunk<CR>", desc = "Goto next git hunk", silent = true },
+      { "<leader>hv", ":Gitsigns preview_hunk_inline<CR>",  desc = "Preview git hunk", silent = true },
+    }
   },
 
   -- Statusline
