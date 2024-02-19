@@ -9,7 +9,7 @@ end
 
 vim.api.nvim_create_autocmd("FileType", {
   group = file_open_rules_group,
-  pattern = { "help", "qf", "gitcommit", "fugitive" },
+  pattern = { "help", "qf", "gitcommit", "fugitive", "oil" },
   callback = function()
     ks("n", "q", delete_cur_buf, delete_buf_opts)
   end,

@@ -35,6 +35,7 @@ require("lazy").setup({
   {
     "tpope/vim-fugitive",
     keys = { { "<leader>gt", ":vertical Git<CR>", desc = "Open fugitive", silent = true } },
+    cmd = "Git",
     config = function()
       require("plugins.fugitive")
     end,
@@ -86,12 +87,15 @@ require("lazy").setup({
   -- Adds git releated signs to the gutter, as well as utilities for managing changes
   {
     "lewis6991/gitsigns.nvim",
-    opts = {},
+    config = function()
+      require("plugins.gitsigns")
+    end,
     keys = {
       { "<leader>hp", ":Gitsigns prev_hunk<CR>", desc = "Goto previous git hunk", silent = true },
       { "<leader>hn", ":Gitsigns next_hunk<CR>", desc = "Goto next git hunk", silent = true },
       { "<leader>hv", ":Gitsigns preview_hunk_inline<CR>",  desc = "Preview git hunk", silent = true },
-    }
+    },
+    lazy = false,
   },
 
   -- Statusline
@@ -193,11 +197,11 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        cond = function() return vim.fn.executable("make") == 1 end,
-      },
+      -- {
+      --   "nvim-telescope/telescope-fzf-native.nvim",
+      --   build = "make",
+      --   cond = function() return vim.fn.executable("make") == 1 end,
+      -- },
     },
     config = function()
       require("plugins.telescope")
