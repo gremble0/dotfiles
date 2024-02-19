@@ -111,10 +111,11 @@ require("lazy").setup({
   {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    keys = { { "<C-e>", ":Oil<CR>", desc = "Open file explorer (oil)", silent = true } },
     config = function()
       require("plugins.oil")
     end,
+    keys = { { "<C-e>", ":Oil<CR>", desc = "Open file explorer (oil)", silent = true } },
+    cmd = "Oil",
   },
 
   -- Keybinds for commenting regions
@@ -154,10 +155,11 @@ require("lazy").setup({
   -- Pretty UI for diagnostics
   {
     "folke/trouble.nvim",
-    keys = { { "<leader>t", ":Trouble<CR>", desc = "Open trouble split", silent = true } },
     config = function()
       require("trouble").setup({ action_keys = { cancel = {} } })
     end,
+    keys = { { "<leader>t", ":Trouble<CR>", desc = "Open trouble split", silent = true } },
+    cmd = "Trouble",
   },
 
   -- Completion
@@ -189,7 +191,8 @@ require("lazy").setup({
     opts = { snippet_engine = "luasnip" },
     keys = {
       { "<leader>gd", ":Neogen<CR>", desc = "Generate documentation", silent = true },
-    }
+    },
+    cmd = "Neogen",
   },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -197,11 +200,11 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      -- {
-      --   "nvim-telescope/telescope-fzf-native.nvim",
-      --   build = "make",
-      --   cond = function() return vim.fn.executable("make") == 1 end,
-      -- },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        cond = function() return vim.fn.executable("make") == 1 end,
+      },
     },
     config = function()
       require("plugins.telescope")
@@ -213,6 +216,7 @@ require("lazy").setup({
       { "<leader>gh", ":Telescope help_tags<CR>",  desc = "Find help",                  silent = true },
       { "<leader>gr", ":Telescope live_grep<CR>",  desc = "Live grep",                  silent = true },
     },
+    cmd = "Telescope",
   },
 
   -- Highlight, edit, and navigate code

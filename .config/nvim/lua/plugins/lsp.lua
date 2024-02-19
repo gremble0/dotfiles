@@ -3,7 +3,6 @@ local lsp_config = require("lspconfig")
 local lsp_config_windows = require("lspconfig.ui.windows")
 local mason_lspconfig = require("mason-lspconfig")
 local neodev = require("neodev")
-local telescope_builtin = require("telescope.builtin")
 
 local lsp = vim.lsp
 local ks = vim.keymap.set
@@ -29,6 +28,8 @@ local rename = function()
 end
 
 local on_attach = function(_, bufnr)
+  local telescope_builtin = require("telescope.builtin")
+
   ks("n", "<leader>rn", rename, { buffer = bufnr, desc = "LSP: Rename" })
   ks("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
 
