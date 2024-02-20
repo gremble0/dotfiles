@@ -43,6 +43,11 @@ alias f='fzfcd'
 alias l='lfcd'
 alias i='nsxiv'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../'
+alias .....='cd ../../../'
+
 alias ls='ls -F --group-directories-first --color=auto'
 alias ll='ls -AFl --group-directories-first --color=auto'
 alias grep='grep --color=auto'
