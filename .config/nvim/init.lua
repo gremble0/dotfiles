@@ -1,3 +1,4 @@
+-- TODO try mini?
 require("core")
 
 -- Initialize lazy
@@ -27,34 +28,27 @@ require("lazy").setup({
   {
     "gremble0/yellowbeans.nvim",
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("yellowbeans")
-    end,
+    config = function() vim.cmd.colorscheme("yellowbeans") end,
   },
 
   {
     "tpope/vim-fugitive",
     keys = { { "<leader>gt", ":vertical Git<CR>", desc = "Open fugitive", silent = true } },
     cmd = "Git",
-    config = function()
-      require("plugins.fugitive")
-    end,
+    config = function() require("plugins.fugitive") end,
   },
 
   -- Pretty UI for notifications
   {
     "rcarriga/nvim-notify",
-    config = function()
-      require("plugins.notify")
-    end,
+    config = function() require("plugins.notify") end,
   },
 
   -- Pretty UI to help with keybinds
   {
     "folke/which-key.nvim",
-    config = function()
-      require("plugins.whichkey")
-    end,
+    event = "VeryLazy",
+    config = function() require("plugins.whichkey") end,
   },
 
   -- Adjusts indentation based on what the file is using
@@ -63,37 +57,29 @@ require("lazy").setup({
   -- Fix unintuitive :bprevious and :bnext behavior
   {
     "gremble0/bufferstack.nvim",
-    config = function()
-      require("plugins.bufferstack")
-    end,
+    config = function() require("plugins.bufferstack") end,
   },
 
   -- Add indentation guides even on blank lines
   {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("plugins.ibl")
-    end,
+    config = function() require("plugins.ibl") end,
   },
 
   -- Display colors such as #fff inside the terminal
   {
     "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({ "*" }, { names = false })
-    end,
+    config = function() require("colorizer").setup({ "*" }, { names = false }) end,
   },
 
   -- Adds git releated signs to the gutter, as well as utilities for managing changes
   {
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require("plugins.gitsigns")
-    end,
+    config = function() require("plugins.gitsigns") end,
     keys = {
-      { "<leader>hp", ":Gitsigns prev_hunk<CR>", desc = "Goto previous git hunk", silent = true },
-      { "<leader>hn", ":Gitsigns next_hunk<CR>", desc = "Goto next git hunk", silent = true },
-      { "<leader>hv", ":Gitsigns preview_hunk_inline<CR>",  desc = "Preview git hunk", silent = true },
+      { "<leader>gp", ":Gitsigns prev_hunk<CR>", desc = "Goto previous git hunk", silent = true },
+      { "<leader>gn", ":Gitsigns next_hunk<CR>", desc = "Goto next git hunk", silent = true },
+      { "<leader>gv", ":Gitsigns preview_hunk_inline<CR>",  desc = "Preview git hunk", silent = true },
     },
     lazy = false,
   },
@@ -102,28 +88,37 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
-    config = function()
-      require("plugins.lualine")
-    end,
+    config = function() require("plugins.lualine") end,
   },
 
   -- DWIM File navigation and editing
   {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.oil")
-    end,
-    keys = { { "<C-e>", ":Oil<CR>", desc = "Open file explorer (oil)", silent = true } },
+    config = function() require("plugins.oil") end,
+    keys = {
+      { "<C-e>", ":Oil<CR>", desc = "Open file explorer (oil)", silent = true },
+    },
     cmd = "Oil",
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { "prettierd" },
+      },
+    },
+    keys = {
+      { "<leader>mt", ":lua require('conform').format()<CR>", desc = "Format current buffer", silent = true }
+    },
   },
 
   -- Keybinds for commenting regions
   {
     "numToStr/Comment.nvim",
-    config = function()
-      require("plugins.comment")
-    end,
+    config = function() require("plugins.comment") end,
   },
 
   -- LSP Configuration & Plugins
@@ -147,17 +142,13 @@ require("lazy").setup({
       -- Better java LSP functionality
       "mfussenegger/nvim-jdtls",
     },
-    config = function()
-      require("plugins.lsp")
-    end,
+    config = function() require("plugins.lsp") end,
   },
 
   -- Pretty UI for diagnostics
   {
     "folke/trouble.nvim",
-    config = function()
-      require("trouble").setup({ action_keys = { cancel = {} } })
-    end,
+    config = function() require("trouble").setup({ action_keys = { cancel = {} } }) end,
     keys = { { "<leader>t", ":Trouble<CR>", desc = "Open trouble split", silent = true } },
     cmd = "Trouble",
   },
@@ -179,9 +170,7 @@ require("lazy").setup({
       -- Adds icons to cmp window
       "onsails/lspkind.nvim"
     },
-    config = function()
-      require("plugins.cmp")
-    end,
+    config = function() require("plugins.cmp") end,
   },
 
   -- Generate documentation
@@ -206,9 +195,7 @@ require("lazy").setup({
         cond = function() return vim.fn.executable("make") == 1 end,
       },
     },
-    config = function()
-      require("plugins.telescope")
-    end,
+    config = function() require("plugins.telescope") end,
     keys = {
       { "<leader>o",  ":Telescope oldfiles<CR>",   desc = "Find recently opened files", silent = true },
       { "<leader>f",  ":Telescope find_files<CR>", desc = "Find files",                 silent = true },
@@ -224,9 +211,7 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
-    config = function()
-      require("plugins.treesitter")
-    end,
+    config = function() require("plugins.treesitter") end,
   },
 }, {
   ui = {

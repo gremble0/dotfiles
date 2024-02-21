@@ -23,6 +23,7 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.mouse = "a"
+-- TODO listchars instead of ibl
 
 -- Numbers
 vim.opt.number = true
