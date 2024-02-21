@@ -10,10 +10,6 @@ ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 -- Buffer navigation
 ks("n", "<C-c>", ":bd<CR>", { desc = "Close buffer", silent = true })
 
--- Move current line up or down
-ks("n", "<leader>j", ":m .+1<CR>", { desc = "Move current line down", silent = true })
-ks("n", "<leader>k", ":m .-2<CR>", { desc = "Move current line up", silent = true })
-
 -- Clear highlights with escape
 ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
 
@@ -31,6 +27,10 @@ ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnost
 --- VISUAL MODE KEYBINDS
 ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
 ks("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up", silent = true })
+
+-- Better indentation
+ks("v", ">", ">gv", { desc = "Indent and reselect", silent = true })
+ks("v", "<", "<gv", { desc = "Dedent and reselect", silent = true })
 
 --- INSERT MODE KEYBINDS
 ks("i", "<C-h>", "<Left>", { desc = "Move left" })
