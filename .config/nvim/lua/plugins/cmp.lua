@@ -16,7 +16,7 @@ cmp.setup({
       kind.menu = strings[2] and ("(" .. strings[2] .. ")") or ""
 
       return kind
-    end
+    end,
   },
   snippet = {
     expand = function(args)
@@ -59,7 +59,7 @@ cmp.setup({
     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-g>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace },
+    ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
   }),
   sources = {
     { name = "nvim_lsp" },
@@ -116,5 +116,5 @@ cmp.setup.cmdline(":", {
       end,
     },
   },
-  sources = cmp.config.sources({ { name = "cmdline" } })
+  sources = cmp.config.sources({ { name = "cmdline" } }),
 })

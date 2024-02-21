@@ -14,10 +14,8 @@ ks("n", "<C-c>", ":bd<CR>", { desc = "Close buffer", silent = true })
 ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
 
 -- Remap for dealing with word wrap
-ks("n", "k", "v:count == 0 ? 'gk' : 'k'",
-    { desc = "Move up with word wrapping", expr = true, silent = true })
-ks("n", "j", "v:count == 0 ? 'gj' : 'j'",
-    { desc = "Move down with word wrapping", expr = true, silent = true })
+ks("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up with word wrapping", expr = true, silent = true })
+ks("n", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down with word wrapping", expr = true, silent = true })
 
 -- Diagnostic keymaps
 ks("n", "gp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })

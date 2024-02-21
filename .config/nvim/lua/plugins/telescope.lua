@@ -56,8 +56,8 @@ telescope.setup({
       show_all_buffers = true,
       sort_lastused = true,
       mappings = { i = { ["<C-c>"] = delete_buffer } },
-    }
-  }
+    },
+  },
 })
 
 -- Enable telescope fzf native, if installed

@@ -6,5 +6,5 @@ require("Comment").setup({
   opleader = {
     line = "<leader>/",
     block = "<leader>?",
-  }
+  },
 })

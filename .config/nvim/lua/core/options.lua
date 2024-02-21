@@ -31,7 +31,7 @@ vim.opt.relativenumber = true
 vim.opt.ruler = false
 
 -- Disable nvim intro
-vim.opt.shortmess:append "sI"
+vim.opt.shortmess:append("sI")
 
 -- Splitting buffer rules
 vim.opt.splitbelow = true

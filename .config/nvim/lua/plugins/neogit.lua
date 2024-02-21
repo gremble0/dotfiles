@@ -26,7 +26,7 @@ neogit.setup({
     popup = { -- Change to emacs keybinds
       ["p"] = "PushPopup",
       ["P"] = "PullPopup",
-    }
+    },
   },
   integrations = {
     telescope = true,

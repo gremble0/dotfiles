@@ -10,10 +10,10 @@ vim.diagnostic.config({
 })
 
 local icons = {
-  Error = '󰅚 ',
-  Warn = '󰀪 ',
-  Info = '󰋽 ',
-  Hint = '󰌶 ',
+  Error = "󰅚 ",
+  Warn = "󰀪 ",
+  Info = "󰋽 ",
+  Hint = "󰌶 ",
 }
 
 -- Set icons for diagnostics

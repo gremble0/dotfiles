@@ -19,7 +19,7 @@ lualine.setup({
   options = {
     component_separators = "",
     refresh = { statusline = 200 },
-    theme = require("yellowbeans.lualine")
+    theme = require("yellowbeans.lualine"),
   },
   sections = {
     lualine_a = { { "mode", icons_enabled = true } },

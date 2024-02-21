@@ -61,10 +61,11 @@ local servers = {
   tsserver = {},
 }
 
-local tools = {
-  stylua = {},
-  -- prettierd = {},
-}
+-- TODO: find a way to automatically install these
+-- local tools = {
+--   stylua = {},
+--   prettierd = {},
+-- }
 
 -- Setup neovim lua configuration
 neodev.setup()
@@ -76,9 +77,7 @@ mason_lspconfig.setup({
   handlers = {
     function(server_name)
       lsp_config[server_name].setup({
-        capabilities = cmp_nvim_lsp.default_capabilities(
-          lsp.protocol.make_client_capabilities()
-        ),
+        capabilities = cmp_nvim_lsp.default_capabilities(lsp.protocol.make_client_capabilities()),
         on_attach = on_attach,
         settings = servers[server_name],
       })
