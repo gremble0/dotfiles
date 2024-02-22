@@ -4,6 +4,7 @@ local lsp_config = require("lspconfig")
 local lsp_config_windows = require("lspconfig.ui.windows")
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
+local mason_registry = require("mason-registry")
 local neodev = require("neodev")
 
 local lsp = vim.lsp
@@ -61,12 +62,6 @@ local servers = {
   tsserver = {},
 }
 
--- TODO: find a way to automatically install these
--- local tools = {
---   stylua = {},
---   prettierd = {},
--- }
-
 -- Setup neovim lua configuration
 neodev.setup()
 
@@ -84,3 +79,13 @@ mason_lspconfig.setup({
     end,
   },
 })
+
+-- Non lsp mason things cannot be added to ensure_installed
+local tools = { "stylua", "prettierd" }
+
+for _, tool in ipairs(tools) do
+  local package = mason_registry.get_package(tool)
+  if not package:is_installed() then
+    package:install()
+  end
+end
