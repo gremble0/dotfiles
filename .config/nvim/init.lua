@@ -1,4 +1,3 @@
--- TODO try mini?
 require("core")
 
 -- Initialize lazy

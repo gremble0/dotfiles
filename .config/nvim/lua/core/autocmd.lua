@@ -34,3 +34,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.formatoptions:remove("o")
   end,
 })
+
+-- Highlight when yanking text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("HighlightOnYank"),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
