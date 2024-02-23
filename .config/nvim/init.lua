@@ -135,9 +135,11 @@ require("lazy").setup({
         javascript = { "prettierd" }, -- Has to be :MasonInstall'd manually
       },
     },
+    event = "BufWritePost",
     keys = {
       { "<leader>mt", ":lua require('conform').format()<CR>", desc = "Format current buffer", silent = true },
     },
+    cmd = "ConformInfo",
   },
 
   -- Keybinds for commenting regions

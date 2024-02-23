@@ -44,7 +44,3 @@ vim.opt.timeoutlen = 400
 vim.opt.ttimeoutlen = 5
 vim.opt.updatetime = 50
 vim.opt.pumheight = 8
-
--- Directories
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 20
