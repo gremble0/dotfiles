@@ -1,3 +1,4 @@
+local com = require("core.common")
 local ks = vim.keymap.set
 
 --- NORMAL MODE KEYBINDS
@@ -7,26 +8,7 @@ ks("n", "<C-j>", "<C-w>j", { desc = "Move to window below" })
 ks("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
 ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 
--- Delete buffer if only open in one window, otherwise close it
-ks("n", "<C-c>", function()
-  local curbuf = vim.api.nvim_get_current_buf()
-  local curwin = vim.api.nvim_get_current_win()
-
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    if win == curwin then
-      goto continue
-    end
-
-    if vim.api.nvim_win_get_buf(win) == curbuf then
-      vim.api.nvim_win_close(curwin, false)
-      return
-    end
-
-    ::continue::
-  end
-
-  vim.api.nvim_buf_delete(curbuf, { force = false })
-end, { desc = "Close buffer", silent = true })
+ks("n", "<C-c>", com.close_win_or_buffer, { desc = "Close buffer", silent = true })
 
 -- Clear highlights with escape
 ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })

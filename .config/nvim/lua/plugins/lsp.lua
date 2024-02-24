@@ -15,8 +15,6 @@ lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "ro
 lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
 
 local on_attach = function(_, bufnr)
-  local telescope_builtin = require("telescope.builtin")
-
   ks("n", "<leader>rn", lsp.buf.rename, { buffer = bufnr, desc = "LSP: Rename" })
   ks("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
 
@@ -25,7 +23,7 @@ local on_attach = function(_, bufnr)
   ks("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Goto implementation" })
   ks("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Goto type Definition" })
 
-  ks("n", "gr", telescope_builtin.lsp_references, { buffer = bufnr, desc = "LSP: Goto references" })
+  ks("n", "gr", lsp.buf.references, { buffer = bufnr, desc = "LSP: Goto references" })
 
   ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
   ks("i", "<C-S-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
