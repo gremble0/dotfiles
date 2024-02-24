@@ -81,7 +81,7 @@ mason_lspconfig.setup({
 })
 
 -- Non lsp mason things cannot be added to ensure_installed
-local tools = { "stylua", "prettierd", "clang-format" }
+local tools = { "stylua", "prettierd" }
 
 for _, tool in ipairs(tools) do
   local package = mason_registry.get_package(tool)

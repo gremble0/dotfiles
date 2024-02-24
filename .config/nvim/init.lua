@@ -131,8 +131,8 @@ require("lazy").setup({
         lsp_fallback = true,
       },
       formatters_by_ft = {
-        lua = { "stylua" }, -- Has to be :MasonInstall'd manually
-        javascript = { "prettierd" }, -- Has to be :MasonInstall'd manually
+        lua = { "stylua" },
+        javascript = { "prettierd" },
       },
     },
     event = "BufWritePost",
