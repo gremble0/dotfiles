@@ -8,7 +8,7 @@ ks("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
 ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 
 -- Delete buffer if only open in one window, otherwise close it
-local close_buffer = function()
+ks("n", "<C-c>", function()
   local curbuf = vim.api.nvim_get_current_buf()
   local curwin = vim.api.nvim_get_current_win()
 
@@ -21,13 +21,12 @@ local close_buffer = function()
       vim.api.nvim_win_close(curwin, false)
       return
     end
+
     ::continue::
   end
 
   vim.api.nvim_buf_delete(curbuf, { force = false })
-end
-
-ks("n", "<C-c>", close_buffer, { desc = "Close buffer", silent = true })
+end, { desc = "Close buffer", silent = true })
 
 -- Clear highlights with escape
 ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
