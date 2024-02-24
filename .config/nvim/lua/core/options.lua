@@ -9,11 +9,15 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 
+-- Search
+vim.opt.inccommand = "split"
+
 -- Indenting
 vim.opt.smartindent = true
+vim.opt.breakindent = true
 vim.opt.smarttab = true
-vim.opt.tabstop = 4
 vim.opt.expandtab = true
+vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 

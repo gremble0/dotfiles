@@ -58,7 +58,13 @@ telescope.setup({
       mappings = { i = { ["<C-c>"] = delete_buffer } },
     },
   },
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_cursor(),
+    },
+  },
 })
 
--- Enable telescope fzf native, if installed
+-- Enable some extensions if installed properly
 pcall(telescope.load_extension, "fzf")
+pcall(telescope.load_extension, "ui-select")
