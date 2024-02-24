@@ -1,7 +1,6 @@
--- TODO: keep signaturehelp while in insert mode
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local lsp_config = require("lspconfig")
-local lsp_config_windows = require("lspconfig.ui.windows")
+local lspconfig = require("lspconfig")
+local lspconfig_windows = require("lspconfig.ui.windows")
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local mason_registry = require("mason-registry")
@@ -10,7 +9,7 @@ local neodev = require("neodev")
 local lsp = vim.lsp
 local ks = vim.keymap.set
 
-lsp_config_windows.default_options.border = "rounded"
+lspconfig_windows.default_options.border = "rounded"
 lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
 lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
 
@@ -55,7 +54,11 @@ local servers = {
       "~/.local/share/nvim/java",
     },
   },
-  lua_ls = { Lua = { diagnostics = { globals = { "vim" } } } },
+  lua_ls = {
+    settings = {
+      Lua = { diagnostics = { globals = { "vim" } } },
+    },
+  },
   pyright = {},
   tsserver = {},
 }
@@ -63,16 +66,22 @@ local servers = {
 -- Setup neovim lua configuration
 neodev.setup()
 
+local capabilities =
+  vim.tbl_deep_extend("force", lsp.protocol.make_client_capabilities(), cmp_nvim_lsp.default_capabilities())
+
 -- Ensure the servers above are installed
 mason.setup()
 mason_lspconfig.setup({
   ensure_installed = vim.tbl_keys(servers),
   handlers = {
     function(server_name)
-      lsp_config[server_name].setup({
-        capabilities = cmp_nvim_lsp.default_capabilities(lsp.protocol.make_client_capabilities()),
+      local server = servers[server_name] or {}
+      lspconfig[server_name].setup({
+        cmd = server.cmd,
+        settings = server.settings,
+        filetypes = server.filetypes,
+        capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
         on_attach = on_attach,
-        settings = servers[server_name],
       })
     end,
   },
