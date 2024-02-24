@@ -17,6 +17,13 @@ vim.opt.rtp:prepend(lazypath)
 -- Import plugins using lazy
 require("lazy").setup({
   {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+    opts = { preview = { winblend = 0 } },
+  },
+
+  -- Preview markdown files with live updates
+  {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
@@ -34,6 +41,7 @@ require("lazy").setup({
     end,
   },
 
+  -- Git integration
   {
     "tpope/vim-fugitive",
     keys = { { "<leader>gt", ":vertical Git<CR>", desc = "Open fugitive", silent = true } },
