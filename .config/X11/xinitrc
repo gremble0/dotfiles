@@ -16,4 +16,4 @@ setkeyboard &
 polybarstart &
 
 # Start window manager
-bspwm
+exec bspwm
