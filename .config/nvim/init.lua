@@ -1,3 +1,4 @@
+-- Require basic config
 require("core")
 
 -- Initialize lazy

@@ -3,7 +3,7 @@ return {
   "neovim/nvim-lspconfig",
 
   dependencies = {
-    -- Automatically install LSPs to stdpath for neovim
+    -- Automatically install LSPs to stdpath
     { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
 
     -- Useful status updates for LSP
@@ -12,20 +12,17 @@ return {
     -- Better lua LSP functionality
     { "folke/neodev.nvim", opts = {} },
 
-    -- Better java LSP functionality
-    "mfussenegger/nvim-jdtls",
+    -- Adds LSP completion capabilities
+    "hrsh7th/cmp-nvim-lsp",
   },
 
   config = function()
     local lspconfig = require("lspconfig")
     local lspconfig_windows = require("lspconfig.ui.windows")
-    local mason = require("mason")
     local mason_registry = require("mason-registry")
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     lspconfig_windows.default_options.border = "rounded"
-
-    -- Ensure the servers above are installed
-    mason.setup()
 
     -- List of configured language servers and other tools
     local tools = {
@@ -42,14 +39,15 @@ return {
     }
 
     -- Install all mason_packages
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities =
+      vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), cmp_nvim_lsp.default_capabilities())
     for tool_mason_name, tool_lspconfig_name in pairs(tools) do
       local package = mason_registry.get_package(tool_mason_name)
       if not package:is_installed() then
         package:install()
       end
 
-      -- Non LSP tools cannot be setup by lspconfig
+      -- Only LSP tools can be setup by lspconfig
       if vim.tbl_contains(package.spec.categories, "LSP") then
         lspconfig[tool_lspconfig_name].setup({
           capabilities = capabilities,

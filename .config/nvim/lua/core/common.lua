@@ -1,6 +1,7 @@
 local M = {}
 
--- Delete buffer if only open in one window, otherwise close it
+-- Delete buffer if only open in one window, otherwise close it.
+-- (smart mix between :bd and :close)
 M.close_win_or_buffer = function()
   local curbuf = vim.api.nvim_get_current_buf()
   local curwin = vim.api.nvim_get_current_win()

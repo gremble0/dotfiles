@@ -10,6 +10,7 @@ return {
     local treesitter_configs = require("nvim-treesitter.configs")
 
     treesitter_configs.setup({
+      ensure_installed = {},
       sync_install = false,
       auto_install = true,
       ignore_install = {},

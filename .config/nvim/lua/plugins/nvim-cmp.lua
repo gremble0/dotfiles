@@ -3,18 +3,14 @@ return {
   "hrsh7th/nvim-cmp",
 
   dependencies = {
-    -- Cmp for commandline
-    "hrsh7th/cmp-cmdline",
-
-    -- Snippet Engine & its associated nvim-cmp source
+    -- Snippet Engine
     "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-
-    -- Adds LSP completion capabilities
-    "hrsh7th/cmp-nvim-lsp",
 
     -- Adds icons to cmp window
     "onsails/lspkind.nvim",
+
+    -- Cmp for commandline
+    "hrsh7th/cmp-cmdline",
   },
 
   config = function()
