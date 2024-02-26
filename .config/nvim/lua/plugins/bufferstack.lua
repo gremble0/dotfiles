@@ -1,6 +1,13 @@
-local bufferstack = require("bufferstack")
+-- Fix unintuitive :bprevious and :bnext behavior
+return {
+  "gremble0/bufferstack.nvim",
 
-bufferstack.setup({
-  bprevious = "<C-p>",
-  bnext = "<C-n>",
-})
+  config = function()
+    local bufferstack = require("bufferstack")
+
+    bufferstack.setup({
+      bprevious = "<C-p>",
+      bnext = "<C-n>",
+    })
+  end,
+}
