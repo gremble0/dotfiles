@@ -4,12 +4,7 @@ return {
 
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
-    {
-      "williamboman/mason.nvim",
-      dependencies = "williamboman/mason-lspconfig.nvim",
-      config = true,
-      opts = { ui = { border = "rounded" } },
-    },
+    { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
 
     -- Useful status updates for LSP
     { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
@@ -22,70 +17,43 @@ return {
   },
 
   config = function()
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local lspconfig = require("lspconfig")
     local lspconfig_windows = require("lspconfig.ui.windows")
     local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
     local mason_registry = require("mason-registry")
 
-    local lsp = vim.lsp
-    local ks = vim.keymap.set
-
     lspconfig_windows.default_options.border = "rounded"
-    lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
-    lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
-
-    local on_attach = function(_, bufnr)
-      ks("n", "<leader>rn", lsp.buf.rename, { buffer = bufnr, desc = "LSP: Rename" })
-      ks("n", "<leader>ca", lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
-
-      ks("n", "gd", lsp.buf.definition, { buffer = bufnr, desc = "LSP: Goto definition" })
-      ks("n", "gD", lsp.buf.declaration, { buffer = bufnr, desc = "LSP: Goto declaration" })
-      ks("n", "gi", lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Goto implementation" })
-      ks("n", "gt", lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Goto type Definition" })
-      ks("n", "gr", lsp.buf.references, { buffer = bufnr, desc = "LSP: Goto references" })
-
-      ks("n", "K", lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover documentation" })
-      ks("i", "<C-S-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
-    end
 
     -- Ensure the servers above are installed
     mason.setup()
-    mason_lspconfig.setup({
-      handlers = {
-        function(server)
-          lspconfig[server].setup({
-            capabilities = vim.tbl_deep_extend(
-              "force",
-              lsp.protocol.make_client_capabilities(),
-              cmp_nvim_lsp.default_capabilities()
-            ),
-            on_attach = on_attach,
-          })
-        end,
-      },
-    })
 
-    -- List of configured language servers
-    local mason_packages = {
-      "bash-language-server",
-      "clangd",
-      "css-lsp",
-      "gopls",
-      "jdtls",
-      "lua-language-server",
-      "pyright",
-      "typescript-language-server",
-      "stylua",
-      "prettierd",
+    -- List of configured language servers and other tools
+    local tools = {
+      ["bash-language-server"] = "bashls",
+      ["clangd"] = "clangd",
+      ["css-lsp"] = "cssls",
+      ["gopls"] = "gopls",
+      ["jdtls"] = "jdtls",
+      ["lua-language-server"] = "lua_ls",
+      ["pyright"] = "pyright",
+      ["typescript-language-server"] = "tsserver",
+      ["stylua"] = "stylua",
+      ["prettierd"] = "prettierd",
     }
 
     -- Install all mason_packages
-    for _, tool in ipairs(mason_packages) do
-      local package = mason_registry.get_package(tool)
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    for tool_mason_name, tool_lspconfig_name in pairs(tools) do
+      local package = mason_registry.get_package(tool_mason_name)
       if not package:is_installed() then
         package:install()
+      end
+
+      -- Non LSP tools cannot be setup by lspconfig
+      if vim.tbl_contains(package.spec.categories, "LSP") then
+        lspconfig[tool_lspconfig_name].setup({
+          capabilities = capabilities,
+        })
       end
     end
   end,
