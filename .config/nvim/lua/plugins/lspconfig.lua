@@ -14,8 +14,8 @@ return {
     -- Useful status updates for LSP
     { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
 
-    -- Additional lua configuration
-    "folke/neodev.nvim",
+    -- Better lua LSP functionality
+    { "folke/neodev.nvim", opts = {} },
 
     -- Better java LSP functionality
     "mfussenegger/nvim-jdtls",
@@ -28,7 +28,6 @@ return {
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local mason_registry = require("mason-registry")
-    local neodev = require("neodev")
 
     local lsp = vim.lsp
     local ks = vim.keymap.set
@@ -51,69 +50,39 @@ return {
       ks("i", "<C-S-K>", lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature Documentation" })
     end
 
-    -- List of configured language servers
-    local servers = {
-      bashls = {},
-      clangd = {},
-      cssls = {},
-      gopls = {},
-      jdtls = {
-        cmd = {
-          "java",
-          "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-          "-Dosgi.bundles.defaultStartLevel=4",
-          "-Declipse.product=org.eclipse.jdt.ls.core.product",
-          "-Xms1g",
-          "--add-modules=ALL-SYSTEM",
-          "--add-opens",
-          "java.base/java.util=ALL-UNNAMED",
-          "--add-opens",
-          "java.base/java.lang=ALL-UNNAMED",
-          "-jar",
-          "~/.local/share/nvim/mason/share/jdtls/org.eclipse.equinox.launcher.jar",
-          "-configuration",
-          "~/.local/share/nvim/mason/share/jdtls/config/config.ini",
-          "-data",
-          "~/.local/share/nvim/java",
-        },
-      },
-      lua_ls = {
-        settings = {
-          Lua = { diagnostics = { globals = { "vim" } } },
-        },
-      },
-      pyright = {},
-      tsserver = {},
-    }
-
-    -- Setup neovim lua configuration
-    neodev.setup()
-
-    local capabilities =
-      vim.tbl_deep_extend("force", lsp.protocol.make_client_capabilities(), cmp_nvim_lsp.default_capabilities())
-
     -- Ensure the servers above are installed
     mason.setup()
     mason_lspconfig.setup({
-      ensure_installed = vim.tbl_keys(servers),
       handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          lspconfig[server_name].setup({
-            cmd = server.cmd,
-            settings = server.settings,
-            filetypes = server.filetypes,
-            capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
+        function(server)
+          lspconfig[server].setup({
+            capabilities = vim.tbl_deep_extend(
+              "force",
+              lsp.protocol.make_client_capabilities(),
+              cmp_nvim_lsp.default_capabilities()
+            ),
             on_attach = on_attach,
           })
         end,
       },
     })
 
-    -- Non lsp mason things cannot be added to ensure_installed
-    local tools = { "stylua", "prettierd" }
+    -- List of configured language servers
+    local mason_packages = {
+      "bash-language-server",
+      "clangd",
+      "css-lsp",
+      "gopls",
+      "jdtls",
+      "lua-language-server",
+      "pyright",
+      "typescript-language-server",
+      "stylua",
+      "prettierd",
+    }
 
-    for _, tool in ipairs(tools) do
+    -- Install all mason_packages
+    for _, tool in ipairs(mason_packages) do
       local package = mason_registry.get_package(tool)
       if not package:is_installed() then
         package:install()
