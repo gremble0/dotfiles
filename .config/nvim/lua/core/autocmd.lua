@@ -6,7 +6,7 @@ local file_open_rules_group = vim.api.nvim_create_augroup("FileOpenRules", {})
 -- Use 'q' to quickly close these filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = file_open_rules_group,
-  pattern = { "help", "qf", "gitcommit", "fugitive", "oil" },
+  pattern = { "help", "qf", "gitcommit", "fugitive", "oil", "checkhealth" },
   callback = function()
     ks("n", "q", com.close_win_or_buffer, { desc = "Delete current buffer", buffer = 0 })
   end,
@@ -18,16 +18,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "gitcommit",
   callback = function()
     vim.cmd("startinsert")
-  end,
-})
-
--- Dont automatically continue comments
-vim.api.nvim_create_autocmd("FileType", {
-  group = file_open_rules_group,
-  pattern = "*",
-  callback = function()
-    vim.opt.formatoptions:remove("r")
-    vim.opt.formatoptions:remove("o")
   end,
 })
 

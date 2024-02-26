@@ -7,20 +7,15 @@ return {
   cmd = "Git",
 
   config = function()
-    local fugitive_group = vim.api.nvim_create_augroup("FugitiveCustom", {})
-
-    local kd = vim.keymap.del
-    local ks = vim.keymap.set
-
     vim.api.nvim_create_autocmd("FileType", {
-      group = fugitive_group,
+      group = vim.api.nvim_create_augroup("FugitiveCustom", {}),
       pattern = "fugitive",
-      callback = function()
-        kd("n", "p", { buffer = 0 })
-        kd("n", "P", { buffer = 0 })
+      callback = function(e)
+        vim.keymap.del("n", "p", { buffer = e.buf })
+        vim.keymap.del("n", "P", { buffer = e.buf })
 
-        ks("n", "pu", ":Git push<CR>", { desc = "Git push", silent = true, buffer = 0 })
-        ks("n", "Pu", ":Git pull<CR>", { desc = "Git pull", silent = true, buffer = 0 })
+        vim.keymap.set("n", "pu", ":Git push<CR>", { desc = "Git push", silent = true, buffer = e.buf })
+        vim.keymap.set("n", "Pu", ":Git pull<CR>", { desc = "Git pull", silent = true, buffer = e.buf })
       end,
     })
   end,
