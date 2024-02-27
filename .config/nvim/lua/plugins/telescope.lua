@@ -3,6 +3,7 @@ return {
 
   dependencies = {
     "nvim-lua/plenary.nvim",
+
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
@@ -10,6 +11,7 @@ return {
         return vim.fn.executable("make") == 1
       end,
     },
+
     "nvim-telescope/telescope-ui-select.nvim",
   },
 
@@ -75,15 +77,12 @@ return {
         },
       },
       extensions = {
-        ["ui-select"] = {
-          require("telescope.themes").get_cursor(),
-        },
+        ["ui-select"] = { require("telescope.themes").get_cursor() },
       },
     })
 
-    -- Enable some extensions if installed properly
-    pcall(telescope.load_extension, "fzf")
-    pcall(telescope.load_extension, "ui-select")
+    telescope.load_extension("fzf")
+    telescope.load_extension("ui-select")
   end,
 
   keys = {
@@ -94,5 +93,5 @@ return {
     { "<leader>gr", ":Telescope live_grep<CR>", desc = "Live grep", silent = true },
   },
 
-  cmd = "Telescope",
+  lazy = false,
 }
