@@ -35,6 +35,7 @@ window {
     background-color: @background;
     border:           1;
     width:            50ch;
+    border-radius:    5px;
 }
 mainbox {
     children: [ inputbar, listview ];

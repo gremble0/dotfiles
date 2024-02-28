@@ -26,8 +26,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 
-alias minecraft-launcher="minecraft-launcher --workDir='$XDG_DATA_HOME/minecraft'"
-
 # Extend PATH
 export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$GOPATH/bin:$JAVA_HOME/bin"
 
@@ -41,8 +39,8 @@ export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 # System defaults
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="firefox"
-export FILE="lf"
+export BROWSER="chromium"
+export FILE="thunar"
 
 # Fix sorting in ls command (take . into consideration when sorting)
 export LC_COLLATE="C"
