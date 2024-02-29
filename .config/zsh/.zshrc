@@ -40,7 +40,6 @@ fzfcd() {
 alias c='clear'
 alias n='nvim'
 alias f='fzfcd'
-alias l='lfcd'
 alias i='nsxiv'
 
 alias ..='cd ..'
@@ -53,6 +52,3 @@ alias ll='ls -AFl --group-directories-first --color=auto'
 alias grep='grep --color=auto'
 
 alias shutdown='shutdown now'
-
-export FZF_DEFAULT_COMMAND='find .'
-export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ " --color=dark,prompt:3,pointer:4,info:2,query:7:regular,hl:3,hl+:3,gutter:0,bg+:#333333'
