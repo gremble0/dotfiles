@@ -15,6 +15,7 @@
 !.local/share/applications/img.desktop
 !.local/share/applications/text.desktop
 !.local/share/applications/video.desktop
+!.local/share/applications/browser.desktop
 
 #.config/ folders
 !.config/
