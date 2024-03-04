@@ -1,0 +1,18 @@
+[user]
+	email = hermanstornes@gmail.com
+	name = gremble0
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
+[color]
+	pager = yes
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	cm = commit
+	pu = push
+	pl = pull

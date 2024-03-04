@@ -20,6 +20,9 @@
 #.config/ folders
 !.config/
 
+!.config/git/
+!.config/git/*
+
 !.config/mimeapps.list
 
 !.config/nvim/
