@@ -34,14 +34,6 @@
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
 
-!.config/emacs/
-!.config/emacs/init.el
-!.config/emacs/core/
-!.config/emacs/core/*
-!.config/emacs/themes/
-!.config/emacs/themes/yellowbeans-theme.el
-!.config/emacs/themes/gremble-gruber-theme.el
-
 !.config/X11/
 !.config/X11/*
 
@@ -71,12 +63,20 @@
 !.config/polybar/
 !.config/polybar/*
 
-!.config/lf/
-!.config/lf/*
-
 # The following configs are no longer used
 !.config/i3/
 !.config/i3/*
 
 !.config/hypr/
 !.config/hypr/*
+
+!.config/lf/
+!.config/lf/*
+
+!.config/emacs/
+!.config/emacs/init.el
+!.config/emacs/core/
+!.config/emacs/core/*
+!.config/emacs/themes/
+!.config/emacs/themes/yellowbeans-theme.el
+!.config/emacs/themes/gremble-gruber-theme.el
