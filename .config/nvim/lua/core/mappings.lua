@@ -42,3 +42,9 @@ ks("i", "<C-k>", "<Up>", { desc = "Move up" })
 ks("i", "<C-l>", "<Right>", { desc = "Move right" })
 ks("i", "<C-a>", "<Home>", { desc = "Move to the start of the line" })
 ks("i", "<C-e>", "<End>", { desc = "Move to the end of the line" })
+
+-- COMMAND MODE KEYBINDS
+ks("c", "<C-b>", "<Left>", { desc = "Move left" })
+ks("c", "<C-f>", "<Right>", { desc = "Move right" })
+ks("c", "<C-a>", "<Home>", { desc = "Move to the start of the ex prompt" })
+ks("c", "<C-e>", "<End>", { desc = "Move to the end of the ex prompt" })
