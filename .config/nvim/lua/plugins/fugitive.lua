@@ -2,9 +2,14 @@
 return {
   "tpope/vim-fugitive",
 
-  keys = { { "<leader>gt", ":vertical Git<CR>", desc = "Open fugitive", silent = true } },
+  dependencies = "junegunn/gv.vim",
 
-  cmd = "Git",
+  keys = {
+    { "<leader>gt", ":vertical Git<CR>", desc = "Open fugitive", silent = true },
+    { "<leader>gc", ":GV<CR>", desc = "Open commit history", silent = true },
+  },
+
+  cmd = { "Git", "GV" },
 
   config = function()
     vim.api.nvim_create_autocmd("FileType", {
