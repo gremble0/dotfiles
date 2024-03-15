@@ -27,13 +27,13 @@ ks("n", "gp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic mess
 ks("n", "gn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 
+-- Tab navigation
+ks("n", "<tab>", ":tabnext<CR>", { desc = "" })
+ks("n", "<S-tab>", ":tabprevious<CR>", { desc = "" })
+
 --- VISUAL MODE KEYBINDS
 ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
 ks("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up", silent = true })
-
--- Better indentation
-ks("v", ">", ">gv", { desc = "Indent and reselect", silent = true })
-ks("v", "<", "<gv", { desc = "Dedent and reselect", silent = true })
 
 --- INSERT MODE KEYBINDS
 ks("i", "<C-h>", "<Left>", { desc = "Move left" })

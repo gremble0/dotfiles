@@ -34,7 +34,7 @@ return {
         lualine_b = { "filename" },
         lualine_c = { "branch", "diff" },
         lualine_x = { "diagnostics", lsp_section },
-        lualine_y = { { "filetype", colored = false } },
+        lualine_y = { { "filetype" } },
         lualine_z = { "location" },
       },
     })
