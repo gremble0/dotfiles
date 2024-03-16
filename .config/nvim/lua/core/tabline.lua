@@ -1,12 +1,26 @@
----@param tabpage_is_active boolean
----@return string
-local component_separator = function(tabpage_is_active)
-  return tabpage_is_active and "%#TablineSelSep#▎" or "%#TablineNormSep#▏"
+-- Define some shortcuts for highlight groups
+local HIGHLIGHT_NORM = "%#TablineNorm#"
+local HIGHLIGHT_NORM_SEP = "%#TablineNormSep#"
+local HIGHLIGHT_SEL = "%#TablineSel#"
+local HIGHLIGHT_SEL_SEP = "%#TablineSelSep#"
+
+local tabpage_get_active_buf = function(tabpage)
+  local buflist = vim.fn.tabpagebuflist(tabpage)
+  local winnr = vim.fn.tabpagewinnr(tabpage)
+
+  return type(buflist) == "number" and buflist or buflist[winnr]
 end
 
----@param tabpage_active_buf integer
+---@param tabpage integer
 ---@return string
-local component_icon = function(tabpage_active_buf)
+local component_separator = function(tabpage)
+  return tabpage == vim.fn.tabpagenr() and (HIGHLIGHT_SEL_SEP .. "▎") or (HIGHLIGHT_NORM_SEP .. "▏")
+end
+
+---@param tabpage integer
+---@return string
+local component_icon = function(tabpage)
+  local tabpage_active_buf = tabpage_get_active_buf(tabpage)
   local buf_name = vim.fn.bufname(tabpage_active_buf)
   local buf_ft = vim.api.nvim_buf_get_option(tabpage_active_buf, "ft")
   -- TODO: pcall() ?
@@ -15,24 +29,20 @@ local component_icon = function(tabpage_active_buf)
   return "%#" .. icon_hl .. "#" .. icon
 end
 
----@param tabpage_active_buf integer
+---@param tabpage integer
 ---@return string
-local component_name = function(tabpage_active_buf)
-  local buf_name = vim.fn.bufname(tabpage_active_buf)
-  local component_name
-  if buf_name == "" then
-    component_name = "[No Name]" -- TODO: get this from vim api? i think there is some option to change this
-  else
-    component_name = vim.fn.fnamemodify(buf_name, ":t")
-  end
+local component_name = function(tabpage)
+  local tabpage_is_active = tabpage == vim.fn.tabpagenr()
+  local buf_name = vim.fn.bufname(tabpage_get_active_buf(tabpage))
+  local component_name = buf_name == "" and "[No Name]" or vim.fn.fnamemodify(buf_name, ":t") -- TODO: get [No Name] from vim api? i think there is some option to change this
 
-  return component_name
+  return (tabpage_is_active and HIGHLIGHT_SEL or HIGHLIGHT_NORM) .. component_name
 end
 
----@param tabpage_active_buf integer
+---@param tabpage integer
 ---@return string
-local component_modified = function(tabpage_active_buf)
-  if vim.api.nvim_buf_get_option(tabpage_active_buf, "modified") then
+local component_modified = function(tabpage)
+  if vim.api.nvim_buf_get_option(tabpage_get_active_buf(tabpage), "modified") then
     return "[+]" -- TODO: get this from vim api?
   else
     return ""
@@ -42,24 +52,13 @@ end
 ---@param tabpage integer
 ---@return string
 local tabline_make_entry = function(tabpage)
-  local tabpage_is_active = tabpage == vim.fn.tabpagenr()
-  local buflist = vim.fn.tabpagebuflist(tabpage)
-  local winnr = vim.fn.tabpagewinnr(tabpage)
-
-  local tabpage_active_buf
-  if type(buflist) == "number" then
-    tabpage_active_buf = buflist
-  else
-    tabpage_active_buf = buflist[winnr]
-  end
-
-  return component_separator(tabpage_is_active)
+  return component_separator(tabpage)
     .. " "
-    .. component_icon(tabpage_active_buf)
+    .. component_icon(tabpage)
     .. " "
-    .. component_name(tabpage_active_buf)
+    .. component_name(tabpage)
     .. " "
-    .. component_modified(tabpage_active_buf)
+    .. component_modified(tabpage)
     .. "  "
 end
 
