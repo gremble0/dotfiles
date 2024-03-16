@@ -92,7 +92,9 @@ local tabpage_make_component = function(tabpage)
     .. "  "
 end
 
-_G.tabline = function()
+vim.o.tabline = "%!v:lua.require('core.tabline')()"
+
+return function()
   local tabline_builder = ""
   for _, tabpage in ipairs(vim.api.nvim_list_tabpages()) do
     tabline_builder = tabline_builder .. tabpage_make_component(tabpage)
@@ -100,7 +102,3 @@ _G.tabline = function()
 
   return tabline_builder .. "%#TablineFill#"
 end
-
-vim.o.tabline = "%!v:lua.tabline()"
-
-vim.keymap.set("n", "<leader>tn", ":tabnew<CR>")
