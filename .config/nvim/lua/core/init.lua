@@ -1,6 +1,6 @@
+require("core.options") -- This needs to be loaded first (sets leader and stuff)
+require("core.mappings")
 require("core.autocmd")
 require("core.diagnostics")
 require("core.lsp")
-require("core.mappings")
-require("core.options")
 require("core.tabline")
