@@ -28,8 +28,8 @@ ks("n", "gn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message"
 ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 
 -- Tab navigation
-ks("n", "<tab>", ":tabnext<CR>", { desc = "" })
-ks("n", "<S-tab>", ":tabprevious<CR>", { desc = "" })
+ks("n", "<tab>", ":tabnext<CR>", { desc = "", silent = true })
+ks("n", "<S-tab>", ":tabprevious<CR>", { desc = "", silent = true })
 
 --- VISUAL MODE KEYBINDS
 ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
