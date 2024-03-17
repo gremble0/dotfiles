@@ -40,6 +40,7 @@ return {
       tsserver = { mason_name = "typescript-language-server" },
       stylua = { mason_name = "stylua" },
       prettierd = { mason_name = "prettierd" },
+      ruff = { mason_name = "ruff" },
     }
 
     -- Install all mason_packages

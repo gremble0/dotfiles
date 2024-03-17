@@ -42,11 +42,7 @@ end
 ---@param tabpage integer
 ---@return string
 local component_modified = function(tabpage)
-  if vim.api.nvim_buf_get_option(tabpage_get_active_buf(tabpage), "modified") then
-    return "[+]" -- TODO: get this from vim api?
-  else
-    return ""
-  end
+  return vim.api.nvim_buf_get_option(tabpage_get_active_buf(tabpage), "modified") and "[+]" or ""
 end
 
 ---@param tabpage integer
@@ -66,7 +62,7 @@ vim.o.tabline = "%!v:lua.require('core.tabline')()"
 
 return function()
   local tabline_builder = ""
-  for _, tabpage in ipairs(vim.api.nvim_list_tabpages()) do
+  for _, tabpage in ipairs(vim.fn.sort(vim.api.nvim_list_tabpages())) do
     tabline_builder = tabline_builder .. tabline_make_entry(tabpage)
   end
 
