@@ -28,7 +28,7 @@ ks("n", "gn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message"
 ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 
 -- Tab navigation
-ks("n", "<leader>tn", ":tabnew<CR>", { desc = "Open new tab", silent = true })
+ks("n", "<leader>tn", ":tabnew ", { desc = "Open new tab" })
 ks("n", "<tab>", ":tabnext<CR>", { desc = "Go to next tab", silent = true })
 ks("n", "<S-tab>", ":tabprevious<CR>", { desc = "Go to previous tab", silent = true })
 

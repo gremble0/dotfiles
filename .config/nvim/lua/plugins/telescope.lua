@@ -33,6 +33,15 @@ return {
       end)
     end
 
+    local tab_new = function(prompt_bufnr)
+      local current_picker = action_state.get_current_picker(prompt_bufnr)
+      actions.close(prompt_bufnr)
+      current_picker:delete_selection(function(selection)
+        local ok = pcall(vim.cmd.tabnew, selection[1])
+        return ok
+      end)
+    end
+
     telescope.setup({
       defaults = {
         vimgrep_arguments = {
@@ -74,6 +83,9 @@ return {
           show_all_buffers = true,
           sort_lastused = true,
           mappings = { i = { ["<C-c>"] = delete_buffer } },
+        },
+        find_files = {
+          mappings = { i = { ["<C-CR>"] = tab_new } },
         },
       },
       extensions = {

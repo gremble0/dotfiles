@@ -143,3 +143,8 @@ mods = "Control"
 chars = "\u001B[27;6;75~"
 key = "K"
 mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;13~"
+key = "Enter"
+mods = "Control"
