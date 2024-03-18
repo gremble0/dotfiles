@@ -13,6 +13,35 @@ local tabpage_get_active_buf = function(tabpage)
   return type(buflist) == "number" and buflist or buflist[winnr]
 end
 
+---@param entry string
+---@return integer
+local entry_rendered_length = function(entry)
+  local len_iter = entry:len()
+  for highlight in entry:gmatch("%%#.-#") do
+    len_iter = len_iter - highlight:len()
+  end
+
+  return len_iter
+end
+
+-- ---@param entry string
+-- ---@param width integer
+-- ---@return string
+-- local entry_pad_to_width = function(entry, width)
+--   local entry_len = entry:len()
+--   return string.rep(" ", entry_len - math.floor(width / 2))
+--     .. entry
+--     .. string.rep(" ", entry_len - math.ceil(width / 2))
+-- end
+--
+-- ---Either pads or trims the entry string to the given width
+-- ---@param entry string
+-- ---@param width integer
+-- ---@return string
+-- local entry_fit_to_width = function(entry, width)
+--   return entry_rendered_length(entry) > width and name_trim_to_width(entry, width) or entry_pad_to_width(entry, width)
+-- end
+
 ---This class is a mockup of the returntype of vim.fn.gettabinfo()
 ---@class Tab
 ---@field tabnr integer
@@ -37,14 +66,23 @@ local component_icon = function(tab)
   return "%#" .. icon_hl .. "#" .. icon
 end
 
+---@param name string
+---@param width integer
+---@return string
+local name_trim_to_width = function(name, width)
+  return name:len() > width and name:sub(1, width - 3) .. "..." or name
+end
+
 ---@param tab Tab
 ---@return string
 local component_name = function(tab)
   local tabpage_is_active = tab.tabnr == vim.fn.tabpagenr()
   local buf_name = vim.fn.bufname(tabpage_get_active_buf(tab.tabnr))
-  local component_name = buf_name == "" and "[No Name]" or vim.fn.fnamemodify(buf_name, ":t") -- TODO: get [No Name] from vim api? i think there is some option to change this
+  local name = buf_name == "" and "[No Name]" or vim.fn.fnamemodify(buf_name, ":t")
+  -- TODO: get [No Name] from vim api? i think there is some option to change this
+  -- TODO: expand when no name gets set ref: fugitive
 
-  return (tabpage_is_active and HIGHLIGHT_SEL or HIGHLIGHT_NORM) .. component_name
+  return (tabpage_is_active and HIGHLIGHT_SEL or HIGHLIGHT_NORM) .. name_trim_to_width(name, 25)
 end
 
 ---@param tab Tab
@@ -56,7 +94,7 @@ end
 ---@param tab Tab
 ---@return string
 local tabline_make_entry = function(tab)
-  return component_separator(tab)
+  local entry = component_separator(tab)
     .. " "
     .. component_icon(tab)
     .. " "
@@ -64,19 +102,17 @@ local tabline_make_entry = function(tab)
     .. " "
     .. component_modified(tab)
     .. "  "
+
+  return entry
 end
 
 vim.o.tabline = "%!v:lua.require('core.tabline')()"
 
 return function()
   local tabline_builder = ""
-  -- local debugs = ""
   for _, tab in ipairs(vim.fn.gettabinfo()) do
-    -- debugs = debugs .. tabpage .. " " .. vim.api.nvim_buf_get_name(tabpage_get_active_buf(tabpage)) .. ", "
     tabline_builder = tabline_builder .. tabline_make_entry(tab)
   end
-  -- print(debugs)
 
-  -- print(tabline_builder)
   return tabline_builder .. "%#TablineFill#"
 end
