@@ -13,17 +13,6 @@ local tabpage_get_active_buf = function(tabpage)
   return type(buflist) == "number" and buflist or buflist[winnr]
 end
 
----@param entry string
----@return integer
-local entry_rendered_length = function(entry)
-  local len_iter = entry:len()
-  for highlight in entry:gmatch("%%#.-#") do
-    len_iter = len_iter - highlight:len()
-  end
-
-  return len_iter
-end
-
 -- ---@param entry string
 -- ---@param width integer
 -- ---@return string
@@ -82,7 +71,7 @@ local component_name = function(tab)
   -- TODO: get [No Name] from vim api? i think there is some option to change this
   -- TODO: expand when no name gets set ref: fugitive
 
-  return (tabpage_is_active and HIGHLIGHT_SEL or HIGHLIGHT_NORM) .. name_trim_to_width(name, 25)
+  return (tabpage_is_active and HIGHLIGHT_SEL or HIGHLIGHT_NORM) .. name_trim_to_width(name, 22) -- TODO: fix hardcoded 22 and 30
 end
 
 ---@param tab Tab
@@ -91,19 +80,39 @@ local component_modified = function(tab)
   return vim.api.nvim_buf_get_option(tabpage_get_active_buf(tab.tabnr), "modified") and "[+]" or ""
 end
 
+---@param entry string
+---@return integer
+local entry_rendered_length = function(entry)
+  local len_iter = entry:len()
+  for highlight in entry:gmatch("%%#.-#") do -- Matches inline hl groups like %#HighlightGroup#
+    len_iter = len_iter - highlight:len()
+  end
+
+  return len_iter
+end
+
+---@param entry string
+---@param width integer
+---@return string left_padding, string right_padding
+local entry_add_padding = function(entry, width)
+  local total_padding = width - entry_rendered_length(entry) -- TODO: entry:rendered_length() ?
+
+  return (" "):rep(math.floor(total_padding / 2)), (" "):rep(math.ceil(total_padding / 2) + 1)
+end
+
 ---@param tab Tab
 ---@return string
 local tabline_make_entry = function(tab)
-  local entry = component_separator(tab)
-    .. " "
-    .. component_icon(tab)
-    .. " "
-    .. component_name(tab)
-    .. " "
-    .. component_modified(tab)
-    .. "  "
+  local separator = component_separator(tab)
+  local icon = " " .. component_icon(tab)
+  local name = " " .. component_name(tab)
+  local modified = " " .. component_modified(tab)
+  modified = modified:len() > 1 and (" " .. modified) or ""
 
-  return entry
+  local entry_unpadded = separator .. icon .. name .. modified .. "  "
+  local left_padding, right_padding = entry_add_padding(entry_unpadded, 30) -- TODO: fix hardcoded 30 and 22
+
+  return separator .. left_padding .. icon .. name .. modified .. right_padding
 end
 
 vim.o.tabline = "%!v:lua.require('core.tabline')()"
