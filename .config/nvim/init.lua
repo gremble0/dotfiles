@@ -21,6 +21,9 @@ require("lazy").setup({
   ui = {
     border = "rounded",
   },
+  dev = {
+    path = "~/Code/plugins/",
+  },
   performance = {
     rtp = {
       disabled_plugins = {
