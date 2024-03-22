@@ -31,6 +31,10 @@ ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnost
 ks("n", "<leader>tn", ":tabnew ", { desc = "Open new tab" })
 ks("n", "<tab>", ":tabnext<CR>", { desc = "Go to next tab", silent = true })
 ks("n", "<S-tab>", ":tabprevious<CR>", { desc = "Go to previous tab", silent = true })
+for i = 1, 8 do
+  ks("n", ("<M-%d>"):format(i), (":tabn %d<CR>"):format(i), { desc = "Go to tab " .. i, silent = true })
+end
+ks("n", "<M-9>", ":tablast<CR>", { desc = "Go to last tab", silent = true })
 
 --- VISUAL MODE KEYBINDS
 ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
