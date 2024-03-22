@@ -2,40 +2,41 @@
 eval "$(starship init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Vi mode things
-bindkey -v
+# Use emacs bindings by default but with vicmd mode upon hitting escape
+bindkey -e
+bindkey -e "^[" vi-cmd-mode
 
-# Binds $2 to command in $1 and pipes $CUTBUFFER into clipboard
+# Binds $1 to command in $2 and pipes $CUTBUFFER into clipboard
 generate-vi-xclip-pipe-cmd() {
-    local cmdname="$1"
-    local keybind="$2"
+    local keybind="$1"
+    local cmdname="$2"
 
     eval "${cmdname}-xclip() { zle ${cmdname} && echo \"\$CUTBUFFER\" | xclip -selection clipboard }"
     zle -N "${cmdname}-xclip"
     bindkey -M vicmd ${keybind} ${cmdname}-xclip
 }
 
-# Binds $2 to the command in $1 after exporting clipboard to $CUTBUFFER
+# Binds $1 to the command in $2 after exporting clipboard to $CUTBUFFER
 generate-vi-xclip-export-cmd() {
-    local cmdname="$1"
-    local keybind="$2"
+    local keybind="$1"
+    local cmdname="$2"
 
     eval "${cmdname}-xclip() { export CUTBUFFER=\"\$(xclip -selection clipboard -out)\" && zle ${cmdname} }"
     zle -N "${cmdname}-xclip"
     bindkey -M vicmd ${keybind} ${cmdname}-xclip
 }
 
-generate-vi-xclip-pipe-cmd vi-yank "y"
-generate-vi-xclip-pipe-cmd vi-yank-eol "Y"
-generate-vi-xclip-pipe-cmd vi-delete "d"
-generate-vi-xclip-pipe-cmd vi-delete-eol "D"
-generate-vi-xclip-pipe-cmd vi-delete-char "x"
-generate-vi-xclip-pipe-cmd vi-backward-delete-char "X"
-generate-vi-xclip-pipe-cmd vi-change "c"
-generate-vi-xclip-pipe-cmd vi-change-eol "C"
+generate-vi-xclip-pipe-cmd "y" vi-yank 
+generate-vi-xclip-pipe-cmd "Y" vi-yank-eol 
+generate-vi-xclip-pipe-cmd "d" vi-delete 
+generate-vi-xclip-pipe-cmd "D" vi-delete-eol 
+generate-vi-xclip-pipe-cmd "x" vi-delete-char 
+generate-vi-xclip-pipe-cmd "X" vi-backward-delete-char 
+generate-vi-xclip-pipe-cmd "c" vi-change 
+generate-vi-xclip-pipe-cmd "C" vi-change-eol 
 
-generate-vi-xclip-export-cmd vi-put-after "p"
-generate-vi-xclip-export-cmd vi-put-before "P"
+generate-vi-xclip-export-cmd "p" vi-put-after 
+generate-vi-xclip-export-cmd "P" vi-put-before 
 
 # Reduce delay between keycords (effectively removes delay for entering vi mode)
 KEYTIMEOUT=1
