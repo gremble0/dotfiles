@@ -1,13 +1,44 @@
 # Source plugins
-# source $XDG_CONFIG_HOME/zsh/powerlevel10k/p10k.zsh
 eval "$(starship init zsh)"
-source $XDG_CONFIG_HOME/zsh/vi-mode/zsh-vi-mode.plugin.zsh
-source $XDG_CONFIG_HOME/zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Remove underline from syntax highlighting
-(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+# Vi mode things
+bindkey -v
+
+# Binds $2 to command in $1 and pipes $CUTBUFFER into clipboard
+generate-vi-xclip-pipe-cmd() {
+    local cmdname="$1"
+    local keybind="$2"
+
+    eval "${cmdname}-xclip() { zle ${cmdname} && echo \"\$CUTBUFFER\" | xclip -selection clipboard }"
+    zle -N "${cmdname}-xclip"
+    bindkey -M vicmd ${keybind} ${cmdname}-xclip
+}
+
+# Binds $2 to the command in $1 after exporting clipboard to $CUTBUFFER
+generate-vi-xclip-export-cmd() {
+    local cmdname="$1"
+    local keybind="$2"
+
+    eval "${cmdname}-xclip() { export CUTBUFFER=\"\$(xclip -selection clipboard -out)\" && zle ${cmdname} }"
+    zle -N "${cmdname}-xclip"
+    bindkey -M vicmd ${keybind} ${cmdname}-xclip
+}
+
+generate-vi-xclip-pipe-cmd vi-yank "y"
+generate-vi-xclip-pipe-cmd vi-yank-eol "Y"
+generate-vi-xclip-pipe-cmd vi-delete "d"
+generate-vi-xclip-pipe-cmd vi-delete-eol "D"
+generate-vi-xclip-pipe-cmd vi-delete-char "x"
+generate-vi-xclip-pipe-cmd vi-backward-delete-char "X"
+generate-vi-xclip-pipe-cmd vi-change "c"
+generate-vi-xclip-pipe-cmd vi-change-eol "C"
+
+generate-vi-xclip-export-cmd vi-put-after "p"
+generate-vi-xclip-export-cmd vi-put-before "P"
+
+# Reduce delay between keycords (effectively removes delay for entering vi mode)
+KEYTIMEOUT=1
 
 # History in .cache directory
 HISTSIZE=50000
