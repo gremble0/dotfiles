@@ -9,4 +9,6 @@ return {
   config = function()
     require("gline").setup()
   end,
+
+  event = "TabNew",
 }

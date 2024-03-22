@@ -2,7 +2,7 @@
 super + Escape
     pkill -USR1 -x sxhkd
 
-# Reset keykboard settings because it keeps randomly resetting sometimes
+# Reset keykboard settings because running pacman will unset these settings
 super + space
     setkeyboard
 
@@ -55,9 +55,6 @@ super + shift + b
 
 super + Return
     $TERMINAL -e tmux
-
-super + shift + Return
-    $=VISUAL
 
 # Fn lock functionality
 XF86AudioRaiseVolume

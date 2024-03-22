@@ -1,0 +1,5 @@
+#!/bin/sh
+
+packages="git starship neovim maim bspwm sxhkd polybar pavucontrol rofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel"
+
+sudo pacman -Syu "$packages"
