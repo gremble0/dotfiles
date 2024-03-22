@@ -1,5 +1,6 @@
 # Source plugins
-source $XDG_CONFIG_HOME/zsh/powerlevel10k/p10k.zsh
+# source $XDG_CONFIG_HOME/zsh/powerlevel10k/p10k.zsh
+eval "$(starship init zsh)"
 source $XDG_CONFIG_HOME/zsh/vi-mode/zsh-vi-mode.plugin.zsh
 source $XDG_CONFIG_HOME/zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 

@@ -24,6 +24,7 @@
 !.config/git/*
 
 !.config/mimeapps.list
+!.config/starship.toml
 
 !.config/nvim/
 !.config/nvim/*
