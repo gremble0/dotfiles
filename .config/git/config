@@ -16,3 +16,5 @@
 	cm = commit
 	pu = push
 	pl = pull
+	df = diff
+	dc = diff --cached
