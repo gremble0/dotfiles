@@ -36,6 +36,9 @@ for i = 1, 8 do
 end
 ks("n", "<M-9>", ":tablast<CR>", { desc = "Go to last tab", silent = true })
 
+-- Open lazy
+ks("n", "<leader>z", ":Lazy<CR>", { desc = "Open lazy", silent = true })
+
 --- VISUAL MODE KEYBINDS
 ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
 ks("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up", silent = true })
