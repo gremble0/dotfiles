@@ -11,10 +11,18 @@
 	pager = yes
 [alias]
 	st = status
-	co = checkout
-	br = branch
+	# Commit
 	cm = commit
+	ca = commit --amend
+	# Remote
+	rv = remote -v
 	pu = push
 	pl = pull
+	# Diffs
 	df = diff
 	dc = diff --cached
+	# Branches
+	co = checkout
+	br = branch
+	rb = rebase
+	mg = merge
