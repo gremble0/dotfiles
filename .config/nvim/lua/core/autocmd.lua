@@ -1,4 +1,3 @@
-local com = require("core.common")
 local ks = vim.keymap.set
 
 local file_open_rules_group = vim.api.nvim_create_augroup("FileOpenRules", {})
@@ -8,7 +7,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = file_open_rules_group,
   pattern = { "help", "qf", "gitcommit", "fugitive", "oil", "checkhealth" },
   callback = function()
-    ks("n", "q", com.close_win_or_buffer, { desc = "Delete current buffer", buffer = 0 })
+    ks("n", "q", ":close!<CR>", { desc = "Delete current buffer", silent = true, buffer = 0 })
   end,
 })
 

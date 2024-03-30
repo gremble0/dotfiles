@@ -1,4 +1,3 @@
-local com = require("core.common")
 local ks = vim.keymap.set
 
 --- NORMAL MODE KEYBINDS
@@ -9,7 +8,7 @@ ks("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
 ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 
 -- Close current window or buffer
-ks("n", "<C-c>", com.close_win_or_buffer, { desc = "Close buffer", silent = true })
+ks("n", "<C-c>", ":close!<CR>", { desc = "Close buffer", silent = true })
 
 -- Open quickfix/location list
 ks("n", "<leader>q", ":copen<CR>", { desc = "Open quickfix list", silent = true })

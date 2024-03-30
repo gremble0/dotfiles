@@ -5,11 +5,9 @@ return {
   config = function()
     require("ibl").setup({
       indent = {
-        highlight = { "VertSplit" },
         char = "▏",
       },
       scope = {
-        highlight = { "Comment" },
         char = "▏",
         show_start = false,
         show_end = false,

@@ -20,6 +20,7 @@ require("lazy").setup({
   spec = "plugins",
   ui = {
     border = "rounded",
+    backdrop = 100,
   },
   dev = {
     path = "~/Code/plugins/",
