@@ -24,8 +24,7 @@ return {
     local delete_buffer = function(prompt_bufnr)
       local current_picker = action_state.get_current_picker(prompt_bufnr)
       current_picker:delete_selection(function(selection)
-        local force = vim.api.nvim_buf_get_option(selection.bufnr, "buftype") == "terminal"
-        vim.api.nvim_buf_delete(selection.bufnr, { force = force })
+        vim.api.nvim_buf_delete(selection.bufnr, { force = true })
       end)
     end
 
@@ -38,18 +37,6 @@ return {
 
     telescope.setup({
       defaults = {
-        vimgrep_arguments = {
-          "rg",
-          "-L",
-          "--color=never",
-          "--no-heading",
-          "--hidden",
-          "--with-filename",
-          "--line-number",
-          "--column",
-          "--smart-case",
-          "--no-ignore-vcs",
-        },
         selection_caret = " ",
         entry_prefix = " ",
         prompt_prefix = "❯ ",
