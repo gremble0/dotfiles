@@ -21,25 +21,19 @@ return {
     local sorters = require("telescope.sorters")
     local telescope = require("telescope")
 
-    -- actions.delete_buffer doesn't work like expected unless prompt is closed
-    -- before calling nvim_buf_delete()
     local delete_buffer = function(prompt_bufnr)
       local current_picker = action_state.get_current_picker(prompt_bufnr)
-      actions.close(prompt_bufnr)
       current_picker:delete_selection(function(selection)
         local force = vim.api.nvim_buf_get_option(selection.bufnr, "buftype") == "terminal"
-        local ok = pcall(vim.api.nvim_buf_delete, selection.bufnr, { force = force })
-        return ok
+        vim.api.nvim_buf_delete(selection.bufnr, { force = force })
       end)
     end
 
-    local tab_new = function(prompt_bufnr)
-      local current_picker = action_state.get_current_picker(prompt_bufnr)
+    local tabnew = function(prompt_bufnr)
+      local selection = action_state.get_selected_entry()
       actions.close(prompt_bufnr)
-      current_picker:delete_selection(function(selection)
-        local ok = pcall(vim.cmd.tabnew, selection[1])
-        return ok
-      end)
+      -- try filename, if nil - fallback to [1] (selection text)
+      vim.cmd.tabnew(selection.filename or selection[1])
     end
 
     telescope.setup({
@@ -85,7 +79,10 @@ return {
           mappings = { i = { ["<C-c>"] = delete_buffer } },
         },
         find_files = {
-          mappings = { i = { ["<C-CR>"] = tab_new } },
+          mappings = { i = { ["<C-CR>"] = tabnew } },
+        },
+        live_grep = {
+          mappings = { i = { ["<C-CR>"] = tabnew } },
         },
       },
       extensions = {
