@@ -6,13 +6,13 @@ configuration {
 * {
     foreground:                  #ffffff;
     background:                  #151515;
-    selected:                    #e1b655;
+    selected:                    #282828;
     border-color:                #282828;
     separatorcolor:              @background;
 
     normal-foreground:           @foreground;
     normal-background:           @background;
-    selected-normal-foreground:  @background;
+    selected-normal-foreground:  @foreground;
     selected-normal-background:  @selected;
     alternate-normal-foreground: @foreground;
     alternate-normal-background: @background;
@@ -66,7 +66,7 @@ element-text {
     background-color: inherit;
     text-color:       inherit;
     vertical-align:   0.5;
-    font:             "pango:Cantarell bold 16";
+    font:             "pango:Cantarell 16";
 }
 element-icon {
     size: 3.4ch;
