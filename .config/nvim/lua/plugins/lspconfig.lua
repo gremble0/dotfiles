@@ -25,8 +25,8 @@ return {
     -- Change :LspInfo border
     lspconfig_windows.default_options.border = "rounded"
 
-    -- List of configured language servers and other tools
     local tools = {
+      -- Language servers
       bashls = { mason_name = "bash-language-server" },
       clangd = { mason_name = "clangd" },
       cssls = { mason_name = "css-lsp" },
@@ -38,9 +38,10 @@ return {
       },
       pyright = { mason_name = "pyright" },
       tsserver = { mason_name = "typescript-language-server" },
+      -- Formatters
       stylua = { mason_name = "stylua" },
       prettierd = { mason_name = "prettierd" },
-      ruff = { mason_name = "ruff" },
+      black = { mason_name = "black" },
     }
 
     -- Install all mason_packages
@@ -56,7 +57,7 @@ return {
       if vim.tbl_contains(package.spec.categories, "LSP") then
         lspconfig[tool_lspconfig_name].setup({
           capabilities = capabilities,
-          settings = tool_config[tool_config.settings],
+          settings = tool_config.settings,
         })
       end
     end
