@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo -e "\x03󰘚 \x01$(free -m | awk '/^Mem/ { print $3" MB""/"$2" MB" }')"
+echo -e "\x03󰘚  \x01$(free -m | awk '/^Mem/ { print $3" MB""/"$2" MB" }')"

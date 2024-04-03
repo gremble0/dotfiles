@@ -2,7 +2,7 @@
 # Script to continously update the contents of the statusbar
 
 while true; do
-    cache="$(st-battery)   $(st-volume)   $(st-keyboard)   $(st-internet)"
+    cache="$(st-battery)   $(st-volume)   $(st-keyboard)   $(st-internet)    $(st-memory)"
     for i in {1..5}; do
         xsetroot -name "$cache   $(st-time)"
         sleep 1s

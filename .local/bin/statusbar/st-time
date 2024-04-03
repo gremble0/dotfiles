@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo -e "\x03󰃮 \x01 $(date +'%Y-%m-%d %H:%M:%S')"
+echo -e "\x03󰃮  \x01 $(date +'%Y-%m-%d %H:%M:%S')"

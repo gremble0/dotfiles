@@ -2,7 +2,19 @@
 
 volume=$(pactl list sinks | grep "Volume:" | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
 
-[ $(pactl list sinks | grep "Mute" | cut -d " " -f 2) = "yes" ] && echo -e "\x04󰖁   $volume%\x01" && exit 0
-[ $volume -lt 33 ] && echo -e "\x03󰕿   \x01$volume%" && exit 0
-[ $volume -lt 66 ] && echo -e "\x03󰖀   \x01$volume%" && exit 0
-echo -e "\x03󰕾   \x01$volume%" && exit 0
+mute=$(pactl list sinks | grep "Mute:" | head -n $(( $SINK + 1 )) | tail -n 1 | cut -d " " -f 2)
+
+if [ "$mute" = "yes" ]; then
+    echo -e "\x04󰖁   $volume%\x01"
+    exit 0
+fi
+
+if [ $volume -lt 33 ]; then
+    echo -e "\x03󰕿   \x01$volume%"
+elif [ $volume -lt 66 ]; then
+    echo -e "\x03󰖀   \x01$volume%"
+else
+    echo -e "\x03󰕾   \x01$volume%"
+fi
+
+exit 0
