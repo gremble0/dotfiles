@@ -23,6 +23,18 @@ return {
       return ""
     end
 
+    local function diff_source()
+      ---@diagnostic disable-next-line
+      local gitsigns = vim.b.gitsigns_status_dict
+      if gitsigns then
+        return {
+          added = gitsigns.added,
+          modified = gitsigns.changed,
+          removed = gitsigns.removed,
+        }
+      end
+    end
+
     lualine.setup({
       options = {
         component_separators = "",
@@ -32,9 +44,9 @@ return {
       sections = {
         lualine_a = { { "mode", icons_enabled = true } },
         lualine_b = { "filename" },
-        lualine_c = { "branch", "diff" },
+        lualine_c = { "branch", { "diff", source = diff_source } },
         lualine_x = { "diagnostics", lsp_section },
-        lualine_y = { { "filetype" } },
+        lualine_y = { "filetype" },
         lualine_z = { "location" },
       },
     })

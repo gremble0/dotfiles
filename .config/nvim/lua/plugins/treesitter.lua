@@ -2,8 +2,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
 
-  dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
-
   build = ":TSUpdate",
 
   config = function()
@@ -22,16 +20,6 @@ return {
           init_selection = "v<Tab>",
           node_incremental = "<Tab>",
           node_decremental = "<S-Tab>",
-        },
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-        },
-        move = {
-          enable = true,
-          set_jumps = true,
         },
       },
       modules = {},
