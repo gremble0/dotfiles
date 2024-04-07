@@ -74,6 +74,7 @@ alias c='clear'
 alias n='nvim'
 alias f='fzfcd'
 alias i='nsxiv'
+alias g='git'
 alias o='xdg-open'
 
 alias ..='cd ..'

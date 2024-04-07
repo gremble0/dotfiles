@@ -42,7 +42,7 @@ return {
         theme = require("yellowbeans.lualine"),
       },
       sections = {
-        lualine_a = { { "mode", icons_enabled = true } },
+        lualine_a = { "mode" },
         lualine_b = { "filename" },
         lualine_c = { "branch", { "diff", source = diff_source } },
         lualine_x = { "diagnostics", lsp_section },
