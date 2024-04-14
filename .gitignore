@@ -28,6 +28,10 @@
 
 !.config/nvim/
 !.config/nvim/*
+!.config/nvim/after/
+!.config/nvim/after/*
+!.config/nvim/after/ftplugin/
+!.config/nvim/after/ftplugin/*
 !.config/nvim/lua/
 !.config/nvim/lua/*
 !.config/nvim/lua/core/
