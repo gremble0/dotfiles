@@ -10,7 +10,7 @@ ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 -- Close current window or buffer
 ks("n", "<C-c>", ":close!<CR>", { desc = "Close buffer", silent = true })
 
--- Open quickfix/location list
+-- Quickfix-/Location- list
 ks("n", "<leader>q", ":copen<CR>", { desc = "Open quickfix list", silent = true })
 ks("n", "<leader>l", ":lopen<CR>", { desc = "Open location list", silent = true })
 

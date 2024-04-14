@@ -1,9 +1,10 @@
 local ks = vim.keymap.set
+local au = vim.api.nvim_create_autocmd
 
 local file_open_rules_group = vim.api.nvim_create_augroup("FileOpenRules", {})
 
 -- Use 'q' to quickly close these filetypes
-vim.api.nvim_create_autocmd("FileType", {
+au("FileType", {
   group = file_open_rules_group,
   pattern = { "help", "qf", "gitcommit", "fugitive", "oil", "checkhealth" },
   callback = function()
@@ -11,17 +12,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Enter insert mode in gitcommit buffers
-vim.api.nvim_create_autocmd("FileType", {
-  group = file_open_rules_group,
-  pattern = "gitcommit",
-  callback = function()
-    vim.cmd("startinsert")
-  end,
-})
-
 -- Highlight when yanking text
-vim.api.nvim_create_autocmd("TextYankPost", {
+au("TextYankPost", {
   group = vim.api.nvim_create_augroup("HighlightOnYank", {}),
   callback = function()
     vim.highlight.on_yank()
