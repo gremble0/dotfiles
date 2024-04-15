@@ -145,6 +145,26 @@ key = "K"
 mods = "Control|Shift"
 
 [[keyboard.bindings]]
+chars = "\u001B[27;5;80~"
+key = "P"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;80~"
+key = "P"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;78~"
+key = "N"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;78~"
+key = "N"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
 chars = "\u001B[27;5;13~"
 key = "Enter"
 mods = "Control"

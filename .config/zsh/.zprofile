@@ -10,7 +10,6 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings"
-alias yarn=yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc
 
 # Data files
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
@@ -22,7 +21,6 @@ export OPAMROOT="$XDG_DATA_HOME/opam"
 export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 export PYTHONSTARTUP="$XDG_DATA_HOME/pythonrc"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 
 # Extend PATH
