@@ -3,7 +3,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- UI
-vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.cursorline = true

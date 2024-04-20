@@ -19,3 +19,5 @@ application/x-extension-xht=browser.desktop
 
 x-scheme-handler/http=browser.desktop
 x-scheme-handler/https=browser.desktop
+
+inode/directory=file.desktop

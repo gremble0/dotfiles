@@ -1,5 +1,11 @@
 #!/bin/sh
-
 # When upgrading pacman packages it unsets the keyboard settings, this script just resets them
+
+# Increase key repeat speed when holding down a key
+xset r rate 300 35
+
+# Toggle between norwegian and US keyboard with super+space
 setxkbmap -option 'grp:win_space_toggle' -layout us,no -option nodeadkeys
+
+# Bind caps to escape
 setxkbmap -option caps:escape

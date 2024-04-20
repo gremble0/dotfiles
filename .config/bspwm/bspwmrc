@@ -23,5 +23,8 @@ bspc config normal_border_color "#282828"
 bspc config active_border_color "#282828"
 bspc config focused_border_color "#e1b655"
 
+# Some applications dont work without this for some reason (intellij)
+wmname LG3D
+
 # Use normal cursor when cursor is not over a window
 xsetroot -cursor_name left_ptr &

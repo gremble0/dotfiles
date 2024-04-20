@@ -43,6 +43,14 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
+        lualine_b = { { "filename", symbols = { modified = "●", readonly = "" } } },
+        lualine_c = { "branch", { "diff", source = diff_source } },
+        lualine_x = { "diagnostics", lsp_section },
+        lualine_y = { "filetype" },
+        lualine_z = { "location" },
+      },
+      inactive_sections = {
+        lualine_a = {},
         lualine_b = { "filename" },
         lualine_c = { "branch", { "diff", source = diff_source } },
         lualine_x = { "diagnostics", lsp_section },
