@@ -39,7 +39,7 @@ return {
       options = {
         component_separators = "",
         refresh = { statusline = 200 },
-        theme = require("yellowbeans.lualine"),
+        theme = require("lualine.themes.yellowbeans-monochrome"),
       },
       sections = {
         lualine_a = { "mode" },
