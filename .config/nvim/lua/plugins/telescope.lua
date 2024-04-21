@@ -54,6 +54,7 @@ return {
           i = {
             ["<esc>"] = actions.close,
             ["<C-l>"] = false,
+            ["<C-s>"] = actions.file_split,
           },
         },
       },

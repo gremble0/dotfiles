@@ -77,10 +77,14 @@ alias i='nsxiv'
 alias g='git'
 alias o='xdg-open'
 
+# Faster cding
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../'
 alias .....='cd ../../../'
+alias cdn='cd ~/.config/nvim'
+alias cdz='cd ~/.config/zsh'
+alias cdt='cd ~/.config/tmux'
 
 alias ls='ls -F --group-directories-first --color=auto'
 alias ll='ls -AFl --group-directories-first --color=auto'
