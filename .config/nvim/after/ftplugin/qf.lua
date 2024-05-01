@@ -9,7 +9,7 @@ local remove_qf_item = function()
   table.remove(qfall, curqfidx)
   vim.fn.setqflist(qfall, "r")
 
-  vim.cmd("copen")
+  vim.cmd.copen()
 
   local new_idx = curqfidx < #qfall and curqfidx or math.max(curqfidx - 1, 1)
 

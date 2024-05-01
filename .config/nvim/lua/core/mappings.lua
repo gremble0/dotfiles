@@ -14,8 +14,8 @@ ks("n", "<C-q>", "<C-^>", { desc = "Alternate file" })
 -- Quickfix-/Location- list
 ks("n", "<leader>q", ":copen<CR>", { desc = "Open quickfix list", silent = true })
 ks("n", "<leader>l", ":lopen<CR>", { desc = "Open location list", silent = true })
-ks("n", "<C-S-P>", ":cp<CR>", { desc = "Go to previous quickfix error", silent = true })
-ks("n", "<C-S-N>", ":cn<CR>", { desc = "Go to next quickfix error", silent = true })
+ks("n", "<C-S-P>", ":cclose<CR>:cp<CR>", { desc = "Go to previous quickfix error", silent = true })
+ks("n", "<C-S-N>", ":cclose<CR>:cn<CR>", { desc = "Go to next quickfix error", silent = true })
 
 -- Clear highlights with escape
 ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
