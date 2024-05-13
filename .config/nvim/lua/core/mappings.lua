@@ -7,6 +7,12 @@ ks("n", "<C-j>", "<C-w>j", { desc = "Move to window below" })
 ks("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
 ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 
+-- Resize buffers
+ks("n", "<C-S-H>", "<C-w>5<", { desc = "Shrink current split horizontally" })
+ks("n", "<C-S-J>", "<C-w>-", { desc = "Shrink current split vertically" })
+ks("n", "<C-S-K>", "<C-w>+", { desc = "Grow current split vertically" })
+ks("n", "<C-S-L>", "<C-w>5>", { desc = "Grow current split horizontally" })
+
 -- Buffers
 ks("n", "<C-c>", ":close!<CR>", { desc = "Close buffer", silent = true })
 ks("n", "<C-q>", "<C-^>", { desc = "Alternate file" })
@@ -28,15 +34,6 @@ ks("n", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down with word wrapping
 ks("n", "gp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 ks("n", "gn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-
--- Tab navigation
-ks("n", "<leader>tn", ":tabnew ", { desc = "Open new tab" })
-ks("n", "<tab>", ":tabnext<CR>", { desc = "Go to next tab", silent = true })
-ks("n", "<S-tab>", ":tabprevious<CR>", { desc = "Go to previous tab", silent = true })
-for i = 1, 8 do
-  ks("n", ("<M-%d>"):format(i), (":tabn %d<CR>"):format(i), { desc = "Go to tab " .. i, silent = true })
-end
-ks("n", "<M-9>", ":tablast<CR>", { desc = "Go to last tab", silent = true })
 
 -- Open lazy
 ks("n", "<leader>z", ":Lazy<CR>", { desc = "Open lazy", silent = true })

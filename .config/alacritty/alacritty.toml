@@ -135,6 +135,26 @@ key = "Slash"
 mods = "Control"
 
 [[keyboard.bindings]]
+chars = "\u001B[27;5;104~"
+key = "H"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;72~"
+key = "H"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;106~"
+key = "J"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;74~"
+key = "J"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
 chars = "\u001B[27;5;107~"
 key = "K"
 mods = "Control"
@@ -142,6 +162,16 @@ mods = "Control"
 [[keyboard.bindings]]
 chars = "\u001B[27;6;75~"
 key = "K"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;108~"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;76~"
+key = "L"
 mods = "Control|Shift"
 
 [[keyboard.bindings]]
