@@ -83,4 +83,6 @@ return {
     { "<leader>gh", ":Telescope help_tags<CR>", desc = "Telescope find help", silent = true },
     { "<leader>gr", ":Telescope live_grep<CR>", desc = "Telescope live grep", silent = true },
   },
+
+  cmd = "Telescope",
 }
