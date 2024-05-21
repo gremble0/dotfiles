@@ -4,7 +4,8 @@ return {
 
   dependencies = {
     -- Snippet Engine
-    { "L3MON4D3/LuaSnip", build = "make install_jsregexp" }, -- why build - unnecessary?
+    "L3MON4D3/LuaSnip",
+    -- Only necessary for custom snippets
     "saadparwaiz1/cmp_luasnip",
 
     -- Adds icons to cmp window
