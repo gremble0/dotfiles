@@ -34,19 +34,17 @@ return {
       jdtls = { mason_name = "jdtls" },
       lua_ls = {
         mason_name = "lua-language-server",
-        settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+        -- settings = { Lua = { diagnostics = { globals = { "vim" } } } },
       },
       pyright = { mason_name = "pyright" },
       tsserver = { mason_name = "typescript-language-server" },
       -- Formatters
       stylua = { mason_name = "stylua" },
       prettierd = { mason_name = "prettierd" },
-      black = { mason_name = "black" },
     }
 
     -- Install all mason_packages
-    local capabilities =
-      vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), cmp_nvim_lsp.default_capabilities())
+    local capabilities = cmp_nvim_lsp.default_capabilities()
     for tool_lspconfig_name, tool_config in pairs(tools) do
       local package = mason_registry.get_package(tool_config.mason_name)
       if not package:is_installed() then

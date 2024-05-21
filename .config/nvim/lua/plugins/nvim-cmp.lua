@@ -34,17 +34,18 @@ return {
           return kind
         end,
       },
+
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
+          -- vim.snippet.expand(args.body)
         end,
       },
-      mapping = cmp.mapping.preset.insert({
+
+      mapping = {
         ["<C-n>"] = cmp.mapping(function(_)
           if cmp.visible() then
             cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
           else
             cmp.complete()
           end
@@ -52,8 +53,6 @@ return {
         ["<C-p>"] = cmp.mapping(function(_)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
           else
             cmp.complete()
           end
@@ -76,11 +75,13 @@ return {
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
         ["<C-g>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm(),
-      }),
+      },
+
       sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
       },
+
       window = {
         completion = cmp.config.window.bordered({
           border = "rounded",
@@ -95,43 +96,22 @@ return {
 
     cmp.setup.cmdline(":", {
       mapping = {
-        ["<C-n>"] = {
-          c = function()
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              cmp.complete()
-            end
-          end,
-        },
-        ["<Tab>"] = {
-          c = function()
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              cmp.complete()
-            end
-          end,
-        },
-        ["<C-p>"] = {
-          c = function()
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              cmp.complete()
-            end
-          end,
-        },
-        ["<S-Tab>"] = {
-          c = function()
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              cmp.complete()
-            end
-          end,
-        },
+        ["<C-n>"] = cmp.mapping(function(_)
+          if cmp.visible() then
+            cmp.select_next_item()
+          else
+            cmp.complete()
+          end
+        end, { "c" }),
+        ["<C-p>"] = cmp.mapping(function(_)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          else
+            cmp.complete()
+          end
+        end, { "c" }),
       },
+
       sources = cmp.config.sources({ { name = "cmdline" } }),
     })
   end,
