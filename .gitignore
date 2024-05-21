@@ -38,6 +38,8 @@
 !.config/nvim/lua/core/*
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
+!.config/nvim/lua/snippets/
+!.config/nvim/lua/snippets/*
 
 !.config/X11/
 !.config/X11/*
