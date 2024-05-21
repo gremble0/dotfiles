@@ -78,7 +78,13 @@ return {
       },
 
       sources = {
-        { name = "nvim_lsp" },
+        {
+          name = "nvim_lsp",
+          entry_filter = function(entry, _)
+            -- Filter out LSP snippets
+            return entry:get_kind() ~= require("cmp.types").lsp.CompletionItemKind.Snippet
+          end,
+        },
         { name = "luasnip" },
       },
 
