@@ -4,7 +4,8 @@ return {
 
   dependencies = {
     -- Snippet Engine
-    "L3MON4D3/LuaSnip",
+    { "L3MON4D3/LuaSnip", build = "make install_jsregexp" }, -- why build - unnecessary?
+    "saadparwaiz1/cmp_luasnip",
 
     -- Adds icons to cmp window
     "onsails/lspkind.nvim",
@@ -17,10 +18,9 @@ return {
     local cmp = require("cmp")
     local lspkind = require("lspkind")
     local luasnip = require("luasnip")
+    lspkind.init()
 
-    require("luasnip.loaders.from_vscode").lazy_load()
-    luasnip.config.setup()
-
+    -- Load custom snippets
     for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/snippets/*.lua", true)) do
       loadfile(ft_path)()
     end
@@ -89,7 +89,7 @@ return {
             return entry:get_kind() ~= require("cmp.types").lsp.CompletionItemKind.Snippet
           end,
         },
-        { name = "luasnip" },
+        { name = "luasnip", priority = 1000 },
       },
 
       window = {
