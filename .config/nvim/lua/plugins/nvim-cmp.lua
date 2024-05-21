@@ -3,11 +3,6 @@ return {
   "hrsh7th/nvim-cmp",
 
   dependencies = {
-    -- Snippet Engine
-    "L3MON4D3/LuaSnip",
-    -- Only necessary for custom snippets
-    "saadparwaiz1/cmp_luasnip",
-
     -- Adds icons to cmp window
     "onsails/lspkind.nvim",
 
@@ -18,13 +13,6 @@ return {
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
-    local luasnip = require("luasnip")
-    lspkind.init()
-
-    -- Load custom snippets
-    for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/snippets/*.lua", true)) do
-      loadfile(ft_path)()
-    end
 
     cmp.setup({
       formatting = {
@@ -42,8 +30,7 @@ return {
 
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body)
-          -- vim.snippet.expand(args.body)
+          vim.snippet.expand(args.body)
         end,
       },
 
@@ -63,15 +50,15 @@ return {
           end
         end, { "i", "s" }),
         ["<Tab>"] = cmp.mapping(function(callback)
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
+          if vim.snippet.active({ direction = 1 }) then
+            vim.snippet.jump(1)
           else
             callback()
           end
         end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(callback)
-          if luasnip.expand_or_jumpable() then
-            luasnip.jump(-1)
+          if vim.snippet.active({ direction = -1 }) then
+            vim.snippet.jump(-1)
           else
             callback()
           end
@@ -121,6 +108,8 @@ return {
             cmp.complete()
           end
         end, { "c" }),
+        ["<Tab>"] = cmp.mapping(function(_) end, { "c" }),
+        ["<S-Tab>"] = cmp.mapping(function(_) end, { "c" }),
       },
 
       sources = cmp.config.sources({ { name = "cmdline" } }),

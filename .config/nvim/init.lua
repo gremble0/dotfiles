@@ -13,6 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- Import plugins using lazy
@@ -22,9 +23,8 @@ require("lazy").setup({
     border = "rounded",
     backdrop = 100,
   },
-  dev = {
-    path = "~/Code/plugins/",
-  },
+  change_detection = { enabled = false },
+  dev = { path = "~/Code/plugins/" },
   performance = {
     rtp = {
       disabled_plugins = {
