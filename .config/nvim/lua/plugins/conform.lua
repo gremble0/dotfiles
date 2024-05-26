@@ -10,10 +10,10 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       javascript = { "prettierd" },
-      python = { "ruff" },
     },
   },
 
+  -- Load plugin when writing to file/<leader>mt key is pressed/:ConformInfo command is executed
   event = "BufWritePost",
 
   keys = {

@@ -8,6 +8,9 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 
+-- Menus
+vim.opt.completeopt = { "menu", "menuone" }
+
 -- Search
 vim.opt.inccommand = "split"
 
