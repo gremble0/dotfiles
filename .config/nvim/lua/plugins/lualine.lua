@@ -5,13 +5,12 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
 
   config = function()
-    -- TODO: use opts?
     local lualine = require("lualine")
 
     -- Make section for lsp info in statusline
     local lsp_section = function()
-      local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-      local clients = vim.lsp.get_active_clients()
+      local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+      local clients = vim.lsp.get_clients()
 
       for _, client in ipairs(clients) do
         local filetypes = client.config.filetypes
@@ -23,10 +22,9 @@ return {
       return ""
     end
 
-    local function diff_source()
-      ---@diagnostic disable-next-line
-      local gitsigns = vim.b.gitsigns_status_dict
-      if gitsigns then
+    local diff_source = function()
+      local ok, gitsigns = pcall(vim.api.nvim_buf_get_var, 0, "gitsigns_status_dict")
+      if ok then
         return {
           added = gitsigns.added,
           modified = gitsigns.changed,
