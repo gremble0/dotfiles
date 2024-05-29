@@ -2,7 +2,7 @@
 return {
   "gremble0/bufferstack.nvim",
 
-  dev = "~/Code/plugins/bufferstack.nvim",
+  dir = "~/Code/plugins/bufferstack.nvim",
 
   opts = {
     bprevious = "<C-p>",

@@ -3,7 +3,7 @@ return {
 
   priority = 1000,
 
-  dev = "~/Code/plugins/yellowbeans.nvim",
+  dir = "~/Code/plugins/yellowbeans.nvim",
 
   config = function()
     vim.cmd.colorscheme("yellowbeans")

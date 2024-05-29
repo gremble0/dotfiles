@@ -24,8 +24,6 @@ require("lazy").setup({
     backdrop = 100,
   },
   change_detection = { enabled = false },
-  ---@diagnostic disable-next-line: assign-type-mismatch
-  dev = { path = "~/Code/plugins" },
   performance = {
     rtp = {
       disabled_plugins = {
