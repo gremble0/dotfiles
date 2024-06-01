@@ -53,6 +53,9 @@ super + d
 super + shift + b
     $BROWSER
 
+super + shift + d
+    discord
+
 super + Return
     $TERMINAL -e tmux
 
