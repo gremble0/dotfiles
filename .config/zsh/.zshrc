@@ -91,3 +91,11 @@ alias ll='ls -AFl --group-directories-first --color=auto'
 alias grep='grep --color=auto'
 
 alias shutdown='shutdown now'
+
+# pnpm
+export PNPM_HOME="/home/herman/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
