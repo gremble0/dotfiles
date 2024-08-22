@@ -67,6 +67,9 @@ return {
         find_files = {
           mappings = { i = { ["<C-CR>"] = tabnew } },
         },
+        git_files = {
+          mappings = { i = { ["<C-CR>"] = tabnew } },
+        },
         live_grep = {
           mappings = { i = { ["<C-CR>"] = tabnew } },
         },
@@ -78,8 +81,9 @@ return {
 
   keys = {
     { "<leader>o", ":Telescope oldfiles<CR>", desc = "Telescope find old files", silent = true },
-    { "<leader>f", ":Telescope find_files<CR>", desc = "Telescope find files", silent = true },
     { "<leader>b", ":Telescope buffers<CR>", desc = "Telescope find open buffers", silent = true },
+    { "<leader>f", ":Telescope find_files<CR>", desc = "Telescope find files", silent = true },
+    { "<leader>gf", ":Telescope git_files<CR>", desc = "Telescope git files", silent = true },
     { "<leader>gh", ":Telescope help_tags<CR>", desc = "Telescope find help", silent = true },
     { "<leader>gr", ":Telescope live_grep<CR>", desc = "Telescope live grep", silent = true },
   },
