@@ -18,6 +18,7 @@
 	rv = remote -v
 	pu = push
 	pl = pull
+	cl = clone
 	# Diffs
 	df = diff
 	dc = diff --cached
