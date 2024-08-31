@@ -29,10 +29,8 @@
         "format-no": "NOB"
     },
     "hyprland/workspaces": {
-        "icon-size": 32,
+        "icon-size": 15,
         "spacing": 16,
-        "on-scroll-up": "hyprctl dispatch workspace r+1",
-        "on-scroll-down": "hyprctl dispatch workspace r-1"
     },
     "custom/os_button": {
         "format": "󰣇",
@@ -53,7 +51,7 @@
     },
     "wlr/taskbar": {
         "format": "{icon} {title:.17}",
-        "icon-size": 28,
+        "icon-size": 25,
         "spacing": 3,
         "on-click-middle": "close",
         "tooltip-format": "{title}",
@@ -63,7 +61,7 @@
         "sort-by-app-id": false
     },
     "tray": {
-        "icon-size": 18,
+        "icon-size": 15,
         "spacing": 3
     },
     "clock": {
@@ -130,7 +128,7 @@
     "pulseaudio": {
         "max-volume": 150,
         "scroll-step": 10,
-        "format": "{icon}",
+        "format": "{icon} {volume}%",
         "tooltip-format": "{volume}%",
         "format-muted": " ",
         "format-icons": {

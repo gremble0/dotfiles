@@ -1,19 +1,10 @@
-/*base background color*/
-@define-color bg_main rgba(25, 25, 25, 1);
+/** TODO: redo color variables **/
+@define-color bg_main rgba(25, 25, 25, 1.0);
 @define-color bg_main_tooltip rgba(21, 21, 21, 1.0);
-
-
-/*base background color of selections */
 @define-color bg_hover rgba(200, 200, 200, 0.3);
-/*base background color of active elements */
 @define-color bg_active rgba(100, 100, 100, 0.5);
-
-/*base border color*/
 @define-color border_main rgba(255, 255, 255, 0.2);
-
-/*text color for entries, views and content in general */
 @define-color content_main white;
-/*text color for entries that are unselected */
 @define-color content_inactive rgba(255, 255, 255, 0.25);
 
 * {
@@ -21,9 +12,8 @@
     box-shadow: none;
     border: none;
     border-radius: 0;
-    font-family: "Cantarell";
-    font-weight: 500;
-    font-size: 21px;
+    font-family: "pango:Cantarell";
+    font-size: 15px;
 }
 
 window#waybar {
@@ -45,11 +35,9 @@ tooltip label {
 }
 
 #custom-os_button {
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 36px;
+    font-size: 25px;
     padding-left: 16px;
     padding-right: 24px;
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #custom-os_button:hover {
@@ -59,20 +47,19 @@ tooltip label {
 
 #workspaces {
     color: transparent;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 #workspaces button {
-    padding: 15px;
+    padding: 2px 15px 2px 15px;
     color: @content_inactive;
-    border-bottom: 3px solid rgba(0, 0, 0, 0);
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
 
 #workspaces button.active {
     color: @content_main;
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid rgba(225, 182, 85, 1.0);
 }
 
 #workspaces button.focused {
@@ -81,7 +68,7 @@ tooltip label {
 
 #workspaces button.urgent {
     background: rgba(255, 200, 0, 0.35);
-    border-bottom: 3px dashed @warning_color;
+    border-bottom: 2px dashed @warning_color;
     color: @warning_color;
 }
 
@@ -90,40 +77,35 @@ tooltip label {
     color: @content_main;
 }
 
-#taskbar {}
-
 #taskbar button {
-    min-width: 250px;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+    min-width: 175px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     margin-left: 2px;
     margin-right: 2px;
     padding-left: 16px;
     padding-right: 16px;
     color: white;
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #taskbar button.active {
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid rgba(225, 182, 85, 1.0);
     background: @bg_active;
 }
 
 #taskbar button:hover {
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid rgba(225, 182, 85, 1.0);
     background: @bg_hover;
     color: @content_main;
 }
 
 #cpu,
 #disk,
-#memory {
-    padding: 15px;
-}
-
-#window {
-    border-radius: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
+#memory,
+#clock,
+#pulseaudio,
+#language,
+#network {
+    padding: 2px 12px 2px 12px;
 }
 
 #tray {
@@ -136,46 +118,28 @@ tooltip label {
 }
 
 #tray>.active {
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid rgba(225, 182, 85, 1.0);
 }
 
 #tray>.needs-attention {
-    border-bottom: 3px solid @warning_color;
-}
-
-#tray>widget {
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-bottom: 2px solid @warning_color;
 }
 
 #tray>widget:hover {
     background: @bg_hover;
 }
 
-#pulseaudio {
-    font-family: "JetBrainsMono Nerd Font";
-    padding-left: 15px;
-    padding-right: 10px;
+#custom-os_button,
+#workspaces button,
+#pulseaudio,
+#clock,
+#tray>widget,
+#taskbar button {
     transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #pulseaudio:hover {
     background: @bg_hover;
-}
-
-#network {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#language {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#clock {
-    padding-right: 15px;
-    padding-left: 15px;
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #clock:hover {
