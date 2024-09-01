@@ -1,25 +1,21 @@
 /** TODO: redo color variables **/
 @define-color bg_main rgba(25, 25, 25, 1.0);
 @define-color bg_main_tooltip rgba(21, 21, 21, 1.0);
-@define-color bg_hover rgba(200, 200, 200, 0.3);
+@define-color bg_hover rgba(255, 255, 255, 0.2);
 @define-color bg_active rgba(100, 100, 100, 0.5);
 @define-color border_main rgba(255, 255, 255, 0.2);
-@define-color content_main white;
-@define-color content_inactive rgba(255, 255, 255, 0.25);
+@define-color content_main rgba(204, 204, 204, 1.0);
+@define-color content_inactive rgba(255, 255, 255, 0.2);
 
 * {
-    text-shadow: none;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
     font-family: "pango:Cantarell";
     font-size: 15px;
 }
 
 window#waybar {
-    background: @bg_main;
-    border-top: 1px solid @border_main;
+    border: 1px solid @border_main;
     color: @content_main;
+    border-radius: 8px;
 }
 
 tooltip {
@@ -52,15 +48,16 @@ tooltip label {
 }
 
 #workspaces button {
+    font-weight: bold;
     padding: 2px 15px 2px 15px;
     color: @content_inactive;
-    border-bottom: 2px solid rgba(0, 0, 0, 0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
 }
 
 #workspaces button.active {
     color: @content_main;
     background: #333333;
-    border-bottom: 2px solid rgba(225, 182, 85, 1.0);
+    border-bottom: 1px solid rgba(225, 182, 85, 1.0);
 }
 
 #workspaces button.focused {
@@ -69,7 +66,7 @@ tooltip label {
 
 #workspaces button.urgent {
     background: rgba(255, 200, 0, 0.35);
-    border-bottom: 2px dashed @warning_color;
+    border-bottom: 1px dashed @warning_color;
     color: @warning_color;
 }
 
@@ -80,7 +77,7 @@ tooltip label {
 
 #taskbar button {
     min-width: 175px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     margin-left: 2px;
     margin-right: 2px;
     padding-left: 16px;
@@ -89,12 +86,12 @@ tooltip label {
 }
 
 #taskbar button.active {
-    border-bottom: 2px solid rgba(225, 182, 85, 1.0);
+    border-bottom: 1px solid rgba(225, 182, 85, 1.0);
     background: #333333;
 }
 
 #taskbar button:hover {
-    border-bottom: 2px solid rgba(225, 182, 85, 1.0);
+    border-bottom: 1px solid rgba(225, 182, 85, 1.0);
     background: @bg_hover;
     color: @content_main;
 }
@@ -112,11 +109,6 @@ tooltip label {
 
 #pulseaudio.muted {
     color: #606060;
-}
-
-#tray {
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 #tray>.passive {

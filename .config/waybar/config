@@ -4,7 +4,9 @@
     "mod": "dock",
     "exclusive": true,
     "gtk-layer-shell": true,
-    "margin-bottom": -1,
+    "margin-left": 5,
+    "margin-right": 5,
+    "margin-bottom": 5,
     "passthrough": false,
     "height": 25,
     "modules-left": [
