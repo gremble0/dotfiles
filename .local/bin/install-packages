@@ -4,7 +4,7 @@
 # packages="git starship neovim maim bspwm sxhkd polybar pavucontrol rofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel discord"
 
 # FOR WAYLAND
-packages="git starship neovim slurp grim wl-copy hyprland waybar pavucontrol wofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel discord"
+packages="git starship neovim slurp grim wl-copy hyprland hyprpaper waybar pavucontrol wofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel discord"
 
 mkdir -p ~/Code/plugins
 git clone git@github.com:gremble0/yellowbeans.nvim > ~/Code/plugins/yellowbeans.nvim
