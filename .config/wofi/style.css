@@ -1,0 +1,47 @@
+window {
+  margin: 0px;
+  border: 1px solid #e1b655;
+  border-radius: 8px;
+  background-color: #151515;
+}
+
+#input {
+  margin: 5px;
+  border: none;
+  color: #cccccc;
+  background-color: #151515;
+}
+
+#inner-box {
+  margin: 5px;
+  border: none;
+  background-color: #151515;
+}
+
+#outer-box {
+  margin: 5px;
+  border: none;
+  background-color: #151515;
+}
+
+#text {
+  margin: 5px;
+  border: none;
+  color: #cccccc;
+}
+
+#entry.activatable #text {
+  color: #cccccc;
+}
+
+#entry>* {
+  color: #cccccc;
+}
+
+#entry:selected {
+  background-color: #282828;
+}
+
+#entry:selected #text {
+  font-weight: bold;
+}

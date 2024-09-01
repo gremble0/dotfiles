@@ -41,20 +41,14 @@
 !.config/nvim/lua/snippets/
 !.config/nvim/lua/snippets/*
 
-!.config/X11/
-!.config/X11/*
+!.config/hypr/
+!.config/hypr/*
 
-!.config/bspwm/
-!.config/bspwm/*
+!.config/waybar/
+!.config/waybar/*
 
-!.config/sxhkd/
-!.config/sxhkd/*
-
-!.config/picom/
-!.config/picom/*
-
-!.config/rofi/
-!.config/rofi/*
+!.config/wofi/
+!.config/wofi/*
 
 !.config/BetterDiscord/data/stable/custom.css
 
@@ -74,12 +68,6 @@
 !.config/i3/
 !.config/i3/*
 
-!.config/hypr/
-!.config/hypr/*
-
-!.config/waybar/
-!.config/waybar/*
-
 !.config/lf/
 !.config/lf/*
 
@@ -90,3 +78,18 @@
 !.config/emacs/themes/
 !.config/emacs/themes/yellowbeans-theme.el
 !.config/emacs/themes/gremble-gruber-theme.el
+
+!.config/X11/
+!.config/X11/*
+
+!.config/bspwm/
+!.config/bspwm/*
+
+!.config/sxhkd/
+!.config/sxhkd/*
+
+!.config/picom/
+!.config/picom/*
+
+!.config/rofi/
+!.config/rofi/*
