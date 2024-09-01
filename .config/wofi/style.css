@@ -3,6 +3,8 @@ window {
   border: 1px solid #e1b655;
   border-radius: 8px;
   background-color: #151515;
+  font-family: "Cantarell";
+  font-size: 18;
 }
 
 #input {
@@ -30,16 +32,16 @@ window {
   color: #cccccc;
 }
 
-#entry.activatable #text {
-  color: #cccccc;
-}
-
 #entry>* {
   color: #cccccc;
 }
 
+#selected {
+  background: #333333;
+}
+
 #entry:selected {
-  background-color: #282828;
+  background: #333333;
 }
 
 #entry:selected #text {

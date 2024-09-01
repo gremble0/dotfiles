@@ -1,0 +1,5 @@
+key_down=Ctrl-n
+key_up=Ctrl-p
+lines=10
+width=700
+insensitive=true
