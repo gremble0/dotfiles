@@ -104,7 +104,8 @@ tooltip label {
 #clock,
 #pulseaudio,
 #language,
-#network {
+#network,
+#tray * {
     padding: 2px 12px 2px 12px;
 }
 

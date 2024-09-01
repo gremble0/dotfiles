@@ -14,9 +14,9 @@
     ],
     "modules-center": [],
     "modules-right": [
+        "tray",
         "cpu",
         "memory",
-        "tray",
         "pulseaudio",
         "network",
         "battery",
@@ -65,7 +65,7 @@
         "spacing": 3
     },
     "clock": {
-        "format": "      {:%R\n%d.%m.%Y}",
+        "format": "     {:%R\n%d.%m.%Y}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
@@ -74,11 +74,11 @@
             "on-scroll": 1,
             "on-click-right": "mode",
             "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+                "months": "<span color='#8197bf'><b>{}</b></span>",
+                "days": "<span color='#cccccc'><b>{}</b></span>",
+                "weeks": "<span color='#7c9081'><b>W{}</b></span>",
+                "weekdays": "<span color='#b6a6ff'><b>{}</b></span>",
+                "today": "<span color='#e1b655'><b>{}</b></span>"
             }
         },
         "actions": {
@@ -99,12 +99,14 @@
             "󰤢 ",
             "󰤢 ",
             "󰤨 "
-        ]
+        ],
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-wifi": "{ifname}: {essid} {signalStrength}%"
     },
     "battery": {
         "states": {
-            "good": 95,
-            "warning": 30,
+            "good": 85,
+            "warning": 40,
             "critical": 20
         },
         "format": "{icon} {capacity}%",
@@ -127,7 +129,7 @@
     },
     "pulseaudio": {
         "max-volume": 150,
-        "scroll-step": 10,
+        "scroll-step": 5,
         "format": "{icon} {volume}%",
         "tooltip-format": "{volume}%",
         "format-muted": " ",
