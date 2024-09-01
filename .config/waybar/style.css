@@ -59,6 +59,7 @@ tooltip label {
 
 #workspaces button.active {
     color: @content_main;
+    background: #333333;
     border-bottom: 2px solid rgba(225, 182, 85, 1.0);
 }
 
@@ -89,7 +90,7 @@ tooltip label {
 
 #taskbar button.active {
     border-bottom: 2px solid rgba(225, 182, 85, 1.0);
-    background: @bg_active;
+    background: #333333;
 }
 
 #taskbar button:hover {
@@ -107,6 +108,10 @@ tooltip label {
 #network,
 #tray * {
     padding: 2px 12px 2px 12px;
+}
+
+#pulseaudio.muted {
+    color: #606060;
 }
 
 #tray {

@@ -29,29 +29,29 @@
         "format-no": "NOB"
     },
     "hyprland/workspaces": {
+        "format": "{name}",
         "icon-size": 15,
         "spacing": 16,
     },
     "custom/os_button": {
-        "format": "󰣇",
+        "format": "<span color='#8198bf'>󰣇</span>",
         "on-click": "wofi --allow-images --show drun",
         "tooltip": false
     },
     "cpu": {
         "interval": 5,
-        "format": "   {usage}%",
+        "format": "<span color='#e1b655'></span>   {usage}%",
         "max-length": 10
     },
     "memory": {
         "interval": 10,
-        "format": "   {percentage}%",
+        "format": "<span color='#e1b655'></span>   {percentage}%",
         "max-length": 10,
         "tooltip": true,
         "tooltip-format": "RAM - {used:0.1f}GiB used"
     },
     "wlr/taskbar": {
-        "format": "{icon} {title:.17}",
-        "icon-size": 25,
+        "format": "{title:.18}",
         "spacing": 3,
         "on-click-middle": "close",
         "tooltip-format": "{title}",
@@ -90,8 +90,8 @@
         }
     },
     "network": {
-        "format-wifi": " {icon}",
-        "format-ethernet": " 󰈀 ",
+        "format-wifi": " <span color='#e1b655'>{icon}</span>",
+        "format-ethernet": "<span color='#e1b655'>󰈀</span>",
         "format-disconnected": " 󱘖 ",
         "format-icons": [
             "󰤯 ",
@@ -109,10 +109,10 @@
             "warning": 40,
             "critical": 20
         },
-        "format": "{icon} {capacity}%",
+        "format": "<span color='#e1b655'>{icon}</span> {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
+        "format-alt": "{time} <span color='#e1b655'>{icon}</span>",
         "format-icons": [
             "󰂎",
             "󰁺",
@@ -130,9 +130,9 @@
     "pulseaudio": {
         "max-volume": 150,
         "scroll-step": 5,
-        "format": "{icon} {volume}%",
+        "format": "<span color='#e1b655'>{icon}</span>{volume}%",
         "tooltip-format": "{volume}%",
-        "format-muted": " ",
+        "format-muted": "󰖁 ",
         "format-icons": {
             "default": [
                 " ",
