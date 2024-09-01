@@ -2,3 +2,4 @@
 Type=Application
 Name=Video viewer
 Exec=/usr/bin/vlc -quiet %f
+Icon=vlc

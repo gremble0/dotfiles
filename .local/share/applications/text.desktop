@@ -2,3 +2,4 @@
 Type=Application
 Name=Text editor
 Exec=/usr/bin/alacritty -e nvim %u
+Icon=nvim

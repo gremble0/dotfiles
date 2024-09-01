@@ -2,3 +2,4 @@
 Type=Application
 Name=Browser
 Exec=/usr/bin/chromium
+Icon=chromium
