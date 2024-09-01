@@ -48,10 +48,10 @@
         "format": "<span color='#e1b655'></span>   {percentage}%",
         "max-length": 10,
         "tooltip": true,
-        "tooltip-format": "RAM - {used:0.1f}GiB used"
+        "tooltip-format": "RAM - {used:0.1f}GiB / {total}GiB used"
     },
     "wlr/taskbar": {
-        "format": "{title:.18}",
+        "format": "{title:.20}",
         "spacing": 3,
         "on-click-middle": "close",
         "tooltip-format": "{title}",
@@ -110,9 +110,9 @@
             "critical": 20
         },
         "format": "<span color='#e1b655'>{icon}</span> {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} <span color='#e1b655'>{icon}</span>",
+        "format-charging": "<span color='#e1b655'></span> {capacity}%",
+        "format-plugged": "<span color='#e1b655'></span> {capacity}%",
+        "format-alt": "<span color='#e1b655'>{icon}</span> {time}",
         "format-icons": [
             "󰂎",
             "󰁺",
@@ -132,7 +132,7 @@
         "scroll-step": 5,
         "format": "<span color='#e1b655'>{icon}</span>{volume}%",
         "tooltip-format": "{volume}%",
-        "format-muted": "󰖁 ",
+        "format-muted": "󰖁 {volume}%",
         "format-icons": {
             "default": [
                 " ",
@@ -140,6 +140,7 @@
                 " "
             ]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     }
 }
