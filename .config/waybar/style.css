@@ -8,8 +8,8 @@
 @define-color content_inactive rgba(255, 255, 255, 0.2);
 
 * {
-    font-family: "Cantarell, JetBrainsMonoNL Nerd Font";
-    font-size: 15px;
+    font-family: "pango:Cantarell";
+    font-size: 16px;
 }
 
 window#waybar {
@@ -33,7 +33,7 @@ tooltip label {
 #custom-os_button {
     font-size: 25px;
     padding-left: 16px;
-    padding-right: 24px;
+    padding-right: 16px;
 }
 
 #custom-os_button:hover {
@@ -43,13 +43,12 @@ tooltip label {
 
 #workspaces {
     color: transparent;
-    margin-left: 15px;
-    margin-right: 15px;
 }
 
 #workspaces button {
+    margin-left: 8px;
+    margin-right: 8px;
     font-weight: bold;
-    padding: 2px 15px 2px 15px;
     color: @content_inactive;
     border-bottom: 1px solid rgba(0, 0, 0, 0);
 }
@@ -78,8 +77,6 @@ tooltip label {
 #taskbar button {
     min-width: 175px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    margin-left: 2px;
-    margin-right: 2px;
     padding-left: 16px;
     padding-right: 16px;
     color: #cccccc;
@@ -97,6 +94,7 @@ tooltip label {
 }
 
 #tray *,
+#workspaces button,
 #cpu,
 #memory,
 #pulseaudio,

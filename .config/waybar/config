@@ -26,7 +26,7 @@
         "clock"
     ],
     "hyprland/language": {
-        "format": "<span color='#e1b655'></span>    {}",
+        "format": "<span color='#e1b655'></span> {}",
         "format-en": "ENG",
         "format-no": "NOB"
     },
@@ -93,7 +93,7 @@
     },
     "network": {
         "format-wifi": "<span color='#e1b655'>{icon}</span> {essid}",
-        "format-ethernet": "<span color='#e1b655'>󰈀 UP</span>",
+        "format-ethernet": "<span color='#e1b655'>󰈀</span>  UP",
         "format-disconnected": " 󱘖 ",
         "format-icons": [
             "󰤯  ",
@@ -134,12 +134,12 @@
         "scroll-step": 5,
         "format": "<span color='#e1b655'>{icon}</span> {volume}%",
         "tooltip-format": "{volume}%",
-        "format-muted": "󰖁 {volume}%",
+        "format-muted": "󰖁{volume}%",
         "format-icons": {
             "default": [
-                " ",
-                " ",
-                " "
+                "",
+                "",
+                ""
             ]
         },
         "on-click": "pavucontrol",
