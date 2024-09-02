@@ -8,7 +8,7 @@
     "margin-right": 5,
     "margin-bottom": 5,
     "passthrough": false,
-    "height": 25,
+    "height": 40,
     "modules-left": [
         "custom/os_button",
         "hyprland/workspaces",
@@ -26,7 +26,7 @@
         "clock"
     ],
     "hyprland/language": {
-        "format": "{}",
+        "format": "<span color='#e1b655'></span>    {}",
         "format-en": "ENG",
         "format-no": "NOB"
     },
@@ -67,7 +67,7 @@
         "spacing": 3
     },
     "clock": {
-        "format": "     {:%R\n%d.%m.%Y}",
+        "format": "<span color='#e1b655'>󰃮</span>  {:%R | %d.%m.%Y}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
@@ -92,7 +92,7 @@
         }
     },
     "network": {
-        "format-wifi": " <span color='#e1b655'>{icon}</span> {essid}",
+        "format-wifi": "<span color='#e1b655'>{icon}</span> {essid}",
         "format-ethernet": "<span color='#e1b655'>󰈀 UP</span>",
         "format-disconnected": " 󱘖 ",
         "format-icons": [
@@ -132,7 +132,7 @@
     "pulseaudio": {
         "max-volume": 150,
         "scroll-step": 5,
-        "format": "<span color='#e1b655'>{icon}</span>{volume}%",
+        "format": "<span color='#e1b655'>{icon}</span> {volume}%",
         "tooltip-format": "{volume}%",
         "format-muted": "󰖁 {volume}%",
         "format-icons": {
