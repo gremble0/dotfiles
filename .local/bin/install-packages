@@ -4,7 +4,7 @@
 # packages="git starship neovim maim bspwm sxhkd polybar pavucontrol rofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel discord"
 
 # FOR WAYLAND
-packages="git starship neovim slurp grim wl-clipboard hyprland hyprpaper waybar pavucontrol wofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel discord"
+packages="git starship neovim slurp grim wl-clipboard hyprland hyprpaper waybar pavucontrol wofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel discord inotify-tools"
 
 # Install locally developed neovim plugins
 mkdir -p $HOME/Code/plugins

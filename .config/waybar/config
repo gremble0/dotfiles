@@ -92,15 +92,15 @@
         }
     },
     "network": {
-        "format-wifi": " <span color='#e1b655'>{icon}</span>",
-        "format-ethernet": "<span color='#e1b655'>󰈀</span>",
+        "format-wifi": " <span color='#e1b655'>{icon}</span> {essid}",
+        "format-ethernet": "<span color='#e1b655'>󰈀 UP</span>",
         "format-disconnected": " 󱘖 ",
         "format-icons": [
-            "󰤯 ",
-            "󰤟 ",
-            "󰤢 ",
-            "󰤢 ",
-            "󰤨 "
+            "󰤯  ",
+            "󰤟  ",
+            "󰤢  ",
+            "󰤢  ",
+            "󰤨  "
         ],
         "tooltip-format-ethernet": "{ifname}",
         "tooltip-format-wifi": "{ifname}: {essid} {signalStrength}%"
@@ -112,9 +112,9 @@
             "critical": 20
         },
         "format": "<span color='#e1b655'>{icon}</span> {capacity}%",
-        "format-charging": "<span color='#e1b655'></span> {capacity}%",
-        "format-plugged": "<span color='#e1b655'></span> {capacity}%",
-        "format-alt": "<span color='#e1b655'>{icon}</span> {time}",
+        "format-charging": "<span color='#e1b655'></span>   {capacity}%",
+        "format-plugged": "<span color='#e1b655'></span>   {capacity}%",
+        "format-alt": "<span color='#e1b655'>{icon}</span>   {time}",
         "format-icons": [
             "󰂎",
             "󰁺",

@@ -8,7 +8,7 @@
 @define-color content_inactive rgba(255, 255, 255, 0.2);
 
 * {
-    font-family: "pango:Cantarell";
+    font-family: "Cantarell, JetBrainsMonoNL Nerd Font";
     font-size: 15px;
 }
 
