@@ -14,6 +14,7 @@ return {
 
     -- Adds LSP completion capabilities
     "hrsh7th/cmp-nvim-lsp",
+    "mfussenegger/nvim-jdtls",
   },
 
   config = function()
