@@ -132,14 +132,14 @@
     "pulseaudio": {
         "max-volume": 150,
         "scroll-step": 5,
-        "format": "<span color='#e1b655'>{icon}</span> {volume}%",
+        "format": "<span color='#e1b655'>{icon}</span>{volume}%",
         "tooltip-format": "{volume}%",
-        "format-muted": "󰖁{volume}%",
+        "format-muted": "󰖁 {volume}%",
         "format-icons": {
             "default": [
-                "",
-                "",
-                ""
+                " ",
+                " ",
+                " "
             ]
         },
         "on-click": "pavucontrol",
