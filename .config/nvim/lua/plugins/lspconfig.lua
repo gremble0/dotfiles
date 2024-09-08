@@ -38,7 +38,7 @@ return {
         -- settings = { Lua = { diagnostics = { globals = { "vim" } } } },
       },
       pyright = { mason_name = "pyright" },
-      tsserver = { mason_name = "typescript-language-server" },
+      ts_ls = { mason_name = "typescript-language-server" },
       -- Formatters
       stylua = { mason_name = "stylua" },
       prettierd = { mason_name = "prettierd" },

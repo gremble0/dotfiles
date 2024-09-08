@@ -6,12 +6,22 @@ return {
 
   opts = {
     columns = { "permissions", "size", "mtime", "icon" },
+    win_options = { signcolumn = "yes" },
     keymaps = {
       ["<CR>"] = "actions.select",
       ["-"] = "actions.parent",
+      [">"] = "actions.preview",
     },
     use_default_keymaps = false,
-    view_options = { show_hidden = true },
+    view_options = {
+      show_hidden = true,
+      -- Hide parent dir
+      ---@param name string
+      ---@param _ integer
+      is_always_hidden = function(name, _)
+        return name == ".."
+      end,
+    },
   },
 
   keys = {
