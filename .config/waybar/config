@@ -94,7 +94,7 @@
     "network": {
         "format-wifi": "<span color='#e1b655'>{icon}</span>{essid}",
         "format-ethernet": "<span color='#e1b655'>󰈀</span> UP",
-        "format-disconnected": " 󱘖 ",
+        "format-disconnected": "<span color='#e1b655'>󱘖</span> DOWN",
         "format-icons": [
             "󰤯 ",
             "󰤟 ",
