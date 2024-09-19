@@ -63,8 +63,8 @@
 !.config/tmux/
 !.config/tmux/*
 
-!.config/polybar/
-!.config/polybar/*
+!.config/intellij/
+!.config/intellij/*
 
 # The following configs are no longer used
 !.config/i3/
@@ -95,3 +95,6 @@
 
 !.config/rofi/
 !.config/rofi/*
+
+!.config/polybar/
+!.config/polybar/*
