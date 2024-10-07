@@ -33,6 +33,7 @@ return {
       cssls = { mason_name = "css-lsp" },
       gopls = { mason_name = "gopls" },
       jdtls = { mason_name = "jdtls" },
+      rust_analyzer = { mason_name = "rust-analyzer" },
       lua_ls = {
         mason_name = "lua-language-server",
         -- settings = { Lua = { diagnostics = { globals = { "vim" } } } },
