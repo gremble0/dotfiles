@@ -42,6 +42,7 @@ return {
       -- Formatters
       stylua = { mason_name = "stylua" },
       prettierd = { mason_name = "prettierd" },
+      angularls = { mason_name = "angular-language-server" },
     }
 
     -- Install all mason_packages
