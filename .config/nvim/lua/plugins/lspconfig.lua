@@ -14,6 +14,8 @@ return {
 
     -- Adds LSP completion capabilities
     "hrsh7th/cmp-nvim-lsp",
+
+    -- Better java support
     "mfussenegger/nvim-jdtls",
   },
 
