@@ -76,6 +76,7 @@ alias f='fzfcd'
 alias i='nsxiv'
 alias g='git'
 alias o='xdg-open'
+alias syu='sudo pacman -Syu'
 
 # Faster cding
 alias ..='cd ..'
