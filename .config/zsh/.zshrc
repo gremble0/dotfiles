@@ -26,6 +26,27 @@ generate-vi-xclip-export-cmd() {
     bindkey -M vicmd ${keybind} ${cmdname}-xclip
 }
 
+# Reverse search with fzf
+fzf-reverse-search() {
+    local selected num
+    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+    selected=( $(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' |
+        FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort,ctrl-z:ignore --query=${(q)LBUFFER} +m" fzf) )
+    local ret=$?
+    if [ -n "$selected" ]; then
+        num=$selected[1]
+        if [ -n "$num" ]; then
+            zle vi-fetch-history -n $num
+            zle accept-line
+        fi
+    fi
+    zle reset-prompt
+    return $ret
+}
+
+zle -N fzf-reverse-search
+bindkey '^R' fzf-reverse-search
+
 generate-vi-xclip-pipe-cmd "y" vi-yank 
 generate-vi-xclip-pipe-cmd "Y" vi-yank-eol 
 generate-vi-xclip-pipe-cmd "d" vi-delete 
