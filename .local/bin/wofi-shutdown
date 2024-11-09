@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Define the options
+options="Reboot\nShutdown\nLogout"
+
+# Show the options in Wofi and capture the selection
+selection=$(echo -e "$options" | wofi --dmenu --prompt "Choose an option")
+
+# Execute based on selection
+case "$selection" in
+    Reboot)
+        systemctl reboot
+        ;;
+    Shutdown)
+        systemctl poweroff
+        ;;
+    Logout)
+        hyprctl dispatch exit
+        ;;
+esac
