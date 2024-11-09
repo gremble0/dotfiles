@@ -33,12 +33,6 @@ export GRIPHOME="$XDG_CACHE_HOME/grip"
 # Runtime files
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
-# System defaults
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="chromium"
-export FILE="thunar"
-
 # Fix sorting in ls command (take . into consideration when sorting)
 export LC_COLLATE="C"
 
@@ -48,7 +42,3 @@ export LS_COLORS='di=1;34:*.jpg=00;35:*.jpeg=00;35:*.avif=00;35:*.mjpeg=00;35:*.
 # Fzf environment variables
 export FZF_DEFAULT_COMMAND='find .'
 export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ " --color=dark,prompt:3,pointer:4,info:2,query:7:regular,hl:3,hl+:3,gutter:0,bg+:#333333'
-
-if [ "$(tty)" = "/dev/tty1" ]; then
-    Hyprland
-fi
