@@ -24,7 +24,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 
 # Extend PATH
-export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$GOPATH/bin:$JAVA_HOME/bin"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$GOPATH/bin:$JAVA_HOME/bin:$HOME/.cargo/bin"
 
 # Cache files
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
