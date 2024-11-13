@@ -14,6 +14,8 @@
 	# Commit
 	cm = commit
 	ca = commit --amend
+	lg = log --name-status
+	cp = cherry-pick
 	# Remote
 	rv = remote -v
 	pu = push
