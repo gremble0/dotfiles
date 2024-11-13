@@ -7,21 +7,15 @@ ks("n", "<C-j>", "<C-w>j", { desc = "Move to window below" })
 ks("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
 ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 
--- Resize buffers
-ks("n", "<C-S-H>", "<C-w>5<", { desc = "Shrink current split horizontally" })
-ks("n", "<C-S-J>", "<C-w>-", { desc = "Shrink current split vertically" })
-ks("n", "<C-S-K>", "<C-w>+", { desc = "Grow current split vertically" })
-ks("n", "<C-S-L>", "<C-w>5>", { desc = "Grow current split horizontally" })
-
 -- Buffers
 ks("n", "<C-c>", ":close!<CR>", { desc = "Close buffer", silent = true })
 ks("n", "<C-q>", "<C-^>", { desc = "Alternate file" })
 
 -- Quickfix-/Location- list
-ks("n", "<leader>q", ":copen<CR>", { desc = "Open quickfix list", silent = true })
+ks("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix list", silent = true })
 ks("n", "<leader>l", ":lopen<CR>", { desc = "Open location list", silent = true })
-ks("n", "<C-S-P>", ":cclose<CR>:cp<CR>", { desc = "Go to previous quickfix error", silent = true })
-ks("n", "<C-S-N>", ":cclose<CR>:cn<CR>", { desc = "Go to next quickfix error", silent = true })
+ks("n", "<leader>qp", ":cclose<CR>:cp<CR>", { desc = "Go to previous quickfix error", silent = true })
+ks("n", "<leader>qn", ":cclose<CR>:cn<CR>", { desc = "Go to next quickfix error", silent = true })
 
 -- Clear highlights with escape
 ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
