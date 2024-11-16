@@ -2,50 +2,15 @@
 eval "$(starship init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Use emacs bindings by default but with vicmd mode upon hitting escape
-bindkey -e
-bindkey -e "^[" vi-cmd-mode
+# Ensure zsh has a directory under XDG_CACHE_HOME
+if [ ! -d $XDG_CACHE_HOME/zsh ]; then
+    mkdir -p $XDG_CACHE_HOME/zsh
+fi
 
-# Binds $1 to command in $2 and pipes $CUTBUFFER into clipboard
-generate-vi-xclip-pipe-cmd() {
-    local keybind="$1"
-    local cmdname="$2"
-
-    eval "${cmdname}-xclip() { zle ${cmdname} && echo \"\$CUTBUFFER\" | xclip -selection clipboard }"
-    zle -N "${cmdname}-xclip"
-    bindkey -M vicmd ${keybind} ${cmdname}-xclip
-}
-
-# Binds $1 to the command in $2 after exporting clipboard to $CUTBUFFER
-generate-vi-xclip-export-cmd() {
-    local keybind="$1"
-    local cmdname="$2"
-
-    eval "${cmdname}-xclip() { export CUTBUFFER=\"\$(xclip -selection clipboard -out)\" && zle ${cmdname} }"
-    zle -N "${cmdname}-xclip"
-    bindkey -M vicmd ${keybind} ${cmdname}-xclip
-}
-
-generate-vi-xclip-pipe-cmd "y" vi-yank 
-generate-vi-xclip-pipe-cmd "Y" vi-yank-eol 
-generate-vi-xclip-pipe-cmd "d" vi-delete 
-generate-vi-xclip-pipe-cmd "D" vi-delete-eol 
-generate-vi-xclip-pipe-cmd "x" vi-delete-char 
-generate-vi-xclip-pipe-cmd "X" vi-backward-delete-char 
-generate-vi-xclip-pipe-cmd "c" vi-change 
-generate-vi-xclip-pipe-cmd "C" vi-change-eol 
-
-generate-vi-xclip-export-cmd "p" vi-put-after 
-generate-vi-xclip-export-cmd "P" vi-put-before 
-
-# Reduce delay between keycords (effectively removes delay for entering vi mode)
-KEYTIMEOUT=1
-
-# History in .cache directory
+# History
+HISTFILE=$XDG_CACHE_HOME/zsh/history
 HISTSIZE=50000
 SAVEHIST=50000
-mkdir -p $XDG_CACHE_HOME/zsh
-HISTFILE=$XDG_CACHE_HOME/zsh/history
 
 # Completion
 autoload -U compinit
@@ -54,11 +19,9 @@ zstyle ":completion:*" menu select
 zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}"
 zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
 zmodload zsh/complist
-
-# fzf stuff
-# Include hidden files.
 _comp_options+=(globdots)
 
+# Search files with fzf
 fzfcd() {
     local out="$(fzf)"
 
@@ -91,7 +54,6 @@ fzf-reverse-search() {
 
 zle -N fzf-reverse-search
 bindkey '^R' fzf-reverse-search
-
 
 # Aliases
 alias c='clear'
