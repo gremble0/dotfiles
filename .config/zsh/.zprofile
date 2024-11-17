@@ -4,6 +4,11 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# Ensure zsh has a directory under XDG_CACHE_HOME
+if [ ! -d $XDG_CACHE_HOME/zsh ]; then
+    mkdir -p $XDG_CACHE_HOME/zsh
+fi
+
 # Cleaning up home directory
 # Config files
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0"

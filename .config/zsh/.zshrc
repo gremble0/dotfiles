@@ -2,11 +2,6 @@
 eval "$(starship init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Ensure zsh has a directory under XDG_CACHE_HOME
-if [ ! -d $XDG_CACHE_HOME/zsh ]; then
-    mkdir -p $XDG_CACHE_HOME/zsh
-fi
-
 # History
 HISTFILE=$XDG_CACHE_HOME/zsh/history
 HISTSIZE=50000
