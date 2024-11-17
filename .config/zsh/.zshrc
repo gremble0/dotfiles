@@ -63,9 +63,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../'
 alias .....='cd ../../../'
-alias cdn='cd ~/.config/nvim'
-alias cdz='cd ~/.config/zsh'
-alias cdt='cd ~/.config/tmux'
+alias cdn="cd $XDG_CONFIG_HOME/nvim"
+alias cdz="cd $XDG_CONFIG_HOME/zsh"
+alias cdt="cd $XDG_CONFIG_HOME/tmux"
 
 alias ls='ls -F --group-directories-first --color=auto'
 alias ll='ls -AFl --group-directories-first --color=auto'
@@ -73,12 +73,5 @@ alias grep='grep --color=auto'
 
 alias shutdown='shutdown now'
 
-# pnpm
-export PNPM_HOME="/home/herman/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
+# Extra setup for work
 [ -f $HOME/.workrc ] && source $HOME/.workrc

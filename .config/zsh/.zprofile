@@ -27,9 +27,10 @@ export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 export PYTHONSTARTUP="$XDG_DATA_HOME/pythonrc"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 
 # Extend PATH
-export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$GOPATH/bin:$JAVA_HOME/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/statusbar:$GOPATH/bin:$JAVA_HOME/bin:$HOME/.cargo/bin:$PNPM_HOME"
 
 # Cache files
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
