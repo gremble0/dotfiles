@@ -46,7 +46,7 @@ export LS_COLORS='di=1;34:*.jpg=00;35:*.jpeg=00;35:*.avif=00;35:*.mjpeg=00;35:*.
 
 # Fzf environment variables
 export FZF_DEFAULT_COMMAND='find .'
-export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ " --color=dark,prompt:3,pointer:4,info:2,query:7:regular,hl:3,hl+:3,gutter:0,bg+:#333333'
+export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ " --height=50% --color=dark,prompt:3,pointer:3,info:2,query:7:regular,hl:3,hl+:3,bg+:#333333'
 
 if [ "$(tty)" = "/dev/tty1" ]; then
     Hyprland
