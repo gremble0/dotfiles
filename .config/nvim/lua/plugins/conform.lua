@@ -1,4 +1,12 @@
 -- Automatic formatting
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("ConformAutoFormat", { clear = false }),
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf, timeout_ms = 1000, lsp_format = "fallback" })
+  end,
+})
+
 return {
   "stevearc/conform.nvim",
 
@@ -28,19 +36,7 @@ return {
     require("conform").setup(opts)
   end,
 
-  -- Only setting BufWritePost as event will not also format the buffer first time the
-  -- autocommand is executed. This initializes the autocommand for formatting before the
-  -- plugin is loaded which means it will also format on the first BufWritePost event
-  event = function(_, _)
-    vim.api.nvim_create_autocmd("BufWritePost", {
-      group = vim.api.nvim_create_augroup("Conform", {}),
-      callback = function()
-        require("conform").format({ timeout_ms = 1000, lsp_format = "fallback" })
-      end,
-    })
-
-    return { "BufWritePost" }
-  end,
+  event = "BufWritePre",
 
   keys = {
     { "<leader>mt", ":lua require('conform').format()<CR>", desc = "Format current buffer", silent = true },
