@@ -16,13 +16,18 @@ return {
     view_options = {
       show_hidden = true,
       -- Hide parent dir
-      ---@param name string
-      ---@param _ integer
       is_always_hidden = function(name, _)
         return name == ".."
       end,
     },
   },
+
+  -- Check if vim is opened on a directory (won't be handled by plugin since its lazy loaded)
+  init = function(oil)
+    if vim.fn.isdirectory(vim.fn.expand("%")) == 1 then
+      require("oil").setup(oil.opts)
+    end
+  end,
 
   keys = {
     { "<C-e>", ":Oil<CR>", desc = "Open file explorer (oil)", silent = true },
