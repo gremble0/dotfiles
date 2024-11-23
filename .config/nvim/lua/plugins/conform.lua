@@ -9,7 +9,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 return {
   "stevearc/conform.nvim",
-
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
@@ -19,7 +18,6 @@ return {
       typescriptreact = { "prettierd" },
     },
   },
-
   config = function(_, opts)
     vim.api.nvim_create_user_command("ConformDisable", function()
       vim.g.disable_autoformat = true
@@ -35,12 +33,9 @@ return {
 
     require("conform").setup(opts)
   end,
-
   event = "BufWritePre",
-
   keys = {
     { "<leader>mt", ":lua require('conform').format()<CR>", desc = "Format current buffer", silent = true },
   },
-
   cmd = { "ConformInfo", "ConformEnable" },
 }

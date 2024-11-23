@@ -1,13 +1,9 @@
 -- Highlight, edit, and navigate code
 return {
   "nvim-treesitter/nvim-treesitter",
-
   build = ":TSUpdate",
-
   config = function()
-    local treesitter_configs = require("nvim-treesitter.configs")
-
-    treesitter_configs.setup({
+    require("nvim-treesitter.configs").setup({
       ensure_installed = {},
       sync_install = false,
       auto_install = true,

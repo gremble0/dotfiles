@@ -2,6 +2,7 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
 
+  -- Using opts calls the setup for the wrong version of the plugin so have to manually call it
   config = function()
     require("ibl").setup({
       indent = {

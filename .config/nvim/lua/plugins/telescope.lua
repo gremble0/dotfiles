@@ -1,6 +1,5 @@
 return {
   "nvim-telescope/telescope.nvim",
-
   dependencies = {
     "nvim-lua/plenary.nvim",
 
@@ -12,7 +11,6 @@ return {
       end,
     },
   },
-
   config = function()
     local action_state = require("telescope.actions.state")
     local actions = require("telescope.actions")
@@ -78,7 +76,6 @@ return {
 
     telescope.load_extension("fzf")
   end,
-
   keys = {
     { "<leader>o", ":Telescope oldfiles<CR>", desc = "Telescope find old files", silent = true },
     { "<leader>b", ":Telescope buffers<CR>", desc = "Telescope find open buffers", silent = true },
@@ -92,6 +89,5 @@ return {
     { "<leader>gh", ":Telescope help_tags<CR>", desc = "Telescope find help", silent = true },
     { "<leader>gr", ":Telescope live_grep<CR>", desc = "Telescope live grep", silent = true },
   },
-
   cmd = "Telescope",
 }

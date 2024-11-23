@@ -1,9 +1,7 @@
 -- DWIM File navigation and editing
 return {
   "stevearc/oil.nvim",
-
   dependencies = "nvim-tree/nvim-web-devicons",
-
   opts = {
     columns = { "permissions", "size", "mtime", "icon" },
     win_options = { signcolumn = "yes" },
@@ -21,17 +19,14 @@ return {
       end,
     },
   },
-
   -- Check if vim is opened on a directory (won't be handled by plugin since its lazy loaded)
   init = function(oil)
     if vim.fn.isdirectory(vim.fn.expand("%")) == 1 then
       require("oil").setup(oil.opts)
     end
   end,
-
   keys = {
     { "<C-e>", ":Oil<CR>", desc = "Open file explorer (oil)", silent = true },
   },
-
   cmd = "Oil",
 }

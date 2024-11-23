@@ -1,12 +1,8 @@
 -- Statusline
 return {
   "nvim-lualine/lualine.nvim",
-
   dependencies = "nvim-tree/nvim-web-devicons",
-
   config = function()
-    local lualine = require("lualine")
-
     -- Make section for lsp info in statusline
     local lsp_section = function()
       local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
@@ -32,8 +28,7 @@ return {
         }
       end
     end
-
-    lualine.setup({
+    require("lualine").setup({
       options = {
         component_separators = "",
         refresh = { statusline = 200 },

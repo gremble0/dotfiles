@@ -1,7 +1,6 @@
 -- Completion
 return {
   "hrsh7th/nvim-cmp",
-
   dependencies = {
     -- Adds icons to cmp window
     "onsails/lspkind.nvim",
@@ -9,7 +8,6 @@ return {
     -- Cmp for commandline
     "hrsh7th/cmp-cmdline",
   },
-
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
