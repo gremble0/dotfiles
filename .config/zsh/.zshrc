@@ -31,19 +31,12 @@ fzfcd() {
 
 # Reverse search with fzf
 fzf-reverse-search() {
-    local selected num
-    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-    selected=( $(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' | fzf) )
-    local ret=$?
+    local selected=($(history -n 1 | awk '!seen[$0]++' | fzf))
     if [ -n "$selected" ]; then
-        num=$selected[1]
-        if [ -n "$num" ]; then
-            zle vi-fetch-history -n $num
-            zle accept-line
-        fi
+        BUFFER=$selected
+        CURSOR=$#BUFFER
     fi
     zle reset-prompt
-    return $ret
 }
 
 zle -N fzf-reverse-search

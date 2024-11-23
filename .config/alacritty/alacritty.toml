@@ -1,24 +1,24 @@
 [colors.bright]
-black = "#ffffff"
+black = "#191919"
 blue = "#a3b9df"
 cyan = "#c2e2f2"
 green = "#bbcf8c"
 magenta = "#c7b9ff"
 red = "#ef2929"
-white = "#191919"
+white = "#ffffff"
 yellow = "#f3d877"
 
 [colors.cursor]
 cursor = "#cccccc"
 
 [colors.normal]
-black = "#cccccc"
+black = "#151515"
 blue = "#8197bf"
 cyan = "#b0d0f0"
 green = "#9aae6b"
 magenta = "#b6a6ff"
 red = "#f22b2b"
-white = "#151515"
+white = "#cccccc"
 yellow = "#e1b655"
 
 [colors.primary]
