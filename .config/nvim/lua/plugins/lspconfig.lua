@@ -10,7 +10,7 @@ return {
     { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
 
     -- Better lua LSP functionality
-    { "folke/neodev.nvim", opts = {} },
+    { "folke/lazydev.nvim", opts = {} },
 
     -- Adds LSP completion capabilities
     "hrsh7th/cmp-nvim-lsp",
@@ -36,12 +36,10 @@ return {
       gopls = { mason_name = "gopls" },
       jdtls = { mason_name = "jdtls" },
       rust_analyzer = { mason_name = "rust-analyzer" },
-      lua_ls = {
-        mason_name = "lua-language-server",
-        -- settings = { Lua = { diagnostics = { globals = { "vim" } } } },
-      },
+      lua_ls = { mason_name = "lua-language-server" },
       pyright = { mason_name = "pyright" },
       ts_ls = { mason_name = "typescript-language-server" },
+
       -- Formatters
       stylua = { mason_name = "stylua" },
       prettierd = { mason_name = "prettierd" },
