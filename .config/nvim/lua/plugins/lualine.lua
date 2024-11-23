@@ -28,6 +28,7 @@ return {
         }
       end
     end
+
     require("lualine").setup({
       options = {
         component_separators = "",
