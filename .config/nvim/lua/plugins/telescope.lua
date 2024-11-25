@@ -87,7 +87,12 @@ return {
     },
     { "<leader>gf", ":Telescope git_files<CR>", desc = "Telescope git files", silent = true },
     { "<leader>gh", ":Telescope help_tags<CR>", desc = "Telescope find help", silent = true },
-    { "<leader>gr", ":Telescope live_grep<CR>", desc = "Telescope live grep", silent = true },
+    {
+      "<leader>gr",
+      ":lua require('telescope.builtin').live_grep({ hidden = true, no_ignore = true, no_ignore_parent = true })<CR>",
+      desc = "Telescope live grep",
+      silent = true,
+    },
   },
   cmd = "Telescope",
 }

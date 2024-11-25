@@ -29,3 +29,5 @@
 	br = branch
 	rb = rebase
 	mg = merge
+[core]
+	editor = nvim

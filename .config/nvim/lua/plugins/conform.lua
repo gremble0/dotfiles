@@ -3,7 +3,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = vim.api.nvim_create_augroup("ConformAutoFormat", { clear = false }),
   pattern = "*",
   callback = function(args)
-    require("conform").format({ bufnr = args.buf, timeout_ms = 1000, lsp_format = "fallback" })
+    if not vim.g.disable_autoformat then
+      require("conform").format({ bufnr = args.buf, timeout_ms = 1000, lsp_format = "fallback" })
+    end
   end,
 })
 
@@ -37,5 +39,5 @@ return {
   keys = {
     { "<leader>mt", ":lua require('conform').format()<CR>", desc = "Format current buffer", silent = true },
   },
-  cmd = { "ConformInfo", "ConformEnable" },
+  cmd = { "ConformInfo", "ConformEnable", "ConformDisable" },
 }

@@ -1,6 +1,7 @@
 # Source plugins
 eval "$(starship init zsh)"
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # History
 HISTFILE=$XDG_CACHE_HOME/zsh/history
@@ -56,15 +57,17 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../'
 alias .....='cd ../../../'
+alias cdc="cd $XDG_CONFIG_HOME"
 alias cdn="cd $XDG_CONFIG_HOME/nvim"
 alias cdz="cd $XDG_CONFIG_HOME/zsh"
 alias cdt="cd $XDG_CONFIG_HOME/tmux"
 
 alias ls='ls -F --group-directories-first --color=auto'
 alias ll='ls -AFl --group-directories-first --color=auto'
+alias lh='ll ~'
 alias grep='grep --color=auto'
 
 alias shutdown='shutdown now'
 
 # Extra setup for work
-[ -f $HOME/.workrc ] && source $HOME/.workrc
+[ -f $XDG_CONFIG_HOME/nova/workrc ] && source $XDG_CONFIG_HOME/nova/workrc
