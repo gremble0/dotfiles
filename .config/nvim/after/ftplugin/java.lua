@@ -27,13 +27,10 @@ require("jdtls").start_or_attach({
     "-data",
     "~/.cache/jdtls-workspace/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t"),
   },
-
   root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
-
   settings = {
     java = {},
   },
-
   init_options = {
     bundles = {},
   },
