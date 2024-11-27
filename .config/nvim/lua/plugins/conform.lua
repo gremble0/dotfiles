@@ -1,14 +1,4 @@
 -- Automatic formatting
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("ConformAutoFormat", { clear = false }),
-  pattern = "*",
-  callback = function(args)
-    if not vim.g.disable_autoformat then
-      require("conform").format({ bufnr = args.buf, timeout_ms = 1000, lsp_format = "fallback" })
-    end
-  end,
-})
-
 return {
   "stevearc/conform.nvim",
   opts = {
@@ -21,6 +11,16 @@ return {
     },
   },
   config = function(_, opts)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("ConformAutoFormat", { clear = false }),
+      pattern = "*",
+      callback = function(args)
+        if not vim.g.disable_autoformat then
+          require("conform").format({ bufnr = args.buf, timeout_ms = 1000, lsp_format = "fallback" })
+        end
+      end,
+    })
+
     vim.api.nvim_create_user_command("ConformDisable", function()
       vim.g.disable_autoformat = true
     end, {
@@ -35,7 +35,6 @@ return {
 
     require("conform").setup(opts)
   end,
-  event = "BufWritePre",
   keys = {
     { "<leader>mt", ":lua require('conform').format()<CR>", desc = "Format current buffer", silent = true },
   },
