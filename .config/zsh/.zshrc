@@ -16,6 +16,7 @@ zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}"
 zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
 zmodload zsh/complist
 _comp_options+=(globdots)
+setopt nocaseglob
 
 # Search files with fzf
 fzfcd() {
