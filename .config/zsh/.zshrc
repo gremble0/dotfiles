@@ -1,6 +1,6 @@
 # Source plugins
 eval "$(starship init zsh)"
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # History
@@ -21,7 +21,6 @@ setopt nocaseglob
 # Search files with fzf
 fzfcd() {
     local out="$(fzf)"
-
     if [ -z $out ]; then
         echo "fzf search cancelled"
     elif [ -d "$out" ]; then
