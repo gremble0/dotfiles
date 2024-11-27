@@ -1,23 +1,27 @@
 #!/bin/sh
 
-# FOR X11
-# packages="git starship neovim maim bspwm sxhkd polybar pavucontrol rofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel discord"
+# Generic packages
+packages="git starship neovim pavucontrol alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep fzf chromium base-devel discord inotify-tools zsh-syntax-highlighting"
 
-# FOR WAYLAND
-packages="git starship neovim slurp grim wl-clipboard hyprland hyprpaper waybar pavucontrol wofi alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep nsxiv fzf chromium base-devel discord inotify-tools"
+# Compositor/window manager specific packages
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  packages="$packages slurp grim wl-clipboard hyprland hyprpaper waybar wofi "
+elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
+  packages="$packages git maim bspwm sxhkd polybar rofi nsxiv"
+fi
 
 # Install locally developed neovim plugins
 mkdir -p $HOME/Code/plugins
-if [[ ! -d $HOME/Code/plugins/yellowbeans.nvim ]]; then
-  git clone git@github.com:gremble0/yellowbeans.nvim > $HOME/Code/plugins/yellowbeans.nvim
+if [ ! -d "$HOME/Code/plugins/yellowbeans.nvim" ]; then
+  git clone git@github.com:gremble0/yellowbeans.nvim $HOME/Code/plugins/yellowbeans.nvim
 fi
 
-if [[ ! -d $HOME/Code/plugins/bufferstack.nvim ]]; then
-  git clone git@github.com:gremble0/bufferstack.nvim > $HOME/Code/plugins/bufferstack.nvim
+if [ ! -d "$HOME/Code/plugins/bufferstack.nvim" ]; then
+  git clone git@github.com:gremble0/bufferstack.nvim $HOME/Code/plugins/bufferstack.nvim
 fi
 
-if [[ ! -d $HOME/Code/plugins/gline.nvim ]]; then
-  git clone git@github.com:gremble0/gline.nvim > $HOME/Code/plugins/gline.nvim
+if [ ! -d "$HOME/Code/plugins/gline.nvim" ]; then
+  git clone git@github.com:gremble0/gline.nvim $HOME/Code/plugins/gline.nvim
 fi
 
 sudo pacman -Syu $packages
