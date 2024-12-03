@@ -29,5 +29,8 @@
 	br = branch
 	rb = rebase
 	mg = merge
+	# Stash
+	sp = stash pop
+	ss = stash
 [core]
 	editor = nvim

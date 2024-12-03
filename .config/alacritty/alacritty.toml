@@ -55,9 +55,9 @@ key = "Tab"
 mods = "Control"
 
 [[keyboard.bindings]]
-chars = "\u001B[27;6;9~"
-key = "Tab"
-mods = "Control|Shift"
+chars = "\u001B[27;5;13~"
+key = "Enter"
+mods = "Control"
 
 [[keyboard.bindings]]
 chars = "\u001B[27;5;48~"
@@ -110,91 +110,6 @@ key = "Key9"
 mods = "Control"
 
 [[keyboard.bindings]]
-chars = "\u001B[27;5;91~"
-key = "LBracket"
-mods = "Control"
-
-[[keyboard.bindings]]
 chars = "\u0017"
 key = "Back"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;59~"
-key = "Semicolon"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;44~"
-key = "Comma"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;47~"
-key = "Slash"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;104~"
-key = "H"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;6;72~"
-key = "H"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;106~"
-key = "J"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;6;74~"
-key = "J"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;107~"
-key = "K"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;6;75~"
-key = "K"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;108~"
-key = "L"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;6;76~"
-key = "L"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;80~"
-key = "P"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;6;80~"
-key = "P"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;78~"
-key = "N"
-mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;6;78~"
-key = "N"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-chars = "\u001B[27;5;13~"
-key = "Enter"
 mods = "Control"

@@ -11,12 +11,9 @@ ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 ks("n", "<C-c>", ":close!<CR>", { desc = "Close buffer", silent = true })
 ks("n", "<C-q>", "<C-^>", { desc = "Alternate file" })
 
--- Tabs
-ks("n", "<Tab>", ":tabn<CR>", { desc = "Go to next tab", silent = true })
-ks("n", "<S-Tab>", ":tabp<CR>", { desc = "Go to next tab", silent = true })
-
 -- Quickfix-/Location- list
 ks("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix list", silent = true })
+ks("n", "<leader>qc", ":cclose<CR>", { desc = "Close quickfix list", silent = true })
 ks("n", "<leader>l", ":lopen<CR>", { desc = "Open location list", silent = true })
 ks("n", "<leader>qp", ":cclose<CR>:cp<CR>", { desc = "Go to previous quickfix error", silent = true })
 ks("n", "<leader>qn", ":cclose<CR>:cn<CR>", { desc = "Go to next quickfix error", silent = true })
