@@ -6,7 +6,7 @@ return {
     { "<leader>gt", ":vertical Git<CR>", desc = "Open fugitive", silent = true },
     { "<leader>gc", ":GV<CR>", desc = "Open commit history", silent = true },
   },
-  cmd = { "Git", "GV" },
+  cmd = { "Git", "GV", "G" },
   config = function()
     vim.api.nvim_create_autocmd("FileType", {
       group = vim.api.nvim_create_augroup("FugitiveCustom", {}),
