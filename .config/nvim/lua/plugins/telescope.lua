@@ -59,7 +59,7 @@ return {
         buffers = {
           show_all_buffers = true,
           sort_lastused = true,
-          mappings = { i = { ["<C-c>"] = delete_buffer, { ["<C-CR>"] = tabnew } } },
+          mappings = { i = { ["<C-c>"] = delete_buffer, ["<C-CR>"] = tabnew } },
         },
         find_files = {
           mappings = { i = { ["<C-CR>"] = tabnew } },
