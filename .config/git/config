@@ -16,6 +16,7 @@
 	ca = commit --amend
 	lg = log --name-status
 	cp = cherry-pick
+	ad = add
 	# Remote
 	rv = remote -v
 	pu = push
@@ -27,6 +28,7 @@
 	# Branches
 	co = checkout
 	br = branch
+	sw = switch
 	rb = rebase
 	mg = merge
 	# Stash
