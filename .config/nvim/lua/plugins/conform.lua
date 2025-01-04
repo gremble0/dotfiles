@@ -16,6 +16,7 @@ return {
     vim.api.nvim_create_user_command("ConformDisable", function()
       if autoformat_cmd then
         vim.api.nvim_del_autocmd(autoformat_cmd)
+        autoformat_cmd = nil
       end
     end, {
       desc = "Disable autoformat-on-save",
