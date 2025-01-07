@@ -11,9 +11,27 @@ return {
     },
   },
   keys = {
-    { "<leader>gp", ":Gitsigns prev_hunk<CR>", desc = "Goto previous git hunk", silent = true },
-    { "<leader>gn", ":Gitsigns next_hunk<CR>", desc = "Goto next git hunk", silent = true },
-    { "<leader>gv", ":Gitsigns preview_hunk_inline<CR>", desc = "Preview git hunk", silent = true },
+    {
+      "<leader>gp",
+      function()
+        require("gitsigns").nav_hunk("prev")
+      end,
+      desc = "Goto previous git hunk",
+    },
+    {
+      "<leader>gn",
+      function()
+        require("gitsigns").nav_hunk("next")
+      end,
+      desc = "Goto next git hunk",
+    },
+    {
+      "<leader>gv",
+      function()
+        require("gitsigns").preview_hunk_inline()
+      end,
+      desc = "Preview git hunk",
+    },
   },
   lazy = false,
 }

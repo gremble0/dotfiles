@@ -26,7 +26,13 @@ return {
     end
   end,
   keys = {
-    { "<C-e>", ":Oil<CR>", desc = "Open file explorer (oil)", silent = true },
+    {
+      "<C-e>",
+      function()
+        require("oil").open()
+      end,
+      desc = "Open file explorer (oil)",
+    },
   },
   cmd = "Oil",
 }

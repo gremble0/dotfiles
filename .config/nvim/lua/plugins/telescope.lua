@@ -82,7 +82,6 @@ return {
     {
       "<leader>b",
       function()
-        -- Wrap in function to lazy load plugin
         require("telescope.builtin").buffers()
       end,
       desc = "Telescope find open buffers",
@@ -107,7 +106,6 @@ return {
         })
       end,
       desc = "Telescope find files",
-      silent = true,
     },
     {
       "<leader>fg",
@@ -115,7 +113,6 @@ return {
         require("telescope.builtin").git_files()
       end,
       desc = "Telescope git files",
-      silent = true,
     },
     {
       "<leader>fh",
@@ -123,18 +120,16 @@ return {
         require("telescope.builtin").help_tags()
       end,
       desc = "Telescope find help",
-      silent = true,
     },
     {
-      "<leader>gr",
+      "<leader>rr",
       function()
         require("telescope.builtin").live_grep()
       end,
       desc = "Telescope live grep",
-      silent = true,
     },
     {
-      "<leader>gw",
+      "<leader>rw",
       function()
         require("telescope.builtin").live_grep({ cwd = require("telescope.utils").buffer_dir() })
       end,
