@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     ks("n", "gd", lsp.buf.definition, { buffer = e.buf, desc = "LSP: Goto definition" })
     ks("n", "gD", lsp.buf.declaration, { buffer = e.buf, desc = "LSP: Goto declaration" })
     ks("n", "gi", lsp.buf.implementation, { buffer = e.buf, desc = "LSP: Goto implementation" })
-    ks("n", "gt", lsp.buf.type_definition, { buffer = e.buf, desc = "LSP: Goto type Definition" })
     ks("n", "gr", lsp.buf.references, { buffer = e.buf, desc = "LSP: Goto references" })
 
     ks("n", "K", lsp.buf.hover, { buffer = e.buf, desc = "LSP: Hover documentation" })
