@@ -79,21 +79,66 @@ return {
     telescope.load_extension("fzf")
   end,
   keys = {
-    { "<leader>o", ":Telescope oldfiles<CR>", desc = "Telescope find old files", silent = true },
-    { "<leader>b", ":Telescope buffers<CR>", desc = "Telescope find open buffers", silent = true },
     {
-      "<leader>f",
-      ":lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })<CR>",
+      "<leader>b",
+      function()
+        -- Wrap in function to lazy load plugin
+        require("telescope.builtin").buffers()
+      end,
+      desc = "Telescope find open buffers",
+      silent = true,
+    },
+    {
+      "<leader>ff",
+      function()
+        require("telescope.builtin").find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
+      end,
       desc = "Telescope find files",
       silent = true,
     },
-    { "<leader>gf", ":Telescope git_files<CR>", desc = "Telescope git files", silent = true },
-    { "<leader>gh", ":Telescope help_tags<CR>", desc = "Telescope find help", silent = true },
+    {
+      "<leader>fw",
+      function()
+        require("telescope.builtin").find_files({
+          cwd = require("telescope.utils").buffer_dir(),
+          hidden = true,
+          no_ignore = true,
+          no_ignore_parent = true,
+        })
+      end,
+      desc = "Telescope find files",
+      silent = true,
+    },
+    {
+      "<leader>fg",
+      function()
+        require("telescope.builtin").git_files()
+      end,
+      desc = "Telescope git files",
+      silent = true,
+    },
+    {
+      "<leader>fh",
+      function()
+        require("telescope.builtin").help_tags()
+      end,
+      desc = "Telescope find help",
+      silent = true,
+    },
     {
       "<leader>gr",
-      ":lua require('telescope.builtin').live_grep({ hidden = true, no_ignore = true, no_ignore_parent = true })<CR>",
+      function()
+        require("telescope.builtin").live_grep()
+      end,
       desc = "Telescope live grep",
       silent = true,
+    },
+    {
+      "<leader>gw",
+      function()
+        require("telescope.builtin").live_grep({ cwd = require("telescope.utils").buffer_dir() })
+      end,
+      desc = "Telescope live grep",
     },
   },
   cmd = "Telescope",

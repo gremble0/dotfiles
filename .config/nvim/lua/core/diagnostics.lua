@@ -6,6 +6,7 @@ vim.diagnostic.config({
     border = "rounded",
     source = true,
     prefix = "",
+    header = { "Diagnostics: ", "@markup.heading" },
   },
 })
 
