@@ -15,6 +15,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings"
+alias gdb="gdb -ix $XDG_CONFIG_HOME/gdb/gdbinit"
 
 # Data files
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"

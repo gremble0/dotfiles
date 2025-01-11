@@ -66,6 +66,9 @@
 !.config/intellij/
 !.config/intellij/*
 
+!.config/gdb/
+!.config/gdb/*
+
 # The following configs are no longer used
 !.config/i3/
 !.config/i3/*
