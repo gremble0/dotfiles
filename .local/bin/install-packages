@@ -28,10 +28,6 @@ fi
 
 # Install zsh plugins
 mkdir -p $ZDOTDIR/plugins
-if [ ! -d $ZDOTDIR/plugins/zsh-fzf-history-search ]; then
-  git clone git@github.com:joshskidmore/zsh-fzf-history-search.git $ZDOTDIR/plugins/zsh-fzf-history-search
-fi
-
 if [ ! -d $ZDOTDIR/plugins/zsh-syntax-highlighting ]; then
   git clone git@github.com:zsh-users/zsh-syntax-highlighting.git $ZDOTDIR/plugins/zsh-syntax-highlighting
 fi

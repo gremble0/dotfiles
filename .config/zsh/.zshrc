@@ -1,7 +1,6 @@
 # Source plugins
 eval "$(starship init zsh)"
-[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 # History
 HISTFILE=$XDG_CACHE_HOME/zsh/history
@@ -18,26 +17,13 @@ zmodload zsh/complist
 _comp_options+=(globdots)
 setopt nocaseglob
 
-# Search files with fzf
-fzfcd() {
-    local out="$(fzf)"
-    if [ -z $out ]; then
-        echo "fzf search cancelled"
-    elif [ -d "$out" ]; then
-        cd "$out"
-    else
-        cd "$(dirname $out)"
-    fi
-}
-
-# Reverse search with fzf
 fzf-reverse-search() {
-    local selected=($(history -n 1 | awk '!seen[$0]++' | fzf))
-    if [ -n "$selected" ]; then
-        BUFFER=$selected
-        CURSOR=$#BUFFER
-    fi
-    zle reset-prompt
+   local selected=($(fc -l -n -1 0 | awk '!seen[$0]++' | fzf))
+   if [ -n "$selected" ]; then
+       BUFFER=$selected
+       CURSOR=$#BUFFER
+   fi
+   zle reset-prompt
 }
 
 zle -N fzf-reverse-search
@@ -46,7 +32,6 @@ bindkey '^R' fzf-reverse-search
 # Aliases
 alias c='clear'
 alias n='nvim'
-alias f='fzfcd'
 alias i='nsxiv'
 alias g='git'
 alias o='xdg-open'
