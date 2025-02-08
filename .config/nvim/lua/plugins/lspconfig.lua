@@ -43,6 +43,7 @@ return {
       { lspconfig_name = "lua_ls", mason_name = "lua-language-server" },
       { lspconfig_name = "pyright", mason_name = "pyright" },
       { lspconfig_name = "ts_ls", mason_name = "typescript-language-server" },
+      { lspconfig_name = "neocmake", mason_name = "neocmakelsp" },
 
       -- Formatters
       { lspconfig_name = "stylua", mason_name = "stylua" },
