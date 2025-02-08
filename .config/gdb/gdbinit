@@ -1,2 +1,3 @@
 set debuginfod enabled off
 set print pretty on
+handle SIGPIPE nostop
