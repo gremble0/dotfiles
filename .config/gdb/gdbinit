@@ -1,3 +1,8 @@
 set debuginfod enabled off
 set print pretty on
+set pagination off
+set confirm off
+
+alias db = delete breakpoints
+
 handle SIGPIPE nostop
