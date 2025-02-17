@@ -1,12 +1,13 @@
 ;; Dired
-(use-package dired
-  :ensure nil
-  :custom
-  (dired-listing-switches "-AhgGoF --group-directories-first --color=auto")
-  (dired-recursive-copies 'always)
-  (dired-recursive-deletes 'always))
+(setq dired-listing-switches "-AhgGoF --group-directories-first --color=auto"
+      dired-recursive-copies 'always
+      dired-recursive-deletes 'always)
 
-(use-package dired-single)
+(defadvice dired-up-directory (around dired-up-directory-alternate activate)
+  "When going up a directory, kill the current dired buffer."
+  (let ((current (current-buffer)))
+    ad-do-it
+    (kill-buffer current)))
 
 ;; Terminal
 (use-package eshell-syntax-highlighting

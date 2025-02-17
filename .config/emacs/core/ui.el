@@ -50,7 +50,6 @@
 (use-package git-gutter
   :custom
   (git-gutter:update-interval 0.50)
-  (git-gutter:hide-gutter t)
   :config
   (global-git-gutter-mode))
 
