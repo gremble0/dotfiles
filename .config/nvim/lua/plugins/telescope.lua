@@ -131,7 +131,19 @@ return {
     {
       "<leader>rw",
       function()
-        require("telescope.builtin").live_grep({ cwd = require("telescope.utils").buffer_dir() })
+        local buffer_dir = nil
+        if vim.bo.filetype == "oil" then
+          local ok, oil = pcall(require, "oil")
+          if ok then
+            buffer_dir = oil.get_current_dir()
+          end
+        end
+
+        if not buffer_dir then
+          buffer_dir = require("telescope.utils").buffer_dir()
+        end
+
+        require("telescope.builtin").live_grep({ cwd = buffer_dir })
       end,
       desc = "Telescope live grep",
     },
