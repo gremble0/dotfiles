@@ -18,11 +18,14 @@ for i in {1..9}; do
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>$i']"
 done
 
-# Keyboard
+# Keyboard and localization
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'no')]"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Super>space']"
 
+gsettings set org.gnome.desktop.interface clock-format '24h'
+
+# Dmenu/Rofi simulator
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>d']"
 
 # Custom keybinds
