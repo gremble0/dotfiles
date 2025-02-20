@@ -1,8 +1,25 @@
-set debuginfod enabled off
+# Pretty printing
 set print pretty on
+set print object on
+set print array on
+set print array-indexes on
+set print elements 1000
+set print repeats 0
+
+set print address on
+set print symbol-filename on
+set print frame-arguments all
+
+# TODO: not `~`
+source ~/.config/gdb/register_qt_printers.py
+
+# Disable some annoying stuff
+set debuginfod enabled off
 set pagination off
 set confirm off
 
-alias db = delete breakpoints
+# Aliases
+alias -a db = delete breakpoints
 
+# If we don't have this the program will segfault after timeout if we pause it (e.g. CTRL+C)
 handle SIGPIPE nostop
