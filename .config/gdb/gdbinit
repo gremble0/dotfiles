@@ -20,6 +20,7 @@ set confirm off
 
 # Aliases
 alias -a db = delete breakpoints
+alias -a ib = info breakpoints
 
 # If we don't have this the program will segfault after timeout if we pause it (e.g. CTRL+C)
 handle SIGPIPE nostop
