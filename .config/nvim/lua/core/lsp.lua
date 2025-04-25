@@ -16,6 +16,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     ks("n", "gr", lsp.buf.references, { buffer = e.buf, desc = "LSP: Goto references" })
 
     ks("n", "K", lsp.buf.hover, { buffer = e.buf, desc = "LSP: Hover documentation" })
-    ks({ "i", "s" }, "<C-s>", lsp.buf.signature_help, { buffer = e.buf, desc = "LSP: Signature Documentation" })
+    ks({ "n", "i", "s" }, "<C-s>", lsp.buf.signature_help, { buffer = e.buf, desc = "LSP: Signature Documentation" })
   end,
 })

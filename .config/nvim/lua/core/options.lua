@@ -50,3 +50,4 @@ vim.opt.timeoutlen = 400
 vim.opt.ttimeoutlen = 5
 vim.opt.updatetime = 50
 vim.opt.pumheight = 8
+vim.opt.swapfile = false

@@ -26,6 +26,13 @@ return {
       desc = "Goto next git hunk",
     },
     {
+      "<leader>gb",
+      function()
+        require("gitsigns").blame_line({ full = true })
+      end,
+      desc = "Git blame current line",
+    },
+    {
       "<leader>gv",
       function()
         require("gitsigns").preview_hunk_inline()

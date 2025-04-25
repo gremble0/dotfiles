@@ -23,8 +23,6 @@ for type, icon in pairs(icons) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.keymap.set("n", "<leader>d", vim.diagnostic.setqflist, { desc = "Add diagnostics to quickfix list" })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.setqflist, { desc = "Add diagnostics to quickfix list" })
 vim.keymap.set("n", "<leader>da", vim.diagnostic.setqflist, { desc = "Add diagnostics to quickfix list" })
 vim.keymap.set("n", "<leader>de", function()
   local diagnostics = vim.diagnostic.get(0)
