@@ -10,3 +10,9 @@ vimcmd_symbol = "[❮](bold yellow)"
 vimcmd_replace_one_symbol = "[❮](bold purple)"
 vimcmd_replace_symbol = "[❮](bold purple)"
 vimcmd_visual_symbol = "[❮](bold blue)"
+
+[custom.nova]
+command = "echo \"$PROJECTNAME\""
+when = "test -n \"$PROJECTNAME\""
+format = "configured [$output]($style) "
+style = "bold green"

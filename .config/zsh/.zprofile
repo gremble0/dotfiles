@@ -49,6 +49,13 @@ export LS_COLORS='di=1;34:*.jpg=00;35:*.jpeg=00;35:*.avif=00;35:*.mjpeg=00;35:*.
 export FZF_DEFAULT_COMMAND='find .'
 export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ " --height=50% --color=dark,prompt:3,pointer:3,info:2,query:7:regular,hl:3,hl+:3,bg+:#333333'
 
+# Extra setup for work
+if NOVA_PROFILE_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/nova/nova_profile" && [ -f "$NOVA_PROFILE_PATH" ]; then
+    source $NOVA_PROFILE_PATH
+elif NOVA_PROFILE_PATH="$HOME/.nova_profile" && [ -f "$NOVA_PROFILE_PATH" ]; then
+    source $NOVA_PROFILE_PATH
+fi
+
 if [ "$(tty)" = "/dev/tty1" ]; then
     Hyprland
 fi
