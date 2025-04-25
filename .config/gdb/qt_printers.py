@@ -78,6 +78,51 @@ class QByteArrayPrinter:
     def display_hint (self):
         return 'string'
 
+class QBitArrayPrinter:
+    """Print a Qt5 QBitArray"""
+
+    class Iter:
+        def __init__(self, data, size):
+            self.data = data
+            self.i = -1
+            self.size = size
+
+        def __iter__(self):
+            return self
+
+        def __next__(self):
+            if self.i + 1 >= self.size:
+                raise StopIteration
+            self.i += 1
+            if self.data[1 + (self.i >> 3)] & (1 << (self.i&7)):
+                return (str(self.i), 1)
+            else:
+                return (str(self.i), 0)
+
+        def next(self):
+            return self.__next__()
+
+    def __init__(self, val):
+        self.val = val
+
+    def children(self):
+        d = self.val['d']['d']
+        data = d.reinterpret_cast(gdb.lookup_type('char').pointer()) + d['offset']
+        size = (int(d['size']) << 3) - int(data[0])
+
+        return self.Iter(data, size)
+
+    def to_string(self):
+        d = self.val['d']['d']
+        data = d.reinterpret_cast(gdb.lookup_type('char').pointer()) + d['offset']
+        size = (int(d['size']) << 3) - int(data[0])
+        if size == 0:
+            return '<empty>'
+        return None
+
+    def display_hint(self):
+        return 'array'
+
 class QListPrinter:
     "Print a QList"
 

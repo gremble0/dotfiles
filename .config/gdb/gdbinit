@@ -24,3 +24,6 @@ alias -a ib = info breakpoints
 
 # If we don't have this the program will segfault after timeout if we pause it (e.g. CTRL+C)
 handle SIGPIPE nostop
+
+# Prompt
+set prompt \001\033[33m\002❯\001\033[0m\002 
