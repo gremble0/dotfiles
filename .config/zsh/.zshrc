@@ -1,6 +1,7 @@
 # Source plugins
 eval "$(starship init zsh)"
-source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/fzf/shell/key-bindings.zsh
 
 # History
 HISTFILE=$XDG_CACHE_HOME/zsh/history
@@ -16,18 +17,6 @@ zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
 zmodload zsh/complist
 _comp_options+=(globdots)
 setopt nocaseglob
-
-fzf-reverse-search() {
-   local selected=($(fc -l -n -1 0 | awk '!seen[$0]++' | fzf))
-   if [ -n "$selected" ]; then
-       BUFFER=$selected
-       CURSOR=$#BUFFER
-   fi
-   zle reset-prompt
-}
-
-zle -N fzf-reverse-search
-bindkey '^R' fzf-reverse-search
 
 # Aliases
 alias c='clear'
@@ -47,12 +36,20 @@ alias cdn="cd $XDG_CONFIG_HOME/nvim"
 alias cdz="cd $XDG_CONFIG_HOME/zsh"
 alias cdt="cd $XDG_CONFIG_HOME/tmux"
 
-alias ls='ls -F --group-directories-first --color=auto'
-alias ll='ls -AFl --group-directories-first --color=auto'
-alias lh='ll ~'
+# `ls` stuff
+alias ls='ls -AFh --group-directories-first --color=auto'
+alias ll='ls -l'
 alias grep='grep --color=auto'
+
+# Piping into grep
+alias eg='env | grep'
+alias lg='ll | grep'
 
 alias shutdown='shutdown now'
 
 # Extra setup for work
-[ -f $XDG_CONFIG_HOME/nova/workrc ] && source $XDG_CONFIG_HOME/nova/workrc
+if NOVARC_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/nova/novarc" && [ -f "$NOVARC_PATH" ]; then
+    source $NOVARC_PATH
+elif NOVARC_PATH="$HOME/.novarc" && [ -f "$NOVARC_PATH" ]; then
+    source $NOVARC_PATH
+fi

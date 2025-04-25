@@ -25,9 +25,3 @@ fi
 if [ ! -d "$HOME/Code/plugins/gline.nvim" ]; then
   git clone git@github.com:gremble0/gline.nvim $HOME/Code/plugins/gline.nvim
 fi
-
-# Install zsh plugins
-mkdir -p $ZDOTDIR/plugins
-if [ ! -d $ZDOTDIR/plugins/zsh-syntax-highlighting ]; then
-  git clone git@github.com:zsh-users/zsh-syntax-highlighting.git $ZDOTDIR/plugins/zsh-syntax-highlighting
-fi
