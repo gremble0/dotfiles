@@ -1,7 +1,19 @@
 # Source plugins
+# TODO: look into plugin manager ? this is a lil ugly. Antigen is one
 eval "$(starship init zsh)"
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/fzf/shell/key-bindings.zsh
+
+# These paths are different depending on distro for some reason (These will work for fedora and arch at least - don't know about others)
+if PLUGIN_PATH=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && [ -f "$PLUGIN_PATH" ]; then
+    source $PLUGIN_PATH
+elif PLUGIN_PATH=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && [ -f "$PLUGIN_PATH" ]; then
+    source $PLUGIN_PATH
+fi
+
+if PLUGIN_PATH=/usr/share/fzf/shell/key-bindings.zsh && [ -f "$PLUGIN_PATH" ]; then
+    source $PLUGIN_PATH
+elif PLUGIN_PATH=/usr/share/fzf/key-bindings.zsh && [ -f "$PLUGIN_PATH" ]; then
+    source $PLUGIN_PATH
+fi
 
 # History
 HISTFILE=$XDG_CACHE_HOME/zsh/history
