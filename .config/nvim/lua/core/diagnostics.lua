@@ -11,17 +11,16 @@ vim.diagnostic.config({
 })
 
 -- Set icons for diagnostics
-local icons = {
-  Error = "󰅚 ",
-  Warn = "󰀪 ",
-  Info = "󰋽 ",
-  Hint = "󰌶 ",
-}
-
-for type, icon in pairs(icons) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰅚 ",
+      [vim.diagnostic.severity.WARN] = "󰀪 ",
+      [vim.diagnostic.severity.INFO] = "󰋽 ",
+      [vim.diagnostic.severity.HINT] = "󰌶 ",
+    },
+  },
+})
 
 vim.keymap.set("n", "<leader>da", vim.diagnostic.setqflist, { desc = "Add diagnostics to quickfix list" })
 vim.keymap.set("n", "<leader>de", function()

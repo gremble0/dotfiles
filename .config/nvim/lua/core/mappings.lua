@@ -30,8 +30,12 @@ ks("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up with word wrapping",
 ks("n", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down with word wrapping", expr = true, silent = true })
 
 -- Diagnostic keymaps
-ks("n", "gp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-ks("n", "gn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+ks("n", "gp", function()
+  vim.diagnostic.jump({ count = -1 })
+end, { desc = "Go to previous diagnostic message" })
+ks("n", "gn", function()
+  vim.diagnostic.jump({ count = 1 })
+end, { desc = "Go to next diagnostic message" })
 ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 
 -- Open lazy
