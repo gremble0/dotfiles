@@ -1,4 +1,7 @@
 local ks = vim.keymap.set
+local kd = vim.keymap.del
+
+--- REMOVE BAD DEFAULTS
 
 --- NORMAL MODE KEYBINDS
 -- Faster navigation between windows
@@ -29,13 +32,21 @@ ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
 ks("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up with word wrapping", expr = true, silent = true })
 ks("n", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down with word wrapping", expr = true, silent = true })
 
+-- Lsp stuff
+local buf = vim.lsp.buf
+
+ks("n", "gd", buf.definition, { desc = "LSP: Goto definition" })
+ks("n", "gD", buf.declaration, { desc = "LSP: Goto declaration" })
+ks("n", "gi", buf.implementation, { desc = "LSP: Goto implementation" })
+
+ks("n", "K", function()
+  buf.hover({ border = "rounded" })
+end, { desc = "LSP: Hover documentation" })
+ks({ "n", "i", "s" }, "<C-s>", function()
+  buf.signature_help({ border = "rounded" })
+end, { desc = "LSP: Signature Documentation" })
+
 -- Diagnostic keymaps
-ks("n", "gp", function()
-  vim.diagnostic.jump({ count = -1 })
-end, { desc = "Go to previous diagnostic message" })
-ks("n", "gn", function()
-  vim.diagnostic.jump({ count = 1 })
-end, { desc = "Go to next diagnostic message" })
 ks("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 
 -- Open lazy
@@ -51,8 +62,8 @@ end, {})
 
 --- VISUAL MODE KEYBINDS
 -- Move lines
-ks("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
-ks("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up", silent = true })
+ks("x", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
+ks("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up", silent = true })
 
 --- INSERT AND COMMAND MODE KEYBINDS
 -- Navigation
