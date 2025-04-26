@@ -1,27 +1,38 @@
 #!/bin/sh
 
-# Generic packages
-packages="git starship neovim pavucontrol alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep fzf chromium base-devel discord inotify-tools zsh-syntax-highlighting"
+if command -v pacman >/dev/null 2>&1; then
+  # Generic packages for arch
+  packages="git starship neovim pavucontrol alacritty tmux thunar ttf-jetbrains-mono-nerd ripgrep fzf chromium base-devel discord inotify-tools zsh-syntax-highlighting"
 
-# Compositor/window manager specific packages
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-  packages="$packages slurp grim wl-clipboard hyprland hyprpaper waybar wofi "
-elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
-  packages="$packages git maim bspwm sxhkd polybar rofi nsxiv"
+  # Compositor/window manager specific packages
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    packages="$packages slurp grim wl-clipboard hyprland hyprpaper waybar wofi "
+  elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
+    packages="$packages git maim bspwm sxhkd polybar rofi nsxiv"
+  fi
+  sudo pacman -Syu $packages
+else
+  echo "System does not have the pacman package manager.\nSkipping package installation..."
 fi
 
-sudo pacman -Syu $packages
+# Check if directory $1 exists
+#   if it does clone the repo at $2 to $1
+#   else just give log short feedback message
+clonelogged() {
+  if [ ! -d "$1" ]; then
+    git clone "$2" "$1"
+  else
+    echo -e "$2 already installed. Skipping...\n"
+  fi
+}
 
 # Install locally developed neovim plugins
 mkdir -p $HOME/Code/plugins
-if [ ! -d "$HOME/Code/plugins/yellowbeans.nvim" ]; then
-  git clone git@github.com:gremble0/yellowbeans.nvim $HOME/Code/plugins/yellowbeans.nvim
-fi
+clonelogged $HOME/Code/plugins/yellowbeans.nvim git@github.com:gremble0/yellowbeans.nvim
+clonelogged $HOME/Code/plugins/bufferstack.nvim git@github.com:gremble0/bufferstack.nvim
+clonelogged $HOME/Code/plugins/gline.nvim git@github.com:gremble0/gline.nvim
 
-if [ ! -d "$HOME/Code/plugins/bufferstack.nvim" ]; then
-  git clone git@github.com:gremble0/bufferstack.nvim $HOME/Code/plugins/bufferstack.nvim
-fi
-
-if [ ! -d "$HOME/Code/plugins/gline.nvim" ]; then
-  git clone git@github.com:gremble0/gline.nvim $HOME/Code/plugins/gline.nvim
-fi
+# Install zsh plugins
+mkdir -p $ZDOTDIR/plugins
+clonelogged $ZDOTDIR/plugins/zsh-syntax-highlighting git@github.com:zsh-users/zsh-syntax-highlighting
+clonelogged $ZDOTDIR/plugins/fzf git@github.com:junegunn/fzf
