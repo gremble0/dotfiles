@@ -30,8 +30,8 @@ do
     ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
 
     -- Remap for dealing with word wrap
-    ks("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up with word wrapping",  silent = true })
-    ks("n", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down with word wrapping", silent = true })
+    ks("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up with word wrapping", silent = true, expr = true })
+    ks("n", "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Move down with word wrapping", silent = true, expr = true })
   end
 
   -- Lsp stuff

@@ -8,10 +8,6 @@ vim.diagnostic.config({
     prefix = "",
     header = { "Diagnostics: ", "@markup.heading" },
   },
-})
-
--- Set icons for diagnostics
-vim.diagnostic.config({
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "󰅚 ",
@@ -47,3 +43,12 @@ vim.keymap.set("n", "<leader>de", function()
   vim.fn.setqflist(qf_items)
   vim.cmd("copen")
 end, { desc = "Add errors to quickfix list" })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(e)
+    local client = vim.lsp.get_client_by_id(e.data.client_id)
+    if client and client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client.id, e.buf)
+    end
+  end
+})
