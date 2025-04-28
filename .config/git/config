@@ -1,38 +1,38 @@
 [user]
-	email = hermanstornes@gmail.com
-	name = gremble0
+  email = herman.g.stornes@indra.no
+  name = Herman Gard Stornes
 [pull]
-	rebase = false
+  rebase = false
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [color]
-	pager = yes
+  pager = yes
 [alias]
-	st = status
-	# Commit
-	cm = commit
-	ca = commit --amend
-	lg = log --name-status
-	cp = cherry-pick
-	ad = add
-	# Remote
-	rv = remote -v
-	pu = push
-	pl = pull
-	cl = clone
-	# Diffs
-	df = diff
-	dc = diff --cached
-	# Branches
-	co = checkout
-	br = branch
-	sw = switch
-	rb = rebase
-	mg = merge
-	# Stash
-	sp = stash pop
-	ss = stash
+  st = status
+  # Commit
+  cm = commit
+  ca = commit --amend
+  lg = log --name-status
+  cp = cherry-pick
+  ad = add
+  # Remote
+  rv = remote -v
+  pu = push
+  pl = pull
+  cl = clone
+  # Diffs
+  df = diff
+  dc = diff --cached
+  # Branches
+  co = checkout
+  br = branch
+  sw = switch
+  rb = rebase
+  mg = merge
+  # Stash
+  sp = stash pop
+  ss = stash
 [core]
-	editor = nvim
+  editor = nvim
