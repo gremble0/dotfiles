@@ -12,14 +12,14 @@ return {
   },
   keys = {
     {
-      "<leader>gp",
+      "[g",
       function()
         require("gitsigns").nav_hunk("prev")
       end,
       desc = "Goto previous git hunk",
     },
     {
-      "<leader>gn",
+      "]g",
       function()
         require("gitsigns").nav_hunk("next")
       end,

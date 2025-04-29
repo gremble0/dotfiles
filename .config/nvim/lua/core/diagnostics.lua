@@ -19,6 +19,7 @@ vim.diagnostic.config({
   jump = {
     float = true
   },
+  virtual_text = true,
 })
 
 vim.keymap.set("n", "<leader>da", vim.diagnostic.setqflist, { desc = "Add diagnostics to quickfix list" })
