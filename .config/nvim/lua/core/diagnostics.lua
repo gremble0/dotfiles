@@ -26,17 +26,18 @@ vim.keymap.set("n", "<leader>da", vim.diagnostic.setqflist, { desc = "Add diagno
 vim.keymap.set("n", "<leader>de", function()
   local diagnostics = vim.diagnostic.get(0)
 
-  local errors = vim.tbl_filter(function(d)
-    return d.severity == vim.diagnostic.severity.ERROR
+  local errors = vim.tbl_filter(function(diagnostic)
+    return diagnostic.severity == vim.diagnostic.severity.ERROR
   end, diagnostics)
 
+  ---@type vim.quickfix.entry[]
   local qf_items = {}
-  for _, d in ipairs(errors) do
+  for _, diagnostic in ipairs(errors) do
     table.insert(qf_items, {
-      bufnr = d.bufnr,
-      lnum = d.lnum + 1,
-      col = d.col + 1,
-      text = d.message,
+      bufnr = diagnostic.bufnr,
+      lnum = diagnostic.lnum + 1,
+      col = diagnostic.col + 1,
+      text = diagnostic.message,
       type = "ERROR",
     })
   end
@@ -45,11 +46,4 @@ vim.keymap.set("n", "<leader>de", function()
   vim.cmd("copen")
 end, { desc = "Add errors to quickfix list" })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(e)
-    local client = vim.lsp.get_client_by_id(e.data.client_id)
-    if client and client:supports_method("textDocument/completion") then
-      vim.lsp.completion.enable(true, client.id, e.buf)
-    end
-  end
-})
+vim.lsp.set_log_level("OFF")
