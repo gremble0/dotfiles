@@ -1,5 +1,17 @@
 -- Automatic formatting
-local autoformat_cmd = nil
+local make_autoformat_autocmd = function()
+  return vim.api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("ConformAutoFormat", { clear = false }),
+    pattern = "*",
+    callback = function()
+      require("conform").format({ timeout_ms = 1000, lsp_format = "fallback" })
+    end,
+  })
+end
+
+--- Enable automatic formatting by default - set to nil to disable by default
+---@type integer?
+local autoformat_cmd = make_autoformat_autocmd()
 
 return {
   "stevearc/conform.nvim",
@@ -23,14 +35,7 @@ return {
     {
       "<leader>me",
       function()
-        autoformat_cmd = autoformat_cmd
-          or vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("ConformAutoFormat", { clear = false }),
-            pattern = "*",
-            callback = function()
-              require("conform").format({ timeout_ms = 1000, lsp_format = "fallback" })
-            end,
-          })
+        autoformat_cmd = autoformat_cmd or make_autoformat_autocmd()
       end,
       desc = "Enable autoformatting",
     },
