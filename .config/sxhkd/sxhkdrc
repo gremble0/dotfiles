@@ -51,13 +51,15 @@ super + d
     rofi -monitor -1 -show drun -show-icons
 
 super + shift + b
-    $BROWSER
+    chromium-browser
 
 super + shift + d
     discord
 
+# Tmux needs LC_ALL to include `UTF-8` or `UTF8`, otherwise font rendering is fucked.
+# If this is not set it can also be fixed by starting tmux with `-u`
 super + Return
-    $TERMINAL -e tmux
+    alacritty -e tmux
 
 # Fn lock functionality
 XF86AudioRaiseVolume

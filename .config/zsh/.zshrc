@@ -19,6 +19,9 @@ zmodload zsh/complist
 _comp_options+=(globdots)
 setopt nocaseglob
 
+# Readline emacs mode
+bindkey -e
+
 # Aliases
 alias c='clear'
 alias n='nvim'
