@@ -1,4 +1,16 @@
 -- TUI picker menus
+local get_buffer_path = function()
+  -- If in an oil buffer get the path from oil
+  if vim.bo.filetype == "oil" then
+    local ok, oil = pcall(require, "oil")
+    if ok then
+      return oil.get_current_dir()
+    end
+  end
+
+  return require("telescope.utils").buffer_dir()
+end
+
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
@@ -99,7 +111,7 @@ return {
       "<leader>fw",
       function()
         require("telescope.builtin").find_files({
-          cwd = require("telescope.utils").buffer_dir(),
+          cwd = get_buffer_path(),
           hidden = true,
           no_ignore = true,
           no_ignore_parent = true,
@@ -131,19 +143,7 @@ return {
     {
       "<leader>rw",
       function()
-        local buffer_dir = nil
-        if vim.bo.filetype == "oil" then
-          local ok, oil = pcall(require, "oil")
-          if ok then
-            buffer_dir = oil.get_current_dir()
-          end
-        end
-
-        if not buffer_dir then
-          buffer_dir = require("telescope.utils").buffer_dir()
-        end
-
-        require("telescope.builtin").live_grep({ cwd = buffer_dir })
+        require("telescope.builtin").live_grep({ cwd = get_buffer_path() })
       end,
       desc = "Telescope live grep",
     },
