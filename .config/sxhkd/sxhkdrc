@@ -46,12 +46,13 @@ super + ctrl + {h,j,k,l}
 super + m
     bspc desktop -l next
 
-# Set the tiling layout
+# Toggle between fullscreen and tiling
 super + f
-    bspc node -t fullscreen
+    bspc node -t $( [ "$(bspc query -N -n focused.fullscreen)" ] && echo tiled || echo fullscreen )
 
+# Toggle between floating and tiling
 super + s
-    bspc node -t $([ "$(bspc query -N -n focused.tiled)" ] && echo floating || echo tiled)
+    bspc node -t $([ "$(bspc query -N -n focused.floating)" ] && echo tiled || echo floating)
 
 # Run programs
 super + d
