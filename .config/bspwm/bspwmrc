@@ -23,5 +23,12 @@ bspc config normal_border_color "#282828"
 bspc config active_border_color "#282828"
 bspc config focused_border_color "#e1b655"
 
+bspc config focus_follows_pointer true
+
+# Window rules (for work mostly)
+bspc rule -a mps-terminal desktop=5
+bspc rule -a novaCWP desktop=1
+bsp-layout set grid 5
+
 # Use normal cursor when cursor is not over a window
-xsetroot -cursor_name left_ptr &
+xsetroot -cursor_name left_ptr

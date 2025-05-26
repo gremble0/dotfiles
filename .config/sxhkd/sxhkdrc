@@ -15,6 +15,10 @@ super + shift + {Escape,BackSpace}
 super + w
     bspc node -c
 
+# Rotate split orientation
+super + r
+    bspc node @parent --rotate 90
+
 # Navigation
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
