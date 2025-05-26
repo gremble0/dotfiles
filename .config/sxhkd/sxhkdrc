@@ -42,13 +42,16 @@ super + ctrl + {h,j,k,l}
      bspc node @parent/first -z right +20 0; \
      bspc node @parent/second -z left +20 0}
 
-# Toggle monocle mode
+# Toggle monocle mode (fullscreen without covering taskbar)
 super + m
     bspc desktop -l next
 
 # Set the tiling layout
-super + {t,s,f}
-    bspc node -t {tiled,floating,fullscreen}
+super + f
+    bspc node -t fullscreen
+
+super + s
+    bspc node -t $([ "$(bspc query -N -n focused.tiled)" ] && echo floating || echo tiled)
 
 # Run programs
 super + d
