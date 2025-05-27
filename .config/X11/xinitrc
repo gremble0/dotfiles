@@ -15,8 +15,8 @@ setkeyboard &
 # Start statusbar
 polybarstart &
 
-# Daemonize process that moves mouse when changing window focus
-focus-and-center &
+# Set relative positions of monitors
+xrandr --output DP-3-3 --left-of eDP-1
 
 # Start window manager
 exec bspwm
