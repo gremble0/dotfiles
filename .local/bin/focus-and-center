@@ -1,0 +1,13 @@
+#!/bin/sh
+
+bspc subscribe node_focus | while read -r event; do
+    # Get the focused window's geometry
+    eval $(xdotool getactivewindow getwindowgeometry --shell)
+    
+    # Calculate center coordinates
+    center_x=$((X + WIDTH / 2))
+    center_y=$((Y + HEIGHT / 2))
+    
+    # Move mouse to center
+    xdotool mousemove $center_x $center_y
+done

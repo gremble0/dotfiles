@@ -15,5 +15,8 @@ setkeyboard &
 # Start statusbar
 polybarstart &
 
+# Daemonize process that moves mouse when changing window focus
+focus-and-center &
+
 # Start window manager
 exec bspwm
