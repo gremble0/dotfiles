@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # chaining `-o`s is safer than using a big regex apparently
-find . -iname "*.[ch]" -o -iname "*.[ch]xx" -o -iname "*.[ch]pp" -o -iname "*.[ch]++" -o -iname "*.cc" -o -iname "*.hh" -exec clang-format -i {} +
+find . \( -iname "*.[ch]" -o -iname "*.[ch]xx" -o -iname "*.[ch]pp" -o -iname "*.[ch]++" -o -iname "*.cc" -o -iname "*.hh" -o -iname "*.json" -o -iname "*.proto" -o -iname "*.protodevel" \) -exec clang-format -i {} +
