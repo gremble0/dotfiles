@@ -21,11 +21,13 @@ super + r
 
 # Navigation
 super + {_,shift + }{h,j,k,l}
-    bspc node -{f,s} {west,south,north,east}
+    bspc node -{f,s} {west,south,north,east}; \
+    center-mouse
 
 # Focus given desktop
 super + {1-9}
-    bspc desktop -f {1-9}
+    bspc desktop -f {1-9}; \
+    center-mouse
 
 # Move active window to given desktop and focus it
 super + shift + {1-9}
@@ -48,7 +50,7 @@ super + m
 
 # Toggle between fullscreen and tiling
 super + f
-    bspc node -t $( [ "$(bspc query -N -n focused.fullscreen)" ] && echo tiled || echo fullscreen )
+    bspc node -t $([ "$(bspc query -N -n focused.fullscreen)" ] && echo tiled || echo fullscreen)
 
 # Toggle between floating and tiling
 super + s
