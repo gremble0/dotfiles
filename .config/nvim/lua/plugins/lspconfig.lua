@@ -3,13 +3,28 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     -- Automatically install LSPs to stdpath
-    { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
+    {
+      "williamboman/mason.nvim",
+      opts = {
+        ui = {
+          border = "rounded",
+          backdrop = 100,
+        },
+      },
+    },
 
     -- Useful status updates for LSP
-    { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
+    {
+      "j-hui/fidget.nvim",
+      tag = "legacy",
+      opts = {},
+    },
 
     -- Better lua LSP functionality
-    { "folke/lazydev.nvim", opts = {} },
+    {
+      "folke/lazydev.nvim",
+      opts = {},
+    },
 
     -- Adds LSP completion capabilities
     "hrsh7th/cmp-nvim-lsp",
