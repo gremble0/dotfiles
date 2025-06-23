@@ -39,6 +39,7 @@ alias cdc="cd $XDG_CONFIG_HOME"
 alias cdn="cd $XDG_CONFIG_HOME/nvim"
 alias cdz="cd $XDG_CONFIG_HOME/zsh"
 alias cdt="cd $XDG_CONFIG_HOME/tmux"
+alias cdd="cd $HOME/Documents"
 
 # `ls` stuff
 alias ls='ls -AFh --group-directories-first --color=auto'

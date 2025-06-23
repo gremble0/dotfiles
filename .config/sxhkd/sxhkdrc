@@ -46,7 +46,7 @@ super + ctrl + {h,j,k,l}
 
 # Toggle monocle mode (fullscreen without covering taskbar)
 super + m
-    bspc desktop -l next
+    [ $(bspc query -N -n focused.fullscreen) ] && bspc node -t tiled; bspc desktop -l next
 
 # Toggle between fullscreen and tiling
 super + f
