@@ -9,6 +9,7 @@ return {
       topdelete = { text = "┃" },
       changedelete = { text = "┃" },
     },
+    preview_config = { border = "rounded" },
   },
   keys = {
     {
@@ -36,6 +37,13 @@ return {
       "<leader>gv",
       function()
         require("gitsigns").preview_hunk_inline()
+      end,
+      desc = "Preview git hunk",
+    },
+    {
+      "<leader>gq",
+      function()
+        require("gitsigns").setqflist()
       end,
       desc = "Preview git hunk",
     },
