@@ -16,3 +16,6 @@ command = "echo \"$PROJECTNAME\""
 when = "test -n \"$PROJECTNAME\""
 format = "configured [$output]($style) "
 style = "bold green"
+
+[status]
+disabled = false
