@@ -52,12 +52,20 @@ do
   -- Open lazy
   ks("n", "<leader>z", ":Lazy<CR>", { desc = "Open lazy", silent = true })
 
+  local get_clipboard = function()
+    if vim.fn.executable("wl-copy") == 1 then
+      return "wl-copy"
+    elseif vim.fn.executable("xclip") == 1 then
+      return "xclip -selection clipboard"
+    end
+  end
+
   -- Copy stuff from current file (useful for debugging with gdb)
   ks("n", "<leader>cp", function()
-    vim.fn.system(string.format("echo %s | xclip -selection clipboard", vim.fn.expand("%")))
+    vim.fn.system(string.format("echo %s | %s", vim.fn.expand("%"), get_clipboard()))
   end, {})
   ks("n", "<leader>cl", function()
-    vim.fn.system(string.format("echo %s:%s | xclip -selection clipboard", vim.fn.expand("%"), vim.fn.line(".")))
+    vim.fn.system(string.format("echo %s:%s | %s", vim.fn.expand("%"), vim.fn.line("."), get_clipboard()))
   end, {})
 end
 
