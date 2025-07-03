@@ -1,0 +1,5 @@
+#!/bin/sh
+
+LINUX_BOOT_MENU_ENTRY="$(sudo grep -Po "menuentry \K\".*Arch Linux.*\"" /boot/grub/grub.cfg)"
+sudo grub-reboot "$LINUX_BOOT_MENU_ENTRY"
+reboot
