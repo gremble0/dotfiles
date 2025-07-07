@@ -58,5 +58,5 @@ elif NOVA_PROFILE_PATH="$HOME/.nova_profile" && [ -f "$NOVA_PROFILE_PATH" ]; the
 fi
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-    startx
+    Hyprland
 fi
