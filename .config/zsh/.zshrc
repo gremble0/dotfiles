@@ -51,10 +51,3 @@ alias eg='env | grep'
 alias lg='ll | grep'
 
 alias shutdown='shutdown now'
-
-# Extra setup for work
-if NOVARC_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/nova/novarc" && [ -f "$NOVARC_PATH" ]; then
-    source $NOVARC_PATH
-elif NOVARC_PATH="$HOME/.novarc" && [ -f "$NOVARC_PATH" ]; then
-    source $NOVARC_PATH
-fi
