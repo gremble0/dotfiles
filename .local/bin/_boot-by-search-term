@@ -1,0 +1,11 @@
+#!/bin/sh
+# Search for a menu entry for grub matching $1 and reboot into it if it exists
+SEARCH_TERM="$1"
+
+MENU_ENTRY="$(sudo grep "menuentry.*\"$SEARCH_TERM\"" /boot/grub/grub.cfg | head -1 | cut -d \" -f 2)"
+if [ -z "$MENU_ENTRY" ]; then
+  echo "Couldn't find boot entry for $SEARCH_TERM"
+else
+  sudo grub-reboot "$MENU_ENTRY"
+  reboot
+fi

@@ -1,6 +1,3 @@
 #!/bin/sh
-
-boot_number=$(efibootmgr | grep "Windows" | tail -n 1 | awk '{print substr($1, 5, 4)}')
-
-sudo efibootmgr -n $boot_number
-reboot
+# Reboot into windows
+_boot-by-search-term "Windows Boot Manager"
