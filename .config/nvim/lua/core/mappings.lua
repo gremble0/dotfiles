@@ -23,8 +23,6 @@ do
     ks("n", "<leader>qc", ":cclose<CR>", { desc = "Close quickfix list", silent = true })
     ks("n", "<leader>lo", ":lopen<CR>", { desc = "Open location list", silent = true })
     ks("n", "<leader>lc", ":lclose<CR>", { desc = "Close location list", silent = true })
-    ks("n", "[q", ":cclose<CR>:cprevious<CR>", { desc = "Go to previous quickfix error", silent = true })
-    ks("n", "]q", ":cclose<CR>:cnext<CR>", { desc = "Go to next quickfix error", silent = true })
 
     -- Clear highlights with escape
     ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
