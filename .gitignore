@@ -52,8 +52,6 @@
 !.config/wofi/
 !.config/wofi/*
 
-!.config/BetterDiscord/data/stable/custom.css
-
 !.config/zsh/
 !.config/zsh/*
 
