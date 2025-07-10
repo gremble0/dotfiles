@@ -36,15 +36,8 @@ do
   do
     local buf = vim.lsp.buf
 
-    ks("n", "grd", buf.definition, { desc = "LSP: Goto definition" })
-    ks("n", "grD", buf.declaration, { desc = "LSP: Goto declaration" })
-
-    ks("n", "K", function()
-      buf.hover({ border = "rounded" })
-    end, { desc = "LSP: Hover documentation" })
-    ks({ "n", "i", "s" }, "<C-s>", function()
-      buf.signature_help({ border = "rounded" })
-    end, { desc = "LSP: Signature Documentation" })
+    ks("n", "grd", buf.definition, { desc = "vim.lsp.buf.definition()" })
+    ks({ "n", "i", "s" }, "<C-s>", buf.signature_help, { desc = "vim.lsp.buf.signature_help()" })
   end
 
   -- Open lazy

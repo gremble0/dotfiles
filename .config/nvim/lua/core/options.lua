@@ -7,6 +7,7 @@ vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
+vim.o.winborder = "rounded"
 
 -- Menus
 vim.opt.completeopt = { "menu", "menuone" }

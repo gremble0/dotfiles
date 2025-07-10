@@ -19,6 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = "plugins",
   ui = {
+    -- Doesnt respect vim.o.winborder for some reason
     border = "rounded",
     backdrop = 100,
   },

@@ -7,7 +7,6 @@ return {
       "williamboman/mason.nvim",
       opts = {
         ui = {
-          border = "rounded",
           backdrop = 100,
         },
       },
@@ -34,12 +33,8 @@ return {
   },
   config = function()
     local lspconfig = require("lspconfig")
-    local lspconfig_windows = require("lspconfig.ui.windows")
     local mason_registry = require("mason-registry")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-    -- Change :LspInfo border
-    lspconfig_windows.default_options.border = "rounded"
 
     ---@class ToolConfig
     ---@field lspconfig_name string

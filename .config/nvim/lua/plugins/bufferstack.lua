@@ -4,7 +4,7 @@ return {
   -- For local development
   dir = "~/Code/plugins/bufferstack.nvim",
   opts = {
-    bprevious = "<C-p>",
-    bnext = "<C-n>",
+    bprevious = "[b",
+    bnext = "]b",
   },
 }
