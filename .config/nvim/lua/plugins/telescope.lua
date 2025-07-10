@@ -44,6 +44,7 @@ return {
 
     return {
       defaults = {
+        border = false,
         selection_caret = " ",
         entry_prefix = " ",
         prompt_prefix = "❯ ",

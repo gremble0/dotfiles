@@ -79,14 +79,8 @@ return {
       },
 
       window = {
-        completion = cmp.config.window.bordered({
-          border = "rounded",
-          scrolloff = 2,
-        }),
-        documentation = cmp.config.window.bordered({
-          border = "rounded",
-          scrolloff = 2,
-        }),
+        completion = cmp.config.window.bordered({ scrolloff = 2 }),
+        documentation = cmp.config.window.bordered({ scrolloff = 2 }),
       },
     })
 

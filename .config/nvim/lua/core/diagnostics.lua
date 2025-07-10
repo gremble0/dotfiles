@@ -7,7 +7,6 @@ vim.diagnostic.config({
   update_in_insert = true,
   float = {
     focusable = true,
-    border = "rounded",
     source = true,
     prefix = "",
     header = { "Diagnostics: ", "@markup.heading" },
