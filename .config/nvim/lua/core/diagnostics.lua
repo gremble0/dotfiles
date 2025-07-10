@@ -1,3 +1,7 @@
+-- Some language servers spam logs too much making nvim generate warnings for having large log files.
+-- I never look at these anyways, so just disable them
+vim.lsp.set_log_level("OFF")
+
 -- Configure diagnostic floats
 vim.diagnostic.config({
   update_in_insert = true,
@@ -17,33 +21,20 @@ vim.diagnostic.config({
     },
   },
   jump = {
-    float = true
+    float = true,
   },
   virtual_text = true,
 })
 
-vim.keymap.set("n", "<leader>da", vim.diagnostic.setqflist, { desc = "Add diagnostics to quickfix list" })
+vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Add all known diagnostics to quickfix list" })
+
 vim.keymap.set("n", "<leader>de", function()
-  local diagnostics = vim.diagnostic.get(0)
+  vim.diagnostic.setloclist({ severity = "ERROR" })
+end, { desc = "Add diagnostics for all errors in the current buffer to quickfix list" })
 
-  local errors = vim.tbl_filter(function(diagnostic)
-    return diagnostic.severity == vim.diagnostic.severity.ERROR
-  end, diagnostics)
-
-  ---@type vim.quickfix.entry[]
-  local qf_items = {}
-  for _, diagnostic in ipairs(errors) do
-    table.insert(qf_items, {
-      bufnr = diagnostic.bufnr,
-      lnum = diagnostic.lnum + 1,
-      col = diagnostic.col + 1,
-      text = diagnostic.message,
-      type = "ERROR",
-    })
-  end
-
-  vim.fn.setqflist(qf_items)
-  vim.cmd("copen")
-end, { desc = "Add errors to quickfix list" })
-
-vim.lsp.set_log_level("OFF")
+vim.keymap.set(
+  "n",
+  "<leader>dl",
+  vim.diagnostic.setloclist,
+  { desc = "Add diagnostics for the current buffer to quickfix list" }
+)
