@@ -51,5 +51,6 @@ export FZF_DEFAULT_COMMAND='find .'
 export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ " --height=50% --color=dark,prompt:3,pointer:3,info:2,query:7:regular,hl:3,hl+:3,bg+:#333333'
 
 if [ "$(tty)" = "/dev/tty1" ]; then
+    export XDG_SESSION_TYPE="wayland"
     Hyprland
 fi
