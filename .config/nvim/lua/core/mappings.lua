@@ -59,7 +59,6 @@ do
     vim.fn.system(string.format("echo %s | %s", vim.fn.expand("%"), get_clipboard()))
   end, { desc = "Copy current file to clipboard" })
   ks("n", "<leader>cl", function()
-    print(string.format("echo %s:%s | %s", vim.fn.expand("%"), vim.fn.line("."), get_clipboard()))
     vim.fn.system(string.format("echo %s:%s | %s", vim.fn.expand("%"), vim.fn.line("."), get_clipboard()))
   end, { desc = "Copy current line to clipboard" })
 end
