@@ -44,20 +44,24 @@ do
   ks("n", "<leader>z", ":Lazy<CR>", { desc = "Open lazy", silent = true })
 
   local get_clipboard = function()
-    if vim.fn.executable("wl-copy") == 1 then
+    local XDG_SESSION_TYPE = os.getenv("XDG_SESSION_TYPE")
+    if XDG_SESSION_TYPE == "wayland" and vim.fn.executable("wl-copy") == 1 then
       return "wl-copy"
-    elseif vim.fn.executable("xclip") == 1 then
+    elseif XDG_SESSION_TYPE == "x11" and vim.fn.executable("xclip") == 1 then
       return "xclip -selection clipboard"
     end
+
+    error("Could not find system clipboard")
   end
 
   -- Copy stuff from current file (useful for debugging with gdb)
   ks("n", "<leader>cp", function()
     vim.fn.system(string.format("echo %s | %s", vim.fn.expand("%"), get_clipboard()))
-  end, {})
+  end, { desc = "Copy current file to clipboard" })
   ks("n", "<leader>cl", function()
+    print(string.format("echo %s:%s | %s", vim.fn.expand("%"), vim.fn.line("."), get_clipboard()))
     vim.fn.system(string.format("echo %s:%s | %s", vim.fn.expand("%"), vim.fn.line("."), get_clipboard()))
-  end, {})
+  end, { desc = "Copy current line to clipboard" })
 end
 
 --- VISUAL MODE KEYBINDS
