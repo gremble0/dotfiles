@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Browser
-Exec=/usr/bin/chromium
+Exec=/usr/bin/chromium-browser
 Icon=chromium
