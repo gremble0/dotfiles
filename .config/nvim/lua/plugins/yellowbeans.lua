@@ -1,10 +1,13 @@
 -- Theme
+---@type PluginSpec
 return {
-  "gremble0/yellowbeans.nvim",
-  priority = 1000,
-  -- For local development
-  dir = "~/Code/plugins/yellowbeans.nvim",
-  config = function()
-    vim.cmd.colorscheme("yellowbeans")
-  end,
+  spec = {
+    src = "https://github.com/gremble0/yellowbeans.nvim",
+  },
+  setup = {
+    priority = 1000,
+    setup = function()
+      vim.cmd.colorscheme("yellowbeans")
+    end,
+  },
 }

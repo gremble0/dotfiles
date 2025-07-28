@@ -1,4 +1,9 @@
+---@type PluginSpec
 return {
-  "stevearc/dressing.nvim",
-  opts = {},
+  spec = { src = "https://github.com/stevearc/dressing.nvim" },
+  setup = {
+    setup = function()
+      require("dressing").setup()
+    end,
+  },
 }

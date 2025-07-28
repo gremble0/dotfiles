@@ -1,18 +1,19 @@
 -- Add indentation guides even on blank lines
+---@type PluginSpec
 return {
-  "lukas-reineke/indent-blankline.nvim",
-  opts = {
-    indent = {
-      char = "▏",
-    },
-    scope = {
-      char = "▏",
-      show_start = false,
-      show_end = false,
-    },
+  spec = { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
+  setup = {
+    setup = function()
+      require("ibl").setup({
+        indent = {
+          char = "▏",
+        },
+        scope = {
+          char = "▏",
+          show_start = false,
+          show_end = false,
+        },
+      })
+    end,
   },
-  -- Using opts calls the setup for the wrong version of the plugin so have to manually call it
-  config = function(_, opts)
-    require("ibl").setup(opts)
-  end,
 }

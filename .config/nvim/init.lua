@@ -1,40 +1,44 @@
--- Require basic config
 require("core")
 
--- Initialize lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+---@class PluginSetup
+---@field setup fun(): nil
+---@field priority? integer higher value means higher priority in terms of plugin load order
 
--- Import plugins using lazy
-require("lazy").setup({
-  spec = "plugins",
-  ui = {
-    -- Doesnt respect vim.o.winborder for some reason
-    border = "rounded",
-    backdrop = 100,
-  },
-  change_detection = { enabled = false },
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "matchit",
-        "netrwPlugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
-  },
-})
+---@class PluginSpec
+---@field spec vim.pack.Spec spec passed to vim.pack.add()
+---@field dependencies? vim.pack.Spec[] dependencies for `spec`. Also passed to vim.pack.add()
+---@field setup? PluginSetup
+
+---@type vim.pack.Spec[]
+local specs = {}
+---@type PluginSetup[]
+local setups = {}
+
+for name, _ in vim.fs.dir(vim.fn.stdpath("config") .. "/lua/plugins") do
+  local plugin_base_filename = name:gsub(".lua", "")
+  ---@type PluginSpec
+  local spec = require("plugins." .. plugin_base_filename)
+  table.insert(specs, spec.spec)
+  if spec.dependencies then
+    for _, dependency in ipairs(spec.dependencies) do
+      table.insert(specs, dependency)
+    end
+  end
+  table.insert(setups, spec.setup)
+end
+
+-- Sort by priority
+-- table.sort(setups, function(plugin1, plugin2)
+--   if plugin1.priority and plugin2.priority then
+--     return plugin1.priority > plugin2.priority
+--   else
+--     return plugin2.priority and false or true
+--   end
+-- end)
+
+vim.pack.add(specs)
+for _, setup in ipairs(setups) do
+  if setup.setup then
+    setup.setup()
+  end
+end

@@ -1,10 +1,15 @@
 -- Fix unintuitive :bprevious and :bnext behavior
+---@type PluginSpec
 return {
-  "gremble0/bufferstack.nvim",
-  -- For local development
-  dir = "~/Code/plugins/bufferstack.nvim",
-  opts = {
-    bprevious = "[b",
-    bnext = "]b",
+  spec = {
+    src = "https://github.com/gremble0/bufferstack.nvim",
+  },
+  setup = {
+    setup = function()
+      require("bufferstack").setup({
+        bprevious = "[b",
+        bnext = "]b",
+      })
+    end,
   },
 }
