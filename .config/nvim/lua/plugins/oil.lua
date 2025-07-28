@@ -1,38 +1,46 @@
 -- DWIM File navigation and editing
+---@type PluginSpec
 return {
-  "stevearc/oil.nvim",
-  dependencies = "nvim-tree/nvim-web-devicons",
-  opts = {
-    columns = { "permissions", "size", "mtime", "icon" },
-    win_options = { signcolumn = "yes" },
-    keymaps = {
-      ["<CR>"] = "actions.select",
-      ["-"] = "actions.parent",
-      [">"] = "actions.preview",
-    },
-    use_default_keymaps = false,
-    view_options = {
-      show_hidden = true,
-      -- Hide parent dir
-      is_always_hidden = function(name, _)
-        return name == ".."
-      end,
-    },
+  spec = { src = "https://github.com/stevearc/oil.nvim" },
+  dependencies = { { src = "https://github.com/nvim-tree/nvim-web-devicons" } },
+  setup = {
+    setup = function()
+      require("oil").setup({
+        columns = { "permissions", "size", "mtime", "icon" },
+        win_options = { signcolumn = "yes" },
+        keymaps = {
+          ["<CR>"] = "actions.select",
+          ["-"] = "actions.parent",
+          [">"] = "actions.preview",
+        },
+        use_default_keymaps = false,
+        view_options = {
+          show_hidden = true,
+          -- Hide parent dir
+          is_always_hidden = function(name, _)
+            return name == ".."
+          end,
+        },
+      })
+    end,
   },
+  ---TODO: this shit. Hard?
   -- Check if vim is opened on a directory (won't be handled by plugin since its lazy loaded)
-  init = function(oil)
-    if vim.fn.isdirectory(vim.fn.expand("%")) == 1 then
-      require("oil").setup(oil.opts)
-    end
-  end,
-  keys = {
-    {
-      "<C-e>",
-      function()
-        require("oil").open()
-      end,
-      desc = "Open file explorer (oil)",
-    },
-  },
-  cmd = "Oil",
+  -- init = function(oil)
+  --   if vim.fn.isdirectory(vim.fn.expand("%")) == 1 then
+  --     require("oil").setup(oil.opts)
+  --   end
+  -- end,
+  ---TODO: keys
+  -- keys = {
+  --   {
+  --     "<C-e>",
+  --     function()
+  --       require("oil").open()
+  --     end,
+  --     desc = "Open file explorer (oil)",
+  --   },
+  -- },
+  ---TODO: cmd
+  -- cmd = "Oil",
 }
