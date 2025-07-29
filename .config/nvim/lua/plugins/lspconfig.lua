@@ -4,19 +4,19 @@ return {
   spec = { src = "https://github.com/neovim/nvim-lspconfig" },
   dependencies = {
     -- Automatically install LSPs to stdpath
-    { src = "https://github.com/williamboman/mason.nvim" },
+    { spec = { src = "https://github.com/williamboman/mason.nvim" } },
 
     -- Useful status updates for LSP
-    { src = "https://github.com/j-hui/fidget.nvim" },
+    { spec = { src = "https://github.com/j-hui/fidget.nvim" } },
 
     -- Better lua LSP functionality
-    { src = "https://github.com/folke/lazydev.nvim" },
+    { spec = { src = "https://github.com/folke/lazydev.nvim" } },
 
     -- Adds LSP completion capabilities
-    { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+    { spec = { src = "https://github.com/hrsh7th/cmp-nvim-lsp" } },
 
     -- Better java support
-    { src = "https://github.com/mfussenegger/nvim-jdtls" },
+    { spec = { src = "https://github.com/mfussenegger/nvim-jdtls" } },
   },
   setup = {
     setup = function()
@@ -29,7 +29,7 @@ return {
           backdrop = 100,
         },
       })
-      require("fidget").setup()
+      require("fidget").setup({})
       require("lazydev").setup()
 
       ---@class ToolConfig

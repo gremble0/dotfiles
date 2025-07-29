@@ -4,14 +4,7 @@ return {
   spec = {
     src = "https://github.com/tpope/vim-fugitive",
   },
-  dependencies = { { src = "https://github.com/junegunn/gv.vim" } },
-  ---TODO: keybinds
-  -- keys = {
-  --   { "<leader>gt", ":vertical Git<CR>", desc = "Open fugitive", silent = true },
-  --   { "<leader>gc", ":GV<CR>", desc = "Open commit history", silent = true },
-  -- },
-  ---TODO: lazy
-  -- cmd = { "Git", "GV", "G" },
+  dependencies = { { spec = { src = "https://github.com/junegunn/gv.vim" } } },
   setup = {
     setup = function()
       vim.api.nvim_create_autocmd("FileType", {
@@ -24,6 +17,9 @@ return {
           vim.keymap.set("n", "pl", ":Git pull<CR>", { desc = "Git pull", silent = true, buffer = e.buf })
         end,
       })
+
+      vim.keymap.set("n", "<leader>gt", ":vertical Git<CR>", { desc = "Open fugitive", silent = true })
+      vim.keymap.set("n", "<leader>gc", ":GV<CR>", { desc = "Open commit history", silent = true })
     end,
   },
 }

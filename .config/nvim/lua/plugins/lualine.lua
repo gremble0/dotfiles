@@ -2,7 +2,7 @@
 ---@type PluginSpec
 return {
   spec = { src = "https://github.com/nvim-lualine/lualine.nvim" },
-  dependencies = { { src = "https://github.com/nvim-tree/nvim-web-devicons" } },
+  dependencies = { { spec = { src = "https://github.com/nvim-tree/nvim-web-devicons" } } },
   setup = {
     setup = function()
       -- Make section for lsp info in statusline

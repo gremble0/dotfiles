@@ -4,7 +4,8 @@ return {
   spec = { src = "https://github.com/lewis6991/gitsigns.nvim" },
   setup = {
     setup = function()
-      require("gitsigns").setup({
+      local gitsigns = require("gitsigns")
+      gitsigns.setup({
         signs = {
           add = { text = "┃" },
           change = { text = "┃" },
@@ -13,47 +14,24 @@ return {
           changedelete = { text = "┃" },
         },
       })
+
+      local nav_opts = { preview = true }
+
+      vim.keymap.set("n", "[g", function()
+        gitsigns.nav_hunk("prev", nav_opts)
+      end, { desc = "Goto previous git hunk" })
+
+      vim.keymap.set("n", "]g", function()
+        gitsigns.nav_hunk("next", nav_opts)
+      end, { desc = "Goto next git hunk" })
+
+      vim.keymap.set("n", "<leader>gb", function()
+        gitsigns.blame_line({ full = true })
+      end, { desc = "Git blame current line" })
+
+      vim.keymap.set("n", "<leader>gv", gitsigns.preview_hunk_inline, { desc = "Preview git hunk" })
+
+      vim.keymap.set("n", "<leader>gq", gitsigns.setqflist, { desc = "Preview git hunk" })
     end,
   },
-  ---TODO: keys
-  -- keys = {
-  --   {
-  --     "[g",
-  --     function()
-  --       require("gitsigns").nav_hunk("prev")
-  --     end,
-  --     desc = "Goto previous git hunk",
-  --   },
-  --   {
-  --     "]g",
-  --     function()
-  --       require("gitsigns").nav_hunk("next")
-  --     end,
-  --     desc = "Goto next git hunk",
-  --   },
-  --   {
-  --     "<leader>gb",
-  --     function()
-  --       require("gitsigns").blame_line({ full = true })
-  --     end,
-  --     desc = "Git blame current line",
-  --   },
-  --   {
-  --     "<leader>gv",
-  --     function()
-  --       require("gitsigns").preview_hunk_inline()
-  --     end,
-  --     desc = "Preview git hunk",
-  --   },
-  --   {
-  --     "<leader>gq",
-  --     function()
-  --       require("gitsigns").setqflist()
-  --     end,
-  --     desc = "Preview git hunk",
-  --   },
-  -- },
-
-  ---TODO: ignore lazy?
-  -- lazy = false,
 }

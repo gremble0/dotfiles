@@ -27,36 +27,24 @@ return {
           typescriptreact = { "prettierd" },
         },
       })
+
+      --TODO: lazy on keybinds
+      vim.keymap.set("n", "<leader>mt", function()
+        require("conform").format({ timeout_ms = 1000, lsp_format = "fallback" })
+      end, { desc = "Format current buffer" })
+
+      vim.keymap.set("n", "<leader>me", function()
+        autoformat_cmd = autoformat_cmd or make_autoformat_autocmd()
+      end, { desc = "Enable autoformatting" })
+
+      vim.keymap.set("n", "<leader>md", function()
+        if autoformat_cmd then
+          vim.api.nvim_del_autocmd(autoformat_cmd)
+          autoformat_cmd = nil
+        end
+      end, { desc = "Disable autoformatting", silent = true })
     end,
   },
-  ---TODO: keybinds
-  -- keys = {
-  --   {
-  --     "<leader>mt",
-  --     function()
-  --       require("conform").format({ timeout_ms = 1000, lsp_format = "fallback" })
-  --     end,
-  --     desc = "Format current buffer",
-  --   },
-  --   {
-  --     "<leader>me",
-  --     function()
-  --       autoformat_cmd = autoformat_cmd or make_autoformat_autocmd()
-  --     end,
-  --     desc = "Enable autoformatting",
-  --   },
-  --   {
-  --     "<leader>md",
-  --     function()
-  --       if autoformat_cmd then
-  --         vim.api.nvim_del_autocmd(autoformat_cmd)
-  --         autoformat_cmd = nil
-  --       end
-  --     end,
-  --     desc = "Disable autoformatting",
-  --     silent = true,
-  --   },
-  -- },
   ---TODO: lazy
   -- cmd = { "ConformInfo" },
 }
