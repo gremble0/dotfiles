@@ -2,8 +2,8 @@
 local get_buffer_path = function()
   -- If in an oil buffer get the path from oil
   if vim.bo.filetype == "oil" then
-    local ok, oil = pcall(require, "oil")
-    if ok then
+    local success, oil = pcall(require, "oil")
+    if success then
       return oil.get_current_dir()
     end
   end
@@ -23,15 +23,14 @@ return {
           .system({ "make" }, { cwd = vim.fn.stdpath("data") .. "/site/pack/core/opt/telescope-fzf-native.nvim" })
           :wait()
       end,
-      cond = function()
-        return vim.fn.executable("make") == 1
-      end,
     },
   },
   setup = function()
     local action_state = require("telescope.actions.state")
     local actions = require("telescope.actions")
     local sorters = require("telescope.sorters")
+    local telescope = require("telescope")
+    local telescope_builtin = require("telescope.builtin")
 
     local delete_buffer = function(prompt_bufnr)
       local current_picker = action_state.get_current_picker(prompt_bufnr)
@@ -43,11 +42,10 @@ return {
     local tabnew = function(prompt_bufnr)
       local selection = action_state.get_selected_entry()
       actions.close(prompt_bufnr)
-      -- try filename, if nil - fallback to [1] (selection text)
+      -- try filename, if nil - fall back to [1] (selection text)
       vim.cmd.tabnew(selection.filename or selection[1])
     end
 
-    local telescope = require("telescope")
     telescope.setup({
       defaults = {
         border = true,
@@ -95,17 +93,15 @@ return {
 
     telescope.load_extension("fzf")
 
-    local telescope_builtin = require("telescope.builtin")
-
     vim.keymap.set("n", "<leader>b", telescope_builtin.buffers, { desc = "Telescope find open buffers", silent = true })
 
     vim.keymap.set("n", "<leader>ff", function()
       ---TODO: unnecessary args?
-      require("telescope.builtin").find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
+      telescope_builtin.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
     end, { desc = "Telescope find files", silent = true })
 
     vim.keymap.set("n", "<leader>fw", function()
-      require("telescope.builtin").find_files({
+      telescope_builtin.find_files({
         cwd = get_buffer_path(),
         hidden = true,
         no_ignore = true,
@@ -114,10 +110,10 @@ return {
     end, { desc = "Telescope find files" })
 
     vim.keymap.set("n", "<leader>fg", telescope_builtin.git_files, { desc = "Telescope git files" })
-    vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "Telescope find help" })
-    vim.keymap.set("n", "<leader>rr", require("telescope.builtin").live_grep, { desc = "Telescope live grep" })
+    vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, { desc = "Telescope find help" })
+    vim.keymap.set("n", "<leader>rr", telescope_builtin.live_grep, { desc = "Telescope live grep" })
     vim.keymap.set("n", "<leader>rw", function()
-      require("telescope.builtin").live_grep({ cwd = get_buffer_path() })
+      telescope_builtin.live_grep({ cwd = get_buffer_path() })
     end, { desc = "Telescope live grep" })
   end,
 }
