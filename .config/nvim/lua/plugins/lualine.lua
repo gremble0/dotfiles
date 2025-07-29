@@ -23,8 +23,8 @@ return {
     end
 
     local diff_source = function()
-      local ok, gitsigns = pcall(vim.api.nvim_buf_get_var, 0, "gitsigns_status_dict")
-      if ok then
+      local success, gitsigns = pcall(vim.api.nvim_buf_get_var, 0, "gitsigns_status_dict")
+      if success then
         return {
           added = gitsigns.added,
           modified = gitsigns.changed,

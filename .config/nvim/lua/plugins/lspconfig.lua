@@ -61,8 +61,8 @@ return {
       end
 
       -- Only setup lspconfig on tools it has configs for
-      local ok, _ = pcall(require, "lspconfig.configs." .. tool.lspconfig_name)
-      if ok then
+      local success, _ = pcall(require, "lspconfig.configs." .. tool.lspconfig_name)
+      if success then
         lspconfig[tool.lspconfig_name].setup({
           capabilities = capabilities,
           settings = tool.settings,

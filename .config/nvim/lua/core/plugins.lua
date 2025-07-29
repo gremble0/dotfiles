@@ -1,9 +1,8 @@
 ---@class ExtendedPackSpec : vim.pack.Spec
 ---@field dependencies? ExtendedPackSpec[] dependencies needed to load before `spec`
----@field setup? fun(): nil function run to setup plugin after installation
 ---@field priority? integer higher value means higher priority in terms of plugin load order
+---@field setup? fun(): nil function run to setup plugin after installation
 ---@field build? fun(): nil command ran to build plugin. Runs before setup()
----@field cond? fun(): boolean condition to check before running build()
 
 ---@type ExtendedPackSpec[]
 local specs = {}
@@ -17,18 +16,20 @@ end
 ---@type ExtendedPackSpec[]
 local specs_flattened = {}
 
+---Flatten all of `spec`s dependencies and put them in `dest`
 ---@param spec ExtendedPackSpec
-local function flatten_dependencies(spec)
+---@param dest ExtendedPackSpec[]
+local function flatten_dependencies(spec, dest)
   if spec.dependencies then
     for _, dependency in ipairs(spec.dependencies) do
-      flatten_dependencies(dependency)
+      flatten_dependencies(dependency, dest)
     end
   end
-  table.insert(specs_flattened, spec)
+  table.insert(dest, spec)
 end
 
 for _, spec in ipairs(specs) do
-  flatten_dependencies(spec)
+  flatten_dependencies(spec, specs_flattened)
 end
 
 -- Sort by priority - preserving dependency order
@@ -45,7 +46,7 @@ end
 
 vim.pack.add(specs_flattened)
 for _, spec in ipairs(specs_flattened) do
-  if spec.build and spec.cond and spec.cond() then
+  if spec.build then
     spec.build()
   end
   if spec.setup then
