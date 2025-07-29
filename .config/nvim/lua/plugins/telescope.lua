@@ -123,6 +123,4 @@ return {
       end, { desc = "Telescope live grep" })
     end,
   },
-  ---TODO: cmd
-  -- cmd = "Telescope",
 }

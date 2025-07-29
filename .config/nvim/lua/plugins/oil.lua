@@ -28,13 +28,4 @@ return {
       end, { desc = "Open file explorer (oil)" })
     end,
   },
-  ---TODO: this shit. Hard? - just makes it lazy though.
-  -- Check if vim is opened on a directory (won't be handled by plugin since its lazy loaded)
-  -- init = function(oil)
-  --   if vim.fn.isdirectory(vim.fn.expand("%")) == 1 then
-  --     require("oil").setup(oil.opts)
-  --   end
-  -- end,
-  ---TODO: cmd
-  -- cmd = "Oil",
 }

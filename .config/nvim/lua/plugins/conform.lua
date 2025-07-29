@@ -28,7 +28,6 @@ return {
         },
       })
 
-      --TODO: lazy on keybinds
       vim.keymap.set("n", "<leader>mt", function()
         require("conform").format({ timeout_ms = 1000, lsp_format = "fallback" })
       end, { desc = "Format current buffer" })
@@ -45,6 +44,4 @@ return {
       end, { desc = "Disable autoformatting", silent = true })
     end,
   },
-  ---TODO: lazy
-  -- cmd = { "ConformInfo" },
 }
