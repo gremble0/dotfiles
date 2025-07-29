@@ -40,9 +40,6 @@ do
     ks({ "n", "i", "s" }, "<C-s>", buf.signature_help, { desc = "vim.lsp.buf.signature_help()" })
   end
 
-  -- Open lazy
-  ks("n", "<leader>z", ":Lazy<CR>", { desc = "Open lazy", silent = true })
-
   local get_clipboard = function()
     local XDG_SESSION_TYPE = os.getenv("XDG_SESSION_TYPE")
     if XDG_SESSION_TYPE == "wayland" and vim.fn.executable("wl-copy") == 1 then
