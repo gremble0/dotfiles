@@ -2,7 +2,7 @@
 ---@type PluginSpec
 return {
   spec = { src = "https://github.com/stevearc/oil.nvim" },
-  dependencies = { { src = "https://github.com/nvim-tree/nvim-web-devicons" } },
+  dependencies = { { spec = { src = "https://github.com/nvim-tree/nvim-web-devicons" } } },
   setup = {
     setup = function()
       require("oil").setup({
@@ -22,25 +22,19 @@ return {
           end,
         },
       })
+
+      vim.keymap.set("n", "<C-e>", function()
+        require("oil").open()
+      end, { desc = "Open file explorer (oil)" })
     end,
   },
-  ---TODO: this shit. Hard?
+  ---TODO: this shit. Hard? - just makes it lazy though.
   -- Check if vim is opened on a directory (won't be handled by plugin since its lazy loaded)
   -- init = function(oil)
   --   if vim.fn.isdirectory(vim.fn.expand("%")) == 1 then
   --     require("oil").setup(oil.opts)
   --   end
   -- end,
-  ---TODO: keys
-  -- keys = {
-  --   {
-  --     "<C-e>",
-  --     function()
-  --       require("oil").open()
-  --     end,
-  --     desc = "Open file explorer (oil)",
-  --   },
-  -- },
   ---TODO: cmd
   -- cmd = "Oil",
 }

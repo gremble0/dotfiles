@@ -4,10 +4,10 @@ return {
   spec = { src = "https://github.com/hrsh7th/nvim-cmp" },
   dependencies = {
     -- Adds icons to cmp window
-    { src = "https://github.com/onsails/lspkind.nvim" },
+    { spec = { src = "https://github.com/onsails/lspkind.nvim" } },
 
     -- Cmp for commandline
-    { src = "https://github.com/hrsh7th/cmp-cmdline" },
+    { spec = { src = "https://github.com/hrsh7th/cmp-cmdline" } },
   },
   setup = {
     setup = function()

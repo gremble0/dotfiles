@@ -15,15 +15,14 @@ end
 return {
   spec = { src = "https://github.com/nvim-telescope/telescope.nvim" },
   dependencies = {
-    { src = "https://github.com/nvim-lua/plenary.nvim" },
-    {
-      src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-      ---TODO: this
-      -- build = "make",
-      -- cond = function()
-      --   return vim.fn.executable("make") == 1
-      -- end,
-    },
+    { spec = { src = "https://github.com/nvim-lua/plenary.nvim" } },
+
+    ---TODO: this
+    -- build = "make",
+    -- cond = function()
+    --   return vim.fn.executable("make") == 1
+    -- end,
+    { spec = { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" } },
   },
   setup = {
     setup = function()
@@ -48,7 +47,7 @@ return {
       local telescope = require("telescope")
       telescope.setup({
         defaults = {
-          border = false,
+          border = true,
           selection_caret = " ",
           entry_prefix = " ",
           prompt_prefix = "❯ ",
@@ -68,6 +67,7 @@ return {
             i = {
               ["<esc>"] = actions.close,
               ["<C-l>"] = false,
+              ["<C-f>"] = false,
               ["<C-s>"] = actions.file_split,
             },
           },
@@ -91,67 +91,38 @@ return {
       })
       ---TODO: build this
       -- telescope.load_extension("fzf")
+
+      local telescope_builtin = require("telescope.builtin")
+
+      vim.keymap.set(
+        "n",
+        "<leader>b",
+        telescope_builtin.buffers,
+        { desc = "Telescope find open buffers", silent = true }
+      )
+
+      vim.keymap.set("n", "<leader>ff", function()
+        ---TODO: unnecessary args?
+        require("telescope.builtin").find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
+      end, { desc = "Telescope find files", silent = true })
+
+      vim.keymap.set("n", "<leader>fw", function()
+        require("telescope.builtin").find_files({
+          cwd = get_buffer_path(),
+          hidden = true,
+          no_ignore = true,
+          no_ignore_parent = true,
+        })
+      end, { desc = "Telescope find files" })
+
+      vim.keymap.set("n", "<leader>fg", telescope_builtin.git_files, { desc = "Telescope git files" })
+      vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "Telescope find help" })
+      vim.keymap.set("n", "<leader>rr", require("telescope.builtin").live_grep, { desc = "Telescope live grep" })
+      vim.keymap.set("n", "<leader>rw", function()
+        require("telescope.builtin").live_grep({ cwd = get_buffer_path() })
+      end, { desc = "Telescope live grep" })
     end,
   },
-  ---TODO: keys
-  -- keys = {
-  --   {
-  --     "<leader>b",
-  --     function()
-  --       require("telescope.builtin").buffers()
-  --     end,
-  --     desc = "Telescope find open buffers",
-  --     silent = true,
-  --   },
-  --   {
-  --     "<leader>ff",
-  --     function()
-  --       require("telescope.builtin").find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
-  --     end,
-  --     desc = "Telescope find files",
-  --     silent = true,
-  --   },
-  --   {
-  --     "<leader>fw",
-  --     function()
-  --       require("telescope.builtin").find_files({
-  --         cwd = get_buffer_path(),
-  --         hidden = true,
-  --         no_ignore = true,
-  --         no_ignore_parent = true,
-  --       })
-  --     end,
-  --     desc = "Telescope find files",
-  --   },
-  --   {
-  --     "<leader>fg",
-  --     function()
-  --       require("telescope.builtin").git_files()
-  --     end,
-  --     desc = "Telescope git files",
-  --   },
-  --   {
-  --     "<leader>fh",
-  --     function()
-  --       require("telescope.builtin").help_tags()
-  --     end,
-  --     desc = "Telescope find help",
-  --   },
-  --   {
-  --     "<leader>rr",
-  --     function()
-  --       require("telescope.builtin").live_grep()
-  --     end,
-  --     desc = "Telescope live grep",
-  --   },
-  --   {
-  --     "<leader>rw",
-  --     function()
-  --       require("telescope.builtin").live_grep({ cwd = get_buffer_path() })
-  --     end,
-  --     desc = "Telescope live grep",
-  --   },
-  -- },
   ---TODO: cmd
   -- cmd = "Telescope",
 }

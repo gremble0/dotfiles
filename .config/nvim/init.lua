@@ -6,7 +6,7 @@ require("core")
 
 ---@class PluginSpec
 ---@field spec vim.pack.Spec spec passed to vim.pack.add()
----@field dependencies? vim.pack.Spec[] dependencies for `spec`. Also passed to vim.pack.add()
+---@field dependencies? PluginSpec[] dependencies needed to load before `spec`
 ---@field setup? PluginSetup
 
 ---@type vim.pack.Spec[]
@@ -21,7 +21,7 @@ for name, _ in vim.fs.dir(vim.fn.stdpath("config") .. "/lua/plugins") do
   table.insert(specs, spec.spec)
   if spec.dependencies then
     for _, dependency in ipairs(spec.dependencies) do
-      table.insert(specs, dependency)
+      table.insert(specs, dependency.spec)
     end
   end
   table.insert(setups, spec.setup)
