@@ -1,4 +1,4 @@
 ---@type PluginSpec
 return {
-  spec = { src = "https://github.com/tpope/vim-sleuth" },
+  vim_pack_spec = { src = "https://github.com/tpope/vim-sleuth" },
 }

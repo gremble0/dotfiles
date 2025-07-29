@@ -1,11 +1,9 @@
 ---@type PluginSpec
 return {
-  spec = {
+  vim_pack_spec = {
     src = "https://github.com/norcalli/nvim-colorizer.lua",
   },
-  setup = {
-    setup = function()
-      require("colorizer").setup()
-    end,
-  },
+  setup = function()
+    require("colorizer").setup()
+  end,
 }

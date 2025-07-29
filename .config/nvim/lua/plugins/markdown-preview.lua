@@ -1,7 +1,7 @@
 -- Preview markdown files with live updates
 ---@type PluginSpec
 return {
-  spec = { src = "https://github.com/iamcco/markdown-preview.nvim" },
+  vim_pack_spec = { src = "https://github.com/iamcco/markdown-preview.nvim" },
   ---TODO: cmd?
   -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   ---TODO: filetype?
