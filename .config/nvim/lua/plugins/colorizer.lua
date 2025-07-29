@@ -5,7 +5,6 @@ return {
   },
   setup = {
     setup = function()
-      -- TODO: lazy
       require("colorizer").setup()
     end,
   },
