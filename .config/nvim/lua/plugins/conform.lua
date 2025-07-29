@@ -13,9 +13,9 @@ end
 ---@type integer?
 local autoformat_cmd = make_autoformat_autocmd()
 
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = { src = "https://github.com/stevearc/conform.nvim" },
+  src = "https://github.com/stevearc/conform.nvim",
   setup = function()
     require("conform").setup({
       formatters_by_ft = {

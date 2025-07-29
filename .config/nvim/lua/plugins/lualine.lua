@@ -1,10 +1,10 @@
 -- Statusline
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  src = "https://github.com/nvim-lualine/lualine.nvim",
   dependencies = {
-    { vim_pack_spec = { src = "https://github.com/nvim-tree/nvim-web-devicons" } },
-    { vim_pack_spec = { src = "https://github.com/gremble0/yellowbeans.nvim" } },
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+    { src = "https://github.com/gremble0/yellowbeans.nvim" },
   },
   setup = function()
     -- Make section for lsp info in statusline

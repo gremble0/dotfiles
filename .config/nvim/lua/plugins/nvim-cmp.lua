@@ -1,13 +1,13 @@
 -- Completion
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = { src = "https://github.com/hrsh7th/nvim-cmp" },
+  src = "https://github.com/hrsh7th/nvim-cmp",
   dependencies = {
     -- Adds icons to cmp window
-    { vim_pack_spec = { src = "https://github.com/onsails/lspkind.nvim" } },
+    { src = "https://github.com/onsails/lspkind.nvim" },
 
     -- Cmp for commandline
-    { vim_pack_spec = { src = "https://github.com/hrsh7th/cmp-cmdline" } },
+    { src = "https://github.com/hrsh7th/cmp-cmdline" },
   },
   setup = function()
     local cmp = require("cmp")

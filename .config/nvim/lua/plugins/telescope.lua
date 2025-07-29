@@ -11,13 +11,13 @@ local get_buffer_path = function()
   return require("telescope.utils").buffer_dir()
 end
 
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = { src = "https://github.com/nvim-telescope/telescope.nvim" },
+  src = "https://github.com/nvim-telescope/telescope.nvim",
   dependencies = {
-    { vim_pack_spec = { src = "https://github.com/nvim-lua/plenary.nvim" } },
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
     {
-      vim_pack_spec = { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+      src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
       build = function()
         vim
           .system({ "make" }, { cwd = vim.fn.stdpath("data") .. "/site/pack/core/opt/telescope-fzf-native.nvim" })

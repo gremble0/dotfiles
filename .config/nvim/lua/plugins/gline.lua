@@ -1,9 +1,7 @@
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = { src = "https://github.com/gremble0/gline.nvim" },
-  dependencies = { { vim_pack_spec = { src = "https://github.com/nvim-tree/nvim-web-devicons" } } },
-  ---TODO: local dev? low prio
-  -- dir = "~/Code/plugins/gline.nvim",
+  src = "https://github.com/gremble0/gline.nvim",
+  dependencies = { { src = "https://github.com/nvim-tree/nvim-web-devicons" } },
   setup = function()
     require("gline").setup()
   end,

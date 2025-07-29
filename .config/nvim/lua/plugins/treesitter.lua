@@ -1,9 +1,7 @@
 -- Highlight, edit, and navigate code
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = {
-    src = "https://github.com/nvim-treesitter/nvim-treesitter",
-  },
+  src = "https://github.com/nvim-treesitter/nvim-treesitter",
   setup = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {},
