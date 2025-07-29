@@ -1,8 +1,10 @@
 ---@class PluginSpec
 ---@field vim_pack_spec vim.pack.Spec spec passed to vim.pack.add()
 ---@field dependencies? PluginSpec[] dependencies needed to load before `spec`
----@field setup? fun(): nil
+---@field setup? fun(): nil function run to setup plugin after installation
 ---@field priority? integer higher value means higher priority in terms of plugin load order
+---@field build? fun(): nil command ran to build plugin. Runs before setup()
+---@field cond? fun(): boolean condition to check before running build()
 
 ---@type PluginSpec[]
 local specs = {}
@@ -24,6 +26,8 @@ end)
 local vim_pack_specs = {}
 ---@type (fun(): nil)[]
 local setups = {}
+---@type (fun(): nil)[]
+local builds = {}
 
 ---@param spec PluginSpec
 local function dfs_setup(spec)
@@ -36,6 +40,9 @@ local function dfs_setup(spec)
   if spec.setup then
     table.insert(setups, spec.setup)
   end
+  if spec.build and spec.cond and spec.cond() then
+    table.insert(builds, spec.build)
+  end
 end
 
 for _, spec in ipairs(specs) do
@@ -43,6 +50,10 @@ for _, spec in ipairs(specs) do
 end
 
 vim.pack.add(vim_pack_specs)
+
+for _, build in ipairs(builds) do
+  build()
+end
 for _, setup in ipairs(setups) do
   setup()
 end

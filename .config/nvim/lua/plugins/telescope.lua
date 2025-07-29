@@ -16,13 +16,17 @@ return {
   vim_pack_spec = { src = "https://github.com/nvim-telescope/telescope.nvim" },
   dependencies = {
     { vim_pack_spec = { src = "https://github.com/nvim-lua/plenary.nvim" } },
-
-    ---TODO: this
-    -- build = "make",
-    -- cond = function()
-    --   return vim.fn.executable("make") == 1
-    -- end,
-    { vim_pack_spec = { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" } },
+    {
+      vim_pack_spec = { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+      build = function()
+        vim
+          .system({ "make" }, { cwd = vim.fn.stdpath("data") .. "/site/pack/core/opt/telescope-fzf-native.nvim" })
+          :wait()
+      end,
+      cond = function()
+        return vim.fn.executable("make") == 1
+      end,
+    },
   },
   setup = function()
     local action_state = require("telescope.actions.state")
@@ -88,8 +92,8 @@ return {
         },
       },
     })
-    ---TODO: build this
-    -- telescope.load_extension("fzf")
+
+    telescope.load_extension("fzf")
 
     local telescope_builtin = require("telescope.builtin")
 
