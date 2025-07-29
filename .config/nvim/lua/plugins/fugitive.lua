@@ -1,10 +1,8 @@
 -- Git integration
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = {
-    src = "https://github.com/tpope/vim-fugitive",
-  },
-  dependencies = { { vim_pack_spec = { src = "https://github.com/junegunn/gv.vim" } } },
+  src = "https://github.com/tpope/vim-fugitive",
+  dependencies = { { src = "https://github.com/junegunn/gv.vim" } },
   setup = function()
     vim.api.nvim_create_autocmd("FileType", {
       group = vim.api.nvim_create_augroup("FugitiveCustom", {}),

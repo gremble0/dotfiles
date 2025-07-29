@@ -1,12 +1,11 @@
----@class PluginSpec
----@field vim_pack_spec vim.pack.Spec spec passed to vim.pack.add()
----@field dependencies? PluginSpec[] dependencies needed to load before `spec`
+---@class ExtendedPackSpec : vim.pack.Spec
+---@field dependencies? ExtendedPackSpec[] dependencies needed to load before `spec`
 ---@field setup? fun(): nil function run to setup plugin after installation
 ---@field priority? integer higher value means higher priority in terms of plugin load order
 ---@field build? fun(): nil command ran to build plugin. Runs before setup()
 ---@field cond? fun(): boolean condition to check before running build()
 
----@type PluginSpec[]
+---@type ExtendedPackSpec[]
 local specs = {}
 
 for name, _ in vim.fs.dir(vim.fn.stdpath("config") .. "/lua/plugins") do
@@ -15,45 +14,41 @@ for name, _ in vim.fs.dir(vim.fn.stdpath("config") .. "/lua/plugins") do
   table.insert(specs, spec)
 end
 
--- Sort by priority
-table.sort(specs, function(plugin1, plugin2)
-  local priority_a = plugin1.priority or 0
-  local priority_b = plugin2.priority or 0
-  return priority_a > priority_b
-end)
+---@type ExtendedPackSpec[]
+local specs_flattened = {}
 
----@type vim.pack.Spec[]
-local vim_pack_specs = {}
----@type (fun(): nil)[]
-local setups = {}
----@type (fun(): nil)[]
-local builds = {}
-
----@param spec PluginSpec
-local function dfs_setup(spec)
+---@param spec ExtendedPackSpec
+local function flatten_dependencies(spec)
   if spec.dependencies then
     for _, dependency in ipairs(spec.dependencies) do
-      dfs_setup(dependency)
+      flatten_dependencies(dependency)
     end
   end
-  table.insert(vim_pack_specs, spec.vim_pack_spec)
-  if spec.setup then
-    table.insert(setups, spec.setup)
-  end
-  if spec.build and spec.cond and spec.cond() then
-    table.insert(builds, spec.build)
-  end
+  table.insert(specs_flattened, spec)
 end
 
 for _, spec in ipairs(specs) do
-  dfs_setup(spec)
+  flatten_dependencies(spec)
 end
 
-vim.pack.add(vim_pack_specs)
-
-for _, build in ipairs(builds) do
-  build()
+-- Sort by priority - preserving dependency order
+for i, spec in ipairs(specs_flattened) do
+  if spec.priority then
+    local insert_index = 1
+    while specs_flattened[insert_index].priority and specs_flattened[insert_index].priority > spec.priority do
+      insert_index = insert_index + 1
+    end
+    table.remove(specs_flattened, i)
+    table.insert(specs_flattened, insert_index, spec)
+  end
 end
-for _, setup in ipairs(setups) do
-  setup()
+
+vim.pack.add(specs_flattened)
+for _, spec in ipairs(specs_flattened) do
+  if spec.build and spec.cond and spec.cond() then
+    spec.build()
+  end
+  if spec.setup then
+    spec.setup()
+  end
 end

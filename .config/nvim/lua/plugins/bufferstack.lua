@@ -1,9 +1,7 @@
 -- Fix unintuitive :bprevious and :bnext behavior
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = {
-    src = "https://github.com/gremble0/bufferstack.nvim",
-  },
+  src = "https://github.com/gremble0/bufferstack.nvim",
   setup = function()
     require("bufferstack").setup({
       bprevious = "[b",

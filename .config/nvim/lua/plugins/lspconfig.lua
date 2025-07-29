@@ -1,22 +1,19 @@
 -- LSP Configuration & Plugins
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = { src = "https://github.com/neovim/nvim-lspconfig" },
+  src = "https://github.com/neovim/nvim-lspconfig",
   dependencies = {
     -- Automatically install LSPs to stdpath
-    { vim_pack_spec = { src = "https://github.com/williamboman/mason.nvim" } },
+    { src = "https://github.com/williamboman/mason.nvim" },
 
     -- Useful status updates for LSP
-    { vim_pack_spec = { src = "https://github.com/j-hui/fidget.nvim" } },
+    { src = "https://github.com/j-hui/fidget.nvim" },
 
     -- Better lua LSP functionality
-    { vim_pack_spec = { src = "https://github.com/folke/lazydev.nvim" } },
+    { src = "https://github.com/folke/lazydev.nvim" },
 
     -- Adds LSP completion capabilities
-    { vim_pack_spec = { src = "https://github.com/hrsh7th/cmp-nvim-lsp" } },
-
-    -- Better java support
-    { vim_pack_spec = { src = "https://github.com/mfussenegger/nvim-jdtls" } },
+    { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
   },
   setup = function()
     local lspconfig = require("lspconfig")

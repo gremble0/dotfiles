@@ -1,8 +1,8 @@
 -- DWIM File navigation and editing
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = { src = "https://github.com/stevearc/oil.nvim" },
-  dependencies = { { vim_pack_spec = { src = "https://github.com/nvim-tree/nvim-web-devicons" } } },
+  src = "https://github.com/stevearc/oil.nvim",
+  dependencies = { { src = "https://github.com/nvim-tree/nvim-web-devicons" } },
   setup = function()
     require("oil").setup({
       columns = { "permissions", "size", "mtime", "icon" },

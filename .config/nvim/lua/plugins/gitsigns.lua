@@ -1,7 +1,7 @@
 -- Adds git releated signs to the gutter, as well as utilities for managing changes
----@type PluginSpec
+---@type ExtendedPackSpec
 return {
-  vim_pack_spec = { src = "https://github.com/lewis6991/gitsigns.nvim" },
+  src = "https://github.com/lewis6991/gitsigns.nvim",
   setup = function()
     local gitsigns = require("gitsigns")
     gitsigns.setup({
