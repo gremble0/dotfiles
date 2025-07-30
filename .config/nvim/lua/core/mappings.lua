@@ -34,10 +34,8 @@ do
 
   -- Lsp stuff
   do
-    local buf = vim.lsp.buf
-
-    ks("n", "grd", buf.definition, { desc = "vim.lsp.buf.definition()" })
-    ks({ "n", "i", "s" }, "<C-s>", buf.signature_help, { desc = "vim.lsp.buf.signature_help()" })
+    ks("n", "grd", vim.lsp.buf.definition, { desc = "vim.lsp.buf.definition()" })
+    ks({ "n", "i", "s" }, "<C-s>", vim.lsp.buf.signature_help, { desc = "vim.lsp.buf.signature_help()" })
   end
 
   local get_clipboard = function()
@@ -63,8 +61,8 @@ end
 --- VISUAL MODE KEYBINDS
 do
   -- Move lines
-  ks("x", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
-  ks("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up", silent = true })
+  ks("x", "J", ":m '>+1<CR>gv", { desc = "Move selected lines down", silent = true })
+  ks("x", "K", ":m '<-2<CR>gv", { desc = "Move selected lines up", silent = true })
 end
 
 --- INSERT AND COMMAND MODE KEYBINDS
