@@ -21,4 +21,7 @@ return {
       modules = {},
     })
   end,
+  build = function()
+    require("nvim-treesitter.install").update()
+  end,
 }
