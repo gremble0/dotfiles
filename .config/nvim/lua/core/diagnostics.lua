@@ -28,7 +28,7 @@ vim.diagnostic.config({
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Add all known diagnostics to quickfix list" })
 
 vim.keymap.set("n", "<leader>de", function()
-  vim.diagnostic.setloclist({ severity = "ERROR" })
+  vim.diagnostic.setloclist({ severity = 1 })
 end, { desc = "Add diagnostics for all errors in the current buffer to quickfix list" })
 
 vim.keymap.set(
