@@ -20,11 +20,7 @@ return {
     local mason_registry = require("mason-registry")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-    require("mason").setup({
-      ui = {
-        backdrop = 100,
-      },
-    })
+    require("mason").setup({ ui = { backdrop = 100 } })
     require("fidget").setup({})
     require("lazydev").setup()
 
