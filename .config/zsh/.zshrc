@@ -23,18 +23,15 @@ setopt nocaseglob
 bindkey -e
 
 # Aliases
-alias c='clear'
 alias n='nvim'
-alias i='nsxiv'
 alias g='git'
-alias o='xdg-open'
 alias syu='sudo pacman -Syu'
 
 # Faster cding
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ....='cd ../../'
-alias .....='cd ../../../'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 alias cdc="cd $XDG_CONFIG_HOME"
 alias cdn="cd $XDG_CONFIG_HOME/nvim"
 alias cdz="cd $XDG_CONFIG_HOME/zsh"
