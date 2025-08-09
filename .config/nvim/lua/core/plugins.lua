@@ -45,9 +45,18 @@ for i, spec in ipairs(specs_flattened) do
 end
 
 vim.pack.add(specs_flattened)
+
+local pack_changed_group = vim.api.nvim_create_augroup("pack_changed_group", {})
 for _, spec in ipairs(specs_flattened) do
   if spec.build then
-    spec.build()
+    vim.api.nvim_create_autocmd("PackChanged", {
+      group = pack_changed_group,
+      callback = function(event)
+        if event.data.kind == "update" or event.data.kind == "install" then
+          spec.build()
+        end
+      end,
+    })
   end
   if spec.setup then
     spec.setup()
