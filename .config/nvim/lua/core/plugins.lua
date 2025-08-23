@@ -25,6 +25,7 @@ local function flatten_dependencies(spec, dest)
       flatten_dependencies(dependency, dest)
     end
   end
+  spec.dependencies = nil
   table.insert(dest, spec)
 end
 
@@ -32,6 +33,7 @@ for _, spec in ipairs(specs) do
   flatten_dependencies(spec, specs_flattened)
 end
 
+-- NOTE: there is table.sort, but i remember it not working properly here... idk
 -- Sort by priority - preserving dependency order
 for i, spec in ipairs(specs_flattened) do
   if spec.priority then
@@ -44,20 +46,27 @@ for i, spec in ipairs(specs_flattened) do
   end
 end
 
-vim.pack.add(specs_flattened)
-
 local pack_changed_group = vim.api.nvim_create_augroup("pack_changed_group", {})
 for _, spec in ipairs(specs_flattened) do
   if spec.build then
     vim.api.nvim_create_autocmd("PackChanged", {
       group = pack_changed_group,
       callback = function(event)
-        if event.data.kind == "update" or event.data.kind == "install" then
+        -- This doesnt really work, but there isnt really anything we can do about it. Nvim will call this autocmd
+        -- before the package has been loaded into the runtime path so any build functions that require the package
+        -- its building will error. I dont like it, but we have to find other ways to build such packages. For
+        -- treesitter we can just do :TSUpdate after we have started
+        if event.data.spec.src == spec.src and (event.data.kind == "update" or event.data.kind == "install") then
           spec.build()
         end
       end,
     })
   end
+end
+
+vim.pack.add(specs_flattened)
+
+for _, spec in ipairs(specs_flattened) do
   if spec.setup then
     spec.setup()
   end
