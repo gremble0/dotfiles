@@ -1,6 +1,6 @@
 -- Some language servers spam logs too much making nvim generate warnings for having large log files.
 -- I never look at these anyways, so just disable them
-vim.lsp.set_log_level("OFF")
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 -- Configure diagnostic floats
 vim.diagnostic.config({
