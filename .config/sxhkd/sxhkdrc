@@ -21,13 +21,11 @@ super + r
 
 # Navigation
 super + {_,shift + }{h,j,k,l}
-    bspc node -{f,s} {west,south,north,east}; \
-    center-mouse
+    bspc node -{f,s} {west,south,north,east}
 
 # Focus given desktop
 super + {1-9}
-    bspc desktop -f {1-9}; \
-    center-mouse
+    bspc desktop -f {1-9}
 
 # Move active window to given desktop and focus it
 super + shift + {1-9}

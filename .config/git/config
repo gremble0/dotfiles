@@ -34,5 +34,7 @@
   # Stash
   sp = stash pop
   ss = stash
+  # Worktree
+  wl = worktree list
 [core]
   editor = nvim
