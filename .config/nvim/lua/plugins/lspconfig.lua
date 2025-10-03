@@ -16,7 +16,6 @@ return {
     { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
   },
   setup = function()
-    local lspconfig = require("lspconfig")
     local mason_registry = require("mason-registry")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -56,14 +55,8 @@ return {
         package:install()
       end
 
-      -- Only setup lspconfig on tools it has configs for
-      local success, _ = pcall(require, "lspconfig.configs." .. tool.lspconfig_name)
-      if success then
-        lspconfig[tool.lspconfig_name].setup({
-          capabilities = capabilities,
-          settings = tool.settings,
-        })
-      end
+      vim.lsp.config(tool.lspconfig_name, { capabilities = capabilities, settings = tool.settings })
+      vim.lsp.enable(tool.lspconfig_name)
     end
   end,
 }
