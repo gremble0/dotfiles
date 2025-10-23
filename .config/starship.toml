@@ -11,11 +11,17 @@ vimcmd_replace_one_symbol = "[❮](bold purple)"
 vimcmd_replace_symbol = "[❮](bold purple)"
 vimcmd_visual_symbol = "[❮](bold blue)"
 
-[custom.nova]
+[custom.nova_project]
 command = "echo \"$NOVA_PROJECT\""
 when = "test -n \"$NOVA_PROJECT\""
 format = "configured [$output]($style) "
 style = "bold green"
+
+[custom.nova_build_preset]
+command = "basename \"$NOVA_BUILD_DIR\""
+when = "test -n \"$NOVA_BUILD_DIR\""
+format = "preset [$output]($style) "
+style = "bold yellow"
 
 [status]
 disabled = false
