@@ -24,6 +24,7 @@ return {
         javascriptreact = { "prettierd" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
+        python = { "ruff" },
       },
     })
 

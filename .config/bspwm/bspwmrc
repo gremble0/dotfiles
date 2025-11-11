@@ -9,6 +9,7 @@ fi
 
 # Assigning programs to specific desktops (mostly for work)
 bspc rule -a novaCWP desktop=1
+bspc rule -a tecams desktop=1
 bspc rule -a multiProcessStarter desktop=4
 bspc rule -a discord desktop=4
 bspc rule -a mps-terminal desktop=5
