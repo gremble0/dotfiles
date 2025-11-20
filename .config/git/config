@@ -25,6 +25,7 @@
   # Diffs
   df = diff
   dc = diff --cached
+  bl = blame
   # Branches
   co = checkout
   br = branch
