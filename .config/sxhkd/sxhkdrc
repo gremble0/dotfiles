@@ -59,10 +59,13 @@ super + d
     rofi -monitor -1 -show drun -show-icons
 
 super + shift + b
-    chromium-browser
+    gtk-launch browser.desktop
 
 super + shift + d
     discord
+
+super + i
+    xclip -selection clipboard -t image/png -o > /tmp/clipboard_image$$.png && sxiv /tmp/clipboard_image$$.png
 
 # Tmux needs LC_ALL to include `UTF-8` or `UTF8`, otherwise font rendering is fucked.
 # If this is not set it can also be fixed by starting tmux with `-u`

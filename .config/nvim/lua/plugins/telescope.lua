@@ -72,6 +72,16 @@ return {
             ["<C-s>"] = actions.file_split,
           },
         },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+        },
       },
       pickers = {
         buffers = {
@@ -95,18 +105,10 @@ return {
 
     vim.keymap.set("n", "<leader>b", telescope_builtin.buffers, { desc = "Telescope find open buffers", silent = true })
 
-    vim.keymap.set("n", "<leader>ff", function()
-      ---TODO: unnecessary args?
-      telescope_builtin.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
-    end, { desc = "Telescope find files", silent = true })
+    vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Telescope find files", silent = true })
 
     vim.keymap.set("n", "<leader>fw", function()
-      telescope_builtin.find_files({
-        cwd = get_buffer_path(),
-        hidden = true,
-        no_ignore = true,
-        no_ignore_parent = true,
-      })
+      telescope_builtin.find_files({ cwd = get_buffer_path() })
     end, { desc = "Telescope find files" })
 
     vim.keymap.set("n", "<leader>fg", telescope_builtin.git_files, { desc = "Telescope git files" })
