@@ -59,5 +59,5 @@ fi
 
 if [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_SESSION_TYPE="x11"
-    startx
+    startx 2>/dev/null
 fi
