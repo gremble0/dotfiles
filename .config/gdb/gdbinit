@@ -8,7 +8,8 @@ set print repeats 0
 
 set print address on
 set print symbol-filename on
-set print frame-arguments all
+set print frame-arguments scalars
+set print thread-events off
 
 # TODO: not `~`
 source ~/.config/gdb/register_qt_printers.py
