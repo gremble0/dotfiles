@@ -4,7 +4,6 @@ return {
   setup = function()
     require("snacks").setup({
       picker = { enabled = true },
-      input = { enabled = true, icon = "" },
       bigfile = { enabled = true },
     })
   end,
