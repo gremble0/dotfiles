@@ -2,23 +2,27 @@
 ---@type ExtendedPackSpec
 return {
   src = "https://github.com/nvim-treesitter/nvim-treesitter",
+  version = "main",
   setup = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = {},
-      sync_install = false,
-      auto_install = true,
-      ignore_install = {},
-      highlight = { enable = true },
-      indent = { enable = true },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "v<Tab>",
-          node_incremental = "<Tab>",
-          node_decremental = "<S-Tab>",
-        },
-      },
-      modules = {},
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(event)
+        local lang = vim.treesitter.language.get_lang(vim.bo[event.buf].filetype) or vim.bo[event.buf].filetype
+
+        -- Install the treesitter parser if not already installed.
+        -- Only start treesitter after we have ensured its installed.
+        local treesitter = require("nvim-treesitter")
+        local treesitter_config = require("nvim-treesitter.config")
+        if not vim.tbl_contains(treesitter_config.get_installed(), lang) then
+          if vim.tbl_contains(treesitter.get_available(), lang) then
+            treesitter.install({ lang }):await(function()
+              -- This doesn't work for some reason. Have to restart after installing a new parser
+              vim.treesitter.start(event.buf)
+            end)
+          end
+        else
+          vim.treesitter.start(event.buf)
+        end
+      end,
     })
   end,
   build = function()
