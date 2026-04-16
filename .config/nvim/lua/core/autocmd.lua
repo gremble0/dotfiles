@@ -19,3 +19,10 @@ au("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+au({ "BufEnter", "InsertLeave" }, {
+  callback = function()
+    vim.fn.matchadd("TrailingWhitespace", "\\s\\+$")
+  end,
+})
+vim.api.nvim_set_hl(0, "TrailingWhitespace", { bg = "#FF0000" })
