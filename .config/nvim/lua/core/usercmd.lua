@@ -23,7 +23,7 @@ local function generate_case_combinations(user_command)
 end
 
 -- Make usercommands for all possible case combinations of these commonly used commands
-local commands = { "w", "wq", "wqa", "q", "qa", "e" }
+local commands = { "w", "wq", "wa", "wqa", "q", "qa", "e" }
 
 for _, command in ipairs(commands) do
   for _, combo in ipairs(generate_case_combinations(command)) do
