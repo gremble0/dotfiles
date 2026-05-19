@@ -28,6 +28,7 @@ export PYTHONSTARTUP="$XDG_DATA_HOME/pythonrc"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export XCURSOR_PATH="/usr/share/icons:$XDG_DATA_HOME/icons"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+export NVIM_LOG_FILE="/dev/null"
 
 # Cache files
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
