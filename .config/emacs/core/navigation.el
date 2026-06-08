@@ -17,7 +17,7 @@
 
 (use-package vterm
   :custom
-  (vterm-max-scrollback 10000))
+  (vterm-max-scrollback 50000))
 
 (use-package vterm-toggle
   :after vterm
