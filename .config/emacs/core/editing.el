@@ -80,6 +80,9 @@
     (kbd "C-s") 'consult-compile-error
     (kbd "K") 'kill-compilation)
 
+  (advice-add 'evil-window-split :after #'windmove-down)
+  (advice-add 'evil-window-vsplit :after #'windmove-right)
+
   (evil-mode))
 
 (use-package evil-collection
@@ -92,9 +95,5 @@
 (use-package undohist
   :config
   (undohist-initialize))
-
-(use-package yasnippet
-  :config
-  (yas-global-mode))
 
 (provide 'editing)
