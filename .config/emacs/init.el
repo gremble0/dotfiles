@@ -26,8 +26,8 @@
  backup-directory-alist '((".*" . "~/.cache/emacs"))
  compile-command ""
  confirm-kill-processes nil
- custom-file (expand-file-name "custom.el" user-emacs-directory
- help-window-select t)
+ custom-file (expand-file-name "custom.el" user-emacs-directory)
+ help-window-select t
  indent-line-function 'insert-tab
  inhibit-startup-message t
  initial-scratch-message nil
