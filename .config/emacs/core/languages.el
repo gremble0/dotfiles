@@ -18,23 +18,49 @@
           '(orderless)))
   :hook
   (lsp-completion-mode . corfu-setup-completion)
-  (c-mode . lsp)
-  (c++-mode . lsp)
-  (go-mode . lsp)
-  (python-mode . lsp)
-  (java-mode . lsp)
-  (scheme-mode . lsp-scheme))
+  :config
+  ;; Streamlined loop hooks lsp into both classic and tree-sitter major modes
+  (dolist (lang '(c c++ go python java lua))
+    (let ((classic-mode (intern (concat (symbol-name lang) "-mode")))
+          (ts-mode (intern (concat (symbol-name lang) "-ts-mode"))))
+      (add-hook (intern (concat (symbol-name classic-mode) "-hook")) #'lsp)
+      (add-hook (intern (concat (symbol-name ts-mode) "-hook")) #'lsp))))
 
 (use-package lsp-pyright)
 (use-package lsp-java)
 
 ;; Treesitter for better syntax highlighting
-(use-package tree-sitter
-  :config
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;; (use-package tree-sitter
+;;   :custom
+;;   (treesit-language-source-alist
+;;    '((c "https://github.com/tree-sitter/tree-sitter-c")
+;;      (cpp "https://github.com/tree-sitter/tree-sitter-cpp")))
+;;   :config
+;;   (global-tree-sitter-mode)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
-(use-package tree-sitter-langs)
+;; (use-package tree-sitter-langs)
+
+;; (use-package treesit
+;;   :ensure nil
+;;   :custom
+;;   (treesit-font-lock-level 4)
+;;   (treesit-language-source-alist
+;;    '((c "https://github.com/tree-sitter/tree-sitter-c")
+;;      (cpp "https://github.com/tree-sitter/tree-sitter-cpp")))
+;;   :config
+;;   ;; Automatically route old major modes to the new tree-sitter modes
+;;   (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
+;;   (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode)))
+
+(use-package treesit-auto
+  :ensure t
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all) 
+  (global-treesit-auto-mode)
+  (setq treesit-font-lock-level 4))
 
 ;; Language specific settings
 (setq-default c-basic-offset 4)
