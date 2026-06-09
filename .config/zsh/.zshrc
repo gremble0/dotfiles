@@ -44,8 +44,8 @@ alias ll='ls -l'
 alias grep='grep --color=auto'
 
 # Piping into grep
-alias eg='env | grep'
-alias lg='ll | grep'
+alias eg='env | grep --color=auto'
+alias lg='ll | grep --color=auto'
 
 alias shutdown='shutdown now'
 
