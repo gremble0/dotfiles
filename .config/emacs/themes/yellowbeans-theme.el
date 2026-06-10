@@ -1,4 +1,3 @@
-;; Theme template made with https://mswift42.github.io/themecreator/
 (deftheme yellowbeans)
 
 (let ((class '((class color) (min-colors 89)))
@@ -31,9 +30,10 @@
    `(fringe                       ((,class (:background ,bg1 :foreground ,fg3))))
    `(region                       ((,class (:background ,bg5))))
    `(highlight                    ((,class (:foreground ,fg3 :background ,bg5))))
-   `(hl-line                      ((,class (:background ,bg3))))
    `(vertical-border              ((,class (:foreground ,bg4))))
+   `(minibuffer-prompt            ((,class (:foreground ,gold-yellow :bold t))))
    `(trailing-whitespace          ((,class (:background ,bad))))
+   `(hl-line                      ((,class (:background ,bg3))))
 
    ;; Links and help
    `(link                         ((,class (:foreground ,shipcove-blue :underline t))))
@@ -76,6 +76,12 @@
    ;; Paren matching
    `(show-paren-match              ((,class (:foreground ,gold-yellow))))
    `(show-paren-mismatch           ((,class (:foreground ,bad))))
+
+   ;;; Plugins
+   ;; Flymake
+   `(flymake-warning               ((,class (:underline (:style wave :color ,neutral)))))
+   `(flymake-error                 ((,class (:underline (:style wave :color ,bad)))))
+   `(flymake-note                  ((,class (:underline (:style wave :color ,perano-blue)))))
    ))
 
 ;;;###autoload
