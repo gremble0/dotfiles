@@ -45,13 +45,9 @@
 	(kbd "C-c C-r") 'eval-region
 	(kbd "C-c C-n") 'git-gutter:next-hunk
 	(kbd "C-c C-p") 'git-gutter:previous-hunk
-	(kbd "C-f") 'find-file
 	(kbd "C-n") 'next-buffer
 	(kbd "C-p") 'previous-buffer
 	(kbd "C-q") 'compile
-	(kbd "C-b") 'consult-buffer
-	(kbd "C-s") 'consult-line
-	(kbd "C-t") 'vterm-toggle
 	(kbd "C-a") 'move-beginning-of-line
 	(kbd "C-e") 'move-end-of-line)
 
@@ -75,10 +71,6 @@
   (evil-define-key 'insert minibuffer-mode-map
     (kbd "C-p") 'previous-line-or-history-element
     (kbd "C-n") 'next-line-or-history-element)
-
-  (evil-define-key 'normal compilation-mode-map
-    (kbd "C-s") 'consult-compile-error
-    (kbd "K") 'kill-compilation)
 
   (advice-add 'evil-window-split :after #'windmove-down)
   (advice-add 'evil-window-vsplit :after #'windmove-right)

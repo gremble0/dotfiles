@@ -43,13 +43,7 @@
   (vertico-mouse-mode)
   (vertico-multiform-mode))
 
-(use-package consult
-  :custom
-  (consult-line-start-from-top t))
-
 (use-package marginalia
-  :custom
-  (marginalia-align 'right)
   :config
   (marginalia-mode))
 
