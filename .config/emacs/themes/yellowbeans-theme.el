@@ -35,6 +35,10 @@
    `(trailing-whitespace          ((,class (:background ,bad))))
    `(hl-line                      ((,class (:background ,bg3))))
 
+   ;; Links and help
+   `(link                         ((,class (:foreground ,shipcove-blue :underline t))))
+   `(help-key-binding             ((,class (:foreground ,gold-yellow :box (:color ,bg4)))))
+
    ;; Font lock
    `(font-lock-comment-face       ((,class (:foreground ,bg6))))
    `(font-lock-doc-face           ((,class (:foreground ,bg6))))
@@ -56,8 +60,14 @@
 
    ;; Mode line
    `(mode-line                     ((,class (:box (:color ,bg4) :foreground ,fg1 :background ,bg3))))
-   `(mode-line-inactive            ((t (:inherit mode-line))))
+   `(mode-line-inactive            ((t (:inherit mode-line :background ,bg1))))
    `(mode-line-buffer-id           ((,class (:foreground ,fg1))))
+   `(minibuffer-prompt             ((,class (:foreground ,gold-yellow :bold t))))
+
+   ;; Tabs
+   `(tab-bar                       ((,class (:inherit mode-line))))
+   `(tab-bar-tab                   ((,class (:inherit tab-bar))))
+   `(tab-bar-tab-inactive          ((,class (:inherit mode-line-inactive))))
 
    ;; Line numbers
    `(line-number                   ((,class (:inherit fringe))))
@@ -66,9 +76,6 @@
    ;; Paren matching
    `(show-paren-match              ((,class (:foreground ,gold-yellow))))
    `(show-paren-mismatch           ((,class (:foreground ,bad))))
-
-   ;; Links
-   `(link                          ((,class (:foreground ,shipcove-blue :underline t))))
 
    ;;; Plugins
    ;; Flymake
