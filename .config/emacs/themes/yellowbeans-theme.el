@@ -60,13 +60,12 @@
 
    ;; Mode line
    `(mode-line                     ((,class (:box (:color ,bg4) :foreground ,fg1 :background ,bg3))))
-   `(mode-line-inactive            ((t (:inherit mode-line :background ,bg1))))
-   `(mode-line-buffer-id           ((,class (:foreground ,fg1))))
+   `(mode-line-inactive            ((,class (:inherit mode-line :foreground ,bg6))))
    `(minibuffer-prompt             ((,class (:foreground ,gold-yellow :bold t))))
 
    ;; Tabs
    `(tab-bar                       ((,class (:inherit mode-line))))
-   `(tab-bar-tab                   ((,class (:inherit tab-bar))))
+   `(tab-bar-tab                   ((,class (:inherit mode-line))))
    `(tab-bar-tab-inactive          ((,class (:inherit mode-line-inactive))))
 
    ;; Line numbers

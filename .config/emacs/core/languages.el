@@ -29,30 +29,6 @@
 (use-package lsp-pyright)
 (use-package lsp-java)
 
-;; Treesitter for better syntax highlighting
-;; (use-package tree-sitter
-;;   :custom
-;;   (treesit-language-source-alist
-;;    '((c "https://github.com/tree-sitter/tree-sitter-c")
-;;      (cpp "https://github.com/tree-sitter/tree-sitter-cpp")))
-;;   :config
-;;   (global-tree-sitter-mode)
-;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-
-;; (use-package tree-sitter-langs)
-
-;; (use-package treesit
-;;   :ensure nil
-;;   :custom
-;;   (treesit-font-lock-level 4)
-;;   (treesit-language-source-alist
-;;    '((c "https://github.com/tree-sitter/tree-sitter-c")
-;;      (cpp "https://github.com/tree-sitter/tree-sitter-cpp")))
-;;   :config
-;;   ;; Automatically route old major modes to the new tree-sitter modes
-;;   (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
-;;   (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode)))
-
 (use-package treesit-auto
   :ensure t
   :custom
