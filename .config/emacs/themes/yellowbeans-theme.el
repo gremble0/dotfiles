@@ -17,9 +17,12 @@
       (moss-green    "#7c9081")
       (olive-green   "#9aae6b")
       (var           "#9fb6c2")
-      (good          "#b3e27c")
-      (neutral       "#ffa500")
-      (bad           "#d22b2b"))
+      (good-fg       "#b3e27c")
+      (good-bg       "#2e3127")
+      (neutral-fg    "#ffa500")
+      (neutral-bg    "#6b572a")
+      (bad-fg        "#d22b2b")
+      (bad-bg        "#503030"))
 
   (custom-theme-set-faces
    'yellowbeans
@@ -32,14 +35,14 @@
    `(highlight                        ((,class (:foreground ,fg3 :background ,bg5))))
    `(vertical-border                  ((,class (:foreground ,bg4))))
    `(minibuffer-prompt                ((,class (:foreground ,gold-yellow :bold t))))
-   `(trailing-whitespace              ((,class (:background ,bad))))
+   `(trailing-whitespace              ((,class (:background ,bad-fg))))
    `(hl-line                          ((,class (:background ,bg3))))
 
    ;; Isearch
    `(isearch                          ((,class (:background ,bg5))))
-   `(isearch-fail                     ((,class (:background ,bad))))
-   `(isearch-group-1                  ((,class (:background ,neutral))))
-   `(isearch-group-2                  ((,class (:background ,good))))
+   `(isearch-fail                     ((,class (:background ,bad-fg))))
+   `(isearch-group-1                  ((,class (:background ,neutral-fg))))
+   `(isearch-group-2                  ((,class (:background ,good-fg))))
 
    ;; Links and help
    `(link                             ((,class (:foreground ,shipcove-blue :underline t))))
@@ -57,13 +60,13 @@
    `(font-lock-string-face            ((,class (:foreground ,olive-green))))
    `(font-lock-type-face              ((,class (:foreground ,shipcove-blue))))
    `(font-lock-variable-name-face     ((,class (:foreground ,var))))
-   `(font-lock-warning-face           ((,class (:foreground ,bad))))
+   `(font-lock-warning-face           ((,class (:foreground ,neutral-fg))))
    `(font-lock-punctuation-face       ((,class (:foreground ,hoki-blue))))
 
    ;; Status
-   `(success                          ((,class (:foreground ,good))))
-   `(warning                          ((,class (:foreground ,neutral))))
-   `(error                            ((,class (:foreground ,bad))))
+   `(success                          ((,class (:foreground ,good-fg))))
+   `(warning                          ((,class (:foreground ,neutral-fg))))
+   `(error                            ((,class (:foreground ,bad-fg))))
 
    ;; Mode line
    `(mode-line                        ((,class (:box (:color ,bg4) :foreground ,fg1 :background ,bg3))))
@@ -81,12 +84,12 @@
 
    ;; Paren matching
    `(show-paren-match                 ((,class (:foreground ,gold-yellow))))
-   `(show-paren-mismatch              ((,class (:foreground ,bad))))
+   `(show-paren-mismatch              ((,class (:foreground ,bad-fg))))
 
    ;;; Plugins
    ;; Flymake
-   `(flymake-warning                  ((,class (:underline (:style wave :color ,neutral)))))
-   `(flymake-error                    ((,class (:underline (:style wave :color ,bad)))))
+   `(flymake-warning                  ((,class (:underline (:style wave :color ,neutral-fg)))))
+   `(flymake-error                    ((,class (:underline (:style wave :color ,bad-fg)))))
    `(flymake-note                     ((,class (:underline (:style wave :color ,perano-blue)))))
 
    ;; Orderless
@@ -98,6 +101,19 @@
    ;; Whichkey
    `(which-key-key-face               ((,class (:foreground ,gold-yellow :bold t))))
    `(which-key-group-description-face ((,class (:foreground ,shipcove-blue))))
+
+   ;; Magit
+   `(magit-branch-local               ((,class (:foreground ,shipcove-blue))))
+   `(magit-branch-remote              ((,class (:foreground ,olive-green))))
+   `(magit-diff-added                 ((,class (:foreground ,good-fg))))
+   `(magit-diff-added-highlight       ((,class (:inherit (magit-section-highlight magit-diff-added)))))
+   `(magit-diff-base                  ((,class (:foreground ,neutral-fg magit-diff-base))))
+   `(magit-diff-base-highlight        ((,class (:inherit (magit-section-highlight )))))
+   `(magit-diff-hunk-heading-highlight ((,class (:background ,bg6))))
+   `(magit-diff-removed               ((,class (:foreground ,bad-fg))))
+   `(magit-diff-removed-highlight     ((,class (:inherit (magit-section-highlight magit-diff-removed)))))
+   `(magit-section-heading            ((,class (:foreground ,gold-yellow :bold t))))
+   `(magit-section-highlight          ((,class (:background ,bg5))))
    ))
 
 ;;;###autoload
