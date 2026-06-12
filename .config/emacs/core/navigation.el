@@ -19,10 +19,4 @@
   :custom
   (vterm-max-scrollback 50000))
 
-(use-package vterm-toggle
-  :after vterm
-  :custom
-  (vterm-toggle-fullscreen-p nil)
-  (vterm-toggle-scope 'project))
-
 (provide 'navigation)

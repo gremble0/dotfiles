@@ -25,62 +25,79 @@
    'yellowbeans
 
    ;; Core
-   `(default                      ((,class (:background ,bg1 :foreground ,fg1))))
-   `(cursor                       ((,class (:background ,fg1))))
-   `(fringe                       ((,class (:background ,bg1 :foreground ,fg3))))
-   `(region                       ((,class (:background ,bg5))))
-   `(highlight                    ((,class (:foreground ,fg3 :background ,bg5))))
-   `(vertical-border              ((,class (:foreground ,bg4))))
-   `(minibuffer-prompt            ((,class (:foreground ,gold-yellow :bold t))))
-   `(trailing-whitespace          ((,class (:background ,bad))))
-   `(hl-line                      ((,class (:background ,bg3))))
+   `(default                          ((,class (:background ,bg1 :foreground ,fg1))))
+   `(cursor                           ((,class (:background ,fg1))))
+   `(fringe                           ((,class (:background ,bg1 :foreground ,fg3))))
+   `(region                           ((,class (:background ,bg5))))
+   `(highlight                        ((,class (:foreground ,fg3 :background ,bg5))))
+   `(vertical-border                  ((,class (:foreground ,bg4))))
+   `(minibuffer-prompt                ((,class (:foreground ,gold-yellow :bold t))))
+   `(trailing-whitespace              ((,class (:background ,bad))))
+   `(hl-line                          ((,class (:background ,bg3))))
+
+   ;; Isearch
+   `(isearch                          ((,class (:background ,bg5))))
+   `(isearch-fail                     ((,class (:background ,bad))))
+   `(isearch-group-1                  ((,class (:background ,neutral))))
+   `(isearch-group-2                  ((,class (:background ,good))))
 
    ;; Links and help
-   `(link                         ((,class (:foreground ,shipcove-blue :underline t))))
-   `(help-key-binding             ((,class (:foreground ,gold-yellow :box (:color ,bg4)))))
+   `(link                             ((,class (:foreground ,shipcove-blue :underline t))))
+   `(help-key-binding                 ((,class (:foreground ,gold-yellow :box (:color ,bg4)))))
+   `(escape-glyph                     ((,class (:inherit help-key-binding))))
 
    ;; Font lock
-   `(font-lock-comment-face       ((,class (:foreground ,bg6))))
-   `(font-lock-doc-face           ((,class (:foreground ,bg6))))
-   `(font-lock-constant-face      ((,class (:foreground ,moss-green))))
-   `(font-lock-function-name-face ((,class (:foreground ,perano-blue))))
-   `(font-lock-keyword-face       ((,class (:foreground ,gold-yellow :bold t))))
-   `(font-lock-builtin-face       ((,class (:inherit font-lock-keyword-face))))
-   `(font-lock-operator-face      ((,class (:inherit font-lock-keyword-face))))
-   `(font-lock-string-face        ((,class (:foreground ,olive-green))))
-   `(font-lock-type-face          ((,class (:foreground ,shipcove-blue))))
-   `(font-lock-variable-name-face ((,class (:foreground ,var))))
-   `(font-lock-warning-face       ((,class (:foreground ,bad))))
-   `(font-lock-punctuation-face   ((,class (:foreground ,hoki-blue))))
+   `(font-lock-comment-face           ((,class (:foreground ,bg6))))
+   `(font-lock-doc-face               ((,class (:foreground ,bg6))))
+   `(font-lock-constant-face          ((,class (:foreground ,moss-green))))
+   `(font-lock-function-name-face     ((,class (:foreground ,perano-blue))))
+   `(font-lock-keyword-face           ((,class (:foreground ,gold-yellow :bold t))))
+   `(font-lock-builtin-face           ((,class (:inherit font-lock-keyword-face))))
+   `(font-lock-operator-face          ((,class (:inherit font-lock-keyword-face))))
+   `(font-lock-string-face            ((,class (:foreground ,olive-green))))
+   `(font-lock-type-face              ((,class (:foreground ,shipcove-blue))))
+   `(font-lock-variable-name-face     ((,class (:foreground ,var))))
+   `(font-lock-warning-face           ((,class (:foreground ,bad))))
+   `(font-lock-punctuation-face       ((,class (:foreground ,hoki-blue))))
 
    ;; Status
-   `(success                       ((,class (:foreground ,good))))
-   `(warning                       ((,class (:foreground ,neutral))))
-   `(error                         ((,class (:foreground ,bad))))
+   `(success                          ((,class (:foreground ,good))))
+   `(warning                          ((,class (:foreground ,neutral))))
+   `(error                            ((,class (:foreground ,bad))))
 
    ;; Mode line
-   `(mode-line                     ((,class (:box (:color ,bg4) :foreground ,fg1 :background ,bg3))))
-   `(mode-line-inactive            ((,class (:inherit mode-line :foreground ,bg6))))
-   `(minibuffer-prompt             ((,class (:foreground ,gold-yellow :bold t))))
+   `(mode-line                        ((,class (:box (:color ,bg4) :foreground ,fg1 :background ,bg3))))
+   `(mode-line-inactive               ((,class (:inherit mode-line :foreground ,bg6))))
+   `(minibuffer-prompt                ((,class (:foreground ,gold-yellow :bold t))))
 
    ;; Tabs
-   `(tab-bar                       ((,class (:inherit mode-line))))
-   `(tab-bar-tab                   ((,class (:inherit mode-line))))
-   `(tab-bar-tab-inactive          ((,class (:inherit mode-line-inactive))))
+   `(tab-bar                          ((,class (:inherit mode-line))))
+   `(tab-bar-tab                      ((,class (:inherit mode-line))))
+   `(tab-bar-tab-inactive             ((,class (:inherit mode-line-inactive))))
 
    ;; Line numbers
-   `(line-number                   ((,class (:inherit fringe))))
-   `(line-number-current-line      ((,class (:inherit fringe :foreground ,fg1 :weight bold))))
+   `(line-number                      ((,class (:inherit fringe))))
+   `(line-number-current-line         ((,class (:inherit fringe :foreground ,fg1 :weight bold))))
 
    ;; Paren matching
-   `(show-paren-match              ((,class (:foreground ,gold-yellow))))
-   `(show-paren-mismatch           ((,class (:foreground ,bad))))
+   `(show-paren-match                 ((,class (:foreground ,gold-yellow))))
+   `(show-paren-mismatch              ((,class (:foreground ,bad))))
 
    ;;; Plugins
    ;; Flymake
-   `(flymake-warning               ((,class (:underline (:style wave :color ,neutral)))))
-   `(flymake-error                 ((,class (:underline (:style wave :color ,bad)))))
-   `(flymake-note                  ((,class (:underline (:style wave :color ,perano-blue)))))
+   `(flymake-warning                  ((,class (:underline (:style wave :color ,neutral)))))
+   `(flymake-error                    ((,class (:underline (:style wave :color ,bad)))))
+   `(flymake-note                     ((,class (:underline (:style wave :color ,perano-blue)))))
+
+   ;; Orderless
+   `(orderless-match-face-0           ((,class (:foreground ,gold-yellow))))
+   `(orderless-match-face-1           ((,class (:foreground ,olive-green))))
+   `(orderless-match-face-2           ((,class (:foreground ,shipcove-blue))))
+   `(orderless-match-face-3           ((,class (:foreground ,moss-green))))
+
+   ;; Whichkey
+   `(which-key-key-face               ((,class (:foreground ,gold-yellow :bold t))))
+   `(which-key-group-description-face ((,class (:foreground ,shipcove-blue))))
    ))
 
 ;;;###autoload
