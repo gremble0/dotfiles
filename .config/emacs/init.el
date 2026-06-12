@@ -44,7 +44,8 @@
 
 ;; Load core modules
 (use-package ui         :load-path "core")
-(use-package editing    :load-path "core")
+(use-package mappings   :load-path "core")
 (use-package languages  :load-path "core")
 (use-package navigation :load-path "core")
 (use-package completion :load-path "core")
+(use-package git        :load-path "core")

@@ -45,14 +45,6 @@
   :hook
   org-mode prog-mode help-mode)
 
-(use-package magit)
-
-(use-package git-gutter
-  :custom
-  (git-gutter:update-interval 0.50)
-  :config
-  (global-git-gutter-mode))
-
 (use-package lsp-ui
   :after lsp-mode
   :custom
