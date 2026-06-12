@@ -18,7 +18,7 @@
       (olive-green   "#9aae6b")
       (var           "#9fb6c2")
       (good-fg       "#b3e27c")
-      (good-bg       "#2e3127")
+      (good-bg       "#2f5937") ;; TODO: this is now different from the nvim theme (brighter)
       (neutral-fg    "#ffa500")
       (neutral-bg    "#6b572a")
       (bad-fg        "#d22b2b")
@@ -86,6 +86,11 @@
    `(show-paren-match                  ((,class (:foreground ,gold-yellow))))
    `(show-paren-mismatch               ((,class (:foreground ,bad-fg))))
 
+   ;; Merge conflicts
+   `(smerge-lower                      ((,class (:background ,good-bg))))
+   `(smerge-upper                      ((,class (:background ,bad-bg))))
+   `(smerge-markers                    ((,class (:background ,bg5))))
+
    ;;; Plugins
    ;; Flymake
    `(flymake-warning                   ((,class (:underline (:style wave :color ,neutral-fg)))))
@@ -105,13 +110,16 @@
    ;; Magit
    `(magit-branch-local                ((,class (:foreground ,shipcove-blue))))
    `(magit-branch-remote               ((,class (:foreground ,olive-green))))
-   `(magit-diff-added                  ((,class (:foreground ,good-fg))))
-   `(magit-diff-added-highlight        ((,class (:inherit (magit-section-highlight magit-diff-added)))))
-   `(magit-diff-base                   ((,class (:foreground ,neutral-fg magit-diff-base))))
-   `(magit-diff-base-highlight         ((,class (:inherit (magit-section-highlight )))))
+   `(magit-diff-added                  ((,class (:background ,good-bg))))
+   `(magit-diff-added-highlight        ((,class (:inherit magit-diff-added))))
+   `(magit-diff-base                   ((,class (:background ,neutral-bg))))
+   `(magit-diff-base-highlight         ((,class (:inherit magit-diff-base))))
+   `(magit-diff-hunk-heading           ((,class (:background ,bg5))))
    `(magit-diff-hunk-heading-highlight ((,class (:background ,bg6))))
-   `(magit-diff-removed                ((,class (:foreground ,bad-fg))))
-   `(magit-diff-removed-highlight      ((,class (:inherit (magit-section-highlight magit-diff-removed)))))
+   `(magit-diff-our-heading            ((,class (:background ,bad-bg))))
+   `(magit-diff-removed                ((,class (:background ,bad-bg))))
+   `(magit-diff-removed-highlight      ((,class (:inherit magit-diff-removed))))
+   `(magit-diff-their-heading          ((,class (:background ,good-bg))))
    `(magit-section-heading             ((,class (:foreground ,gold-yellow :bold t))))
    `(magit-section-highlight           ((,class (:background ,bg5))))
 
