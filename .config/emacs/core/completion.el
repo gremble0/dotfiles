@@ -1,8 +1,8 @@
 ;; Vertico for completion framework
 (use-package vertico
   :init
-  ;; Mostly taken from the wiki: https://github.com/minad/vertico/wiki
-  ;; Configure the default sorting function for symbols and files
+  (require 'vertico-multiform)
+  (require 'vertico-sort)
   (setq vertico-multiform-categories
         '((symbol (vertico-sort-function . vertico-sort-alpha))
           (file
@@ -29,24 +29,6 @@
     (if (string-suffix-p "/" file)
         (propertize file 'face 'dired-directory)
       file))
-
-  (defun gremble/vertico-git-files ()
-    "Find files tracked by git, like :Telescope git_files in Neovim."
-    (interactive)
-    (let* ((root (locate-dominating-file default-directory ".git"))
-           (files (if root
-                      (let ((default-directory root))
-                        (split-string
-                         (shell-command-to-string "git ls-files --cached --others --exclude-standard")
-                         "\n" t))
-                    (user-error "Not inside a git repository")))
-           (table (lambda (str pred action)
-                    (if (eq action 'metadata)
-                        '(metadata (category . file))
-                      (complete-with-action action files str pred))))
-           (file (let ((default-directory root))
-                   (completing-read "Git files: " table nil t))))
-      (find-file (expand-file-name file root))))
   :bind
   (:map minibuffer-local-map
         ("C-<backspace>" . (lambda (arg)
@@ -58,7 +40,6 @@
                                (backward-kill-word arg)))))
   :config
   (vertico-mode)
-  (vertico-mouse-mode)
   (vertico-multiform-mode))
 
 (use-package marginalia
