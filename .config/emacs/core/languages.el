@@ -1,7 +1,3 @@
-;; Major mode for languages
-(use-package lua-mode)
-(use-package go-mode)
-
 ;; LSP setup
 (use-package lsp-mode
   :custom
@@ -27,7 +23,6 @@
       (add-hook (intern (concat (symbol-name ts-mode) "-hook")) #'lsp))))
 
 (use-package lsp-pyright)
-(use-package lsp-java)
 
 (use-package treesit-auto
   :ensure t
