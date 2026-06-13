@@ -69,8 +69,11 @@ super + i
 
 # Tmux needs LC_ALL to include `UTF-8` or `UTF8`, otherwise font rendering is fucked.
 # If this is not set it can also be fixed by starting tmux with `-u`
-super + Return
+super + shift + Return
     alacritty -e tmux
+
+super + Return
+    emacsclient
 
 # Fn lock functionality
 XF86AudioRaiseVolume
