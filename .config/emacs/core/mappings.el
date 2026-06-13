@@ -87,8 +87,4 @@
   :config
   (evil-collection-init))
 
-(use-package undohist
-  :config
-  (undohist-initialize))
-
 (provide 'mappings)

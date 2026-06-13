@@ -21,6 +21,9 @@ setkeyboard &
 # Start statusbar
 polybarstart &
 
+# Emacs client
+emacsclient
+
 # Set relative positions of monitors
 xrandr --output DP-3-3 --left-of eDP-1
 
