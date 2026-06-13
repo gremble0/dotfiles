@@ -38,11 +38,12 @@
    `(trailing-whitespace               ((,class (:background ,bad-fg))))
    `(hl-line                           ((,class (:background ,bg3))))
 
-   ;; Isearch
+   ;; Search
    `(isearch                           ((,class (:background ,bg5))))
    `(isearch-fail                      ((,class (:background ,bad-fg))))
    `(isearch-group-1                   ((,class (:background ,neutral-fg))))
    `(isearch-group-2                   ((,class (:background ,good-fg))))
+   `(match                             ((,class (:background ,bg6))))
 
    ;; Links and help
    `(link                              ((,class (:foreground ,shipcove-blue :underline t))))
