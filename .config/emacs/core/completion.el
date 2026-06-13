@@ -58,4 +58,8 @@
   :config
   (global-corfu-mode))
 
+(use-package copilot)
+
+(use-package copilot-chat)
+
 (provide 'completion)
