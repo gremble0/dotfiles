@@ -53,5 +53,6 @@ export FZF_DEFAULT_OPTS='--layout=reverse --separator=" " --ansi --prompt="❯ "
 
 if [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_SESSION_TYPE="wayland"
-    start-hyprland
+    # start-hyprland
+    exec uwsm start hyprland-uwsm.desktop
 fi
