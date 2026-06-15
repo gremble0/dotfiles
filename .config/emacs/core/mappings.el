@@ -43,8 +43,6 @@
 	(kbd "C-c C-k") 'kill-buffer-and-window
 	(kbd "C-c C-e") 'eval-buffer
 	(kbd "C-c C-r") 'eval-region
-	(kbd "C-c C-n") 'git-gutter:next-hunk
-	(kbd "C-c C-p") 'git-gutter:previous-hunk
     (kbd "C-c C-f") 'gremble/git-files
     (kbd "C-c C-g") 'consult-ripgrep
 	(kbd "C-c C-b") 'magit-blame
@@ -52,7 +50,9 @@
 	(kbd "C-p") 'previous-buffer
 	(kbd "C-q") 'compile
 	(kbd "C-a") 'move-beginning-of-line
-	(kbd "C-e") 'move-end-of-line)
+	(kbd "C-e") 'move-end-of-line
+	(kbd "[ g") 'git-gutter:previous-hunk
+	(kbd "] g") 'git-gutter:next-hunk)
 
   ;; Visual state keybinds
   (evil-define-key 'visual prog-mode-map
