@@ -11,15 +11,6 @@
 (add-to-list 'emulation-mode-map-alists
 			 `((global-keys-mode . ,global-keys-map)))
 
-;; Automatically focus newly opened windows.
-;; From: https://stackoverflow.com/questions/6464738/how-can-i-switch-focus-after-buffer-split-in-emacs
-(defun split-window-func (&optional window)
-  (let ((new-window (split-window-sensibly window)))
-	(if (not (active-minibuffer-window))
-		(select-window new-window))))
-
-(setq split-window-preferred-function 'split-window-func)
-
 ;; Editing
 (use-package evil
   :custom
@@ -28,38 +19,23 @@
   (evil-want-fine-undo 'fine)
   (evil-undo-system 'undo-redo)
   :config
-  ;; Insert mode keybinds
-  (evil-define-key 'insert global-keys-map
-	(kbd "C-h") 'backward-char
-	(kbd "C-j") 'next-line
-	(kbd "C-k") 'previous-line
-	(kbd "C-l") 'forward-char
-	(kbd "C-a") 'move-beginning-of-line
-	(kbd "C-e") 'move-end-of-line)
-
   ;; General keybinds
-  (evil-define-key '(normal visual) global-keys-map
-	(kbd "C-c C-i") 'ibuffer
-	(kbd "C-c C-k") 'kill-buffer-and-window
+  (evil-define-key 'normal global-keys-map
+	(kbd "C-x b") 'consult-buffer
 	(kbd "C-c C-e") 'eval-buffer
-	(kbd "C-c C-r") 'eval-region
     (kbd "C-c C-f") 'gremble/git-files
     (kbd "C-c C-g") 'consult-ripgrep
 	(kbd "C-c C-b") 'magit-blame
-	(kbd "C-n") 'next-buffer
-	(kbd "C-p") 'previous-buffer
-	(kbd "C-q") 'compile
-	(kbd "C-a") 'move-beginning-of-line
-	(kbd "C-e") 'move-end-of-line
 	(kbd "[ g") 'git-gutter:previous-hunk
 	(kbd "] g") 'git-gutter:next-hunk
-	(kbd "[ q") 'next-error
-	(kbd "] q") 'previous-error)
+	(kbd "[ q") 'previous-error
+	(kbd "] q") 'next-error)
 
   ;; Visual state keybinds
   (evil-define-key 'visual prog-mode-map
-	(kbd "<tab>") 'indent-region
-	(kbd "/") 'comment-or-uncomment-region)
+    (kbd "<tab>") 'indent-region
+    (kbd "/") 'comment-or-uncomment-region
+	(kbd "C-c C-e") 'eval-region)
 
   ;; Normal state keybinds
   (evil-define-key 'normal prog-mode-map
@@ -73,10 +49,10 @@
   (evil-define-key 'normal dired-mode-map
     (kbd "RET") 'dired-find-alternate-file)
 
-  (evil-define-key 'insert minibuffer-mode-map
+  (evil-define-key '(insert normal) minibuffer-mode-map
     (kbd "C-p") 'previous-line-or-history-element
     (kbd "C-n") 'next-line-or-history-element
-    (kbd "C-q") 'embark-act)
+    (kbd "C-q") 'embark-export)
 
   (evil-mode))
 
