@@ -35,7 +35,9 @@
  scroll-conservatively 101
  scroll-preserve-screen-position 't
  shell-file-name "/bin/zsh"
- undo-no-redo t)
+ undo-no-redo t
+ ;; TODO: this should not be necessary, but idc
+ warning-suppress-types '((files) (native-compiler)))
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
