@@ -73,7 +73,7 @@ super + shift + Return
     alacritty -e tmux
 
 super + Return
-    emacsclient
+    emacsclient -c -a ""
 
 # Fn lock functionality
 XF86AudioRaiseVolume
