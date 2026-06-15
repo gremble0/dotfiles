@@ -56,9 +56,7 @@
 
 (use-package embark)
 
-(use-package embark-consult
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
+(use-package embark-consult)
 
 (use-package corfu
   :custom
