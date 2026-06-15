@@ -52,7 +52,9 @@
 	(kbd "C-a") 'move-beginning-of-line
 	(kbd "C-e") 'move-end-of-line
 	(kbd "[ g") 'git-gutter:previous-hunk
-	(kbd "] g") 'git-gutter:next-hunk)
+	(kbd "] g") 'git-gutter:next-hunk
+	(kbd "[ q") 'next-error
+	(kbd "] q") 'previous-error)
 
   ;; Visual state keybinds
   (evil-define-key 'visual prog-mode-map
@@ -73,10 +75,8 @@
 
   (evil-define-key 'insert minibuffer-mode-map
     (kbd "C-p") 'previous-line-or-history-element
-    (kbd "C-n") 'next-line-or-history-element)
-
-  (advice-add 'evil-window-split :after #'windmove-down)
-  (advice-add 'evil-window-vsplit :after #'windmove-right)
+    (kbd "C-n") 'next-line-or-history-element
+    (kbd "C-q") 'embark-act)
 
   (evil-mode))
 
