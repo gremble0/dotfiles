@@ -33,7 +33,6 @@
 (use-package highlight-indent-guides
   :custom
   (highlight-indent-guides-method 'character)
-  (highlight-indent-guides-auto-character-face-perc 100)
   :hook
   (prog-mode . highlight-indent-guides-mode))
 
