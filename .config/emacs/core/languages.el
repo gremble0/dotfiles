@@ -1,28 +1,16 @@
 ;; LSP setup
-(use-package lsp-mode
-  :custom
-  (lsp-completion-provider :none)
-  (lsp-headerline-breadcrumb-enable nil)
-  (lsp-signature-render-documentation nil)
-  (gc-cons-threshold 100000000)
-  (read-process-output-max 1000000)
-  (lsp-keymap-prefix "C-l")
-  (lsp-modeline-code-action-fallback-icon "󰌵")
-  :init
-  (defun corfu-setup-completion ()
-    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(orderless)))
+(use-package eglot
   :hook
-  (lsp-completion-mode . corfu-setup-completion)
+  ((c-mode c++-mode c-ts-mode c++-ts-mode
+    go-mode go-ts-mode
+    python-mode python-ts-mode
+    java-mode java-ts-mode
+    lua-mode lua-ts-mode) . eglot-ensure)
+  :custom
+  (eglot-autoshutdown t)
   :config
-  ;; Streamlined loop hooks lsp into both classic and tree-sitter major modes
-  (dolist (lang '(c c++ go python java lua))
-    (let ((classic-mode (intern (concat (symbol-name lang) "-mode")))
-          (ts-mode (intern (concat (symbol-name lang) "-ts-mode"))))
-      (add-hook (intern (concat (symbol-name classic-mode) "-hook")) #'lsp)
-      (add-hook (intern (concat (symbol-name ts-mode) "-hook")) #'lsp))))
-
-(use-package lsp-pyright)
+  (add-to-list 'eglot-server-programs
+               '((python-mode python-ts-mode) . ("pyright-langserver" "--stdio"))))
 
 (use-package treesit-auto
   :ensure t
@@ -35,5 +23,6 @@
 
 ;; Language specific settings
 (setq-default c-basic-offset 4)
+(setq eldoc-echo-area-use-multiline-p nil)
 
 (provide 'languages)

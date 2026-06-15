@@ -44,13 +44,6 @@
   :hook
   org-mode prog-mode help-mode)
 
-(use-package lsp-ui
-  :after lsp-mode
-  :custom
-  (lsp-ui-doc-enable t)
-  (lsp-ui-doc-position 'at-point)
-  (lsp-ui-doc-border "#282828"))
-
 ;; Apply ANSI color codes in compilation buffers
 (use-package ansi-color
   :hook (compilation-filter . ansi-color-compilation-filter))
