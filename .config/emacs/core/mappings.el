@@ -25,7 +25,11 @@
 	(kbd "C-c C-e") 'eval-buffer
     (kbd "C-c C-f") 'gremble/git-files
     (kbd "C-c C-g") 'consult-ripgrep
-	(kbd "C-c C-b") 'magit-blame
+	(kbd "C-c C-l") 'magit-blame
+    ;; These two are actually already bound by evil-collection, but they get unbound
+    ;; in some buffer types for some reason so just make them truly global
+	(kbd "[ b") 'evil-prev-buffer
+	(kbd "] b") 'evil-next-buffer
 	(kbd "[ g") 'git-gutter:previous-hunk
 	(kbd "] g") 'git-gutter:next-hunk
 	(kbd "[ q") 'previous-error
@@ -40,10 +44,6 @@
   ;; Normal state keybinds
   (evil-define-key 'normal prog-mode-map
 	(kbd "<tab>") 'evil-indent-line)
-
-  ;; Lsp keybinds
-  (evil-define-key 'normal lsp-mode-map
-	(kbd "K") 'lsp-ui-doc-show)
 
   ;; Dired keybinds
   (evil-define-key 'normal dired-mode-map
