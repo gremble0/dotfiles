@@ -50,6 +50,16 @@
   :custom
   (completion-styles '(orderless flex)))
 
+(use-package consult
+  :custom
+  (consult-async-split-style 'none))
+
+(use-package embark)
+
+(use-package embark-consult
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 (use-package corfu
   :custom
   (corfu-auto t)

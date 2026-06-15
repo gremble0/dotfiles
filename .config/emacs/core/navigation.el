@@ -27,10 +27,6 @@
     ad-do-it
     (kill-buffer current)))
 
-(use-package consult
-  :custom
-  (consult-async-split-style 'none))
-
 (use-package undo-fu-session
   :config
   (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
