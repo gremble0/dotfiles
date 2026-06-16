@@ -7,7 +7,9 @@
     (find-file (expand-file-name file default-directory))))
 
 (defun gremble/build-nova ()
-  (project-compile "bash -c 'source ./activate && build"))
+  (interactive)
+  (setq compile-command "bash -c 'source ./activate && build'")
+  (project-compile))
 
 ;; Dired
 (setq dired-listing-switches "-AhgGoF --group-directories-first --color=auto"

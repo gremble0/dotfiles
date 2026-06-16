@@ -40,3 +40,5 @@
   wl = worktree list
 [core]
   editor = nvim
+[branch]
+  autoSetupMerge = always
