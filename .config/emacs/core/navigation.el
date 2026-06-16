@@ -1,8 +1,9 @@
-(defun gremble/rg (&optional rg-args)
-  "Find files from current directory using ripgrep.
+(defun gremble/rg (path &optional rg-args)
+  "Find files from PATH using ripgrep.
 `rg-args' is a string of additional arguments to pass to rg."
   (interactive)
-  (let* ((cmd (concat "rg " (or rg-args "")))
+  (let* ((default-directory (expand-file-name path))
+         (cmd (concat "rg " (or rg-args "")))
          (files (split-string (shell-command-to-string cmd) "\n" t))
          (file (completing-read "Ripgrep: " files nil t)))
     (find-file (expand-file-name file default-directory))))
@@ -10,12 +11,15 @@
 (defun gremble/rg-files-no-ignore ()
   "Find files from current directory using ripgrep, not respecting gitignore."
   (interactive)
-  (gremble/rg "--files --no-ignore"))
+  (gremble/rg default-directory "--files --no-ignore"))
 
 (defun gremble/rg-files ()
-  "Find files from current directory using ripgrep."
+  "Find files from git root using ripgrep."
   (interactive)
-  (gremble/rg "--files"))
+  (let ((git-root (locate-dominating-file default-directory ".git")))
+    (if git-root
+        (gremble/rg git-root "--files")
+      (user-error "Not inside a git repository"))))
 
 ;; Dired
 (setq dired-listing-switches "-AhgGoF --group-directories-first --color=auto"
