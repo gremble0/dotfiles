@@ -23,8 +23,9 @@
   (evil-define-key 'normal global-keys-map
 	(kbd "C-x b") 'consult-buffer
 	(kbd "C-c C-e") 'eval-buffer
-    (kbd "C-c C-f") 'gremble/git-files
-    (kbd "C-c C-g") 'consult-ripgrep
+    (kbd "C-c C-i") 'gremble/rg-files-no-ignore
+    (kbd "C-c C-f") 'gremble/rg-files
+    (kbd "C-c C-r") 'gremble/rg
 	(kbd "C-c C-l") 'magit-blame
     ;; These two are actually already bound by evil-collection, but they get unbound
     ;; in some buffer types for some reason so just make them truly global
