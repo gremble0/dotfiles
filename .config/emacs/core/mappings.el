@@ -24,9 +24,9 @@
 	(kbd "C-x b") 'consult-buffer
 	(kbd "C-c C-e") 'eval-buffer
     (kbd "C-c C-i") 'gremble/rg-files-no-ignore
-    (kbd "C-c C-f") 'gremble/rg-files
     (kbd "C-c C-r") 'consult-ripgrep
 	(kbd "C-c C-l") 'magit-blame
+	(kbd "C-c C-c") 'gremble/build-nova
     ;; These two are actually already bound by evil-collection, but they get unbound
     ;; in some buffer types for some reason so just make them truly global
 	(kbd "[ b") 'evil-prev-buffer
