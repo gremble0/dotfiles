@@ -13,15 +13,16 @@ return {
         local treesitter = require("nvim-treesitter")
         local treesitter_config = require("nvim-treesitter.config")
 
-        if vim.tbl_contains(treesitter.get_available(), lang) then
-          if vim.tbl_contains(treesitter_config.get_installed(), lang) then
+        if not vim.tbl_contains(treesitter.get_available(), lang) then
+          return
+        end
+
+        if vim.tbl_contains(treesitter_config.get_installed(), lang) then
+          vim.treesitter.start(event.buf)
+        else
+          treesitter.install({ lang }):await(function()
             vim.treesitter.start(event.buf)
-          else
-            treesitter.install({ lang }):await(function()
-              -- This doesn't work for some reason. Have to restart after installing a new parser
-              vim.treesitter.start(event.buf)
-            end)
-          end
+          end)
         end
       end,
     })
