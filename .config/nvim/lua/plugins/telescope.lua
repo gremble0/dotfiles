@@ -104,18 +104,15 @@ return {
     telescope.load_extension("fzf")
 
     vim.keymap.set("n", "<leader>b", telescope_builtin.buffers, { desc = "Telescope find open buffers", silent = true })
-
     vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Telescope find files", silent = true })
-
     vim.keymap.set("n", "<leader>fw", function()
-      telescope_builtin.find_files({ cwd = get_buffer_path() })
+      telescope_builtin.find_files({ cwd = get_buffer_path(), no_ignore = true })
     end, { desc = "Telescope find files" })
-
     vim.keymap.set("n", "<leader>fg", telescope_builtin.git_files, { desc = "Telescope git files" })
     vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, { desc = "Telescope find help" })
     vim.keymap.set("n", "<leader>rr", telescope_builtin.live_grep, { desc = "Telescope live grep" })
     vim.keymap.set("n", "<leader>rw", function()
-      telescope_builtin.live_grep({ cwd = get_buffer_path() })
+      telescope_builtin.live_grep({ cwd = get_buffer_path(), no_ignore = true })
     end, { desc = "Telescope live grep" })
   end,
 }
