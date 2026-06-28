@@ -34,8 +34,40 @@ do
 
   -- Lsp stuff
   do
-    ks("n", "grd", vim.lsp.buf.definition, { desc = "vim.lsp.buf.definition()" })
-    ks({ "n", "i", "s" }, "<C-s>", vim.lsp.buf.signature_help, { desc = "vim.lsp.buf.signature_help()" })
+    local lb = vim.lsp.buf
+
+    -- Missing from defaults
+    ks("n", "grd", lb.definition, { desc = "vim.lsp.buf.definition()" })
+
+    -- In defaults, but only in insert mode
+    ks({ "n", "i", "s" }, "<C-s>", lb.signature_help, { desc = "vim.lsp.buf.signature_help()" })
+
+    local make_autoformat_autocmd = function()
+      return vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("AutoFormat", { clear = false }),
+        pattern = "*",
+        callback = function(opts)
+          lb.format({ bufnr = opts.buf, timeout_ms = 3000 })
+        end,
+      })
+    end
+
+    --- Enable automatic formatting by default - set to nil to disable by default
+    ---@type integer?
+    local autoformat_cmd = make_autoformat_autocmd()
+
+    ks("n", "<leader>mt", lb.format, { desc = "Format current buffer" })
+
+    ks("n", "<leader>me", function()
+      autoformat_cmd = autoformat_cmd or make_autoformat_autocmd()
+    end, { desc = "Enable autoformatting" })
+
+    ks("n", "<leader>md", function()
+      if autoformat_cmd then
+        vim.api.nvim_del_autocmd(autoformat_cmd)
+        autoformat_cmd = nil
+      end
+    end, { desc = "Disable autoformatting", silent = true })
   end
 
   local get_clipboard = function()
