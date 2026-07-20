@@ -1,7 +1,7 @@
 ---NOTE: Do not call this function with longer strings as it will generate a LOT of combinations
 ---scaling exponentially with the length of the string (O(2 ^ n))
 ---@param user_command string
-local function generate_case_combinations(user_command)
+local generate_case_combinations = function(user_command)
   ---@type string[]
   local combinations = {}
 
