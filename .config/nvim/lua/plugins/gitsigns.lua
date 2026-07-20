@@ -28,7 +28,8 @@ return {
       gitsigns.blame_line({ full = true })
     end, { desc = "Git blame current line" })
 
-    vim.keymap.set("n", "<leader>gv", gitsigns.preview_hunk_inline, { desc = "Preview git hunk" })
+    vim.keymap.set("n", "<leader>gv", gitsigns.preview_hunk, { desc = "Git blame current line" })
+    vim.keymap.set("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Preview git hunk" })
 
     vim.keymap.set("n", "<leader>gq", gitsigns.setqflist, { desc = "Preview git hunk" })
   end,

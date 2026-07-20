@@ -11,7 +11,10 @@ return {
   end,
   setup = function()
     local cc = require("CopilotChat")
-    cc.setup()
+    cc.setup({
+      model = "claude-sonnet-4.6",
+      trusted_tools = { "file", "glob", "grep", "gitdiff" },
+    })
 
     vim.keymap.set("n", "<leader>cm", cc.select_model, { desc = "Select copilot model" })
     vim.keymap.set("n", "<leader>co", cc.open, { desc = "Open CopilotChat window" })
