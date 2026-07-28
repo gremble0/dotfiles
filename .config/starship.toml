@@ -23,5 +23,11 @@ when = "test -n \"$NOVA_BUILD_DIR\""
 format = "preset [$output]($style) "
 style = "bold yellow"
 
+[custom.nova_worktree]
+command = "echo \"$NOVA_TAG\""
+when = "test -n \"$NOVA_TAG\""
+format = "worktree [$output]($style) "
+style = "bold cyan"
+
 [status]
 disabled = false
