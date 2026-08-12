@@ -11,21 +11,23 @@ do
     ks("n", "<C-l>", "<C-w>l", { desc = "Move to window to the right" })
 
     -- Buffers
-    ks("n", "<C-c>", ":close!<CR>", { desc = "Close buffer", silent = true })
+    ks("n", "<C-c>", function()
+      vim.api.nvim_win_close(0, true)
+    end, { desc = "Close buffer", silent = true })
     ks("n", "<C-q>", "<C-^>", { desc = "Alternate file" })
 
     -- Tabs
-    ks("n", "<leader>tn", ":tabnew<CR>", { desc = "Make new tab", silent = true })
-    ks("n", "<leader>tc", ":tabclose<CR>", { desc = "Close tab", silent = true })
+    ks("n", "<leader>tn", vim.cmd.tabnew, { desc = "Make new tab", silent = true })
+    ks("n", "<leader>tc", vim.cmd.tabclose, { desc = "Close tab", silent = true })
 
     -- Quickfix-/Location- list
-    ks("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix list", silent = true })
-    ks("n", "<leader>qc", ":cclose<CR>", { desc = "Close quickfix list", silent = true })
-    ks("n", "<leader>lo", ":lopen<CR>", { desc = "Open location list", silent = true })
-    ks("n", "<leader>lc", ":lclose<CR>", { desc = "Close location list", silent = true })
+    ks("n", "<leader>qo", vim.cmd.copen, { desc = "Open quickfix list", silent = true })
+    ks("n", "<leader>qc", vim.cmd.cclose, { desc = "Close quickfix list", silent = true })
+    ks("n", "<leader>lo", vim.cmd.lopen, { desc = "Open location list", silent = true })
+    ks("n", "<leader>lc", vim.cmd.lclose, { desc = "Close location list", silent = true })
 
     -- Clear highlights with escape
-    ks("n", "<Esc>", ":noh<CR>", { desc = "Clear highlights" })
+    ks("n", "<Esc>", vim.cmd.nohlsearch, { desc = "Clear highlights" })
 
     -- Remap for dealing with word wrap
     ks("n", "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Move up with word wrapping", silent = true, expr = true })
