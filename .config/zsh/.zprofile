@@ -62,6 +62,5 @@ elif NOVA_PROFILE_PATH="$HOME/.nova_profile" && [ -f "$NOVA_PROFILE_PATH" ]; the
 fi
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-    export XDG_SESSION_TYPE="x11"
-    startx 2>/dev/null
+    exec uwsm start hyprland.desktop 2>/dev/null
 fi
