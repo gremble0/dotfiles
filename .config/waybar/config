@@ -12,7 +12,6 @@
     "modules-left": [
         "custom/os_button",
         "hyprland/workspaces",
-        "wlr/taskbar"
     ],
     "modules-center": [],
     "modules-right": [
@@ -36,7 +35,7 @@
         "spacing": 16,
     },
     "custom/os_button": {
-        "format": "<span color='#8198bf'>󰣇</span>",
+        "format": "<span color='#8198bf'></span>",
         "on-click": "wofi --allow-images --show drun",
         "tooltip": false
     },
