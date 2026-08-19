@@ -7,6 +7,10 @@
   autoSetupRemote = true
 [init]
   defaultBranch = main
+[branch]
+  autoSetupMerge = false
+[core]
+  editor = nvim
 [color]
   pager = yes
 [alias]
@@ -38,7 +42,3 @@
   ss = stash
   # Worktree
   wl = worktree list
-[core]
-  editor = nvim
-[branch]
-  autoSetupMerge = always
