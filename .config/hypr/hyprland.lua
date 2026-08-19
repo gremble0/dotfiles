@@ -1,7 +1,7 @@
 --- Monitors
 
-hl.monitor({ output = "DP-6", mode = "3840x2160@60", position = "0x0", scale = 1 })
-hl.monitor({ output = "eDP-1", mode = "1920x1200@60", position = "3840x0", scale = 1 })
+hl.monitor({ output = "DP-6", mode = "preferred", position = "0x0", scale = 1 })
+hl.monitor({ output = "eDP-1", mode = "preferred", position = "3840x0", scale = 1 })
 
 -- Bind workspaces 1-10 to DP-6
 for i = 1, 10 do
