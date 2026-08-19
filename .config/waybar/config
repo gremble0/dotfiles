@@ -1,12 +1,11 @@
 {
-    "layer": "bottom",
-    "position": "bottom",
+    "layer": "top",
+    "position": "top",
     "mod": "dock",
     "exclusive": true,
     "gtk-layer-shell": true,
     "margin-left": 5,
     "margin-right": 5,
-    "margin-bottom": 5,
     "passthrough": false,
     "height": 40,
     "modules-left": [
