@@ -8,6 +8,13 @@ for i = 1, 10 do
   hl.workspace_rule({ workspace = tostring(i), monitor = "DP-6" })
 end
 
+--- Window rules
+hl.window_rule({ match = { class = "novaCWP" }, workspace = 1 })
+hl.window_rule({ match = { class = "tecams" }, workspace = 1 })
+hl.window_rule({ match = { class = "multiProcessStarter" }, workspace = 4 })
+hl.window_rule({ match = { class = "discord" }, workspace = 4 })
+hl.window_rule({ match = { class = "mps-terminal" }, workspace = 5 })
+
 -- Autostart
 hl.on("hyprland.start", function()
   hl.exec_cmd("uwsm finalize")
