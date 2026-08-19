@@ -15,6 +15,25 @@ hl.window_rule({ match = { class = "multiProcessStarter" }, workspace = 4 })
 hl.window_rule({ match = { class = "discord" }, workspace = 4 })
 hl.window_rule({ match = { class = "mps-terminal" }, workspace = 5 })
 
+-- Arrange all windows on a workspace into an even grid
+hl.layout.register("grid", {
+  recalculate = function(ctx)
+    local n = #ctx.targets
+    if n == 0 then
+      return
+    end
+
+    local cols = math.ceil(math.sqrt(n))
+
+    for i, target in ipairs(ctx.targets) do
+      target:place(ctx:grid_cell(i, cols))
+    end
+  end,
+})
+
+-- Lay out mps-terminal windows on workspace 5 in a grid
+hl.workspace_rule({ workspace = "5", layout = "lua:grid" })
+
 -- Autostart
 hl.on("hyprland.start", function()
   hl.exec_cmd("uwsm finalize")
