@@ -84,8 +84,8 @@ hl.config({
     border_size = 1,
 
     col = {
-      active_border = "rgb(e1b655)",
-      inactive_border = "rgba(595959aa)",
+      active_border = "#e1b655",
+      inactive_border = "#595959aa",
     },
 
     layout = "dwindle",
