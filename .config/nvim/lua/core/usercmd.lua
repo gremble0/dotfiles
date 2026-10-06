@@ -32,3 +32,9 @@ for _, command in ipairs(commands) do
     end, { bang = true })
   end
 end
+
+vim.api.nvim_create_user_command("C", function()
+  local file = vim.fn.expand("%:p")
+  local cwd = vim.fn.getcwd()
+  vim.fn.jobstart({ "code", cwd, file }, { detach = true })
+end, {})
