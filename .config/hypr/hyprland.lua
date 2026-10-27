@@ -126,11 +126,11 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"))
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set +5%"))
 
 -- Screenshots
-hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
+hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --freeze --clipboard-only"))
 hl.bind(
   mainMod .. " + Print",
   hl.dsp.exec_cmd(
-    'grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy'
+    "hyprshot -m region --freeze -o ~/Pictures/Screenshots -f screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
   )
 )
 
